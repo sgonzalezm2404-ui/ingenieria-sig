@@ -1,0 +1,10 @@
+# Archivos locales de desarrollo
+serve.ps1
+test_*.ps1
+check_*.ps1
+audit_*.ps1
+preview.png
+
+# SO
+Thumbs.db
+.DS_Store
