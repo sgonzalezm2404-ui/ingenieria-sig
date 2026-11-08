@@ -3008,6 +3008,7 @@ function printSigCampoReport() {
 // =============================================================
 
 const CRM_OFFICIAL_EMAIL = 'ingenierotecnicocyc@gmail.com';
+const CRM_STORAGE_KEY = 'sig2_crm_leads_v2026_real18';
 
 const DEFAULT_CRM_LEADS = [
   {
@@ -3015,32 +3016,46 @@ const DEFAULT_CRM_LEADS = [
     timestamp: '2026-11-06 09:30',
     name: 'Ing. Carlos Valencia',
     role: 'Gerente de Operaciones Mineras',
-    company: 'Continental Gold / Zijin Mining',
+    company: 'Continental Gold / Zijin Mining (Mina Buriticá)',
     phone: '+57 310 445 8920',
     email: 'c.valencia@continentalgold.com.co',
     targetType: 'Cliente Corporativo',
     service: 'Geología 3D, Taludes & PTO',
-    details: 'Revisión y optimización de estabilidad de taludes y actualización de PTO ante la ANM.',
+    details: 'Modelamiento geológico 3D y evaluación de estabilidad de cámaras y galerías de extracción subterránea.',
     status: 'En Negociación',
     destEmail: CRM_OFFICIAL_EMAIL
   },
   {
     id: 'LEAD-2026-102',
     timestamp: '2026-11-06 10:15',
-    name: 'Dra. Marcela Cárdenas',
-    role: 'Directora de Licitaciones y Consorcios',
-    company: 'Consorcio Vial Andino (ANI)',
-    phone: '+57 315 889 0145',
-    email: 'm.cardenas@consorciovial.co',
-    targetType: 'Socio Estratégico / Alianza',
-    service: 'Vuelo LiDAR & Topografía RTK',
-    details: 'Invitación a Unión Temporal para corredor vial 4G de 140 km en topografía y catastro.',
-    status: 'Propuesta Emitida',
+    name: 'Ing. Mauricio Peláez',
+    role: 'Superintendente Técnico de Botaderos',
+    company: 'Carbones del Cerrejón Limited',
+    phone: '+57 310 220 8819',
+    email: 'm.pelaez@cerrejon.com.co',
+    targetType: 'Cliente Corporativo',
+    service: 'Geología 3D, Taludes & PTO',
+    details: 'Monitoreo interferométrico y análisis cinemático de taludes de botaderos de estéril y actualización de PTO ANM.',
+    status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
   {
     id: 'LEAD-2026-103',
     timestamp: '2026-11-06 11:40',
+    name: 'Dra. Marcela Cárdenas',
+    role: 'Directora de Licitaciones y Consorcios',
+    company: 'Consorcio Vial del Oriente (Covioriente 4G)',
+    phone: '+57 315 889 0145',
+    email: 'm.cardenas@covioriente.com.co',
+    targetType: 'Socio Estratégico / Alianza',
+    service: 'Vuelo LiDAR & Topografía RTK',
+    details: 'Levantamiento aerofotogramétrico LiDAR y cartografía de alta resolución en 140 km de corredor vial.',
+    status: 'Propuesta Emitida',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-104',
+    timestamp: '2026-11-06 12:15',
     name: 'Ing. Felipe Montoya',
     role: 'Superintendente HSEQ & Flotas',
     company: 'Mineros S.A. Operaciones El Bagre',
@@ -3048,12 +3063,12 @@ const DEFAULT_CRM_LEADS = [
     email: 'f.montoya@mineros.com.co',
     targetType: 'Cliente Corporativo',
     service: 'SIG Fleet & PESV Res. 40595',
-    details: 'Implementación documental y tecnológica del PESV para flota de 65 volquetas y maquinaria pesada.',
+    details: 'Implementación tecnológica y aplicativo móvil para inspección preoperacional de 65 volquetas y maquinaria pesada.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
   {
-    id: 'LEAD-2026-104',
+    id: 'LEAD-2026-105',
     timestamp: '2026-11-06 13:20',
     name: 'Ing. David Osorio',
     role: 'Director Técnico de Geotecnia',
@@ -3062,50 +3077,190 @@ const DEFAULT_CRM_LEADS = [
     email: 'd.osorio@geotech.com.co',
     targetType: 'Socio Estratégico / Alianza',
     service: 'SIG Campo (App Geotécnica)',
-    details: 'Adquisición de 8 licencias corporativas PWA para faena de sondeos mecánicos y percusión.',
+    details: 'Adquisición de licencias SIG Campo para digitalización de perforaciones y ensayos SPT en faena vial.',
     status: 'En Negociación',
     destEmail: CRM_OFFICIAL_EMAIL
   },
   {
-    id: 'LEAD-2026-105',
+    id: 'LEAD-2026-106',
     timestamp: '2026-11-06 14:10',
     name: 'Ing. Patricia Morales',
     role: 'Coordinadora de Licenciamiento Ambiental',
-    company: 'Argos Infraestructura & Concretos',
+    company: 'Cementos Argos S.A. - Regional Centro',
     phone: '+57 318 732 9910',
     email: 'p.morales@argos.co',
     targetType: 'Cliente Corporativo',
     service: 'Ingeniería Ambiental EIA/PMA',
-    details: 'Estructuración de Geodatabase (GDB) ANLA y seguimiento de plan de manejo ambiental PMA.',
+    details: 'Estructuración de Geodatabase (GDB) ANLA y seguimiento del Plan de Manejo Ambiental (PMA) en canteras.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
   {
-    id: 'LEAD-2026-106',
+    id: 'LEAD-2026-107',
     timestamp: '2026-11-06 15:30',
     name: 'Carlos Julio Echeverri',
     role: 'Representante Operativo de Perforación',
-    company: 'Sondeos & Cimentaciones del Norte',
+    company: 'Sondeos & Cimentaciones del Norte S.A.S.',
     phone: '+57 301 556 7890',
     email: 'cjecheverri@sondeosnorte.com',
     targetType: 'Contratista de Faena',
     service: 'SIG Campo (App Geotécnica)',
-    details: 'Homologación de 3 cuadrillas y equipos de perforación diamantada HQ para proyectos mineros.',
+    details: 'Homologación técnica de 3 equipos de perforación diamantada HQ y cuadrillas de ensayo SPT.',
     status: 'Nuevo Lead',
     destEmail: CRM_OFFICIAL_EMAIL
   },
   {
-    id: 'LEAD-2026-107',
+    id: 'LEAD-2026-108',
     timestamp: '2026-11-06 16:45',
     name: 'Ing. Gonzalo Henao',
     role: 'Subdirector de Obras Subterráneas',
-    company: 'Consorcio Túnel del Toyo',
+    company: 'Consorcio Túnel del Toyo (Giraldo-Cañasgordas)',
     phone: '+57 313 490 8812',
     email: 'g.henao@tuneldeltoyo.com.co',
     targetType: 'Cliente Corporativo',
     service: 'Telemetría IoT & Dashboards BI',
-    details: 'Red de monitoreo de piezómetros e inclinómetros digitales con alertas tempranas satelitales.',
+    details: 'Red de sensores piezométricos e inclinómetros digitales con transmisión remota 4G y alertas satelitales.',
     status: 'Ganado / En Ejecución',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-109',
+    timestamp: '2026-11-06 17:10',
+    name: 'Dra. Andrea Beltrán',
+    role: 'Líder HSEQ & Seguridad Vial Nacional',
+    company: 'Transportes Montejo Heavy Lift S.A.S.',
+    phone: '+57 320 994 3311',
+    email: 'a.beltran@transportesmontejo.com',
+    targetType: 'Cliente Corporativo',
+    service: 'SIG Fleet & PESV Res. 40595',
+    details: 'Auditoría integral de 24 pasos del PESV y checklist preoperacional digital para 95 camas bajas y grúas telescópicas.',
+    status: 'En Negociación',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-110',
+    timestamp: '2026-11-07 08:30',
+    name: 'Ing. Gustavo Restrepo',
+    role: 'Superintendente de Geología & Mina',
+    company: 'Minera El Roble (Atico Mining Corporation)',
+    phone: '+57 314 621 7740',
+    email: 'g.restrepo@aticomining.com',
+    targetType: 'Cliente Corporativo',
+    service: 'SIG Campo (App Geotécnica)',
+    details: 'Digitalización en tiempo real de registros litológicos y ensayos geomecánicos RMR en mina subterránea de cobre.',
+    status: 'Calificado',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-111',
+    timestamp: '2026-11-07 09:15',
+    name: 'Ing. Roberto Char',
+    role: 'Socio Director de Proyectos Geotécnicos',
+    company: 'Geotécnica & Perforaciones del Sinú S.A.S.',
+    phone: '+57 315 771 9022',
+    email: 'r.char@geosinusas.com',
+    targetType: 'Socio Estratégico / Alianza',
+    service: 'SIG Campo (App Geotécnica)',
+    details: 'Acuerdo de Unión Temporal para licitaciones públicas de INVIAS en estudios de suelos y estabilidad de taludes.',
+    status: 'Propuesta Emitida',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-112',
+    timestamp: '2026-11-07 10:00',
+    name: 'Ing. Hernando Cifuentes',
+    role: 'Gerente de Operaciones de Mina',
+    company: 'Drummond Ltd. Colombia (Mina Pribbenow)',
+    phone: '+57 311 892 4410',
+    email: 'h.cifuentes@drummondltd.com',
+    targetType: 'Cliente Corporativo',
+    service: 'Vuelo LiDAR & Topografía RTK',
+    details: 'Batimetría de pozas de sedimentación y cubicación topográfica mensual de avance minero con dron LiDAR.',
+    status: 'Calificado',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-113',
+    timestamp: '2026-11-07 11:20',
+    name: 'Ing. Camilo Pardo',
+    role: 'Residente de Estabilidad de Taludes',
+    company: 'Autopistas del Café S.A. (Odinsa)',
+    phone: '+57 313 550 1199',
+    email: 'c.pardo@autopistasdelcafe.com',
+    targetType: 'Cliente Corporativo',
+    service: 'Geología 3D, Taludes & PTO',
+    details: 'Diseño geotécnico de obras de estabilización con micropilotes, anclajes activos y drenes en PK 28+400.',
+    status: 'En Negociación',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-114',
+    timestamp: '2026-11-07 12:45',
+    name: 'Dr. Guillermo Sanabria',
+    role: 'Director de Seguridad Operacional y Flotas',
+    company: 'Expreso Bolivariano S.A.',
+    phone: '+57 317 501 2234',
+    email: 'g.sanabria@bolivariano.com.co',
+    targetType: 'Cliente Corporativo',
+    service: 'SIG Fleet & PESV Res. 40595',
+    details: 'Control de preoperacional diario sin internet y auditoría del PESV para 140 buses intermunicipales.',
+    status: 'Propuesta Emitida',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-115',
+    timestamp: '2026-11-07 14:10',
+    name: 'Ing. Clara Inés Duque',
+    role: 'Jefe de Flotas y Logística de Hormigón',
+    company: 'Concretos & Prefabricados San Jerónimo',
+    phone: '+57 301 448 3920',
+    email: 'c.duque@sanjeronimo.com.co',
+    targetType: 'Cliente Corporativo',
+    service: 'SIG Fleet & PESV Res. 40595',
+    details: 'Módulo móvil para 48 camiones hormigonera mixer con alertas de velocidad y checklist mecánico.',
+    status: 'Calificado',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-116',
+    timestamp: '2026-11-07 15:30',
+    name: 'Ing. Laura Viviana Cruz',
+    role: 'Coordinadora de Geotecnia Vial',
+    company: 'Consorcio Ruta del Sol Sector 3 (Yuma Concesionaria)',
+    phone: '+57 316 442 8815',
+    email: 'l.cruz@rutadelsol3.com.co',
+    targetType: 'Cliente Corporativo',
+    service: 'Geología 3D, Taludes & PTO',
+    details: 'Análisis de asentamientos y capacidad portante en terraplenes sobre suelos pantanosos con geodrenes.',
+    status: 'Nuevo Lead',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-117',
+    timestamp: '2026-11-07 16:50',
+    name: 'Ing. Andrés Buitrago',
+    role: 'Director de Planeación & Regalías',
+    company: 'Cales & Agregados del Tolima S.A.S.',
+    phone: '+57 311 380 4490',
+    email: 'a.buitrago@calestolima.com',
+    targetType: 'Cliente Corporativo',
+    service: 'Vuelo LiDAR & Topografía RTK',
+    details: 'Cálculo de volumen de extracción en banco de caliza y certificación topográfica para liquidación ante la ANM.',
+    status: 'Calificado',
+    destEmail: CRM_OFFICIAL_EMAIL
+  },
+  {
+    id: 'LEAD-2026-118',
+    timestamp: '2026-11-07 17:35',
+    name: 'Ing. Hernán Fonseca',
+    role: 'Gerente de Licitaciones e Infraestructura',
+    company: 'Ingeocivil Consultoría & Diseños S.A.S.',
+    phone: '+57 318 690 4125',
+    email: 'h.fonseca@ingeocivil.com.co',
+    targetType: 'Socio Estratégico / Alianza',
+    service: 'Telemetría IoT & Dashboards BI',
+    details: 'Conformación de Consorcio para interventoría y telemetría de instrumentación estructural de puentes viales.',
+    status: 'Propuesta Emitida',
     destEmail: CRM_OFFICIAL_EMAIL
   }
 ];
@@ -3126,10 +3281,10 @@ function initCrmHub() {
 
 function loadCrmLeadsFromStorage() {
   try {
-    const stored = localStorage.getItem('sig2_crm_leads_v2026');
+    const stored = localStorage.getItem(CRM_STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored);
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed) && parsed.length >= 18) {
         CRM_STATE.leads = parsed;
         return;
       }
@@ -3137,14 +3292,14 @@ function loadCrmLeadsFromStorage() {
   } catch (e) {
     console.warn('Error al leer leads de localStorage:', e);
   }
-  // Carga inicial por defecto
+  // Carga inicial por defecto con las 18 empresas y proyectos reales
   CRM_STATE.leads = [...DEFAULT_CRM_LEADS];
   saveCrmLeadsToStorage();
 }
 
 function saveCrmLeadsToStorage() {
   try {
-    localStorage.setItem('sig2_crm_leads_v2026', JSON.stringify(CRM_STATE.leads));
+    localStorage.setItem(CRM_STORAGE_KEY, JSON.stringify(CRM_STATE.leads));
   } catch (e) {
     console.warn('Error al persistir leads en localStorage:', e);
   }
@@ -3490,18 +3645,92 @@ function exportCrmToExcel() {
     csv += `"${l.id}","${l.timestamp}","${l.name}","${l.role}","${l.company}","${l.phone}","${l.email}","${l.targetType}","${l.service}","${cleanDetails}","${l.status}","${CRM_OFFICIAL_EMAIL}"\n`;
   });
 
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
   const todayStr = new Date().toISOString().split('T')[0];
-  a.download = `SIG2_CRM_Master_Leads_${todayStr}.csv`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  const filename = `SIG2_CRM_Master_Leads_${todayStr}.csv`;
 
-  showToast(`¡Master Excel (.csv) descargado con ${leads.length} registros para ${CRM_OFFICIAL_EMAIL}!`, 'success');
+  try {
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    
+    // Método 1: IE / Edge nativo si existe
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+      showToast(`¡Master Excel descargado con ${leads.length} registros para ${CRM_OFFICIAL_EMAIL}!`, 'success');
+      return;
+    }
+
+    // Método 2: Enlace temporal Blob con retardo para revocación
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.setAttribute('download', filename);
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+
+    setTimeout(() => {
+      try {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (err) {}
+    }, 3500);
+
+    showToast(`¡Archivo Excel (${leads.length} registros) generado y descargado exitosamente!`, 'success');
+  } catch (e) {
+    console.error('Error al generar Blob CSV:', e);
+    // Método 3: Fallback por Data URI
+    try {
+      const encodedUri = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', filename);
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => document.body.removeChild(link), 2000);
+      showToast(`¡Descarga directa por Data URI completada (${leads.length} empresas)!`, 'success');
+    } catch (e2) {
+      alert('Tu navegador impidió la descarga automática. Por favor utiliza el botón "Copiar para Excel (Ctrl + V)" para pegarlo directamente en tu hoja de cálculo.');
+    }
+  }
+}
+
+// =============================================================
+// COPIAR DIRECTO AL PORTAPAPELES PARA PEGAR EN EXCEL (Ctrl + V)
+// =============================================================
+function copyCrmTableForExcel() {
+  const leads = CRM_STATE.leads;
+  if (!leads || leads.length === 0) {
+    showToast('No hay registros en el CRM para copiar.', 'warning');
+    return;
+  }
+
+  // Estructura TSV (Tab Separated Values) que Excel pega de forma nativa en celdas separadas
+  let tsv = `ID Lead\tFecha Registro\tContacto\tCargo\tEmpresa / Consorcio\tWhatsApp / Telefono\tCorreo Electronico\tTipo de Vinculacion\tServicio de Interes\tAlcance Tecnico\tEstado Pipeline\tDestino Auditoria\n`;
+  leads.forEach(l => {
+    const cleanDetails = (l.details || '').replace(/\t/g, ' ').replace(/\n/g, ' ');
+    tsv += `${l.id}\t${l.timestamp}\t${l.name}\t${l.role}\t${l.company}\t${l.phone}\t${l.email}\t${l.targetType}\t${l.service}\t${cleanDetails}\t${l.status}\t${CRM_OFFICIAL_EMAIL}\n`;
+  });
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(tsv).then(() => {
+      showToast(`¡${leads.length} empresas copiadas! Abre Microsoft Excel y presiona Ctrl + V para pegarlas en celdas.`, 'success');
+    }).catch(() => {
+      copyFallbackText(tsv, leads.length);
+    });
+  } else {
+    copyFallbackText(tsv, leads.length);
+  }
+}
+
+function copyFallbackText(text, count) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  showToast(`¡${count} empresas copiadas! Abre Microsoft Excel y presiona Ctrl + V para pegarlas.`, 'success');
 }
 
 // =============================================================
