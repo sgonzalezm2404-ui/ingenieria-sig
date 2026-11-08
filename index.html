@@ -44,7 +44,7 @@
   </script>
 
   <!-- Estilos Personalizados de Ingeniería con Cache-Buster -->
-  <link rel="stylesheet" href="styles.css?v=20261108_marketing_v1">
+  <link rel="stylesheet" href="styles.css?v=20261108_consultora_v2">
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-sig-teal/20 selection:text-sig-navy min-h-screen flex flex-col font-sans">
 
@@ -132,6 +132,13 @@
             <span class="px-1.5 py-0.2 rounded text-[9px] bg-blue-100 text-blue-800 font-black animate-pulse">IA</span>
           </a>
 
+          <!-- CONSULTORA AI - Plataforma Integral de Marketing & Ventas B2B -->
+          <a href="#consultora-ai" class="hover:text-sig-navy transition-colors flex items-center gap-1.5 text-purple-700 font-black" title="CONSULTORA AI - Departamento Digital de Marketing y Ventas con IA">
+            <i class="fa-solid fa-brain text-xs text-purple-600"></i>
+            <span>CONSULTORA AI</span>
+            <span class="px-1.5 py-0.2 rounded text-[9px] bg-purple-100 text-purple-800 font-black animate-pulse">B2B</span>
+          </a>
+
           <a href="#noticias" class="hover:text-sig-navy transition-colors">
             Noticias
           </a>
@@ -205,6 +212,11 @@
       <a href="#marketing-ia-ads" class="mobile-nav-link block py-2 text-blue-600 font-black border-b border-slate-100 flex items-center justify-between">
         <span class="flex items-center gap-2"><i class="fa-brands fa-google"></i> Marketing IA (Google Ads)</span>
         <span class="px-2 py-0.5 rounded text-[10px] bg-blue-50 text-blue-700 font-black border border-blue-200">AUTÓNOMO</span>
+      </a>
+
+      <a href="#consultora-ai" class="mobile-nav-link block py-2 text-purple-700 font-black border-b border-slate-100 flex items-center justify-between">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-brain text-purple-600"></i> CONSULTORA AI (Marketing & Ventas)</span>
+        <span class="px-2 py-0.5 rounded text-[10px] bg-purple-50 text-purple-800 font-black border border-purple-200">B2B ENGINE</span>
       </a>
 
       <a href="#noticias" class="mobile-nav-link block py-2 text-slate-700 hover:text-sig-navy border-b border-slate-100">Noticias & Artículos</a>
@@ -2074,9 +2086,821 @@
 
 
   <!-- =========================================================================
-       NUEVA SECCIÓN: MARKETING IA – GOOGLE ADS (AGENTE AUTÓNOMO DE MARKETING)
-       ADMINISTRACIÓN CENTRALIZADA, KEYWORD RESEARCH, GENERACIÓN RSA Y CRM
+       NUEVA MACRO-PLATAFORMA: CONSULTORA AI
+       DEPARTAMENTO DIGITAL AUTÓNOMO DE MARKETING, PROSPECCIÓN Y VENTAS CON IA
+       INCLUYE: 7 AGENTES IA, 4 UNIDADES DE NEGOCIO, APROBACIONES HUMAN-IN-THE-LOOP,
+       CRM DE 10 ETAPAS, 12 WORKFLOWS N8N Y REPORTE EJECUTIVO SEMANAL
        ========================================================================= -->
+  <section id="consultora-ai" class="py-20 bg-slate-900 text-slate-100 border-b border-slate-800 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Encabezado Principal de la Macro-Plataforma -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10 pb-8 border-b border-slate-800">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/40 text-purple-300 text-xs font-black uppercase tracking-wider mb-3 shadow-md">
+            <i class="fa-solid fa-brain text-purple-400"></i>
+            <span>PLATAFORMA CONSULTORA AI</span>
+            <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            CONSULTORA AI
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-3xl leading-relaxed">
+            Departamento digital autónomo de marketing, prospección B2B y ventas de alta ingeniería. Opera mediante 7 agentes especializados, orquestación n8n, OpenAI GPT-4o, base de datos PostgreSQL y control obligatorio de aprobación humana.
+          </p>
+        </div>
+
+        <!-- Selector de Unidad de Negocio & Filtro de Datos -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-slate-800/80 p-3 rounded-2xl border border-slate-700 shadow-lg">
+          <div class="flex flex-col">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Unidad de Negocio:</span>
+            <select id="consultora-unit-filter" onchange="switchConsultoraBusinessUnit(this.value)" class="mt-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-bold text-white outline-none cursor-pointer">
+              <option value="ALL" selected>Consolidado (Todas las Unidades)</option>
+              <option value="geotecnia">1. Ingeniería y Geotecnia</option>
+              <option value="sst_hseq">2. SST y HSEQ</option>
+              <option value="ambiental">3. Consultoría Ambiental</option>
+              <option value="digital">4. Transformación Digital</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Aprobaciones Pendientes:</span>
+            <button onclick="switchConsultoraTab('aprobaciones')" class="mt-1 px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-xl text-xs font-black flex items-center justify-between gap-2 transition-all">
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-400"></i> Por Revisar:</span>
+              <span id="consultora-pending-approvals-badge" class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">3</span>
+            </button>
+          </div>
+
+          <div class="flex flex-col">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Informe Semanal:</span>
+            <button onclick="downloadConsultoraWeeklyReport()" class="mt-1 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-extrabold flex items-center gap-2 transition-all shadow-md">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Descargar Excel</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           RESUMEN EJECUTIVO: LOS 11 INDICADORES COMERCIALES CLAVE
+           ===================================================================== -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+        
+        <!-- KPI 1: Empresas Investigadas -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">1. Empresas Investigadas</span>
+          <div id="c-kpi-companies" class="text-xl sm:text-2xl font-black text-white font-mono mt-1">142</div>
+          <span class="text-[10px] text-purple-400 font-bold block mt-1"><i class="fa-solid fa-building"></i> RUES / Directorios</span>
+        </div>
+
+        <!-- KPI 2: Prospectos Nuevos -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">2. Prospectos Nuevos</span>
+          <div id="c-kpi-leads-new" class="text-xl sm:text-2xl font-black text-blue-400 font-mono mt-1">86</div>
+          <span class="text-[10px] text-blue-300 font-bold block mt-1"><i class="fa-solid fa-user-plus"></i> Inbound & Outbound</span>
+        </div>
+
+        <!-- KPI 3: Prospectos Calificados -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">3. Calificados</span>
+          <div id="c-kpi-leads-qualified" class="text-xl sm:text-2xl font-black text-teal-400 font-mono mt-1">52</div>
+          <span class="text-[10px] text-teal-300 font-bold block mt-1"><i class="fa-solid fa-filter-circle-dollar"></i> Fit Técnico >80%</span>
+        </div>
+
+        <!-- KPI 4: Contactos Realizados -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">4. Contactados</span>
+          <div id="c-kpi-contacts-made" class="text-xl sm:text-2xl font-black text-amber-400 font-mono mt-1">38</div>
+          <span class="text-[10px] text-amber-300 font-bold block mt-1"><i class="fa-solid fa-paper-plane"></i> Aprobados x Humano</span>
+        </div>
+
+        <!-- KPI 5: Respuestas Recibidas -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">5. Respuestas</span>
+          <div id="c-kpi-responses" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono mt-1">19</div>
+          <span class="text-[10px] text-emerald-300 font-bold block mt-1"><i class="fa-solid fa-reply"></i> Tasa resp: 50%</span>
+        </div>
+
+        <!-- KPI 6: Reuniones Generadas -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">6. Reuniones</span>
+          <div id="c-kpi-meetings" class="text-xl sm:text-2xl font-black text-purple-400 font-mono mt-1">11</div>
+          <span class="text-[10px] text-purple-300 font-bold block mt-1"><i class="fa-solid fa-handshake"></i> Técnicas / Faena</span>
+        </div>
+
+        <!-- KPI 7: Cotizaciones Enviadas -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">7. Cotizaciones</span>
+          <div id="c-kpi-quotes" class="text-xl sm:text-2xl font-black text-amber-400 font-mono mt-1">8</div>
+          <span class="text-[10px] text-amber-300 font-bold block mt-1"><i class="fa-solid fa-file-invoice-dollar"></i> En Negociación</span>
+        </div>
+
+        <!-- KPI 8: Clientes Obtenidos -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">8. Clientes Ganados</span>
+          <div id="c-kpi-clients-won" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono mt-1">4</div>
+          <span class="text-[10px] text-emerald-300 font-bold block mt-1"><i class="fa-solid fa-trophy"></i> Cierre Comercial</span>
+        </div>
+
+        <!-- KPI 9: Inversión Publicitaria -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">9. Inversión Ads</span>
+          <div id="c-kpi-ad-spend" class="text-xl sm:text-2xl font-black text-blue-400 font-mono mt-1">$2.84M</div>
+          <span class="text-[10px] text-slate-400 font-bold block mt-1">COP Controlado</span>
+        </div>
+
+        <!-- KPI 10: Costo por Lead (CPL) -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">10. Costo x Lead</span>
+          <div id="c-kpi-cpl" class="text-xl sm:text-2xl font-black text-teal-400 font-mono mt-1">$33.023</div>
+          <span class="text-[10px] text-teal-300 font-bold block mt-1">COP por prospecto</span>
+        </div>
+
+        <!-- KPI 11: Tasa de Conversión -->
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-3.5 lg:col-span-2">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">11. Tasa de Conversión Global</span>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span id="c-kpi-conversion-rate" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono">7.69%</span>
+            <span class="text-xs text-slate-400 font-bold">(Leads cualificados a Clientes)</span>
+          </div>
+          <span class="text-[10px] text-emerald-300 font-bold block mt-1"><i class="fa-solid fa-chart-line"></i> Benchmark industrial superado</span>
+        </div>
+
+      </div>
+
+      <!-- =====================================================================
+           BARRA DE NAVEGACIÓN: LOS 14 SUBMÓDULOS DE CONSULTORA AI
+           ===================================================================== -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-3 mb-8 text-xs font-bold scrollbar-thin">
+        <button onclick="switchConsultoraTab('resumen')" id="c-tab-resumen" class="px-3.5 py-2 rounded-xl bg-purple-600 text-white shrink-0 shadow-md flex items-center gap-2">
+          <i class="fa-solid fa-chart-pie"></i> <span>Resumen Ejecutivo</span>
+        </button>
+        <button onclick="switchConsultoraTab('unidades')" id="c-tab-unidades" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-sitemap"></i> <span>4 Unidades de Negocio</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente1')" id="c-tab-agente1" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-magnifying-glass-chart"></i> <span>Agente 1: Mercado</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente2')" id="c-tab-agente2" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-binoculars"></i> <span>Agente 2: Prospección B2B</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente3')" id="c-tab-agente3" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-bullseye"></i> <span>Agente 3: Estrategia</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente4')" id="c-tab-agente4" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-pen-nib"></i> <span>Agente 4: Creador Contenido</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente5')" id="c-tab-agente5" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-share-nodes"></i> <span>Agente 5: Redes Sociales</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente6')" id="c-tab-agente6" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-rectangle-ad"></i> <span>Agente 6: Publicidad</span>
+        </button>
+        <button onclick="switchConsultoraTab('agente7')" id="c-tab-agente7" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-headset"></i> <span>Agente 7: Asistente Ventas</span>
+        </button>
+        <button onclick="switchConsultoraTab('aprobaciones')" id="c-tab-aprobaciones" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2 border border-amber-500/30">
+          <i class="fa-solid fa-shield-halved text-amber-400"></i> <span>Centro de Aprobaciones</span>
+        </button>
+        <button onclick="switchConsultoraTab('crm')" id="c-tab-crm" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-diagram-project"></i> <span>CRM 10 Etapas</span>
+        </button>
+        <button onclick="switchConsultoraTab('informes')" id="c-tab-informes" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-file-contract"></i> <span>Informes Semanales</span>
+        </button>
+        <button onclick="switchConsultoraTab('n8n')" id="c-tab-n8n" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-network-wired"></i> <span>Workflows n8n (12)</span>
+        </button>
+        <button onclick="switchConsultoraTab('historial')" id="c-tab-historial" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-clock-rotate-left"></i> <span>Auditoría & Logs</span>
+        </button>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 1: RESUMEN EJECUTIVO & ESTADO DE LOS 7 AGENTES IA
+           ===================================================================== -->
+      <div id="c-subpanel-resumen" class="space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Matriz de Estado de los 7 Agentes IA -->
+          <div class="lg:col-span-2 bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-700 mb-5">
+              <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-microchip text-purple-400 text-lg"></i>
+                <div>
+                  <h3 class="text-base font-black text-white">Estado de los 7 Agentes de Inteligencia Artificial</h3>
+                  <p class="text-xs text-slate-400">Motor cognitivo OpenAI GPT-4o con supervisión humana obligatoria</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">7/7 Activos</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="consultora-agents-grid">
+              <!-- Inyectado dinámicamente por app.js -->
+            </div>
+          </div>
+
+          <!-- Panel de Seguridad & Cumplimiento Legal (Habeas Data Colombia) -->
+          <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-slate-700 mb-4">
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-scale-balanced text-amber-400"></i>
+                  <h3 class="text-sm font-black text-white">Cumplimiento Legal & Seguridad</h3>
+                </div>
+                <span class="text-[10px] font-bold text-slate-400 font-mono">LEY 1581 / 2012</span>
+              </div>
+
+              <div class="space-y-3 text-xs text-slate-300">
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 flex items-start gap-2.5">
+                  <i class="fa-solid fa-shield-check text-emerald-400 text-sm mt-0.5"></i>
+                  <div>
+                    <strong class="text-white block">Protección de Datos Personales (Colombia)</strong>
+                    <span class="text-[11px] text-slate-400">La prospección B2B se limita a fuentes públicas oficiales (RUES, sitios corporativos). Cero extracción no autorizada.</span>
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 flex items-start gap-2.5">
+                  <i class="fa-solid fa-lock text-purple-400 text-sm mt-0.5"></i>
+                  <div>
+                    <strong class="text-white block">Aislamiento de Secretos & Claves API</strong>
+                    <span class="text-[11px] text-slate-400">Las claves privadas de OpenAI, Meta, LinkedIn y Google Ads se ejecutan exclusivamente en servidor seguro / n8n.</span>
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 flex items-start gap-2.5">
+                  <i class="fa-solid fa-hand-holding-dollar text-amber-400 text-sm mt-0.5"></i>
+                  <div>
+                    <strong class="text-white block">Control Presupuestal Inviolable</strong>
+                    <span class="text-[11px] text-slate-400">Ningún agente puede autorizar pagos ni mutaciones sin la firma digital de aprobación del administrador.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-700 mt-4">
+              <button onclick="switchConsultoraTab('aprobaciones')" class="w-full py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-md">
+                <span>Ir al Centro de Aprobaciones</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 2: LAS 4 UNIDADES DE NEGOCIO INDEPENDIENTES
+           ===================================================================== -->
+      <div id="c-subpanel-unidades" class="hidden space-y-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <div>
+            <h3 class="text-lg font-black text-white">Unidades Estratégicas de Negocio</h3>
+            <p class="text-xs text-slate-400">Cada unidad opera con público objetivo, palabras clave, contenidos, prospectos y presupuestos autónomos</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="consultora-business-units-container">
+          <!-- Inyectado dinámicamente con las 4 Unidades: Geotecnia, SST/HSEQ, Ambiental, Transformación Digital -->
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 3: AGENTE 1 - INVESTIGACIÓN DE MERCADO & COMPETIDORES
+           ===================================================================== -->
+      <div id="c-subpanel-agente1" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Agente 1 • Inteligencia de Mercado</span>
+              <h3 class="text-base font-black text-white mt-0.5">Sectores, Necesidades Potenciales, Tendencias & Competidores</h3>
+            </div>
+            <button onclick="runMarketResearchAgent()" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <span>Escanear Oportunidades Ahora</span>
+            </button>
+          </div>
+
+          <!-- Filtro de Búsqueda -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-400 mb-1">Sector Empresarial:</label>
+              <select id="agent1-sector-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white outline-none">
+                <option value="mineria">Minería e Infraestructura Vial</option>
+                <option value="construccion">Construcción Civil & Edificaciones</option>
+                <option value="transporte">Transporte & Logística de Carga (PESV)</option>
+                <option value="energia">Energía, Hidrocarburos & Ambiental</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-400 mb-1">Región de Colombia:</label>
+              <select id="agent1-region-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white outline-none">
+                <option value="antioquia">Antioquia / Medellín / Eje Cafetero</option>
+                <option value="bogota">Bogotá D.C. / Cundinamarca</option>
+                <option value="santander">Santanderes / Boyacá</option>
+                <option value="caribe">Costa Caribe / Minería Norte</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button onclick="filterMarketFindings()" class="w-full py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 transition-all">
+                <i class="fa-solid fa-filter"></i> Filtrar Hallazgos
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabla de Fuentes Verificadas y Oportunidades -->
+          <div class="overflow-x-auto rounded-xl border border-slate-700">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-900 text-slate-400 font-bold border-b border-slate-700">
+                  <th class="py-3 px-3">Sector / Demanda</th>
+                  <th class="py-3 px-3">Necesidad Técnica Detectada</th>
+                  <th class="py-3 px-3">Tendencia & Oportunidad</th>
+                  <th class="py-3 px-3">Competidores Identificados</th>
+                  <th class="py-3 px-3">Fuente Pública / Verificación</th>
+                  <th class="py-3 px-3 text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="agent1-findings-tbody" class="divide-y divide-slate-700 text-slate-300">
+                <!-- Inyectado por app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 4: AGENTE 2 - PROSPECCIÓN B2B DE EMPRESAS POTENCIALES
+           ===================================================================== -->
+      <div id="c-subpanel-agente2" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-wider block">Agente 2 • Prospección B2B</span>
+              <h3 class="text-base font-black text-white mt-0.5">Empresas Investigadas, Servicios Vinculados & Contactos Públicos</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="runB2BProspectingBatch()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Investigar Nuevo Lote B2B</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabla de Empresas Prospectadas -->
+          <div class="overflow-x-auto rounded-xl border border-slate-700">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-900 text-slate-400 font-bold border-b border-slate-700">
+                  <th class="py-3 px-3">Empresa / Ciudad</th>
+                  <th class="py-3 px-3">Sector Industrial</th>
+                  <th class="py-3 px-3">Necesidad Específica</th>
+                  <th class="py-3 px-3">Canal Público</th>
+                  <th class="py-3 px-3">Nivel Oportunidad</th>
+                  <th class="py-3 px-3">Fuente Legal</th>
+                  <th class="py-3 px-3 text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="agent2-companies-tbody" class="divide-y divide-slate-700 text-slate-300">
+                <!-- Inyectado por app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 5: AGENTE 3 - ESTRATEGIA DE MARKETING & CAMPAÑAS
+           ===================================================================== -->
+      <div id="c-subpanel-agente3" class="hidden space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-4">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+              <div>
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Agente 3 • Planificador Estratégico</span>
+                <h3 class="text-base font-black text-white mt-0.5">Estrategias por Unidad de Negocio, Audiencias & Calendarios</h3>
+              </div>
+              <button onclick="generateUnitStrategy()" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Diseñar Nueva Estrategia</span>
+              </button>
+            </div>
+
+            <div id="agent3-strategies-container" class="space-y-4">
+              <!-- Inyectado por app.js -->
+            </div>
+          </div>
+
+          <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-4">
+            <h4 class="text-sm font-black text-white pb-3 border-b border-slate-700 flex items-center gap-2">
+              <i class="fa-solid fa-bullseye text-emerald-400"></i> Objetivos Comerciales del Trimestre
+            </h4>
+            <div class="space-y-3 text-xs text-slate-300">
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-700">
+                <div class="flex justify-between font-bold mb-1">
+                  <span>Geotecnia & Suelos NSR-10:</span>
+                  <span class="text-emerald-400">12 / 15 Contratos</span>
+                </div>
+                <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-700">
+                <div class="flex justify-between font-bold mb-1">
+                  <span>SST & PESV Flotas:</span>
+                  <span class="text-amber-400">9 / 10 Empresas</span>
+                </div>
+                <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-amber-500 h-1.5 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-700">
+                <div class="flex justify-between font-bold mb-1">
+                  <span>Consultoría Ambiental EIA:</span>
+                  <span class="text-teal-400">4 / 6 Licencias</span>
+                </div>
+                <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-teal-500 h-1.5 rounded-full" style="width: 66%"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-700">
+                <div class="flex justify-between font-bold mb-1">
+                  <span>Transformación Digital & CRM:</span>
+                  <span class="text-purple-400">6 / 8 Plataformas</span>
+                </div>
+                <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-purple-500 h-1.5 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 6: AGENTE 4 - CREADOR DE CONTENIDO IA MULTIFORMATO
+           ===================================================================== -->
+      <div id="c-subpanel-agente4" class="hidden space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Constructor de Contenido -->
+          <div class="lg:col-span-5 bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-4">
+            <div class="pb-3 border-b border-slate-700">
+              <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Agente 4 • Generador de Contenidos B2B</span>
+              <h3 class="text-sm font-black text-white mt-0.5">Posts, Carruseles, Artículos Técnicos & Guiones</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block font-bold text-slate-300 mb-1">Formato de Contenido:</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <button onclick="selectContentFormat('ARTICULO')" id="cf-btn-articulo" class="p-2 rounded-xl bg-purple-600 text-white font-bold text-center">
+                    <i class="fa-solid fa-newspaper block mb-1 text-sm"></i> Artículo LinkedIn
+                  </button>
+                  <button onclick="selectContentFormat('CARRUSEL')" id="cf-btn-carrusel" class="p-2 rounded-xl bg-slate-700 text-slate-300 font-bold text-center hover:bg-slate-600">
+                    <i class="fa-solid fa-layer-group block mb-1 text-sm"></i> Carrusel Educativo
+                  </button>
+                  <button onclick="selectContentFormat('POST_IMAGEN')" id="cf-btn-post" class="p-2 rounded-xl bg-slate-700 text-slate-300 font-bold text-center hover:bg-slate-600">
+                    <i class="fa-solid fa-image block mb-1 text-sm"></i> Post con Imagen
+                  </button>
+                  <button onclick="selectContentFormat('GUION_VIDEO')" id="cf-btn-video" class="p-2 rounded-xl bg-slate-700 text-slate-300 font-bold text-center hover:bg-slate-600">
+                    <i class="fa-solid fa-video block mb-1 text-sm"></i> Guion Demostración
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-300 mb-1">Tema / Servicio Técnico:</label>
+                <input type="text" id="agent4-topic-input" value="Ensayos de Suelos y Perforación SPT bajo NSR-10 Título H" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white outline-none">
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-300 mb-1">Tono de Redacción:</label>
+                <select id="agent4-tone-select" class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white outline-none">
+                  <option value="corporativo">Corporativo & Alto Rigor Técnico</option>
+                  <option value="normativo">Cumplimiento Normativo Legal (ANLA / Mintransporte)</option>
+                  <option value="caso_estudio">Caso de Estudio en Faena Minera</option>
+                </select>
+              </div>
+
+              <button onclick="runContentGenerationAgent()" class="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black rounded-xl shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Generar Borrador con OpenAI</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Previsualizador de Contenido (Simulador LinkedIn / Instagram) -->
+          <div class="lg:col-span-7 bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+              <span class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-brands fa-linkedin text-blue-400"></i> Previsualización Oficial en LinkedIn B2B
+              </span>
+              <span class="text-[10px] font-bold text-amber-400 bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/30">
+                ESTADO: BORRADOR (Requiere Aprobación)
+              </span>
+            </div>
+
+            <!-- Simulador LinkedIn -->
+            <div class="linkedin-post-preview text-slate-800">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="linkedin-author-avatar">S|G</div>
+                <div>
+                  <strong class="text-xs font-bold text-slate-900 block">SIG² • Sistemas y Soluciones de Ingeniería</strong>
+                  <span class="text-[11px] text-slate-500 block">Geotecnia • SST • Ambiental • Transformación Digital</span>
+                  <span class="text-[10px] text-slate-400">Publicado por CONSULTORA AI • Hace 5 min • 🌐</span>
+                </div>
+              </div>
+
+              <div id="agent4-preview-body" class="text-xs text-slate-800 leading-relaxed space-y-2">
+                <p>¿Conoce el impacto real de no realizar una adecuada corrección energética del valor N en ensayos de penetración estándar SPT según la norma NSR-10 Título H?</p>
+                <p>En faenas de alta exigencia, la variación entre la energía teórica y real del martinete puede subestimar la resistencia admisible del estrato portante, provocando sobrecostos del 35% en cimentaciones profundas.</p>
+                <p>Desde la Dirección Técnica de SIG² integramos correlaciones automáticas en software propietario SIG Campo con entrega formal de memorias de cálculo auditables.</p>
+                <p class="text-blue-700 font-semibold">#Geotecnia #NSR10 #EstudioDeSuelos #IngenieriaCivil #SondeosSPT #SIG2</p>
+              </div>
+
+              <!-- Imagen de Soporte -->
+              <div class="mt-3 rounded-lg overflow-hidden border border-slate-200">
+                <img id="agent4-preview-image" src="assets/geotecnia-perforacion-taludes.jpg" alt="Ensayo Geotécnico" class="w-full h-48 object-cover">
+              </div>
+
+              <div class="linkedin-reaction-bar">
+                <span><i class="fa-regular fa-thumbs-up"></i> Reaccionar</span>
+                <span><i class="fa-regular fa-comment-dots"></i> Comentar</span>
+                <span><i class="fa-solid fa-share-nodes"></i> Compartir</span>
+                <span><i class="fa-solid fa-paper-plane"></i> Enviar</span>
+              </div>
+            </div>
+
+            <!-- Botón de Envío a Aprobación Humana -->
+            <div class="pt-3 flex items-center justify-between">
+              <span class="text-[11px] text-slate-400">Protección Human-in-the-Loop activa</span>
+              <button onclick="submitGeneratedPostToApprovals()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider flex items-center gap-2 shadow-md transition-all">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Enviar a Centro de Aprobaciones</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 7: AGENTE 5 - ADMINISTRADOR DE REDES SOCIALES & CALENDARIO
+           ===================================================================== -->
+      <div id="c-subpanel-agente5" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-wider block">Agente 5 • Community & Social Media B2B</span>
+              <h3 class="text-base font-black text-white mt-0.5">Calendario Editorial y Despacho Automatizado (LinkedIn, Instagram, Facebook)</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">
+                <i class="fa-brands fa-linkedin"></i> Conectado
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-pink-500/20 text-pink-300 text-xs font-bold border border-pink-500/30">
+                <i class="fa-brands fa-instagram"></i> Conectado
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-blue-600/20 text-blue-200 text-xs font-bold border border-blue-600/30">
+                <i class="fa-brands fa-facebook"></i> Conectado
+              </span>
+            </div>
+          </div>
+
+          <!-- Cola de Publicaciones Programadas -->
+          <div class="overflow-x-auto rounded-xl border border-slate-700">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-900 text-slate-400 font-bold border-b border-slate-700">
+                  <th class="py-3 px-3">Fecha / Hora</th>
+                  <th class="py-3 px-3">Red Social</th>
+                  <th class="py-3 px-3">Unidad de Negocio</th>
+                  <th class="py-3 px-3">Contenido / Extracto</th>
+                  <th class="py-3 px-3">Estado Aprobación</th>
+                  <th class="py-3 px-3 text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody id="agent5-calendar-tbody" class="divide-y divide-slate-700 text-slate-300">
+                <!-- Inyectado por app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 8: AGENTE 6 - PUBLICIDAD DIGITAL (GOOGLE ADS & META ADS)
+           ===================================================================== -->
+      <div id="c-subpanel-agente6" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-4">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Agente 6 • Administrador Publicitario</span>
+              <h3 class="text-base font-black text-white mt-0.5">Integración Oficial Google Ads API & Meta Marketing API</h3>
+            </div>
+            <a href="#marketing-ia-ads" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md">
+              <i class="fa-solid fa-arrow-down"></i>
+              <span>Abrir Panel Google Ads Dedicado</span>
+            </a>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">
+            El Agente 6 investiga palabras clave, genera anuncios RSA, audita costos por lead y prepara presupuestos para las 4 unidades. Toda campaña nueva debe contar con aprobación humana expresa antes de emitir cualquier solicitud de pago o mutación en la API.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700">
+              <span class="text-xs font-bold text-white block mb-1"><i class="fa-brands fa-google text-blue-400"></i> Google Ads Search & Display</span>
+              <span class="text-[11px] text-slate-400 block">4 Campañas activas • Presupuesto diario controlado • Techo de seguridad inviolable</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700">
+              <span class="text-xs font-bold text-white block mb-1"><i class="fa-brands fa-meta text-blue-500"></i> Meta Ads Lead Generation</span>
+              <span class="text-[11px] text-slate-400 block">Formularios nativos en Instagram/Facebook para PESV y Asesorías SST</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 9: AGENTE 7 - ASISTENTE COMERCIAL B2B
+           ===================================================================== -->
+      <div id="c-subpanel-agente7" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-4">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Agente 7 • Asistente de Ventas & WhatsApp</span>
+              <h3 class="text-base font-black text-white mt-0.5">Atención y Cualificación Inmediata de Formularios & WhatsApp</h3>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+              <i class="fa-solid fa-clock"></i> Respuesta &lt; 60 seg
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="consultora-sales-inbound-grid">
+            <!-- Inyectado por app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 10: CENTRO DE APROBACIONES HUMAN-IN-THE-LOOP (7 ESTADOS)
+           ===================================================================== -->
+      <div id="c-subpanel-aprobaciones" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-lg font-bold">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-black text-white">Centro de Control & Aprobaciones Humanas</h3>
+                <p class="text-xs text-slate-400">Garantía estricta: Nada se publica ni se gasta sin autorización del administrador</p>
+              </div>
+            </div>
+
+            <!-- Filtro de Estados -->
+            <div class="flex items-center gap-1 text-[11px] font-bold bg-slate-900 p-1 rounded-xl border border-slate-700">
+              <button onclick="filterApprovalRequests('EN_REVISION')" id="af-btn-review" class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950">Por Revisar</button>
+              <button onclick="filterApprovalRequests('APROBADO')" id="af-btn-approved" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Aprobados</button>
+              <button onclick="filterApprovalRequests('ALL')" id="af-btn-all" class="px-2.5 py-1 rounded-lg text-slate-400 hover:text-white">Todos</button>
+            </div>
+          </div>
+
+          <!-- Lista de Solicitudes de Aprobación -->
+          <div class="space-y-3" id="consultora-approvals-container">
+            <!-- Inyectado por app.js con estados: Borrador, En revisión, Aprobado, Programado, Publicado, Rechazado, Error -->
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 11: CRM COMERCIAL PROPIO - PIPELINE DE 10 ETAPAS
+           ===================================================================== -->
+      <div id="c-subpanel-crm" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-teal-400 uppercase tracking-wider block">CRM Comercial B2B Propio</span>
+              <h3 class="text-base font-black text-white mt-0.5">Pipeline Comercial de 10 Etapas con Responsable Técnico Asignado</h3>
+            </div>
+            <button onclick="openCreateCrmOpportunityModal()" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md">
+              <i class="fa-solid fa-plus"></i>
+              <span>Nueva Oportunidad B2B</span>
+            </button>
+          </div>
+
+          <!-- Tablero Kanban Horizontal de 10 Columnas -->
+          <div class="pipeline-kanban-board" id="consultora-crm-kanban-board">
+            <!-- Las 10 columnas inyectadas dinámicamente por app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 12: INFORMES EJECUTIVOS & ANALÍTICA SEMANAL AUTOMATIZADA
+           ===================================================================== -->
+      <div id="c-subpanel-informes" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Auditoría Ejecutiva</span>
+              <h3 class="text-base font-black text-white mt-0.5">Informe Semanal Automatizado de Rendimiento, Costos y ROI</h3>
+            </div>
+            <button onclick="downloadConsultoraWeeklyReport()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Exportar Informe Completo (Excel)</span>
+            </button>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-700 space-y-4 text-xs text-slate-300">
+            <div class="flex items-center justify-between font-bold text-white pb-3 border-b border-slate-800">
+              <span class="text-sm">Semana en Curso: 02 Nov 2026 – 08 Nov 2026</span>
+              <span class="text-emerald-400 font-mono">ESTADO: CERRADO CON ÉXITO</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span class="text-[10px] text-slate-400 font-bold block uppercase">Prospectos B2B</span>
+                <strong class="text-base font-black text-white font-mono">86 generados</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span class="text-[10px] text-slate-400 font-bold block uppercase">Contactos Autorizados</span>
+                <strong class="text-base font-black text-emerald-400 font-mono">38 contactados</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span class="text-[10px] text-slate-400 font-bold block uppercase">Posts Redes Publicados</span>
+                <strong class="text-base font-black text-purple-400 font-mono">14 publicaciones</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+                <span class="text-[10px] text-slate-400 font-bold block uppercase">Retorno Estimado</span>
+                <strong class="text-base font-black text-amber-400 font-mono">4.2x ROAS</strong>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700 space-y-2">
+              <h5 class="font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-lightbulb text-amber-400"></i> Síntesis y Recomendaciones Estratégicas de la IA:
+              </h5>
+              <ul class="list-disc pl-5 space-y-1 text-slate-300 text-[11px]">
+                <li><strong>Geotecnia:</strong> Excelente tracción en perforaciones SPT para obras viales. Se recomienda elevar presupuesto diario en $15.000 COP en la región Antioquia.</li>
+                <li><strong>SST & PESV:</strong> Las empresas de transporte muestran alta receptividad por la cercanía a fechas límite de auditoría Res. 40595. Mantener cadencia de 3 publicaciones semanales en LinkedIn.</li>
+                <li><strong>Ambiental:</strong> 4 licencias ANLA en fase de negociación. Priorizar envío de fichas técnicas de caracterización biótica.</li>
+                <li><strong>Transformación Digital:</strong> Alta demanda en digitalización de procesos de faena y software de sondeos geotécnicos.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 13: WORKFLOWS N8N (LOS 12 FLUJOS AUTOMATIZADOS)
+           ===================================================================== -->
+      <div id="c-subpanel-n8n" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block">Orquestación de Procesos</span>
+              <h3 class="text-base font-black text-white mt-0.5">Los 12 Workflows Independientes de n8n con Reintentos y Auditoría</h3>
+            </div>
+            <a href="n8n-workflows.json" download class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all shadow-md">
+              <i class="fa-solid fa-download"></i>
+              <span>Descargar n8n-workflows.json</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="consultora-n8n-workflows-container">
+            <!-- Inyectado por app.js con los 12 flujos oficiales -->
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 14: HISTORIAL DE ACTIVIDADES & AUDITORÍA FORENSE
+           ===================================================================== -->
+      <div id="c-subpanel-historial" class="hidden space-y-6">
+        <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md space-y-5">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-700">
+            <div>
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Trazabilidad Total</span>
+              <h3 class="text-base font-black text-white mt-0.5">Historial Cronológico de Acciones (IA, Humanos y Automatizaciones)</h3>
+            </div>
+            <button onclick="clearConsultoraAuditLogs()" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-700 text-slate-400 hover:text-white rounded-lg text-xs font-bold">
+              Limpiar Vista
+            </button>
+          </div>
+
+          <div class="marketing-ai-terminal h-80 overflow-y-auto space-y-1 p-3 text-[11px]" id="consultora-audit-terminal">
+            <!-- Inyectado por app.js -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <section id="marketing-ia-ads" class="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-100 border-b border-slate-200 scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -4030,6 +4854,6 @@
   <div id="toast-container" class="fixed bottom-24 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- Scripts con Cache-Buster para GitHub Pages -->
-  <script src="app.js?v=20261108_marketing_v1"></script>
+  <script src="app.js?v=20261108_consultora_v2"></script>
 </body>
 </html>

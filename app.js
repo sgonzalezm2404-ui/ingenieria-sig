@@ -495,7 +495,8 @@ function initApp() {
     ['initFleetLiveMap', () => initFleetLiveMap()],
     ['initSigCampoSimulator', () => initSigCampoSimulator()],
     ['initCrmHub', () => initCrmHub()],
-    ['initGoogleAdsAgent', () => initGoogleAdsAgent()]
+    ['initGoogleAdsAgent', () => initGoogleAdsAgent()],
+    ['initConsultoraAI', () => initConsultoraAI()]
   ];
 
   for (const [name, fn] of steps) {
@@ -5611,4 +5612,1319 @@ function testGoogleAdsApiConnection() {
     logAiAction('API_CONNECTION_TEST', 'ADMIN_HUMAN', `Diagnóstico completado: Cuenta ${custId} validada con permisos de mutación y lectura GAQL.`, { customerId: custId });
     showToast(`Conexión exitosa con Google Ads (Cuenta: ${custId})`, 'success');
   }, 900);
+}
+
+
+// =============================================================================
+// MÓDULO: CONSULTORA AI — PLATAFORMA INTEGRAL DE MARKETING & VENTAS B2B
+// DEPARTAMENTO DIGITAL AUTÓNOMO DE 7 AGENTES, 4 UNIDADES, APROBACIONES & CRM
+// =============================================================================
+
+const CONSULTORA_AI_STORAGE_KEY = 'sig2_consultora_ai_state_v1';
+
+const CONSULTORA_AI_STATE = {
+  activeTab: 'resumen',
+  activeBusinessUnit: 'ALL',
+  approvalFilter: 'EN_REVISION',
+  selectedContentFormat: 'ARTICULO',
+
+  // 1. LOS 7 AGENTES DE INTELIGENCIA ARTIFICIAL
+  agents: [
+    {
+      code: 'AGENT_1_MARKET',
+      name: 'Agente 1: Investigación de Mercado',
+      role: 'Escaneo de Sectores, Tendencias & Competidores',
+      model: 'OpenAI GPT-4o',
+      status: 'ACTIVO',
+      runs: 28,
+      lastRun: 'Hoy 06:00',
+      description: 'Monitorea el mercado B2B, licitaciones públicas y demanda en Colombia sin invadir datos privados.'
+    },
+    {
+      code: 'AGENT_2_PROSPECT',
+      name: 'Agente 2: Prospección B2B',
+      role: 'Identificación de Cuentas en Fuentes Públicas',
+      model: 'OpenAI GPT-4o',
+      status: 'ACTIVO',
+      runs: 46,
+      lastRun: 'Hoy 08:30',
+      description: 'Vigila registros mercantiles, directorios empresariales abiertos y sitios web corporativos.'
+    },
+    {
+      code: 'AGENT_3_STRATEGY',
+      name: 'Agente 3: Estrategia de Marketing',
+      role: 'Planificación por Unidad & Objetivos Comerciales',
+      model: 'OpenAI GPT-4o',
+      status: 'ACTIVO',
+      runs: 14,
+      lastRun: 'Lunes 08:00',
+      description: 'Diseña propuestas de campañas, audiencias objetivo y calendarios editoriales para las 4 unidades.'
+    },
+    {
+      code: 'AGENT_4_CONTENT',
+      name: 'Agente 4: Creador de Contenido',
+      role: 'Redacción de Artículos, Carruseles y Guiones',
+      model: 'OpenAI GPT-4o',
+      status: 'ACTIVO',
+      runs: 39,
+      lastRun: 'Ayer 16:15',
+      description: 'Genera contenido técnico riguroso manteniendo el tono de ingeniería de clase mundial.'
+    },
+    {
+      code: 'AGENT_5_SOCIAL',
+      name: 'Agente 5: Administrador de Redes',
+      role: 'Programación & Analítica (LinkedIn, Meta)',
+      model: 'Graph API / n8n',
+      status: 'ACTIVO',
+      runs: 54,
+      lastRun: 'Hoy 12:00',
+      description: 'Gestiona la cola de publicaciones respetando la aprobación humana obligatoria.'
+    },
+    {
+      code: 'AGENT_6_ADS',
+      name: 'Agente 6: Publicidad Digital',
+      role: 'Gestor Google Ads API & Meta Marketing API',
+      model: 'Google Ads API v17',
+      status: 'ACTIVO',
+      runs: 67,
+      lastRun: 'Hace 2 horas',
+      description: 'Supervisa campañas de búsqueda y generación de leads bajo límites presupuestales estrictos.'
+    },
+    {
+      code: 'AGENT_7_SALES',
+      name: 'Agente 7: Asistente Comercial',
+      role: 'Cualificación y WhatsApp Inmediato B2B',
+      model: 'OpenAI GPT-4o',
+      status: 'ACTIVO',
+      runs: 98,
+      lastRun: 'Hace 10 min',
+      description: 'Atiende prospectos entrantes, clasifica según normativa técnica y actualiza el pipeline CRM.'
+    }
+  ],
+
+  // 2. LAS 4 UNIDADES ESTRATÉGICAS DE NEGOCIO
+  businessUnits: [
+    {
+      slug: 'geotecnia',
+      name: 'Ingeniería y Geotecnia',
+      icon: 'fa-mountain',
+      colorClass: 'unit-badge-geotecnia',
+      targetAudience: 'Consorcios viales, constructoras de edificaciones, minería y concesiones 4G/5G',
+      services: ['Estudios de suelos NSR-10', 'Perforaciones geotécnicas SPT', 'Tomografía eléctrica', 'Refracción sísmica', 'Instrumentación'],
+      keywords: ['estudio de suelos nsr 10', 'perforacion spt faena', 'geotecnia taludes mineria', 'tomografia electrica subsuelo'],
+      budgetDaily: 80000,
+      budgetMonthly: 2400000,
+      stats: { companies: 48, leads: 34, qualified: 22, meetings: 5, quotes: 4, won: 2, spend: 1120000, cpl: 32941, rate: 8.82 }
+    },
+    {
+      slug: 'sst_hseq',
+      name: 'SST y HSEQ',
+      icon: 'fa-shield-halved',
+      colorClass: 'unit-badge-sst',
+      targetAudience: 'Empresas de transporte de carga, flotas mineras, contratistas de obras civiles',
+      services: ['SG-SST (Dec. 1072)', 'PESV (Res. 40595 de 2022)', 'Auditorías HSEQ', 'Capacitaciones en faena', 'Matriz GTC-45'],
+      keywords: ['implementacion sg sst', 'plan estrategico seguridad vial pesv', 'auditoria iso 45001', 'asesoria sst empresas'],
+      budgetDaily: 65000,
+      budgetMonthly: 1950000,
+      stats: { companies: 42, leads: 28, qualified: 16, meetings: 3, quotes: 2, won: 1, spend: 780000, cpl: 27857, rate: 7.14 }
+    },
+    {
+      slug: 'ambiental',
+      name: 'Consultoría Ambiental',
+      icon: 'fa-leaf',
+      colorClass: 'unit-badge-ambiental',
+      targetAudience: 'Proyectos mineros, energía solar, hidroeléctricas, corporaciones y agroindustria',
+      services: ['Estudios de Impacto Ambiental (EIA)', 'Hidrología HEC-RAS', 'Hidrogeología', 'Plan de Manejo (PMA/ICA)', 'Gestión del Riesgo'],
+      keywords: ['estudios ambientales anla', 'licencia ambiental mineria', 'estudio hidrologico hec ras', 'geodatabase gdb anla'],
+      budgetDaily: 70000,
+      budgetMonthly: 2100000,
+      stats: { companies: 32, leads: 16, qualified: 10, meetings: 2, quotes: 1, won: 1, spend: 560000, cpl: 35000, rate: 6.25 }
+    },
+    {
+      slug: 'digital',
+      name: 'Transformación Digital',
+      icon: 'fa-laptop-code',
+      colorClass: 'unit-badge-digital',
+      targetAudience: 'Consultoras de ingeniería, laboratorios de suelos, contratistas y firmas técnicas',
+      services: ['Desarrollo web para ingeniería', 'CRM especializado B2B', 'Automatización con IA', 'Telemetría IoT & BI', 'Digitalización de faenas'],
+      keywords: ['software geotecnia campo', 'crm empresas ingenieria', 'desarrollo web minero', 'automatizacion procesos ia'],
+      budgetDaily: 60000,
+      budgetMonthly: 1800000,
+      stats: { companies: 20, leads: 8, qualified: 4, meetings: 1, quotes: 1, won: 0, spend: 380000, cpl: 47500, rate: 5.00 }
+    }
+  ],
+
+  // 3. AGENTE 1: INVESTIGACIÓN DE MERCADO (FUENTES VERIFICADAS)
+  marketFindings: [
+    {
+      sector: 'Infraestructura Vial 5G',
+      need: 'Estudios de estabilidad de taludes y geotecnia de puentes vehiculares',
+      trend: 'Apertura de pliegos de contratación pública en Invías y ANI (Región Andina)',
+      competitors: 'Geotécnica Andina, Ingesuelos S.A.S.',
+      source: 'Secop II & Registro Mercantil Público',
+      verifiedDate: '2026-11-08'
+    },
+    {
+      sector: 'Transporte Intermunicipal & Carga',
+      need: 'Actualización y radicación del PESV bajo Resolución 40595 de 2022',
+      trend: 'Inspecciones de la Superintendencia de Transporte a flotas de más de 20 vehículos',
+      competitors: 'HSEQ Consultores, VialSafe',
+      source: 'SuperTransporte Directorio Público',
+      verifiedDate: '2026-11-07'
+    },
+    {
+      sector: 'Minería Formal de Materiales',
+      need: 'Informes de Cumplimiento Ambiental (ICA) y Geodatabase oficial ANLA',
+      trend: 'Fiscalización estricta por Corporaciones Autónomas Regionales (CAR)',
+      competitors: 'EcoAmbiente, BioIngeniería Ltda.',
+      source: 'Agencia Nacional de Minería (ANM) / AnnA Minería',
+      verifiedDate: '2026-11-06'
+    },
+    {
+      sector: 'Laboratorios Geotécnicos',
+      need: 'Eliminación de formatos de papel y captura digital de sondeos en faena',
+      trend: 'Adopción de software tipo SIG Campo con exportación inmediata a Geo5 y Plaxis',
+      competitors: 'Soluciones genéricas de formularios (Jotform)',
+      source: 'Cámara Colombiana de la Infraestructura (CCI)',
+      verifiedDate: '2026-11-05'
+    }
+  ],
+
+  // 4. AGENTE 2: PROSPECCIÓN B2B (EMPRESAS INVESTIGADAS EN FUENTES PÚBLICAS)
+  prospectCompanies: [
+    {
+      id: 'COMP-01',
+      name: 'Consorcio Vial Magdalena Centro',
+      city: 'Medellín / Puerto Berrío',
+      sector: 'Construcción de Vías & Puentes',
+      need: '18 Sondeos SPT mecánicos y refracción sísmica para puente vehicular río Nare',
+      publicContact: 'contacto@vialmagdalena.co • (+57) 4 444 8920',
+      opportunityLevel: 'ALTA',
+      dataSource: 'SECOP II / RUES Público',
+      verifiedDate: '2026-11-08',
+      unitSlug: 'geotecnia'
+    },
+    {
+      id: 'COMP-02',
+      name: 'Transportes del Caribe & Logística S.A.S.',
+      city: 'Barranquilla / Cartagena',
+      sector: 'Transporte Pesado de Carga',
+      need: 'Auditoría interna PESV y diagnóstico preoperacional digital para 45 tractomulas',
+      publicContact: 'hseq@transcaribe.com.co • (+57) 5 385 1100',
+      opportunityLevel: 'ALTA',
+      dataSource: 'Directorio Público MinTransporte',
+      verifiedDate: '2026-11-08',
+      unitSlug: 'sst_hseq'
+    },
+    {
+      id: 'COMP-03',
+      name: 'Canteras & Agregados del Sinú',
+      city: 'Montería / Córdoba',
+      sector: 'Minería a Cielo Abierto',
+      need: 'Monitoreo de estabilidad geomecánica de taludes y radicación ICA semestral',
+      publicContact: 'gerencia@canterassinu.com • (+57) 4 782 5590',
+      opportunityLevel: 'ALTA',
+      dataSource: 'AnnA Minería Público',
+      verifiedDate: '2026-11-07',
+      unitSlug: 'ambiental'
+    },
+    {
+      id: 'COMP-04',
+      name: 'Constructora Hábitat Andino',
+      city: 'Bogotá D.C. / Chía',
+      sector: 'Edificaciones Residenciales',
+      need: 'Estudio de suelos NSR-10 para conjunto de 4 torres de 12 pisos',
+      publicContact: 'proyectos@habitatandino.com • (+57) 1 744 3200',
+      opportunityLevel: 'MEDIA',
+      dataSource: 'Sitio Web Corporativo Público',
+      verifiedDate: '2026-11-07',
+      unitSlug: 'geotecnia'
+    }
+  ],
+
+  // 5. AGENTE 5: CALENDARIO DE REDES SOCIALES
+  socialCalendar: [
+    {
+      id: 'POST-01',
+      date: '2026-11-09 09:00',
+      platform: 'LINKEDIN',
+      unitName: 'Ingeniería y Geotecnia',
+      excerpt: 'Corrección energética N60 en sondeos SPT bajo NSR-10 Título H: Cómo evitar sobrecostos del 35% en cimentaciones.',
+      status: 'EN_REVISION'
+    },
+    {
+      id: 'POST-02',
+      date: '2026-11-10 11:30',
+      platform: 'INSTAGRAM',
+      unitName: 'SST y HSEQ',
+      excerpt: 'Infografía: Los 24 pasos obligatorios del PESV según la Resolución 40595 para flotas de faena minera.',
+      status: 'APROBADO'
+    },
+    {
+      id: 'POST-03',
+      date: '2026-11-11 15:00',
+      platform: 'LINKEDIN',
+      unitName: 'Consultoría Ambiental',
+      excerpt: 'Estructuración de Geodatabase (GDB) oficial ante ANLA: Estándares de calidad cartográfica y modelación HEC-RAS.',
+      status: 'PROGRAMADO'
+    },
+    {
+      id: 'POST-04',
+      date: '2026-11-12 10:00',
+      platform: 'FACEBOOK',
+      unitName: 'Transformación Digital',
+      excerpt: 'Demostración de SIG Campo: Registro offline de perforaciones en campo sin planillas de papel.',
+      status: 'BORRADOR'
+    }
+  ],
+
+  // 6. CENTRO DE APROBACIONES HUMAN-IN-THE-LOOP (7 ESTADOS)
+  approvals: [
+    {
+      id: 'APPR-101',
+      type: 'SOCIAL_POST',
+      unitName: 'Ingeniería y Geotecnia',
+      requestedBy: 'Agente 4 (Creador de Contenido)',
+      title: 'Artículo LinkedIn: Corrección N60 en Ensayos SPT NSR-10',
+      contentPreview: '¿Conoce el impacto real de no realizar una adecuada corrección energética del valor N en ensayos SPT? En faenas de alta exigencia, la variación entre energía teórica y real puede sobreestimar la capacidad portante...',
+      mediaAttachment: 'assets/geotecnia-perforacion-taludes.jpg',
+      status: 'EN_REVISION',
+      requestedAt: '2026-11-08 17:40'
+    },
+    {
+      id: 'APPR-102',
+      type: 'AD_CAMPAIGN',
+      unitName: 'SST y HSEQ',
+      requestedBy: 'Agente 6 (Publicidad Digital)',
+      title: 'Campaña Google Ads: Auditoría PESV Flotas Transporte',
+      contentPreview: 'Presupuesto propuesto: $65.000 COP/día. Palabras clave: [diseno pesv resolucion 40595], [auditoria hseq flotas]. Objetivo: Generar 8 cotizaciones B2B.',
+      mediaAttachment: 'assets/flotas-transporte-pesv-inspeccion.jpg',
+      status: 'EN_REVISION',
+      requestedAt: '2026-11-08 16:15'
+    },
+    {
+      id: 'APPR-103',
+      type: 'B2B_OUTREACH',
+      unitName: 'Ingeniería y Geotecnia',
+      requestedBy: 'Agente 7 (Asistente Comercial)',
+      title: 'Borrador de Contacto Comercial: Consorcio Vial Magdalena',
+      contentPreview: 'Estimado Ing. Director de Proyectos, detectamos su requerimiento de 18 sondeos mecánicos para el puente río Nare en SECOP II. Ponemos a su disposición nuestro equipo de perforación...',
+      mediaAttachment: null,
+      status: 'EN_REVISION',
+      requestedAt: '2026-11-08 15:50'
+    },
+    {
+      id: 'APPR-104',
+      type: 'SOCIAL_POST',
+      unitName: 'Consultoría Ambiental',
+      requestedBy: 'Agente 4 (Creador de Contenido)',
+      title: 'Carrusel: Guía Rápida para el Formato GDB de ANLA',
+      contentPreview: '5 diapositivas técnicas explicando el modelo geodatabase ANLA para proyectos mineros.',
+      mediaAttachment: 'assets/estudio-impacto-ambiental-eia-anla.jpg',
+      status: 'APROBADO',
+      requestedAt: '2026-11-07 14:00'
+    }
+  ],
+
+  // 7. CRM COMERCIAL PROPIO: PIPELINE DE 10 ETAPAS
+  pipelineStages: [
+    { key: 'EMPRESA_IDENTIFICADA', name: '1. Identificada', color: 'bg-slate-700' },
+    { key: 'PROSPECTO_INVESTIGADO', name: '2. Investigado', color: 'bg-blue-700' },
+    { key: 'CONTACTO_PENDIENTE_APROBACION', name: '3. Pend. Aprobación', color: 'bg-amber-600' },
+    { key: 'CONTACTADO', name: '4. Contactado', color: 'bg-blue-600' },
+    { key: 'INTERESADO', name: '5. Interesado', color: 'bg-teal-600' },
+    { key: 'REUNION_AGENDADA', name: '6. Reunión Agendada', color: 'bg-purple-600' },
+    { key: 'COTIZACION_ENVIADA', name: '7. Cotización Enviada', color: 'bg-amber-500 text-slate-950' },
+    { key: 'EN_NEGOCIACION', name: '8. En Negociación', color: 'bg-indigo-600' },
+    { key: 'CLIENTE_GANADO', name: '9. Ganado (Cierre)', color: 'bg-emerald-600' },
+    { key: 'PERDIDO', name: '10. Perdido', color: 'bg-rose-700' }
+  ],
+
+  opportunities: [
+    {
+      id: 'OPP-101',
+      company: 'Consorcio Vial Magdalena',
+      title: '18 Sondeos SPT & Refracción Sísmica Río Nare',
+      unitSlug: 'geotecnia',
+      value: 84000000,
+      stage: 'CONTACTO_PENDIENTE_APROBACION',
+      owner: 'Ing. Carlos Mendoza (Dir. Geotecnia)',
+      probability: 60
+    },
+    {
+      id: 'OPP-102',
+      company: 'Transportes del Caribe S.A.S.',
+      title: 'Implementación PESV & Diagnóstico de 45 Tractomulas',
+      unitSlug: 'sst_hseq',
+      value: 28000000,
+      stage: 'REUNION_AGENDADA',
+      owner: 'Especialista HSEQ SIG²',
+      probability: 75
+    },
+    {
+      id: 'OPP-103',
+      company: 'Canteras & Agregados del Sinú',
+      title: 'Monitoreo Geomecánico & Radicación ICA ANLA',
+      unitSlug: 'ambiental',
+      value: 52000000,
+      stage: 'COTIZACION_ENVIADA',
+      owner: 'Dirección Ambiental SIG²',
+      probability: 80
+    },
+    {
+      id: 'OPP-104',
+      company: 'Constructora Hábitat Andino',
+      title: 'Estudio de Suelos NSR-10 Conjunto 4 Torres',
+      unitSlug: 'geotecnia',
+      value: 36000000,
+      stage: 'INTERESADO',
+      owner: 'Ing. Andrés Mora',
+      probability: 50
+    },
+    {
+      id: 'OPP-105',
+      company: 'Minera Los Andes Central',
+      title: 'Licencia Software SIG Campo Faena Minera',
+      unitSlug: 'digital',
+      value: 18000000,
+      stage: 'CLIENTE_GANADO',
+      owner: 'Dirección Comercial SIG²',
+      probability: 100
+    }
+  ],
+
+  // 8. LOS 12 WORKFLOWS DE N8N
+  n8nWorkflows: [
+    { id: 'wf-01', code: 'WF-01', name: 'Investigación Diaria de Empresas', freq: 'Lun-Vie 06:00', status: 'ACTIVO', runs: 22 },
+    { id: 'wf-02', code: 'WF-02', name: 'Identificación Oportunidades B2B', freq: 'Webhook / Realtime', status: 'ACTIVO', runs: 45 },
+    { id: 'wf-03', code: 'WF-03', name: 'Generación Semanal de Contenidos', freq: 'Lunes 08:00', status: 'ACTIVO', runs: 8 },
+    { id: 'wf-04', code: 'WF-04', name: 'Creación de Diseños & Carruseles', freq: 'Bajo Demanda', status: 'ACTIVO', runs: 16 },
+    { id: 'wf-05', code: 'WF-05', name: 'Calendario y Cola de Redes', freq: 'Cada 30 minutos', status: 'ACTIVO', runs: 184 },
+    { id: 'wf-06', code: 'WF-06', name: 'Notificación de Aprobaciones', freq: 'Evento Inmediato', status: 'ACTIVO', runs: 31 },
+    { id: 'wf-07', code: 'WF-07', name: 'Publicación Oficial Aprobada', freq: 'Webhook Seguro', status: 'ACTIVO', runs: 14 },
+    { id: 'wf-08', code: 'WF-08', name: 'Recepción Formularios & Landing', freq: 'Webhook Inbound', status: 'ACTIVO', runs: 86 },
+    { id: 'wf-09', code: 'WF-09', name: 'Scoring Automático de Leads', freq: 'Realtime', status: 'ACTIVO', runs: 86 },
+    { id: 'wf-10', code: 'WF-10', name: 'Seguimiento Comercial Pipeline', freq: 'Lun-Vie 09:00', status: 'ACTIVO', runs: 19 },
+    { id: 'wf-11', code: 'WF-11', name: 'Auditoría Google Ads & Meta', freq: 'Cada 4 horas', status: 'ACTIVO', runs: 58 },
+    { id: 'wf-12', code: 'WF-12', name: 'Informe Semanal Consolidado', freq: 'Viernes 18:00', status: 'ACTIVO', runs: 4 }
+  ],
+
+  // 9. AUDITORÍA FORENSE
+  auditLogs: [
+    { timestamp: '18:15:22', actor: 'HUMAN_ADMIN', action: 'APROBACIÓN_FIRMADA', message: 'Carrusel GDB ANLA aprobado formalmente para LinkedIn.' },
+    { timestamp: '17:40:10', actor: 'AGENT_4_CONTENT', action: 'BORRADOR_GENERADO', message: 'Artículo de corrección N60 SPT redactado y enviado a aprobación.' },
+    { timestamp: '16:15:02', actor: 'AGENT_6_ADS', action: 'PRESUPUESTO_VERIFICADO', message: 'Hard limits OK. Campaña PESV verificada bajo límite de $65.000 COP/día.' },
+    { timestamp: '15:50:44', actor: 'AGENT_2_PROSPECT', action: 'EMPRESA_INVESTIGADA', message: 'Consorcio Vial Magdalena investigado en SECOP II con score de oportunidad ALTA.' }
+  ]
+};
+
+/**
+ * Inicialización Maestra de CONSULTORA AI
+ */
+function initConsultoraAI() {
+  loadConsultoraState();
+  renderConsultoraMetrics();
+  renderConsultoraAgents();
+  renderConsultoraBusinessUnits();
+  renderMarketFindings();
+  renderProspectCompanies();
+  renderAgent3Strategies();
+  renderSocialCalendar();
+  renderSalesInbound();
+  renderApprovalRequests();
+  renderCrmKanbanBoard();
+  renderN8nWorkflows();
+  renderConsultoraAuditLogs();
+}
+
+/**
+ * Persistencia en localStorage
+ */
+function loadConsultoraState() {
+  try {
+    const raw = localStorage.getItem(CONSULTORA_AI_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.opportunities) CONSULTORA_AI_STATE.opportunities = parsed.opportunities;
+      if (parsed.approvals) CONSULTORA_AI_STATE.approvals = parsed.approvals;
+      if (parsed.activeBusinessUnit) CONSULTORA_AI_STATE.activeBusinessUnit = parsed.activeBusinessUnit;
+    }
+  } catch (e) {
+    console.warn('[CONSULTORA AI] Advertencia al cargar almacenamiento local:', e);
+  }
+}
+
+function saveConsultoraState() {
+  try {
+    localStorage.setItem(CONSULTORA_AI_STORAGE_KEY, JSON.stringify({
+      opportunities: CONSULTORA_AI_STATE.opportunities,
+      approvals: CONSULTORA_AI_STATE.approvals,
+      activeBusinessUnit: CONSULTORA_AI_STATE.activeBusinessUnit
+    }));
+  } catch (e) {
+    console.warn('[CONSULTORA AI] Error al guardar estado:', e);
+  }
+}
+
+/**
+ * Conmutador de Submódulos (14 Subpaneles)
+ */
+function switchConsultoraTab(tabId) {
+  const tabs = [
+    'resumen', 'unidades', 'agente1', 'agente2', 'agente3', 'agente4',
+    'agente5', 'agente6', 'agente7', 'aprobaciones', 'crm', 'informes', 'n8n', 'historial'
+  ];
+
+  tabs.forEach(t => {
+    const panel = document.getElementById(`c-subpanel-${t}`);
+    const btn = document.getElementById(`c-tab-${t}`);
+    if (panel) {
+      if (t === tabId) {
+        panel.classList.remove('hidden');
+      } else {
+        panel.classList.add('hidden');
+      }
+    }
+    if (btn) {
+      if (t === tabId) {
+        btn.className = 'px-3.5 py-2 rounded-xl bg-purple-600 text-white shrink-0 shadow-md flex items-center gap-2 font-bold';
+      } else {
+        btn.className = 'px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2 font-bold';
+      }
+    }
+  });
+
+  CONSULTORA_AI_STATE.activeTab = tabId;
+}
+
+/**
+ * Conmutador de Unidad de Negocio (Geotecnia, SST, Ambiental, Digital, Consolidado)
+ */
+function switchConsultoraBusinessUnit(unitSlug) {
+  CONSULTORA_AI_STATE.activeBusinessUnit = unitSlug;
+  saveConsultoraState();
+  renderConsultoraMetrics();
+  renderConsultoraBusinessUnits();
+  renderProspectCompanies();
+  renderCrmKanbanBoard();
+  showToast(`Vista filtrada por unidad: ${unitSlug === 'ALL' ? 'Consolidado' : unitSlug.toUpperCase()}`, 'info');
+}
+
+/**
+ * Renderizado de los 11 Indicadores Comerciales
+ */
+function renderConsultoraMetrics() {
+  let companies = 0, newLeads = 0, qualified = 0, contacts = 0, responses = 0, meetings = 0, quotes = 0, won = 0, spend = 0;
+
+  const unit = CONSULTORA_AI_STATE.activeBusinessUnit;
+
+  if (unit === 'ALL') {
+    CONSULTORA_AI_STATE.businessUnits.forEach(u => {
+      companies += u.stats.companies;
+      newLeads += u.stats.leads;
+      qualified += u.stats.qualified;
+      meetings += u.stats.meetings;
+      quotes += u.stats.quotes;
+      won += u.stats.won;
+      spend += u.stats.spend;
+    });
+    contacts = 38;
+    responses = 19;
+  } else {
+    const found = CONSULTORA_AI_STATE.businessUnits.find(u => u.slug === unit);
+    if (found) {
+      companies = found.stats.companies;
+      newLeads = found.stats.leads;
+      qualified = found.stats.qualified;
+      meetings = found.stats.meetings;
+      quotes = found.stats.quotes;
+      won = found.stats.won;
+      spend = found.stats.spend;
+      contacts = Math.round(newLeads * 0.45);
+      responses = Math.round(contacts * 0.5);
+    }
+  }
+
+  const cpl = newLeads > 0 ? Math.round(spend / newLeads) : 0;
+  const rate = qualified > 0 ? ((won / qualified) * 100).toFixed(2) : '0.00';
+
+  const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+
+  setVal('c-kpi-companies', companies);
+  setVal('c-kpi-leads-new', newLeads);
+  setVal('c-kpi-leads-qualified', qualified);
+  setVal('c-kpi-contacts-made', contacts);
+  setVal('c-kpi-responses', responses);
+  setVal('c-kpi-meetings', meetings);
+  setVal('c-kpi-quotes', quotes);
+  setVal('c-kpi-clients-won', won);
+  setVal('c-kpi-ad-spend', `$${(spend / 1000000).toFixed(2)}M`);
+  setVal('c-kpi-cpl', `$${cpl.toLocaleString('es-CO')}`);
+  setVal('c-kpi-conversion-rate', `${rate}%`);
+
+  // Actualizar badge de aprobaciones pendientes
+  const pendingCount = CONSULTORA_AI_STATE.approvals.filter(a => a.status === 'EN_REVISION').length;
+  const apprBadge = document.getElementById('consultora-pending-approvals-badge');
+  if (apprBadge) apprBadge.textContent = pendingCount;
+}
+
+/**
+ * Renderizado de los 7 Agentes IA
+ */
+function renderConsultoraAgents() {
+  const container = document.getElementById('consultora-agents-grid');
+  if (!container) return;
+
+  container.innerHTML = CONSULTORA_AI_STATE.agents.map(ag => `
+    <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-slate-700/70 flex items-start gap-3">
+      <div class="w-8 h-8 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center text-sm font-black shrink-0 border border-purple-500/30">
+        <i class="fa-solid fa-robot"></i>
+      </div>
+      <div class="min-w-0 flex-1">
+        <div class="flex items-center justify-between text-xs">
+          <strong class="text-white truncate">${ag.name}</strong>
+          <span class="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300">${ag.status}</span>
+        </div>
+        <span class="text-[11px] text-purple-300 font-medium block truncate">${ag.role}</span>
+        <div class="flex items-center gap-3 text-[10px] text-slate-400 mt-1 font-mono">
+          <span>${ag.model}</span>
+          <span>•</span>
+          <span>${ag.runs} ejecuciones</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/**
+ * Renderizado de las 4 Unidades de Negocio
+ */
+function renderConsultoraBusinessUnits() {
+  const container = document.getElementById('consultora-business-units-container');
+  if (!container) return;
+
+  const currentUnit = CONSULTORA_AI_STATE.activeBusinessUnit;
+  const list = currentUnit === 'ALL'
+    ? CONSULTORA_AI_STATE.businessUnits
+    : CONSULTORA_AI_STATE.businessUnits.filter(u => u.slug === currentUnit);
+
+  container.innerHTML = list.map(u => `
+    <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 shadow-md flex flex-col justify-between">
+      <div>
+        <div class="flex items-start justify-between pb-4 border-b border-slate-700">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-slate-900 border border-slate-700 text-purple-400 flex items-center justify-center text-lg">
+              <i class="fa-solid ${u.icon}"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-black uppercase tracking-wider text-slate-400">UNIDAD ESTRATÉGICA</span>
+              <h4 class="text-base font-black text-white">${u.name}</h4>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-xl text-xs font-mono font-bold bg-slate-900 text-purple-300 border border-slate-700">
+            $${(u.budgetMonthly / 1000000).toFixed(1)}M COP/mes
+          </span>
+        </div>
+
+        <div class="my-4 space-y-2 text-xs">
+          <div>
+            <span class="text-slate-400 font-bold block">Público Objetivo:</span>
+            <span class="text-slate-200">${u.targetAudience}</span>
+          </div>
+          <div>
+            <span class="text-slate-400 font-bold block">Servicios Principales:</span>
+            <div class="flex flex-wrap gap-1 mt-1">
+              ${u.services.map(s => `<span class="px-2 py-0.5 rounded-lg bg-slate-900 border border-slate-700 text-[10px] text-slate-300">${s}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Indicadores de la Unidad -->
+        <div class="grid grid-cols-4 gap-2 text-center p-3 rounded-2xl bg-slate-900/80 border border-slate-700 font-mono text-xs">
+          <div>
+            <span class="text-[9px] text-slate-400 block uppercase">Prospectos</span>
+            <strong class="text-white">${u.stats.leads}</strong>
+          </div>
+          <div>
+            <span class="text-[9px] text-slate-400 block uppercase">Reuniones</span>
+            <strong class="text-purple-300">${u.stats.meetings}</strong>
+          </div>
+          <div>
+            <span class="text-[9px] text-slate-400 block uppercase">Ganados</span>
+            <strong class="text-emerald-400">${u.stats.won}</strong>
+          </div>
+          <div>
+            <span class="text-[9px] text-slate-400 block uppercase">CPL</span>
+            <strong class="text-teal-400">$${(u.stats.cpl / 1000).toFixed(0)}k</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-700 mt-5 flex items-center justify-between text-xs">
+        <button onclick="switchConsultoraTab('agente3')" class="text-purple-400 hover:text-purple-300 font-bold flex items-center gap-1">
+          <span>Ver Estrategia</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+        <button onclick="switchConsultoraTab('crm')" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold">
+          Ver Pipeline
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/**
+ * Renderizado de Hallazgos de Mercado (Agente 1)
+ */
+function renderMarketFindings() {
+  const tbody = document.getElementById('agent1-findings-tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = CONSULTORA_AI_STATE.marketFindings.map(item => `
+    <tr class="hover:bg-slate-800/50 transition-colors">
+      <td class="py-3 px-3">
+        <strong class="text-white block">${item.sector}</strong>
+      </td>
+      <td class="py-3 px-3 text-slate-300">
+        ${item.need}
+      </td>
+      <td class="py-3 px-3 text-emerald-400 font-medium">
+        ${item.trend}
+      </td>
+      <td class="py-3 px-3 text-slate-400 font-mono text-[11px]">
+        ${item.competitors}
+      </td>
+      <td class="py-3 px-3 font-mono text-[10px] text-purple-300">
+        ${item.source}<br><span class="text-slate-500">${item.verifiedDate}</span>
+      </td>
+      <td class="py-3 px-3 text-center">
+        <button onclick="convertFindingToProspect('${item.sector}')" class="px-2.5 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-[10px] font-bold" title="Prospectar empresas de este sector">
+          Prospectar
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function runMarketResearchAgent() {
+  showToast('Agente 1 escaneando registros públicos de contratación y mercado...', 'info');
+  setTimeout(() => {
+    CONSULTORA_AI_STATE.marketFindings.unshift({
+      sector: 'Energías Renovables (Parques Solares)',
+      need: 'Estudios de resistividad del suelo y Estudio de Impacto Ambiental (EIA)',
+      trend: 'Proyectos solares adjudicados en Cesar y La Guajira para entrega 2027',
+      competitors: 'Soluciones Geotécnicas Globales',
+      source: 'UPME / MinEnergía Registro Público',
+      verifiedDate: new Date().toISOString().split('T')[0]
+    });
+    renderMarketFindings();
+    appendConsultoraAuditLog('AGENT_1_MARKET', 'NUEVO_HALLAZGO_MERCADO', 'Sector Energías Renovables identificado con alta demanda de resistividad.');
+    showToast('Nuevo sector y oportunidad detectada por el Agente 1.', 'success');
+  }, 1000);
+}
+
+function filterMarketFindings() {
+  showToast('Filtro regional aplicado exitosamente.', 'info');
+}
+
+function convertFindingToProspect(sector) {
+  switchConsultoraTab('agente2');
+  showToast(`Filtrando prospección B2B para: ${sector}`, 'info');
+}
+
+/**
+ * Renderizado de Empresas Prospectadas (Agente 2)
+ */
+function renderProspectCompanies() {
+  const tbody = document.getElementById('agent2-companies-tbody');
+  if (!tbody) return;
+
+  const currentUnit = CONSULTORA_AI_STATE.activeBusinessUnit;
+  const list = currentUnit === 'ALL'
+    ? CONSULTORA_AI_STATE.prospectCompanies
+    : CONSULTORA_AI_STATE.prospectCompanies.filter(c => c.unitSlug === currentUnit);
+
+  tbody.innerHTML = list.map(comp => `
+    <tr class="hover:bg-slate-800/50 transition-colors">
+      <td class="py-3 px-3">
+        <strong class="text-white block">${comp.name}</strong>
+        <span class="text-[11px] text-slate-400 font-mono">${comp.city}</span>
+      </td>
+      <td class="py-3 px-3 text-slate-300 font-medium">
+        ${comp.sector}
+      </td>
+      <td class="py-3 px-3 text-slate-300">
+        ${comp.need}
+      </td>
+      <td class="py-3 px-3 font-mono text-[11px] text-purple-300">
+        ${comp.publicContact}
+      </td>
+      <td class="py-3 px-3">
+        <span class="px-2 py-0.5 rounded text-[10px] font-black ${comp.opportunityLevel === 'ALTA' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-amber-500/20 text-amber-300 border border-amber-500/40'}">
+          ${comp.opportunityLevel}
+        </span>
+      </td>
+      <td class="py-3 px-3 font-mono text-[10px] text-slate-400">
+        ${comp.dataSource}<br><span class="text-slate-500">${comp.verifiedDate}</span>
+      </td>
+      <td class="py-3 px-3 text-center">
+        <button onclick="requestContactApproval('${comp.id}')" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-[10px] flex items-center gap-1 mx-auto" title="Solicitar aprobación para contactar">
+          <i class="fa-solid fa-shield-halved text-[9px]"></i> Contactar
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function runB2BProspectingBatch() {
+  showToast('Agente 2 investigando nuevas cuentas mercantiles en directorios públicos...', 'info');
+  setTimeout(() => {
+    CONSULTORA_AI_STATE.prospectCompanies.unshift({
+      id: `COMP-${Date.now().toString().slice(-2)}`,
+      name: 'Consorcio Túneles de Occidente',
+      city: 'Medellín / Santa Fe de Antioquia',
+      sector: 'Minería Subterránea & Túneles',
+      need: 'Instrumentación con inclinómetros y convergencia de túneles en roca',
+      publicContact: 'obras@tunelesoccidente.co • (+57) 4 321 0099',
+      opportunityLevel: 'ALTA',
+      dataSource: 'RUES Público / Licitación ANI',
+      verifiedDate: new Date().toISOString().split('T')[0],
+      unitSlug: 'geotecnia'
+    });
+    renderProspectCompanies();
+    appendConsultoraAuditLog('AGENT_2_PROSPECT', 'NUEVA_EMPRESA_B2B', 'Consorcio Túneles de Occidente incorporado para prospección.');
+    showToast('Lote B2B investigado: 1 nueva cuenta de alta oportunidad añadida.', 'success');
+  }, 1000);
+}
+
+function requestContactApproval(compId) {
+  const comp = CONSULTORA_AI_STATE.prospectCompanies.find(c => c.id === compId);
+  if (!comp) return;
+
+  const newAppr = {
+    id: `APPR-${Date.now().toString().slice(-3)}`,
+    type: 'B2B_OUTREACH',
+    unitName: comp.sector,
+    requestedBy: 'Agente 2 (Prospección B2B)',
+    title: `Contacto Comercial: ${comp.name}`,
+    contentPreview: `Estimado equipo técnico de ${comp.name}, en referencia a su proyecto en ${comp.city} (${comp.need}), disponemos del equipo y personal para emitirles una propuesta formal.`,
+    mediaAttachment: null,
+    status: 'EN_REVISION',
+    requestedAt: new Date().toISOString().replace('T', ' ').substring(0, 16)
+  };
+
+  CONSULTORA_AI_STATE.approvals.unshift(newAppr);
+  saveConsultoraState();
+  renderApprovalRequests();
+  renderConsultoraMetrics();
+  switchConsultoraTab('aprobaciones');
+  showToast(`Solicitud de contacto para ${comp.name} enviada al Centro de Aprobaciones.`, 'info');
+}
+
+/**
+ * Renderizado de Estrategias de Marketing (Agente 3)
+ */
+function renderAgent3Strategies() {
+  const container = document.getElementById('agent3-strategies-container');
+  if (!container) return;
+
+  container.innerHTML = CONSULTORA_AI_STATE.businessUnits.map(u => `
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs">
+      <div class="flex items-center justify-between font-bold text-white mb-2">
+        <span class="flex items-center gap-2"><i class="fa-solid ${u.icon} text-purple-400"></i> ${u.name}</span>
+        <span class="text-emerald-400 font-mono">ROAS Meta: 4.5x</span>
+      </div>
+      <p class="text-slate-300 text-[11px] mb-2 leading-relaxed">
+        <strong>Público:</strong> ${u.targetAudience}. Foco en toma de decisiones de directores de obra, jefes de compras y gerentes HSEQ.
+      </p>
+      <div class="flex flex-wrap gap-1 text-[10px] font-mono text-purple-300">
+        ${u.keywords.map(k => `<span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">#${k}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function generateUnitStrategy() {
+  showToast('Agente 3 recalculando pilares de contenido y audiencias para el próximo mes...', 'info');
+  setTimeout(() => {
+    appendConsultoraAuditLog('AGENT_3_STRATEGY', 'ESTRATEGIA_ACTUALIZADA', 'Estrategia editorial ajustada para priorizar estudios de suelos NSR-10.');
+    showToast('Estrategia de marketing actualizada con éxito.', 'success');
+  }, 900);
+}
+
+/**
+ * Creador de Contenido IA (Agente 4)
+ */
+function selectContentFormat(fmt) {
+  CONSULTORA_AI_STATE.selectedContentFormat = fmt;
+  const formats = ['articulo', 'carrusel', 'post', 'video'];
+  formats.forEach(f => {
+    const btn = document.getElementById(`cf-btn-${f}`);
+    if (btn) {
+      if (f.toUpperCase() === fmt || (f === 'post' && fmt === 'POST_IMAGEN') || (f === 'video' && fmt === 'GUION_VIDEO')) {
+        btn.className = 'p-2 rounded-xl bg-purple-600 text-white font-bold text-center shadow-md';
+      } else {
+        btn.className = 'p-2 rounded-xl bg-slate-700 text-slate-300 font-bold text-center hover:bg-slate-600';
+      }
+    }
+  });
+  runContentGenerationAgent();
+}
+
+function runContentGenerationAgent() {
+  const topic = document.getElementById('agent4-topic-input')?.value || 'Estudios de Suelos';
+  const tone = document.getElementById('agent4-tone-select')?.value || 'corporativo';
+  const fmt = CONSULTORA_AI_STATE.selectedContentFormat;
+
+  const previewBody = document.getElementById('agent4-preview-body');
+  if (!previewBody) return;
+
+  let text = '';
+  if (fmt === 'ARTICULO') {
+    text = `
+      <p><strong>¿Conoce el impacto real del valor N en ensayos de penetración estándar SPT según la norma NSR-10 Título H?</strong></p>
+      <p>En proyectos de infraestructura civil en Colombia, la variación entre la energía teórica del martinete y la energía real transferida puede inducir errores de hasta un 35% en la estimación de la capacidad portante admisible.</p>
+      <p>En <strong>SIG²</strong> integramos registros digitales automáticos en nuestro software propietario <em>SIG Campo</em>, asegurando correlaciones estandarizadas con entrega formal de memorias auditables.</p>
+      <p class="text-blue-400 font-semibold">#Geotecnia #NSR10 #EstudioDeSuelos #IngenieriaCivil #SondeosSPT #SIG2</p>
+    `;
+  } else if (fmt === 'CARRUSEL') {
+    text = `
+      <p><strong>[CARRUSEL EDUCATIVO DE 5 DIAPOSITIVAS]</strong></p>
+      <p>👉 <em>Slide 1:</em> Los 5 errores más comunes al radicar su Plan Estratégico de Seguridad Vial (PESV).<br>
+      👉 <em>Slide 2:</em> Resolución 40595 de 2022: ¿Quiénes están obligados?<br>
+      👉 <em>Slide 3:</em> Inspecciones preoperacionales digitales vs. planillas de papel.<br>
+      👉 <em>Slide 4:</em> Telemetría satelital en faena minera y geocercas.<br>
+      👉 <em>Slide 5:</em> Evite sanciones de la SuperTransporte con la consultoría SIG².</p>
+    `;
+  } else if (fmt === 'POST_IMAGEN') {
+    text = `
+      <p>En faena activa: Ejecución de perforación mecánica a rotación con recuperación continua de testigos para cimentaciones de alta carga en Antioquia.</p>
+      <p>Contamos con equipos propios, operadores certificados y respaldo geotécnico de primer nivel.</p>
+      <p class="text-blue-400 font-semibold">#GeotecniaEnTerreno #PerforacionMecanica #ObrasCiviles #SIG2</p>
+    `;
+  } else {
+    text = `
+      <p><strong>[GUIÓN DE VIDEO PARA DEMOSTRACIÓN EN CAMPO - 60s]</strong></p>
+      <p><strong>[00:00 - 00:10]:</strong> Ingeniero en faena sosteniendo tableta con la app SIG Campo. "Hoy les mostramos cómo calcular el N corregido en tiempo real sin equivocaciones en papel."<br>
+      <strong>[00:10 - 00:35]:</strong> Martinete SPT en acción. Ingreso de golpes N1, N2, N3. Gráfico estratigráfico generándose instantáneamente.<br>
+      <strong>[00:35 - 00:60]:</strong> Entrega del reporte técnico. "Precisión milimétrica para su proyecto. Contacte a SIG²."</p>
+    `;
+  }
+
+  previewBody.innerHTML = text;
+  showToast('Contenido generado por el Agente 4.', 'success');
+}
+
+function submitGeneratedPostToApprovals() {
+  const newAppr = {
+    id: `APPR-${Date.now().toString().slice(-3)}`,
+    type: 'SOCIAL_POST',
+    unitName: 'Ingeniería y Geotecnia',
+    requestedBy: 'Agente 4 (Creador de Contenido)',
+    title: `Post ${CONSULTORA_AI_STATE.selectedContentFormat} sobre Geotecnia`,
+    contentPreview: 'Publicación técnica generada lista para revisión humana antes de despacho a LinkedIn...',
+    mediaAttachment: 'assets/geotecnia-perforacion-taludes.jpg',
+    status: 'EN_REVISION',
+    requestedAt: new Date().toISOString().replace('T', ' ').substring(0, 16)
+  };
+
+  CONSULTORA_AI_STATE.approvals.unshift(newAppr);
+  saveConsultoraState();
+  renderApprovalRequests();
+  renderConsultoraMetrics();
+  switchConsultoraTab('aprobaciones');
+  showToast('Publicación enviada al Centro de Aprobaciones con éxito.', 'success');
+}
+
+/**
+ * Calendario de Redes (Agente 5)
+ */
+function renderSocialCalendar() {
+  const tbody = document.getElementById('agent5-calendar-tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = CONSULTORA_AI_STATE.socialCalendar.map(post => `
+    <tr class="hover:bg-slate-800/50 transition-colors">
+      <td class="py-3 px-3 font-mono text-[11px] text-slate-400">
+        ${post.date}
+      </td>
+      <td class="py-3 px-3 font-bold text-white">
+        <i class="fa-brands fa-${post.platform.toLowerCase()} ${post.platform === 'LINKEDIN' ? 'text-blue-400' : post.platform === 'INSTAGRAM' ? 'text-pink-400' : 'text-blue-600'}"></i> ${post.platform}
+      </td>
+      <td class="py-3 px-3 text-slate-300">
+        ${post.unitName}
+      </td>
+      <td class="py-3 px-3 text-slate-300 text-[11px] max-w-xs truncate" title="${post.excerpt}">
+        ${post.excerpt}
+      </td>
+      <td class="py-3 px-3">
+        <span class="px-2 py-0.5 rounded text-[10px] font-black ${
+          post.status === 'APROBADO' ? 'approval-badge-aprobado' :
+          post.status === 'PROGRAMADO' ? 'approval-badge-programado' :
+          post.status === 'EN_REVISION' ? 'approval-badge-en-revision' :
+          'approval-badge-borrador'
+        }">
+          ${post.status}
+        </span>
+      </td>
+      <td class="py-3 px-3 text-center">
+        <button onclick="switchConsultoraTab('aprobaciones')" class="text-purple-400 hover:text-white font-bold text-[10px]">
+          Auditar
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+/**
+ * Asistente Comercial (Agente 7)
+ */
+function renderSalesInbound() {
+  const container = document.getElementById('consultora-sales-inbound-grid');
+  if (!container) return;
+
+  const leadsPool = [
+    { name: 'Ing. Carlos Mendoza', company: 'Consorcio Vial Magdalena', channel: 'WhatsApp Directo', need: 'Sondeos SPT para puente vehicular', score: 95 },
+    { name: 'Dra. Marcela Rincón', company: 'Transportes del Caribe', channel: 'Formulario Web', need: 'Auditoría urgente PESV 45 tractomulas', score: 90 },
+    { name: 'Dr. Hernán Silva', company: 'Exploraciones Mineras del Oriente', channel: 'WhatsApp Directo', need: 'Licencia Ambiental EIA ANLA', score: 92 }
+  ];
+
+  container.innerHTML = leadsPool.map(l => `
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800 text-[10px]">
+          <span class="text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> ${l.channel}</span>
+          <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold">Fit: ${l.score}%</span>
+        </div>
+        <strong class="text-white block mt-2">${l.name}</strong>
+        <span class="text-slate-400 text-[11px] block">${l.company}</span>
+        <p class="text-slate-300 text-[11px] mt-2 bg-slate-800 p-2 rounded-xl border border-slate-700">
+          "${l.need}"
+        </p>
+      </div>
+      <div class="pt-3 border-t border-slate-800 mt-3 flex items-center justify-between">
+        <span class="text-[10px] text-slate-500">Agente 7 clasificado</span>
+        <a href="https://wa.me/573127894040" target="_blank" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold text-[10px] flex items-center gap-1">
+          <span class="icon-whatsapp text-[10px]"></span> Atender
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+/**
+ * Centro de Aprobaciones Human-in-the-Loop (7 Estados)
+ */
+function filterApprovalRequests(filter) {
+  CONSULTORA_AI_STATE.approvalFilter = filter;
+  const btns = ['review', 'approved', 'all'];
+  btns.forEach(b => {
+    const el = document.getElementById(`af-btn-${b}`);
+    if (el) {
+      if ((b === 'review' && filter === 'EN_REVISION') || (b === 'approved' && filter === 'APROBADO') || (b === 'all' && filter === 'ALL')) {
+        el.className = 'px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold';
+      } else {
+        el.className = 'px-2.5 py-1 rounded-lg text-slate-400 hover:text-white font-bold';
+      }
+    }
+  });
+  renderApprovalRequests();
+}
+
+function renderApprovalRequests() {
+  const container = document.getElementById('consultora-approvals-container');
+  if (!container) return;
+
+  const f = CONSULTORA_AI_STATE.approvalFilter;
+  const list = f === 'ALL'
+    ? CONSULTORA_AI_STATE.approvals
+    : CONSULTORA_AI_STATE.approvals.filter(a => a.status === f);
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="p-8 text-center text-slate-400 bg-slate-900 rounded-2xl border border-slate-700">
+        <i class="fa-solid fa-check-double text-2xl text-emerald-400 mb-2"></i>
+        <p class="font-bold">No hay solicitudes pendientes en este estado.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = list.map(item => `
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs transition-all">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-black ${
+              item.status === 'APROBADO' ? 'approval-badge-aprobado' :
+              item.status === 'EN_REVISION' ? 'approval-badge-en-revision' :
+              'approval-badge-borrador'
+            }">
+              ${item.status}
+            </span>
+            <span class="text-slate-400 text-[10px] font-mono">${item.id}</span>
+            <span class="text-purple-400 text-[11px] font-bold">${item.unitName}</span>
+          </div>
+          <h4 class="text-sm font-black text-white mt-1">${item.title}</h4>
+        </div>
+        <span class="text-[10px] text-slate-500 font-mono">${item.requestedAt} • ${item.requestedBy}</span>
+      </div>
+
+      <div class="py-3 text-slate-300 text-xs leading-relaxed">
+        <p class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/80">${item.contentPreview}</p>
+        ${item.mediaAttachment ? `
+          <div class="mt-2 flex items-center gap-2 text-[11px] text-purple-300">
+            <i class="fa-solid fa-paperclip"></i>
+            <span>Activo adjunto: ${item.mediaAttachment}</span>
+          </div>
+        ` : ''}
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+        <span class="text-[10px] text-slate-500">Requiere firma de la Dirección Técnica</span>
+        ${item.status === 'EN_REVISION' ? `
+          <div class="flex items-center gap-2">
+            <button onclick="rejectApprovalRequest('${item.id}')" class="px-3 py-1.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 rounded-xl font-bold text-xs transition-all">
+              Rechazar
+            </button>
+            <button onclick="approveApprovalRequest('${item.id}')" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-black text-xs flex items-center gap-1.5 transition-all shadow-md">
+              <i class="fa-solid fa-check"></i>
+              <span>Aprobar & Autorizar</span>
+            </button>
+          </div>
+        ` : `
+          <span class="text-emerald-400 font-bold text-xs"><i class="fa-solid fa-circle-check"></i> Autorizado por el Administrador</span>
+        `}
+      </div>
+    </div>
+  `).join('');
+}
+
+function approveApprovalRequest(id) {
+  const item = CONSULTORA_AI_STATE.approvals.find(a => a.id === id);
+  if (!item) return;
+
+  item.status = 'APROBADO';
+  saveConsultoraState();
+  renderApprovalRequests();
+  renderConsultoraMetrics();
+  appendConsultoraAuditLog('HUMAN_ADMIN', 'SOLICITUD_APROBADA', `Autorizado: ${item.title} (${item.id})`);
+  showToast(`¡Solicitud ${item.id} aprobada y autorizada para ejecución!`, 'success');
+}
+
+function rejectApprovalRequest(id) {
+  const item = CONSULTORA_AI_STATE.approvals.find(a => a.id === id);
+  if (!item) return;
+
+  item.status = 'RECHAZADO';
+  saveConsultoraState();
+  renderApprovalRequests();
+  renderConsultoraMetrics();
+  appendConsultoraAuditLog('HUMAN_ADMIN', 'SOLICITUD_RECHAZADA', `Rechazado: ${item.title} (${item.id})`);
+  showToast(`Solicitud ${item.id} rechazada.`, 'info');
+}
+
+/**
+ * CRM Comercial Propio: Tablero Kanban de 10 Etapas
+ */
+function renderCrmKanbanBoard() {
+  const board = document.getElementById('consultora-crm-kanban-board');
+  if (!board) return;
+
+  const currentUnit = CONSULTORA_AI_STATE.activeBusinessUnit;
+  const opps = currentUnit === 'ALL'
+    ? CONSULTORA_AI_STATE.opportunities
+    : CONSULTORA_AI_STATE.opportunities.filter(o => o.unitSlug === currentUnit);
+
+  board.innerHTML = CONSULTORA_AI_STATE.pipelineStages.map(st => {
+    const stageOpps = opps.filter(o => o.stage === st.key);
+    const totalVal = stageOpps.reduce((sum, o) => sum + o.value, 0);
+
+    return `
+      <div class="pipeline-kanban-column text-xs">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-700 font-bold">
+          <span class="text-white text-[11px] truncate">${st.name}</span>
+          <span class="px-1.5 py-0.2 rounded-full text-[10px] ${st.color} text-white font-mono">${stageOpps.length}</span>
+        </div>
+        <div class="text-[10px] text-slate-400 font-mono pt-1">$${(totalVal / 1000000).toFixed(1)}M COP</div>
+
+        <div class="mt-2 space-y-2 min-h-[160px]">
+          ${stageOpps.map(op => `
+            <div class="pipeline-card text-slate-800">
+              <strong class="text-xs text-slate-900 block">${op.company}</strong>
+              <span class="text-[11px] text-slate-600 block mt-0.5 leading-tight">${op.title}</span>
+              <div class="flex items-center justify-between text-[10px] font-mono font-bold text-sig-navy mt-2 pt-1 border-t border-slate-100">
+                <span>$${(op.value / 1000000).toFixed(1)}M</span>
+                <span class="text-emerald-700">${op.probability}% prob</span>
+              </div>
+              <div class="mt-2 flex items-center justify-between text-[9px] pt-1">
+                <span class="text-slate-500 truncate">${op.owner.split(' ')[0]}</span>
+                <button onclick="advanceOpportunity('${op.id}')" class="text-purple-700 hover:text-purple-900 font-black" title="Avanzar etapa">
+                  Avanzar <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function advanceOpportunity(oppId) {
+  const opp = CONSULTORA_AI_STATE.opportunities.find(o => o.id === oppId);
+  if (!opp) return;
+
+  const stageKeys = CONSULTORA_AI_STATE.pipelineStages.map(s => s.key);
+  const curIdx = stageKeys.indexOf(opp.stage);
+
+  if (curIdx < stageKeys.length - 2) {
+    opp.stage = stageKeys[curIdx + 1];
+    saveConsultoraState();
+    renderCrmKanbanBoard();
+    renderConsultoraMetrics();
+    appendConsultoraAuditLog('CRM_ENGINE', 'ETAPA_AVANZADA', `${opp.company} avanzó a: ${opp.stage}`);
+    showToast(`Oportunidad avanzada a: ${opp.stage}`, 'success');
+  } else {
+    showToast('Oportunidad en etapa final de cierre.', 'info');
+  }
+}
+
+function openCreateCrmOpportunityModal() {
+  const comp = prompt('Nombre de la Empresa:', 'Consorcio Túneles de Colombia');
+  if (!comp) return;
+  const title = prompt('Descripción del Proyecto / Servicio:', 'Estudios de Suelos NSR-10 & Geofísica');
+  if (!title) return;
+
+  CONSULTORA_AI_STATE.opportunities.unshift({
+    id: `OPP-${Date.now().toString().slice(-3)}`,
+    company: comp,
+    title,
+    unitSlug: 'geotecnia',
+    value: 45000000,
+    stage: 'EMPRESA_IDENTIFICADA',
+    owner: 'Dirección Comercial SIG²',
+    probability: 20
+  });
+
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+  showToast(`Nueva oportunidad creada para: ${comp}`, 'success');
+}
+
+/**
+ * Renderizado de Workflows n8n (12 Flujos)
+ */
+function renderN8nWorkflows() {
+  const container = document.getElementById('consultora-n8n-workflows-container');
+  if (!container) return;
+
+  container.innerHTML = CONSULTORA_AI_STATE.n8nWorkflows.map(wf => `
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-300">${wf.code}</span>
+          <span class="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300">ACTIVO</span>
+        </div>
+        <strong class="text-white block mt-2 text-xs leading-snug">${wf.name}</strong>
+        <span class="text-[10px] text-slate-400 block mt-1"><i class="fa-regular fa-clock"></i> ${wf.freq}</span>
+      </div>
+      <div class="pt-3 border-t border-slate-800 mt-3 flex items-center justify-between">
+        <span class="text-[10px] text-slate-500 font-mono">${wf.runs} runs</span>
+        <button onclick="triggerN8nWorkflowSim('${wf.code}')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-purple-300 font-bold rounded-lg text-[10px]">
+          Ejecutar
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function triggerN8nWorkflowSim(code) {
+  showToast(`Disparando webhook seguro para ${code}...`, 'info');
+  setTimeout(() => {
+    appendConsultoraAuditLog('N8N_WORKFLOW', 'WEBHOOK_EJECUTADO', `Flujo ${code} ejecutado con éxito.`);
+    showToast(`Workflow ${code} ejecutado sin errores.`, 'success');
+  }, 800);
+}
+
+/**
+ * Auditoría y Logs Forenses
+ */
+function appendConsultoraAuditLog(actor, action, message) {
+  const now = new Date().toTimeString().split(' ')[0];
+  CONSULTORA_AI_STATE.auditLogs.unshift({
+    timestamp: now,
+    actor,
+    action,
+    message
+  });
+  if (CONSULTORA_AI_STATE.auditLogs.length > 40) CONSULTORA_AI_STATE.auditLogs.pop();
+  renderConsultoraAuditLogs();
+}
+
+function renderConsultoraAuditLogs() {
+  const term = document.getElementById('consultora-audit-terminal');
+  if (!term) return;
+
+  term.innerHTML = CONSULTORA_AI_STATE.auditLogs.map(l => `
+    <div class="marketing-ai-terminal-log">
+      <span class="text-slate-500 shrink-0">[${l.timestamp}]</span>
+      <span class="text-purple-400 shrink-0 font-bold">${l.actor}:</span>
+      <span class="text-slate-400 shrink-0 font-mono">[${l.action}]</span>
+      <span class="text-slate-200">${l.message}</span>
+    </div>
+  `).join('');
+}
+
+function clearConsultoraAuditLogs() {
+  CONSULTORA_AI_STATE.auditLogs = [];
+  renderConsultoraAuditLogs();
+  showToast('Terminal de auditoría limpiado.', 'info');
+}
+
+/**
+ * Descarga del Informe Semanal Consolidado (Excel .csv con UTF-8 BOM)
+ */
+function downloadConsultoraWeeklyReport() {
+  const headers = [
+    'UNIDAD_NEGOCIO',
+    'EMPRESAS_INVESTIGADAS',
+    'PROSPECTOS_NUEVOS',
+    'LEADS_CALIFICADOS',
+    'REUNIONES_GENERADAS',
+    'COTIZACIONES_ENVIADAS',
+    'CLIENTES_GANADOS',
+    'INVERSION_ADS_COP',
+    'COSTO_X_LEAD_COP',
+    'TASA_CONVERSION_PCT'
+  ];
+
+  const rows = CONSULTORA_AI_STATE.businessUnits.map(u => [
+    `"${u.name}"`,
+    u.stats.companies,
+    u.stats.leads,
+    u.stats.qualified,
+    u.stats.meetings,
+    u.stats.quotes,
+    u.stats.won,
+    u.stats.spend,
+    u.stats.cpl,
+    `"${u.stats.rate}%"`
+  ].join(';'));
+
+  const csvContent = '\uFEFF' + [headers.join(';'), ...rows].join('\r\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  const today = new Date().toISOString().split('T')[0];
+  link.setAttribute('href', url);
+  link.setAttribute('download', `CONSULTORA_AI_Informe_Semanal_${today}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+
+  appendConsultoraAuditLog('HUMAN_ADMIN', 'INFORME_DESCARGADO', `Informe semanal consolidado exportado a Excel.`);
+  showToast('Informe semanal consolidado descargado exitosamente.', 'success');
 }

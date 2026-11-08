@@ -1,0 +1,158 @@
+{
+  "project": "CONSULTORA AI — WORKFLOWS N8N",
+  "version": "1.0.0",
+  "generated_at": "2026-11-08T18:25:00Z",
+  "description": "Especificación modular de los 12 flujos de automatización empresarial para n8n",
+  "workflows": [
+    {
+      "id": "wf-01-investigacion-empresas",
+      "name": "01 - Investigación Diaria de Empresas y Tendencias de Mercado",
+      "trigger": { "type": "Cron", "expression": "0 6 * * 1-5", "description": "Lunes a viernes 6:00 AM" },
+      "nodes": [
+        { "name": "Cron Trigger", "type": "n8n-nodes-base.cron" },
+        { "name": "Consulta Sectores Objetivo (RUES / Directorios)", "type": "n8n-nodes-base.httpRequest" },
+        { "name": "Agente 1 - Análisis de Necesidades (OpenAI GPT-4o)", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Guardar en Supabase (companies)", "type": "n8n-nodes-base.supabase" },
+        { "name": "Registro de Auditoría (audit_logs)", "type": "n8n-nodes-base.supabase" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 3, "notifyOnFailure": "ingenierotecnicocyc@gmail.com" }
+    },
+    {
+      "id": "wf-02-oportunidades-comerciales",
+      "name": "02 - Identificación y Calificación de Oportunidades B2B",
+      "trigger": { "type": "Webhook", "path": "/webhook/lead-enrichment", "method": "POST" },
+      "nodes": [
+        { "name": "Webhook Receptor", "type": "n8n-nodes-base.webhook" },
+        { "name": "Agente 2 - Scoring B2B & Necesidad Técnica", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Clasificar Nivel de Oportunidad (Alta / Media)", "type": "n8n-nodes-base.if" },
+        { "name": "Crear Registro en CRM (opportunities)", "type": "n8n-nodes-base.supabase" },
+        { "name": "Alerta WhatsApp Director Comercial", "type": "n8n-nodes-base.httpRequest" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 2 }
+    },
+    {
+      "id": "wf-03-generacion-contenidos",
+      "name": "03 - Generación Semanal de Estrategia & Contenidos",
+      "trigger": { "type": "Cron", "expression": "0 8 * * 1", "description": "Lunes 8:00 AM" },
+      "nodes": [
+        { "name": "Cron Semanal", "type": "n8n-nodes-base.cron" },
+        { "name": "Agente 3 - Estrategia Editorial por Unidad", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Agente 4 - Redactor de Artículos & Carruseles", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Crear Solicitud de Aprobación (approval_requests)", "type": "n8n-nodes-base.supabase" },
+        { "name": "Notificar a Administrador", "type": "n8n-nodes-base.emailSend" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 3 }
+    },
+    {
+      "id": "wf-04-creacion-disenos",
+      "name": "04 - Generación de Activos Gráficos y Guiones",
+      "trigger": { "type": "Webhook", "path": "/webhook/generate-creative-assets", "method": "POST" },
+      "nodes": [
+        { "name": "Webhook Creativo", "type": "n8n-nodes-base.webhook" },
+        { "name": "Generador de Prompts Visuales DALL-E / SD", "type": "n8n-nodes-base.openAi" },
+        { "name": "Almacenar Imagen en Supabase Storage", "type": "n8n-nodes-base.supabase" },
+        { "name": "Vincular a content_assets", "type": "n8n-nodes-base.supabase" }
+      ],
+      "errorHandling": { "retryOnFail": false }
+    },
+    {
+      "id": "wf-05-calendario-redes",
+      "name": "05 - Orquestación de Calendario de Publicaciones",
+      "trigger": { "type": "Cron", "expression": "*/30 * * * *", "description": "Cada 30 minutos" },
+      "nodes": [
+        { "name": "Cron 30 Minutos", "type": "n8n-nodes-base.cron" },
+        { "name": "Consultar Posts Listos para Publicar (status = APROBADO)", "type": "n8n-nodes-base.supabase" },
+        { "name": "¿Hora Programada Alcanzada?", "type": "n8n-nodes-base.if" },
+        { "name": "Despachar a WF-07 (Publicación)", "type": "n8n-nodes-base.executeWorkflow" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 2 }
+    },
+    {
+      "id": "wf-06-notificacion-aprobaciones",
+      "name": "06 - Notificación Multicanal de Aprobaciones Pendientes",
+      "trigger": { "type": "Webhook", "path": "/webhook/approval-requested", "method": "POST" },
+      "nodes": [
+        { "name": "Webhook Solicitud", "type": "n8n-nodes-base.webhook" },
+        { "name": "Preparar Enlace Directo a Centro de Aprobaciones", "type": "n8n-nodes-base.set" },
+        { "name": "Enviar Notificación por Correo", "type": "n8n-nodes-base.emailSend" },
+        { "name": "Enviar Alerta WhatsApp a Dirección (+57 312 789 4040)", "type": "n8n-nodes-base.httpRequest" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 3 }
+    },
+    {
+      "id": "wf-07-publicacion-aprobada",
+      "name": "07 - Despacho Oficial a Redes (LinkedIn, Instagram, Facebook)",
+      "trigger": { "type": "Webhook", "path": "/webhook/publish-post", "method": "POST" },
+      "nodes": [
+        { "name": "Webhook Publicador", "type": "n8n-nodes-base.webhook" },
+        { "name": "Verificar Estado de Aprobación Humana (is_approved)", "type": "n8n-nodes-base.if" },
+        { "name": "Publicar en LinkedIn API", "type": "n8n-nodes-base.httpRequest" },
+        { "name": "Publicar en Meta Graph API (Instagram/Facebook)", "type": "n8n-nodes-base.httpRequest" },
+        { "name": "Actualizar Estado a PUBLICADO en social_posts", "type": "n8n-nodes-base.supabase" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 3, "notifyOnFailure": "ingenierotecnicocyc@gmail.com" }
+    },
+    {
+      "id": "wf-08-recepcion-formularios",
+      "name": "08 - Ingesta de Formularios Web y WhatsApp Click-to-Chat",
+      "trigger": { "type": "Webhook", "path": "/webhook/inbound-lead", "method": "POST" },
+      "nodes": [
+        { "name": "Webhook Inbound Lead", "type": "n8n-nodes-base.webhook" },
+        { "name": "Deduplicar por Teléfono y Correo", "type": "n8n-nodes-base.supabase" },
+        { "name": "Crear Lead en CRM", "type": "n8n-nodes-base.supabase" },
+        { "name": "Despachar a WF-09 (Clasificación)", "type": "n8n-nodes-base.executeWorkflow" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 2 }
+    },
+    {
+      "id": "wf-09-clasificacion-leads",
+      "name": "09 - Clasificación y Scoring Automático con Agente 7",
+      "trigger": { "type": "Webhook", "path": "/webhook/qualify-lead", "method": "POST" },
+      "nodes": [
+        { "name": "Webhook Calificador", "type": "n8n-nodes-base.webhook" },
+        { "name": "Agente 7 - Análisis de Necesidad & Matriz NSR-10 / Dec. 1072", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Asignar Puntaje de 0 a 100", "type": "n8n-nodes-base.set" },
+        { "name": "Actualizar Lead Calificado en CRM", "type": "n8n-nodes-base.supabase" }
+      ],
+      "errorHandling": { "retryOnFail": false }
+    },
+    {
+      "id": "wf-10-seguimiento-comercial",
+      "name": "10 - Tareas Programadas de Seguimiento Comercial B2B",
+      "trigger": { "type": "Cron", "expression": "0 9 * * 1-5", "description": "Lunes a viernes 9:00 AM" },
+      "nodes": [
+        { "name": "Cron Matutino", "type": "n8n-nodes-base.cron" },
+        { "name": "Consultar Oportunidades sin Contactar > 48h", "type": "n8n-nodes-base.supabase" },
+        { "name": "Generar Borrador de Email de Seguimiento", "type": "n8n-nodes-base.openAi" },
+        { "name": "Crear Tarea en CRM para el Consultor", "type": "n8n-nodes-base.supabase" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 2 }
+    },
+    {
+      "id": "wf-11-monitoreo-campanas",
+      "name": "11 - Auditoría Continua de Google Ads & Meta Ads (Guardian)",
+      "trigger": { "type": "Cron", "expression": "0 */4 * * *", "description": "Cada 4 horas" },
+      "nodes": [
+        { "name": "Cron 4 Horas", "type": "n8n-nodes-base.cron" },
+        { "name": "Consultar Métricas GAQL de Google Ads", "type": "n8n-nodes-base.httpRequest" },
+        { "name": "¿Gasto > Límite Diario o 0 Conversiones en 7 días?", "type": "n8n-nodes-base.if" },
+        { "name": "Agente 6 - Generar Recomendación de Pausado", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Registrar Alerta en approval_requests", "type": "n8n-nodes-base.supabase" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 3 }
+    },
+    {
+      "id": "wf-12-informe-semanal",
+      "name": "12 - Generación y Entrega del Informe Ejecutivo Semanal",
+      "trigger": { "type": "Cron", "expression": "0 18 * * 5", "description": "Viernes 6:00 PM" },
+      "nodes": [
+        { "name": "Cron Viernes Cierre", "type": "n8n-nodes-base.cron" },
+        { "name": "Agregar Métricas Semanales de las 4 Unidades", "type": "n8n-nodes-base.supabase" },
+        { "name": "Agente 3 - Síntesis Ejecutiva & Recomendaciones ROI", "type": "@n8n/n8n-nodes-langchain.agent" },
+        { "name": "Generar Reporte Excel / PDF", "type": "n8n-nodes-base.spreadsheetFile" },
+        { "name": "Enviar a Dirección (ingenierotecnicocyc@gmail.com)", "type": "n8n-nodes-base.emailSend" }
+      ],
+      "errorHandling": { "retryOnFail": true, "maxRetries": 3, "notifyOnFailure": "ingenierotecnicocyc@gmail.com" }
+    }
+  ]
+}

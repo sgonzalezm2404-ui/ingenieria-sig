@@ -695,3 +695,152 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -4px rgba(6, 70, 108, 0.08);
 }
+
+
+/* ==========================================================================
+   MÓDULO: CONSULTORA AI — PLATAFORMA INTEGRAL DE MARKETING & VENTAS B2B
+   ========================================================================== */
+
+/* Previsualizador de Publicaciones en LinkedIn B2B */
+.linkedin-post-preview {
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.linkedin-author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #06466C;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.linkedin-reaction-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 8px;
+  margin-top: 12px;
+  border-top: 1px solid #EBEBEB;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Previsualizador de Instagram Card */
+.instagram-post-preview {
+  background: #FFFFFF;
+  border: 1px solid #DBDBDB;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Badges del Motor de Aprobaciones Human-in-the-Loop (7 Estados) */
+.approval-badge-borrador {
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #CBD5E1;
+}
+
+.approval-badge-en-revision {
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FCD34D;
+  animation: pulse-amber 2s infinite;
+}
+
+.approval-badge-aprobado {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #6EE7B7;
+}
+
+.approval-badge-programado {
+  background: #EFF6FF;
+  color: #1E40AF;
+  border: 1px solid #93C5FD;
+}
+
+.approval-badge-publicado {
+  background: #FAF5FF;
+  color: #6B21A8;
+  border: 1px solid #D8B4FE;
+}
+
+.approval-badge-rechazado {
+  background: #FFF1F2;
+  color: #9F1239;
+  border: 1px solid #FECDD3;
+}
+
+.approval-badge-error {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FCA5A5;
+}
+
+@keyframes pulse-amber {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Tablero Kanban Horizontal del Pipeline CRM (10 Etapas) */
+.pipeline-kanban-board {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+
+.pipeline-kanban-board::-webkit-scrollbar {
+  height: 6px;
+}
+
+.pipeline-kanban-board::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+
+.pipeline-kanban-column {
+  min-width: 250px;
+  max-width: 260px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px;
+  flex-shrink: 0;
+}
+
+.pipeline-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.pipeline-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 70, 108, 0.08);
+  border-color: #CBD5E1;
+}
+
+/* Colores por Unidad de Negocio */
+.unit-badge-geotecnia { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+.unit-badge-sst { background: #FFFBEB; color: #92400E; border: 1px solid #FDE68A; }
+.unit-badge-ambiental { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
+.unit-badge-digital { background: #FAF5FF; color: #6B21A8; border: 1px solid #E9D5FF; }

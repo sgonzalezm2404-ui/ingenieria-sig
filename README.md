@@ -69,7 +69,25 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
   - Esquema relacional PostgreSQL con RLS en [`supabase-schema.sql`](supabase-schema.sql) (13 tablas relacionales).
   - Proxy seguro para Edge Functions en [`google-ads-edge-proxy.js`](google-ads-edge-proxy.js) protegiendo el Developer Token y Client Secret fuera del frontend.
 
-### 4. Asistente Virtual Inteligente "Cadenero"
+### 4. Macro-Plataforma CONSULTORA AI (`#consultora-ai`)
+- **Departamento Digital Autónomo de Marketing, Prospección y Ventas:**
+  - Panel unificado con 14 submódulos y 11 indicadores comerciales clave en tiempo real.
+  - **4 Unidades Estratégicas de Negocio:** *Ingeniería y Geotecnia, SST y HSEQ, Consultoría Ambiental, Transformación Digital*.
+  - **Motor de 7 Agentes de Inteligencia Artificial (OpenAI GPT-4o):**
+    - *Agente 1:* Investigación de Mercado, Sectores & Competidores.
+    - *Agente 2:* Prospección B2B en fuentes mercantiles públicas (RUES / SECOP II).
+    - *Agente 3:* Estrategia de Marketing & Objetivos por Unidad.
+    - *Agente 4:* Creador de Contenido (Posts LinkedIn, Carruseles, Guiones de Video, Artículos).
+    - *Agente 5:* Administrador de Redes Sociales (LinkedIn, Instagram, Facebook) & Calendario.
+    - *Agente 6:* Publicidad Digital (Google Ads API & Meta Marketing API).
+    - *Agente 7:* Asistente Comercial (Atención inmediata y WhatsApp B2B).
+  - **Centro de Aprobaciones Human-in-the-Loop:** Flujo de control con 7 estados (*Borrador, En revisión, Aprobado, Programado, Publicado, Rechazado, Error*).
+  - **CRM Comercial Propio de 10 Etapas:** Pipeline Kanban visual desde *Empresa identificada* hasta *Cierre comercial*.
+  - **Orquestación n8n:** 12 flujos automatizados especificados en [`n8n-workflows.json`](n8n-workflows.json).
+  - **Base de Datos PostgreSQL (21 Tablas):** Esquema relacional completo con RLS en [`consultora-ai-schema.sql`](consultora-ai-schema.sql).
+  - **Seguridad y Cumplimiento:** Ley 1581 de 2012 (Habeas Data Colombia) y aislamiento de claves en servidor.
+
+### 5. Asistente Virtual Inteligente "Cadenero"
 - Chatbot flotante especializado en captación y calificación de leads técnicos.
 - Generación de expediente técnico CRM consolidado y transferencia directa a WhatsApp (+57 312 789 4040).
 
