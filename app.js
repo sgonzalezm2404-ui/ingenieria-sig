@@ -51,7 +51,7 @@ const SERVICES_CATALOG = [
     ],
     deliverables: 'Licenciamiento corporativo PWA o despliegue personalizado para flotas de perforación y firmas de geotecnia.',
     software: 'PWA Web Standalone, LocalStorage Seguro, Motor SVG Geotécnico, Exportador CSV/JSON',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/sig-campo-ficha-tecnica.png',
     tag: '⭐ PWA Geotécnica',
     hasDemoBtn: true,
     demoLink: '#sig-campo'
@@ -65,7 +65,7 @@ const SERVICES_CATALOG = [
     specs: ['Geoestadística avanzada (Kriging ordinario e indicador)', 'Modelos de bloques con atributos de densidad y recuperación', 'Integración de sondajes DDH/RC con control QA/QC'],
     deliverables: 'Modelo de bloques tridimensional, wireframes geológicos, reporte de variografía y estimación volumétrica.',
     software: 'Leapfrog Geo, Datamine Studio RM, ArcGIS Pro',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Minería Estratégica'
   },
   {
@@ -77,7 +77,7 @@ const SERVICES_CATALOG = [
     specs: ['Cumplimiento de códigos internacionales JORC, NI 43-101 y ECRR', 'Categorización en Medidos, Indicados e Inferidos', 'Auditoría independiente por persona calificada (QP / Competent Person)'],
     deliverables: 'Reporte Técnico Certificado NI 43-101 / JORC, tablas de reservas y curvas tonelaje-ley.',
     software: 'Isatis.neo, Datamine, Python Geostats',
-    image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Norma Internacional'
   },
   {
@@ -89,7 +89,7 @@ const SERVICES_CATALOG = [
     specs: ['Caracterización del macizo rocoso (RMR, Q de Barton, GSI)', 'Modelación por equilibrio límite y elementos finitos (2D/3D)', 'Diseño de sostenimiento con mallas, pernos helicoidales y concreto lanzado'],
     deliverables: 'Informe geotécnico con Factor de Seguridad (FS), mapa cinemático de roturas y plano de bermas.',
     software: 'Rocscience Slide2/3, RS2, RocData, Dips',
-    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/geotecnia-perforacion-taludes.jpg',
     tag: 'Geotecnia Crítica'
   },
   {
@@ -101,7 +101,7 @@ const SERVICES_CATALOG = [
     specs: ['Inserción ciega de estándares (CRM), blancos gruesos/finos y duplicados', 'Logueo geológico, geotécnico y estructural estandarizado', 'Cadena de custodia blindada para ensayos al fuego y digestión ICP'],
     deliverables: 'Informes periódicos de control QA/QC con gráficos de control y cartas de exactitud/precisión.',
     software: 'CoreShack Digital, ioGAS, Base de datos SQL',
-    image: 'https://images.unsplash.com/photo-1508873696983-2df5703bc20d?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/geotecnia-perforacion-taludes.jpg',
     tag: 'Control de Calidad'
   },
   {
@@ -113,7 +113,7 @@ const SERVICES_CATALOG = [
     specs: ['Diseño minero quinquenal con etapas de desarrollo, preparación y beneficio', 'Cálculo de flujo de caja, canon superficiario y regalías proyectadas', 'Alineación con Planes de Ordenamiento Territorial (POT/PBOT/EOT)'],
     deliverables: 'Documento técnico oficial PTO con anexos cartográficos MAGNA-SIRGAS listo para radicación ante la ANM.',
     software: 'AutoCAD Civil 3D, ArcGIS Pro, QGIS',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186f5f7?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Radicación ANM'
   },
 
@@ -127,7 +127,7 @@ const SERVICES_CATALOG = [
     specs: ['Línea base biótica, abiótica y socioeconómica rigurosa', 'Evaluación de impactos mediante metodologías cuantitativas y Leopold', 'Zonificación de manejo ambiental y evaluación de alternativas (DAA)'],
     deliverables: 'Expediente completo EIA en formato oficial ANLA, con geodatabase cartográfica estandarizada.',
     software: 'ArcGIS Modelo ANLA, GeoDatabase GDB, Metodología General de Presentación de Estudios',
-    image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Licenciamiento ANLA'
   },
   {
@@ -139,7 +139,7 @@ const SERVICES_CATALOG = [
     specs: ['Formulación de fichas PMA por componentes (agua, aire, suelo, biótico)', 'Elaboración y radicación de Informes de Cumplimiento Ambiental (ICA)', 'Gestión integral de residuos peligrosos (RESPEL) y vertimientos'],
     deliverables: 'Informes semestrales/anuales ICA con constancia de radicación, matrices de seguimiento de obligaciones.',
     software: 'Plataforma Vital ANLA, SIG Ambiental',
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/geotecnia-perforacion-taludes.jpg',
     tag: 'Monitoreo Legal'
   },
   {
@@ -151,7 +151,7 @@ const SERVICES_CATALOG = [
     specs: ['Diagnóstico inicial y matriz de aspectos e impactos ambientales significativos', 'Auditorías internas de primera y segunda parte con auditores líderes certificados', 'Planes de descarbonización, cálculo de huella de carbono y economía circular'],
     deliverables: 'Manual del SGA, procedimientos documentados, informe de auditoría interna y preparación para ente certificador.',
     software: 'Norma ISO 14001, GHG Protocol, Excel Analytics',
-    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/flotas-transporte-pesv-inspeccion.jpg',
     tag: 'Certificación ISO'
   },
   {
@@ -163,7 +163,7 @@ const SERVICES_CATALOG = [
     specs: ['Muestreo de flora (veda nacional/regional) y fauna silvestre (redes de niebla, cámaras trampa)', 'Muestreo de aguas superficiales y subterráneas bajo cadena de custodia IDEAM', 'Cálculo de caudal ambiental, índices de calidad del agua (ICA) e índices bióticos'],
     deliverables: 'Informe biológico con fototrampeo, certificados analíticos de laboratorio acreditado y curvas hidrológicas.',
     software: 'Past4, QGIS, Base de datos SiB Colombia',
-    image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Laboratorio & Biodiversidad'
   },
   {
@@ -175,7 +175,7 @@ const SERVICES_CATALOG = [
     specs: ['Captura con cámaras de precisión y metadatos EXIF geodésicos', 'Análisis multitemporal con imágenes satelitales Sentinel-2 y PlanetScope', 'Cálculo de índices de vegetación (NDVI, SAVI) para planes de compensación forestal'],
     deliverables: 'Álbum fotográfico georreferenciado en KMZ/PDF interactivo y mapas de cambios de cobertura vegetal.',
     software: 'ArcGIS Pro, Google Earth Engine, PIX4Dfields',
-    image: 'https://images.unsplash.com/photo-1581291518655-9523c932deda?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/geotecnia-perforacion-taludes.jpg',
     tag: 'Cartografía Satelital'
   },
 
@@ -189,7 +189,7 @@ const SERVICES_CATALOG = [
     specs: ['Evaluación inicial del estándar mínimo con plan de mejoramiento inmediato', 'Política SST, objetivos medibles, asignación de roles y presupuesto anual', 'Conformación y capacitación de COPASST, Comité de Convivencia y Brigadas de Emergencia'],
     deliverables: 'Carpeta digital y física del SG-SST, matriz legal actualizada y cronograma anual de capacitaciones.',
     software: 'Normativa Decreto 1072/2015, Resolución 0312/2019, Google Workspace SST',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/flotas-transporte-pesv-inspeccion.jpg',
     tag: 'Cumplimiento Legal'
   },
   {
@@ -201,7 +201,7 @@ const SERVICES_CATALOG = [
     specs: ['Identificación de peligros físicos, químicos, biológicos, ergonómicos y psicosociales', 'Evaluación de riesgos mecánicos, locativos y de tareas críticas en socavón o alturas', 'Establecimiento de controles en la fuente, medio y trabajador con jerarquía ISO 45001'],
     deliverables: 'Matriz IPVR en formato interactivo automatizado con semaforización de riesgos prioritarios.',
     software: 'Metodología GTC 45 V.2012, ISO 45001:2018',
-    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/tunel-subterraneo-geotecnia.jpg',
     tag: 'Control de Riesgos'
   },
   {
@@ -213,7 +213,7 @@ const SERVICES_CATALOG = [
     specs: ['Diagnóstico de flota vehicular y patrones de desplazamiento en rutas de montaña', 'Capacitación teórico-práctica en manejo defensivo y pruebas psicotécnicas', 'Protocolos de mantenimiento preventivo/correctivo y planes de viaje seguros'],
     deliverables: 'Documento técnico metodológico del PESV articulado al SG-SST y formato de auditoría periódica.',
     software: 'Resolución 40595 de 2022 MinTransporte, Software Telemetría',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/flotas-transporte-pesv-inspeccion.jpg',
     tag: 'Seguridad Vial'
   },
   {
@@ -225,7 +225,7 @@ const SERVICES_CATALOG = [
     specs: ['Dispositivos GPS 4G con cobertura satelital Iridium para zonas sin señal celular', 'Sensores de telemetría CAN-bus (frenadas bruscas, aceleraciones, consumo de combustible)', 'Detección inteligente de microsueños y fatiga del conductor mediante cámaras IA ADAS/DMS'],
     deliverables: 'Acceso a plataforma web/móvil de monitoreo en tiempo real, reportes de score de conducción e informes de geocercas.',
     software: 'SIG-Fleet Telematics Engine, Traccar Enterprise, APIs IoT',
-    image: 'https://images.unsplash.com/photo-1508873696983-2df5703bc20d?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/flotas-transporte-pesv-inspeccion.jpg',
     tag: 'Telemetría Satelital'
   },
   {
@@ -237,7 +237,7 @@ const SERVICES_CATALOG = [
     specs: ['Trabajo seguro en alturas (Resolución 4272 de 2021)', 'Ingreso y rescate en espacios confinados y socavones mineros', 'Manejo defensivo de camionetas 4x4 y maquinaria pesada en terreno escarpado'],
     deliverables: 'Certificaciones nominales de aprobación, registro ante Ministerio del Trabajo y memoria fotográfica.',
     software: 'Simuladores de entrenamiento, LMS Corporativo SIG²',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186f5f7?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/tunel-subterraneo-geotecnia.jpg',
     tag: 'Certificación Personal'
   },
 
@@ -251,7 +251,7 @@ const SERVICES_CATALOG = [
     specs: ['Conexión directa a bases de datos SQL, ERP, hojas de cálculo y sensores IoT', 'Cuadros de mando ejecutivos con métricas de costo por tonelada, avance de frente y cumplimiento de planes', 'Visualizaciones espaciales con mapas GIS interactivos integrados en el dashboard'],
     deliverables: 'Dashboards implementados en Power BI Service / Metabase con roles y permisos de acceso según jerarquía.',
     software: 'Microsoft Power BI, Metabase, PostgreSQL, Apache Superset',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/sig-campo-ficha-tecnica.png',
     tag: 'Power BI & Big Data'
   },
   {
@@ -263,7 +263,7 @@ const SERVICES_CATALOG = [
     specs: ['Funcionamiento 100% desconectado con sincronización bidireccional automática al recuperar señal', 'Formularios georreferenciados con validaciones matemáticas, fotos y firmas digitales', 'Diseño resistente y optimizado para pantallas de tablets rugerizadas en intemperie'],
     deliverables: 'Aplicación compilada para Android/iOS, panel de control administrativo web y API REST documentada.',
     software: 'Flutter, React Native, SQLite, Node.js Backend',
-    image: 'https://images.unsplash.com/photo-1581291518655-9523c932deda?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/sig-campo-ficha-tecnica.png',
     tag: 'Apps Móviles Offline'
   },
   {
@@ -275,7 +275,7 @@ const SERVICES_CATALOG = [
     specs: ['Muros de avisos técnicos por áreas (Geología, Mantenimiento, Seguridad, Administración)', 'Canales de chat seguros punto a punto y grupos de emergencia con geolocalización', 'Repositorio centralizado de boletines de seguridad, manuales y turnos de cuadrilla'],
     deliverables: 'Plataforma desplegada en nube privada o servidor local con autenticación de doble factor.',
     software: 'Mattermost Enterprise / Nextcloud Hub / Docker Container',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Comunicación Interna'
   },
   {
@@ -287,7 +287,7 @@ const SERVICES_CATALOG = [
     specs: ['Registro inmutable con estampado de tiempo, coordenadas GPS y firma electrónica', 'Cálculo automatizado de volumen extraído comparando nubes de puntos LiDAR periódicas', 'Alertas tempranas de desviaciones presupuestales o retrasos en cronograma físico'],
     deliverables: 'Módulo web de bitácora inteligente, reportes automáticos en PDF con envío programado por correo.',
     software: 'Python Cloud Workers, PostGIS, CloudCompare API',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/geotecnia-perforacion-taludes.jpg',
     tag: 'Automatización IoT'
   },
   {
@@ -299,7 +299,7 @@ const SERVICES_CATALOG = [
     specs: ['Búsqueda semántica en miles de páginas del Código de Minas, Decreto 1076, Resoluciones ANLA y normas internas', 'Respuestas fundamentadas con cita exacta de artículos y jurisprudencia vigente', 'Generación de borradores de oficios y respuestas a requerimientos oficiales en segundos'],
     deliverables: 'Asistente IA integrado en Teams, WhatsApp o portal interno corporativo con control de privacidad.',
     software: 'RAG Architecture, LangChain, OpenAI / Claude API, Vector DB',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/tunel-subterraneo-geotecnia.jpg',
     tag: 'IA Especializada'
   },
 
@@ -313,7 +313,7 @@ const SERVICES_CATALOG = [
     specs: ['Liquidación precisa de regalías según tipo de mineral y boca de mina (UPME/ANM)', 'Manejo contable de activos de exploración, evaluación y desarrollo (NIIF 6)', 'Planeación tributaria, auditoría de costos de operación y régimen de zonas francas'],
     deliverables: 'Estados financieros auditados, declaraciones tributarias sectoriales y dictamen de revisoría fiscal.',
     software: 'SAP S/4HANA, Siigo Nube, Excel Financiero Avanzado',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/mineria-cielo-abierto-taludes.jpg',
     tag: 'Fiscal & NIIF'
   },
   {
@@ -325,7 +325,7 @@ const SERVICES_CATALOG = [
     specs: ['Redacción de Procedimientos Operativos Estandarizados (POE / SOP) de alta ingeniería', 'Codificación documental técnica para archivo físico y digital según norma ISO 9001', 'Diseño de formatos de inspección, actas de entrega de frente y fichas técnicas de equipos'],
     deliverables: 'Manual de Procesos y Procedimientos Corporativo en formato digital interactivo y editable.',
     software: 'Norma ISO 9001:2015, Adobe InDesign, Lucidchart',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/sig-campo-ficha-tecnica.png',
     tag: 'Estandarización'
   },
   {
@@ -337,7 +337,7 @@ const SERVICES_CATALOG = [
     specs: ['Gestión de compras técnicas de repuestos para maquinaria pesada y equipos de perforación', 'Cadena de suministro de insumos de seguridad, reactivos de laboratorio y combustibles', 'Coordinación de transportes de carga extradimensionada y convoyes seguros a zonas de proyecto'],
     deliverables: 'Plan logístico integral de abastecimiento, contratos marco con proveedores e informes de stock crítico.',
     software: 'Sistemas WMS, TMS de transporte, Power BI Logistics',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/flotas-transporte-pesv-inspeccion.jpg',
     tag: 'Logística de Faena'
   },
   {
@@ -349,7 +349,7 @@ const SERVICES_CATALOG = [
     specs: ['Supervisión de normas higiénico-sanitarias y planes de saneamiento básico', 'Control de alojamientos, lavandería y gestión de residuos en campamento', 'Atención médica de primer nivel y planes de evacuación médica de emergencia (MEDEVAC)'],
     deliverables: 'Protocolo de administración de campamento y reportes mensuales de indicadores de bienestar operacional.',
     software: 'Checklists digitales de sanidad, Software de ocupación hotelera industrial',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/geotecnia-perforacion-taludes.jpg',
     tag: 'Campamentos Mineros'
   }
 ];
@@ -463,9 +463,22 @@ const CLIENT_PORTAL_FILES = [
   { id: 'EXP-05', name: 'Matriz de Identificación de Peligros GTC 45 V.2026.xlsx', category: 'SST & PESV', date: '29 Sep 2026', size: '8.6 MB', status: 'Auditado' }
 ];
 
-// Inicialización de la Aplicación
-document.addEventListener('DOMContentLoaded', () => {
+// Inicialización Segura e Inmediata de la Aplicación
+let appInitialized = false;
+function safeInitApp() {
+  if (appInitialized) return;
+  appInitialized = true;
   initApp();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', safeInitApp);
+} else {
+  safeInitApp();
+}
+
+window.addEventListener('load', () => {
+  safeInitApp();
 });
 
 function initApp() {
@@ -535,7 +548,7 @@ function renderServicesCatalog(categoryFilter = 'all', searchQuery = '') {
     <div class="group bg-white border border-slate-200 hover:border-[#168F8A] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col justify-between">
       <div>
         <div class="relative h-48 overflow-hidden bg-slate-100">
-          <img src="${svc.image}" alt="${svc.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          <img src="${svc.image}" alt="${svc.title}" onerror="this.onerror=null;this.src='assets/geotecnia-perforacion-taludes.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
           
           <div class="absolute top-3 left-3">
@@ -1110,9 +1123,6 @@ function openProductDetailModal(productId) {
       </div>
     </div>
   `;
-
-  modal.classList.remove('hidden');
-}
 
   modal.classList.remove('hidden');
 }
