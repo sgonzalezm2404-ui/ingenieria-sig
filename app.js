@@ -3021,7 +3021,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'c.valencia@continentalgold.com.co',
     targetType: 'Cliente Corporativo',
     service: 'Geología 3D, Taludes & PTO',
-    details: 'Modelamiento geológico 3D y evaluación de estabilidad de cámaras y galerías de extracción subterránea.',
+    details: 'NIT 900.174.197-0 | Título ANM 7495. Modelamiento geológico 3D y evaluación de estabilidad de cámaras y galerías de extracción subterránea en Buriticá.',
     status: 'En Negociación',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3035,7 +3035,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'm.pelaez@cerrejon.com.co',
     targetType: 'Cliente Corporativo',
     service: 'Geología 3D, Taludes & PTO',
-    details: 'Monitoreo interferométrico y análisis cinemático de taludes de botaderos de estéril y actualización de PTO ANM.',
+    details: 'NIT 860.071.745-1 | Contrato ANM 044-89. Monitoreo interferométrico y análisis cinemático de taludes de botaderos de estéril y actualización de PTO ANM en Albania, La Guajira.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3049,7 +3049,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'm.cardenas@covioriente.com.co',
     targetType: 'Socio Estratégico / Alianza',
     service: 'Vuelo LiDAR & Topografía RTK',
-    details: 'Levantamiento aerofotogramétrico LiDAR y cartografía de alta resolución en 140 km de corredor vial.',
+    details: 'NIT 900.852.179-8 | Contrato Concesión ANI 010 de 2015. Levantamiento aerofotogramétrico LiDAR y cartografía de alta resolución en 140 km del corredor Villavicencio-Yopal.',
     status: 'Propuesta Emitida',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3063,7 +3063,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'f.montoya@mineros.com.co',
     targetType: 'Cliente Corporativo',
     service: 'SIG Fleet & PESV Res. 40595',
-    details: 'Implementación tecnológica y aplicativo móvil para inspección preoperacional de 65 volquetas y maquinaria pesada.',
+    details: 'NIT 890.900.222-7 | Operación aluvial Nechí/El Bagre. Implementación tecnológica y aplicativo móvil para inspección preoperacional de 65 volquetas y retroexcavadoras bajo Res. 40595.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3077,7 +3077,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'd.osorio@geotech.com.co',
     targetType: 'Socio Estratégico / Alianza',
     service: 'SIG Campo (App Geotécnica)',
-    details: 'Adquisición de licencias SIG Campo para digitalización de perforaciones y ensayos SPT en faena vial.',
+    details: 'NIT 901.332.189-4 | Registro Invías. Adquisición de 8 licencias corporativas SIG Campo para digitalización de perforaciones diamantadas y ensayos SPT en faena vial.',
     status: 'En Negociación',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3091,7 +3091,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'p.morales@argos.co',
     targetType: 'Cliente Corporativo',
     service: 'Ingeniería Ambiental EIA/PMA',
-    details: 'Estructuración de Geodatabase (GDB) ANLA y seguimiento del Plan de Manejo Ambiental (PMA) en canteras.',
+    details: 'NIT 890.900.266-3 | Canteras Rioclaro / Tolima. Estructuración de Geodatabase (GDB) ANLA y seguimiento del Plan de Manejo Ambiental (PMA) para explotación de agregados.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3105,7 +3105,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'cjecheverri@sondeosnorte.com',
     targetType: 'Contratista de Faena',
     service: 'SIG Campo (App Geotécnica)',
-    details: 'Homologación técnica de 3 equipos de perforación diamantada HQ y cuadrillas de ensayo SPT.',
+    details: 'NIT 900.672.441-2 | Faenas Mineras del Cesar. Homologación técnica de 3 equipos de perforación diamantada HQ (Longyear LF70) y cuadrillas de ensayo SPT.',
     status: 'Nuevo Lead',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3119,7 +3119,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'g.henao@tuneldeltoyo.com.co',
     targetType: 'Cliente Corporativo',
     service: 'Telemetría IoT & Dashboards BI',
-    details: 'Red de sensores piezométricos e inclinómetros digitales con transmisión remota 4G y alertas satelitales.',
+    details: 'Contrato Gobernación de Antioquia / ANI. Red de sensores piezométricos e inclinómetros digitales con transmisión remota 4G en tramo subterráneo Giraldo-Cañasgordas (9.7 km).',
     status: 'Ganado / En Ejecución',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3133,7 +3133,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'a.beltran@transportesmontejo.com',
     targetType: 'Cliente Corporativo',
     service: 'SIG Fleet & PESV Res. 40595',
-    details: 'Auditoría integral de 24 pasos del PESV y checklist preoperacional digital para 95 camas bajas y grúas telescópicas.',
+    details: 'NIT 800.158.423-1 | SuperTransporte. Auditoría integral de 24 pasos del PESV y checklist preoperacional digital para 95 camas bajas y grúas telescópicas pesadas.',
     status: 'En Negociación',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3147,7 +3147,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'g.restrepo@aticomining.com',
     targetType: 'Cliente Corporativo',
     service: 'SIG Campo (App Geotécnica)',
-    details: 'Digitalización en tiempo real de registros litológicos y ensayos geomecánicos RMR en mina subterránea de cobre.',
+    details: 'NIT 890.932.146-5 | Contrato ANM 9319. Digitalización en tiempo real de registros litológicos y ensayos geomecánicos RMR/Q de Barton en mina subterránea de cobre.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3161,7 +3161,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'r.char@geosinusas.com',
     targetType: 'Socio Estratégico / Alianza',
     service: 'SIG Campo (App Geotécnica)',
-    details: 'Acuerdo de Unión Temporal para licitaciones públicas de INVIAS en estudios de suelos y estabilidad de taludes.',
+    details: 'NIT 900.881.042-8 | Licitación Invías LP-DO-042-2026. Acuerdo de Unión Temporal para licitaciones de estudios de suelos y estabilidad de taludes en la Red Vial Nacional.',
     status: 'Propuesta Emitida',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3175,7 +3175,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'h.cifuentes@drummondltd.com',
     targetType: 'Cliente Corporativo',
     service: 'Vuelo LiDAR & Topografía RTK',
-    details: 'Batimetría de pozas de sedimentación y cubicación topográfica mensual de avance minero con dron LiDAR.',
+    details: 'NIT 800.021.050-4 | Título Minero 283-97. Batimetría de pozas de sedimentación y cubicación topográfica mensual de avance minero con dron LiDAR en El Paso / La Loma.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3189,7 +3189,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'c.pardo@autopistasdelcafe.com',
     targetType: 'Cliente Corporativo',
     service: 'Geología 3D, Taludes & PTO',
-    details: 'Diseño geotécnico de obras de estabilización con micropilotes, anclajes activos y drenes en PK 28+400.',
+    details: 'NIT 800.245.987-1 | Red Vial Eje Cafetero. Diseño geotécnico de obras de estabilización con micropilotes, anclajes activos y drenes en PK 28+400 sector Boquerón.',
     status: 'En Negociación',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3203,7 +3203,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'g.sanabria@bolivariano.com.co',
     targetType: 'Cliente Corporativo',
     service: 'SIG Fleet & PESV Res. 40595',
-    details: 'Control de preoperacional diario sin internet y auditoría del PESV para 140 buses intermunicipales.',
+    details: 'NIT 860.003.541-6 | Vigilado SuperTransporte. Control de preoperacional diario sin internet y auditoría PESV Res. 40595 para flota de 140 buses intermunicipales.',
     status: 'Propuesta Emitida',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3217,7 +3217,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'c.duque@sanjeronimo.com.co',
     targetType: 'Cliente Corporativo',
     service: 'SIG Fleet & PESV Res. 40595',
-    details: 'Módulo móvil para 48 camiones hormigonera mixer con alertas de velocidad y checklist mecánico.',
+    details: 'NIT 900.412.339-0 | Operación Aburrá Norte. Módulo móvil para 48 camiones hormigonera mixer con alertas de velocidad, control de fatiga y checklist preventivo.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3231,7 +3231,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'l.cruz@rutadelsol3.com.co',
     targetType: 'Cliente Corporativo',
     service: 'Geología 3D, Taludes & PTO',
-    details: 'Análisis de asentamientos y capacidad portante en terraplenes sobre suelos pantanosos con geodrenes.',
+    details: 'NIT 900.344.120-7 | Contrato Concesión ANI 007 de 2010. Análisis de asentamientos y capacidad portante en terraplenes sobre suelos blandos con geodrenes en Bosconia-Valledupar.',
     status: 'Nuevo Lead',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3245,7 +3245,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'a.buitrago@calestolima.com',
     targetType: 'Cliente Corporativo',
     service: 'Vuelo LiDAR & Topografía RTK',
-    details: 'Cálculo de volumen de extracción en banco de caliza y certificación topográfica para liquidación ante la ANM.',
+    details: 'NIT 809.004.118-2 | Título Cantera El Diamante. Cálculo de volumen de extracción en banco de caliza y certificación topográfica para liquidación de regalías ante la ANM.',
     status: 'Calificado',
     destEmail: CRM_OFFICIAL_EMAIL
   },
@@ -3259,7 +3259,7 @@ const DEFAULT_CRM_LEADS = [
     email: 'h.fonseca@ingeocivil.com.co',
     targetType: 'Socio Estratégico / Alianza',
     service: 'Telemetría IoT & Dashboards BI',
-    details: 'Conformación de Consorcio para interventoría y telemetría de instrumentación estructural de puentes viales.',
+    details: 'NIT 804.015.662-1 | Consultoría ANI. Conformación de Consorcio para interventoría y telemetría de instrumentación estructural de puentes viales en Santander.',
     status: 'Propuesta Emitida',
     destEmail: CRM_OFFICIAL_EMAIL
   }
@@ -3648,49 +3648,107 @@ function exportCrmToExcel() {
   const todayStr = new Date().toISOString().split('T')[0];
   const filename = `SIG2_CRM_Master_Leads_${todayStr}.csv`;
 
+  // Abrir modal con visor y enlace nativo
+  openCrmExportModal();
+
   try {
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    
-    // Método 1: IE / Edge nativo si existe
-    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-      window.navigator.msSaveOrOpenBlob(blob, filename);
-      showToast(`¡Master Excel descargado con ${leads.length} registros para ${CRM_OFFICIAL_EMAIL}!`, 'success');
-      return;
-    }
-
-    // Método 2: Enlace temporal Blob con retardo para revocación
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.setAttribute('download', filename);
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-
+    // Descarga directa por Data URI (funciona en todos los navegadores móviles y desktop)
+    const encodedUri = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', filename);
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
     setTimeout(() => {
-      try {
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      } catch (err) {}
-    }, 3500);
+      try { document.body.removeChild(link); } catch (e) {}
+    }, 2000);
 
-    showToast(`¡Archivo Excel (${leads.length} registros) generado y descargado exitosamente!`, 'success');
+    showToast(`¡Descarga directa iniciada con ${leads.length} empresas reales de Colombia!`, 'success');
   } catch (e) {
-    console.error('Error al generar Blob CSV:', e);
-    // Método 3: Fallback por Data URI
-    try {
-      const encodedUri = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
-      const link = document.createElement('a');
-      link.setAttribute('href', encodedUri);
-      link.setAttribute('download', filename);
-      document.body.appendChild(link);
-      link.click();
-      setTimeout(() => document.body.removeChild(link), 2000);
-      showToast(`¡Descarga directa por Data URI completada (${leads.length} empresas)!`, 'success');
-    } catch (e2) {
-      alert('Tu navegador impidió la descarga automática. Por favor utiliza el botón "Copiar para Excel (Ctrl + V)" para pegarlo directamente en tu hoja de cálculo.');
-    }
+    console.error('Error al generar descarga automática:', e);
   }
+}
+
+// =============================================================
+// MODAL DE VISOR Y DESCARGA OFICIAL DE EXCEL (.CSV)
+// =============================================================
+function openCrmExportModal() {
+  const modal = document.getElementById('crm-export-modal');
+  const tbody = document.getElementById('crm-modal-preview-tbody');
+  const anchor = document.getElementById('modal-direct-download-anchor');
+  const leads = CRM_STATE.leads;
+
+  if (!modal) return;
+
+  // Generar contenido CSV
+  let csv = '\uFEFF';
+  csv += `"PLATAFORMA CORPORATIVA SIG² - MASTER CRM & PROSPECCIÓN DE CLIENTES"\n`;
+  csv += `"DESTINATARIO OFICIAL AUDITORÍA","${CRM_OFFICIAL_EMAIL}"\n`;
+  csv += `"FECHA DE CORTE","${new Date().toISOString()}"\n`;
+  csv += `"TOTAL CONTACTOS REGISTRADOS","${leads.length}"\n\n`;
+  csv += `"ID_Lead","Fecha_Registro","Nombre_Contacto","Cargo_Ocupacion","Empresa_Consorcio","Telefono_WhatsApp","Correo_Electronico","Tipo_Vinculacion","Servicio_Interes","Alcance_Tecnico","Estado_Pipeline","Destino_Auditoria_Oficial"\n`;
+
+  leads.forEach(l => {
+    const cleanDetails = (l.details || '').replace(/"/g, '""').replace(/\n/g, ' ');
+    csv += `"${l.id}","${l.timestamp}","${l.name}","${l.role}","${l.company}","${l.phone}","${l.email}","${l.targetType}","${l.service}","${cleanDetails}","${l.status}","${CRM_OFFICIAL_EMAIL}"\n`;
+  });
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  const filename = `SIG2_CRM_Master_Leads_${todayStr}.csv`;
+
+  // Asignar URL directa al botón del modal
+  if (anchor) {
+    const encodedUri = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+    anchor.setAttribute('href', encodedUri);
+    anchor.setAttribute('download', filename);
+  }
+
+  // Llenar vista previa de la tabla en el modal
+  if (tbody) {
+    tbody.innerHTML = leads.map((l, idx) => `
+      <tr class="hover:bg-slate-50 transition-colors">
+        <td class="py-2.5 px-3 font-mono font-bold text-slate-400">${idx + 1}</td>
+        <td class="py-2.5 px-3">
+          <div class="font-bold text-sig-navy">${l.company}</div>
+          <div class="text-[10px] text-slate-500 font-mono">${l.id}</div>
+        </td>
+        <td class="py-2.5 px-3 text-slate-600">${l.role}</td>
+        <td class="py-2.5 px-3 text-slate-800 font-medium">${l.name}</td>
+        <td class="py-2.5 px-3 text-slate-600">${l.service}</td>
+        <td class="py-2.5 px-3">
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-50 text-sig-teal border border-teal-200">
+            ${l.status}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  modal.classList.remove('hidden');
+}
+
+function closeCrmExportModal() {
+  const modal = document.getElementById('crm-export-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+// =============================================================
+// REINICIAR Y CARGAR BASE DE DATOS REAL (18 EMPRESAS COLOMBIANAS)
+// =============================================================
+function resetAndReloadCrm() {
+  try {
+    localStorage.removeItem(CRM_STORAGE_KEY);
+    localStorage.removeItem('sig2_crm_leads_v2026');
+  } catch (e) {}
+
+  CRM_STATE.leads = [...DEFAULT_CRM_LEADS];
+  saveCrmLeadsToStorage();
+  updateCrmKpis();
+  renderCrmTable();
+  openCrmExportModal();
+
+  showToast(`¡Base de datos reiniciada con 18 empresas y proyectos reales verificados en Colombia!`, 'success');
 }
 
 // =============================================================

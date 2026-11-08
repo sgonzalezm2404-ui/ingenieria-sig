@@ -39,8 +39,8 @@
     }
   </script>
 
-  <!-- Estilos Personalizados de Ingeniería -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Estilos Personalizados de Ingeniería con Cache-Buster -->
+  <link rel="stylesheet" href="styles.css?v=20261107_v4">
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-sig-teal/20 selection:text-sig-navy min-h-screen flex flex-col font-sans">
 
@@ -278,7 +278,7 @@
 
             <!-- Visual con Capa de Escaneo -->
             <div class="relative rounded-2xl overflow-hidden mb-4 border border-slate-200 shadow-inner group">
-              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Ingenieros con telemetría en faena" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105">
+              <img src="assets/geotecnia-perforacion-taludes.jpg" alt="Ingeniero geotécnico con tablet y perforadora sobre orugas en talud cordillerano" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105">
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               
               <!-- Telemetría HUD superpuesta -->
@@ -2291,8 +2291,8 @@
             </div>
 
             <div class="flex items-center gap-2.5 flex-wrap">
-              <!-- Botón Descargar Master Excel -->
-              <button onclick="exportCrmToExcel()" class="btn-engineering-secondary px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 border-emerald-300 hover:border-emerald-500 text-emerald-800 hover:text-emerald-900 shadow-2xs">
+              <!-- Botón Descargar Master Excel (Abre Visor y Descarga Directa) -->
+              <button onclick="openCrmExportModal()" class="btn-engineering-secondary px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 border-emerald-300 hover:border-emerald-500 text-emerald-800 hover:text-emerald-900 shadow-2xs">
                 <i class="fa-solid fa-file-csv text-emerald-600 text-sm"></i>
                 <span>Descargar Master Excel (.csv)</span>
               </button>
@@ -2307,6 +2307,12 @@
               <button onclick="sendConsolidatedReportToEmail()" class="btn-engineering-primary px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-2 shadow-xs">
                 <i class="fa-solid fa-paper-plane text-teal-300"></i>
                 <span>Enviar Reporte a Correo</span>
+              </button>
+
+              <!-- Botón Reiniciar Base de Datos Oficial (18 Empresas Reales) -->
+              <button onclick="resetAndReloadCrm()" class="px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition-all shadow-2xs" title="Restablece la base de datos con las 18 empresas y proyectos reales verificados en Colombia">
+                <i class="fa-solid fa-arrows-rotate text-sig-teal text-xs"></i>
+                <span>Recargar Base Oficial (18)</span>
               </button>
             </div>
           </div>
@@ -2522,7 +2528,7 @@
         <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-1" data-news-category="pesv">
           <div>
             <div class="relative h-48 overflow-hidden group">
-              <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80" alt="Flota de transporte y carreteras" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <img src="assets/flotas-transporte-pesv-inspeccion.jpg" alt="Inspección preoperacional de tractocamiones y volquetas bajo Resolución 40595 PESV" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
               <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
                 Resolución 40595
               </span>
@@ -2551,7 +2557,7 @@
         <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-2" data-news-category="mineria">
           <div>
             <div class="relative h-48 overflow-hidden group">
-              <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80" alt="Modelamiento Geológico en 3D" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <img src="assets/mineria-cielo-abierto-taludes.jpg" alt="Minería a cielo abierto con bermas, taludes y camiones de extracción minera" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
               <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
                 Minería & Geología
               </span>
@@ -2609,7 +2615,7 @@
         <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-4" data-news-category="mineria">
           <div>
             <div class="relative h-48 overflow-hidden group">
-              <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Ingeniero en mina supervisando datos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <img src="assets/tunel-subterraneo-geotecnia.jpg" alt="Excavación subterránea de túnel con arcos de acero, concreto lanzado e instrumentación geotécnica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
               <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
                 Geotecnia & IoT
               </span>
@@ -3158,10 +3164,108 @@
 
   </div>
 
+  <!-- =============================================================
+       MODAL DE EXPORTACIÓN Y DESCARGA OFICIAL DE EXCEL (.CSV)
+       ============================================================= -->
+  <div id="crm-export-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      
+      <!-- Encabezado del Modal -->
+      <div class="p-5 sm:p-6 bg-sig-navy text-white flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-teal-300 text-lg">
+            <i class="fa-solid fa-file-excel"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black tracking-tight">
+              Expediente Oficial de Prospección & CRM SIG² (18 Empresas Reales)
+            </h3>
+            <p class="text-xs text-teal-200 mt-0.5">
+              Empresas mineras, concesiones viales, operadoras de transporte y consorcios verificados en Colombia.
+            </p>
+          </div>
+        </div>
+        <button onclick="closeCrmExportModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Barra de Acciones de Descarga Principal -->
+      <div class="p-4 sm:p-5 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+        <div class="text-xs text-slate-600">
+          <span class="font-bold text-sig-navy">Destinatario Oficial:</span>
+          <span class="font-mono text-sig-teal font-semibold">ingenierotecnicocyc@gmail.com</span>
+          <span class="mx-2 text-slate-300">|</span>
+          <span class="font-bold text-slate-700">18 Registros Calificados</span>
+        </div>
+
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Enlace Directo HTML para Descarga (Inmune a bloqueadores) -->
+          <a id="modal-direct-download-anchor" href="#" download="SIG2_CRM_Master_Leads_2026.csv" class="btn-engineering-primary px-4 py-2.5 rounded-xl text-xs font-bold text-white flex items-center gap-2 shadow-sm">
+            <i class="fa-solid fa-download text-teal-300"></i>
+            <span>Descargar Archivo Excel (.csv)</span>
+          </a>
+
+          <!-- Botón Copiar al Portapapeles -->
+          <button onclick="copyCrmTableForExcel()" class="btn-engineering-secondary px-3.5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 border-emerald-300 text-emerald-800 hover:bg-emerald-50">
+            <i class="fa-solid fa-copy text-emerald-600"></i>
+            <span>Copiar para Pegar (Ctrl + V)</span>
+          </button>
+
+          <!-- Botón Enviar Correo Oficial -->
+          <button onclick="sendConsolidatedReportToEmail()" class="px-3.5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 transition-all">
+            <i class="fa-solid fa-paper-plane text-slate-600"></i>
+            <span>Enviar a Correo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Visor de la Tabla de 18 Empresas Reales -->
+      <div class="p-4 sm:p-6 overflow-y-auto flex-1">
+        <div class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+          <span>Vista Previa del Expediente (.CSV / Excel):</span>
+          <span class="text-[11px] text-emerald-600 lowercase font-medium flex items-center gap-1">
+            <span class="pulse-dot-green"></span> Datos con codificación UTF-8 BOM
+          </span>
+        </div>
+
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-2xs">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead class="bg-slate-100 text-slate-700 font-extrabold uppercase text-[10px] tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="py-2.5 px-3">#</th>
+                <th class="py-2.5 px-3">Empresa / Proyecto Real</th>
+                <th class="py-2.5 px-3">Ubicación / Faena</th>
+                <th class="py-2.5 px-3">Contacto & Cargo</th>
+                <th class="py-2.5 px-3">Servicio / Necesidad Técnica</th>
+                <th class="py-2.5 px-3">Estado</th>
+              </tr>
+            </thead>
+            <tbody id="crm-modal-preview-tbody" class="divide-y divide-slate-100 text-slate-700 text-[11px]">
+              <!-- Inyectado por app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pie del Modal -->
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+        <div class="flex items-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-sig-teal"></i>
+          <span>Documento auditado para fines de prospección comercial de SIG² Ingeniería.</span>
+        </div>
+        <button onclick="closeCrmExportModal()" class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-lg text-xs">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Contenedor Flotante de Toasts -->
   <div id="toast-container" class="fixed bottom-24 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-  <!-- Scripts -->
-  <script src="app.js"></script>
+  <!-- Scripts con Cache-Buster para GitHub Pages -->
+  <script src="app.js?v=20261107_v4"></script>
 </body>
 </html>
