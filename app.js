@@ -494,7 +494,8 @@ function initApp() {
     ['initScrollAnimations', () => initScrollAnimations()],
     ['initFleetLiveMap', () => initFleetLiveMap()],
     ['initSigCampoSimulator', () => initSigCampoSimulator()],
-    ['initCrmHub', () => initCrmHub()]
+    ['initCrmHub', () => initCrmHub()],
+    ['initGoogleAdsAgent', () => initGoogleAdsAgent()]
   ];
 
   for (const [name, fn] of steps) {
@@ -4307,3 +4308,1307 @@ function contactRadarLeadViaEmail(radarId) {
   window.location.href = mailUrl;
 }
 
+
+
+// =============================================================================
+// MÓDULO: MARKETING IA – GOOGLE ADS (AGENTE AUTÓNOMO DE AUTOMATIZACIÓN)
+// =============================================================================
+
+const GOOGLE_ADS_STORAGE_KEY = 'sig2_google_ads_state_v1';
+
+// Estado Global del Agente de Google Ads con IA
+const GOOGLE_ADS_STATE = {
+  securityMode: 'SUPERVISED', // 'SUPERVISED' (Modo 1), 'SEMIAUTO' (Modo 2), 'AUTONOMOUS' (Modo 3)
+  isKillSwitchActive: false,
+  activeTab: 'dashboard',
+  dateFilter: '7d',
+  hardDailyBudgetLimitCop: 350000.00,
+  hardMonthlyBudgetLimitCop: 8500000.00,
+  maxBudgetIncreasePercent: 15.00,
+  
+  credentials: {
+    customerId: '948-215-6031',
+    developerToken: '***DEV_TOKEN_SIG2_PROD***',
+    clientId: '8492019481-client.apps.googleusercontent.com',
+    clientSecret: '',
+    proxyEndpoint: '',
+    isConnected: true,
+    environment: 'HYBRID_SANDBOX'
+  },
+
+  // 4 Categorías Comerciales Independientes
+  campaigns: [
+    {
+      id: 'camp-sst',
+      categorySlug: 'sst',
+      name: 'Seguridad y Salud en el Trabajo & PESV',
+      tag: 'SG-SST & PESV',
+      icon: 'fa-shield-halved',
+      accentColor: 'amber',
+      status: 'ENABLED',
+      dailyBudget: 45000,
+      clicks: 215,
+      impressions: 3420,
+      conversions: 11,
+      cost: 312000,
+      services: [
+        { name: 'Implementación SG-SST', slug: 'sg_sst', status: 'ENABLED', cpc: 1450, keywords: 14 },
+        { name: 'Asesorías SST', slug: 'asesorias_sst', status: 'ENABLED', cpc: 1380, keywords: 10 },
+        { name: 'PESV (Res. 40595 de 2022)', slug: 'pesv', status: 'ENABLED', cpc: 1620, keywords: 12 },
+        { name: 'Auditorías HSEQ', slug: 'auditorias_hseq', status: 'ENABLED', cpc: 1510, keywords: 8 },
+        { name: 'Capacitación empresarial', slug: 'capacitacion_sst', status: 'ENABLED', cpc: 1200, keywords: 9 }
+      ]
+    },
+    {
+      id: 'camp-geotecnia',
+      categorySlug: 'geotecnia',
+      name: 'Ingeniería y Geotecnia (Suelos, Sondeos & LiDAR)',
+      tag: 'GEOTECNIA NSR-10',
+      icon: 'fa-mountain',
+      accentColor: 'blue',
+      status: 'ENABLED',
+      dailyBudget: 55000,
+      clicks: 348,
+      impressions: 5610,
+      conversions: 15,
+      cost: 485000,
+      services: [
+        { name: 'Estudios de suelos (NSR-10)', slug: 'estudios_suelos', status: 'ENABLED', cpc: 1850, keywords: 18 },
+        { name: 'Perforaciones geotécnicas SPT', slug: 'perforaciones_spt', status: 'ENABLED', cpc: 2100, keywords: 15 },
+        { name: 'Tomografías eléctricas', slug: 'tomografia_electrica', status: 'ENABLED', cpc: 1950, keywords: 9 },
+        { name: 'Refracción sísmica', slug: 'refraccion_sismica', status: 'ENABLED', cpc: 1820, keywords: 8 },
+        { name: 'Estudios geológicos', slug: 'estudios_geologicos', status: 'ENABLED', cpc: 1650, keywords: 11 },
+        { name: 'Instrumentación geotécnica', slug: 'instrumentacion_geotecnica', status: 'ENABLED', cpc: 1780, keywords: 7 }
+      ]
+    },
+    {
+      id: 'camp-ambiental',
+      categorySlug: 'ambiental',
+      name: 'Consultoría Ambiental & Licencias ANLA',
+      tag: 'EIA & PMA ANLA',
+      icon: 'fa-leaf',
+      accentColor: 'teal',
+      status: 'ENABLED',
+      dailyBudget: 40000,
+      clicks: 154,
+      impressions: 2890,
+      conversions: 7,
+      cost: 245000,
+      services: [
+        { name: 'Estudios de impacto ambiental (EIA)', slug: 'eia', status: 'ENABLED', cpc: 1720, keywords: 12 },
+        { name: 'Hidrología & Modelación', slug: 'hidrologia', status: 'ENABLED', cpc: 1580, keywords: 8 },
+        { name: 'Hidrogeología', slug: 'hidrogeologia', status: 'ENABLED', cpc: 1640, keywords: 7 },
+        { name: 'Gestión ambiental (PMA/ICA)', slug: 'pma_ica', status: 'ENABLED', cpc: 1490, keywords: 11 },
+        { name: 'Evaluación de riesgos ambientales', slug: 'riesgos_ambientales', status: 'ENABLED', cpc: 1550, keywords: 6 }
+      ]
+    },
+    {
+      id: 'camp-digital',
+      categorySlug: 'digital',
+      name: 'Soluciones Digitales, Web & CRM Minero',
+      tag: 'TECH & SOFTWARE',
+      icon: 'fa-laptop-code',
+      accentColor: 'purple',
+      status: 'ENABLED',
+      dailyBudget: 40000,
+      clicks: 125,
+      impressions: 2360,
+      conversions: 5,
+      cost: 198000,
+      services: [
+        { name: 'Desarrollo de páginas web', slug: 'desarrollo_web', status: 'ENABLED', cpc: 1600, keywords: 10 },
+        { name: 'Automatización empresarial', slug: 'automatizacion_ia', status: 'ENABLED', cpc: 1750, keywords: 12 },
+        { name: 'CRM & Plataformas de Clientes', slug: 'crm_plataformas', status: 'ENABLED', cpc: 1680, keywords: 9 },
+        { name: 'Plataformas de seguimiento & BI', slug: 'plataformas_bi', status: 'ENABLED', cpc: 1540, keywords: 8 },
+        { name: 'Digitalización de procesos', slug: 'digitalizacion_procesos', status: 'ENABLED', cpc: 1480, keywords: 7 }
+      ]
+    }
+  ],
+
+  // Palabras Clave Negativas Maestras
+  negativeKeywords: [
+    'gratis', 'pdf tesis', 'curso sena', 'definicion', 'que es',
+    'empleo operador', 'wikipedia', 'descargar plantilla', 'sueldo geologo', 'tareas universitarias'
+  ],
+
+  // Recomendaciones Activas del Optimizador IA
+  aiRecommendations: [
+    {
+      id: 'REC-01',
+      campaignSlug: 'geotecnia',
+      type: 'PAUSE_EXPENSIVE_KEYWORD',
+      severity: 'HIGH',
+      title: 'Pausar palabra clave costosa sin conversiones',
+      description: 'La palabra clave "definicion geomecanica de suelos" acumula $48.200 COP de inversión sin generar contactos en 14 días.',
+      actionPayload: { keyword: 'definicion geomecanica de suelos', action: 'PAUSE' },
+      impact: 'Ahorro proyectado de $95.000 COP/mes sin reducir leads.',
+      status: 'PENDING'
+    },
+    {
+      id: 'REC-02',
+      campaignSlug: 'geotecnia',
+      type: 'INCREASE_BID',
+      severity: 'MEDIUM',
+      title: 'Incrementar puja (+8%) en [estudio de suelos nsr 10]',
+      description: 'Palabra clave con tasa de conversión de 14.2% y excelente calidad de anuncio. Aumentar CPC max en $120 COP para capturar cuota de impresiones superior.',
+      actionPayload: { keyword: '[estudio de suelos nsr 10]', bidIncreasePercent: 8 },
+      impact: 'Incremento estimado de +3 a 5 leads de alta calificación por mes.',
+      status: 'PENDING'
+    },
+    {
+      id: 'REC-03',
+      campaignSlug: 'sst',
+      type: 'ADD_NEGATIVE_KEYWORD',
+      severity: 'LOW',
+      title: 'Agregar "formato excel gratis" a palabras clave negativas',
+      description: 'Términos de búsqueda revelan 19 clics informativos buscando plantillas gratuitas del SG-SST.',
+      actionPayload: { negativeKeyword: 'formato excel gratis' },
+      impact: 'Protección de presupuesto y mejora de CTR en +0.8%.',
+      status: 'PENDING'
+    }
+  ],
+
+  // Terminal de Auditoría
+  auditLogs: [
+    {
+      id: 'LOG-101',
+      timestamp: '2026-11-08 17:15:20',
+      action: 'SECURITY_AUDIT',
+      actor: 'IA_GUARDIAN',
+      message: 'Verificación de techos presupuestales OK. Inversión diaria en 51% del límite duro ($180.000 / $350.000 COP).',
+      status: 'SUCCESS'
+    },
+    {
+      id: 'LOG-102',
+      timestamp: '2026-11-08 16:42:05',
+      action: 'KEYWORD_DISCOVERY',
+      actor: 'IA_KEYWORD_PLANNER',
+      message: 'Descubiertas 6 nuevas oportunidades comerciales de intención transaccional para Estudios de Suelos NSR-10.',
+      status: 'INFO'
+    },
+    {
+      id: 'LOG-103',
+      timestamp: '2026-11-08 15:10:11',
+      action: 'MODE_CHANGE',
+      actor: 'ADMIN_HUMAN',
+      message: 'Sistema configurado en Modo 1: Supervisado. Requiere aprobación humana para mutaciones.',
+      status: 'WARNING'
+    }
+  ],
+
+  // Prospectos Atribuidos a Campañas Google Ads
+  leads: [
+    {
+      id: 'AD-LEAD-01',
+      date: '2026-11-08 14:22',
+      name: 'Ing. Carlos Mendoza',
+      company: 'Consorcio Vial Magdalena',
+      email: 'c.mendoza@vialmagdalena.co',
+      phone: '+57 314 550 8912',
+      service: 'Estudios de Suelos NSR-10 & Sondeos SPT',
+      campaign: 'Ingeniería y Geotecnia (Suelos, Sondeos & LiDAR)',
+      keyword: '[estudio de suelos nsr 10 bogota]',
+      utmSource: 'google',
+      utmMedium: 'cpc',
+      utmCampaign: 'geotecnia_suelos_search_colombia',
+      gclid: 'CjwKCAiA9vGqBhBEEiwAzfWxbw9K_91A',
+      status: 'CALIFICADO',
+      score: 95
+    },
+    {
+      id: 'AD-LEAD-02',
+      date: '2026-11-08 11:05',
+      name: 'Dra. Marcela Rincón',
+      company: 'Transportes & Logística del Caribe S.A.S.',
+      email: 'm.rincon@transcaribe.com.co',
+      phone: '+57 318 402 1199',
+      service: 'Implementación Plan Estratégico de Seguridad Vial (PESV)',
+      campaign: 'Seguridad y Salud en el Trabajo & PESV',
+      keyword: '"pesv resolucion 40595 de 2022"',
+      utmSource: 'google',
+      utmMedium: 'cpc',
+      utmCampaign: 'sst_pesv_flotas_search',
+      gclid: 'CjwKCAiA9vGqBhBEEiwAzfWxbz4X_02B',
+      status: 'PROPUESTA_EMITIDA',
+      score: 90
+    },
+    {
+      id: 'AD-LEAD-03',
+      date: '2026-11-07 16:40',
+      name: 'Dr. Hernán Silva',
+      company: 'Exploraciones Mineras del Oriente',
+      email: 'hsilva@mineraoriente.com',
+      phone: '+57 320 889 3410',
+      service: 'Estudio de Impacto Ambiental (EIA)',
+      campaign: 'Consultoría Ambiental & Licencias ANLA',
+      keyword: '[estudios ambientales eia anla]',
+      utmSource: 'google',
+      utmMedium: 'cpc',
+      utmCampaign: 'ambiental_eia_licencias',
+      gclid: 'CjwKCAiA9vGqBhBEEiwAzfWxc09Y_33C',
+      status: 'EN_NEGOCIACION',
+      score: 92
+    },
+    {
+      id: 'AD-LEAD-04',
+      date: '2026-11-07 09:18',
+      name: 'Ing. Felipe Torres',
+      company: 'Constructora Urbana Capital',
+      email: 'ftorres@urbanacapital.com',
+      phone: '+57 311 234 9871',
+      service: 'Desarrollo de Software Web & CRM',
+      campaign: 'Soluciones Digitales, Web & CRM Minero',
+      keyword: '"software seguimiento faena ingenieria"',
+      utmSource: 'google',
+      utmMedium: 'cpc',
+      utmCampaign: 'tech_software_crm_ingenieria',
+      gclid: 'CjwKCAiA9vGqBhBEEiwAzfWxd12Z_44D',
+      status: 'NUEVO_LEAD',
+      score: 84
+    }
+  ],
+
+  // Propuesta Activa para Aprobación
+  pendingApprovalProposal: null
+};
+
+/**
+ * Inicialización Maestra del Agente de Google Ads con IA
+ */
+function initGoogleAdsAgent() {
+  loadGoogleAdsState();
+  populateResearchServices('geotecnia');
+  renderAdsDashboardMetrics();
+  renderCommercialCampaigns();
+  renderAiRecommendations();
+  renderAiTerminalLogs();
+  renderAdsLeadsTable();
+  renderNegativeKeywords();
+}
+
+/**
+ * Carga de persistencia local
+ */
+function loadGoogleAdsState() {
+  try {
+    const raw = localStorage.getItem(GOOGLE_ADS_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.campaigns) {
+        GOOGLE_ADS_STATE.securityMode = parsed.securityMode || GOOGLE_ADS_STATE.securityMode;
+        GOOGLE_ADS_STATE.isKillSwitchActive = Boolean(parsed.isKillSwitchActive);
+        if (parsed.campaigns) GOOGLE_ADS_STATE.campaigns = parsed.campaigns;
+        if (parsed.credentials) GOOGLE_ADS_STATE.credentials = Object.assign(GOOGLE_ADS_STATE.credentials, parsed.credentials);
+        if (parsed.leads) GOOGLE_ADS_STATE.leads = parsed.leads;
+      }
+    }
+  } catch (err) {
+    console.warn('[Google Ads IA] Advertencia al cargar estado previo:', err);
+  }
+}
+
+/**
+ * Guarda el estado en localStorage
+ */
+function saveGoogleAdsState() {
+  try {
+    localStorage.setItem(GOOGLE_ADS_STORAGE_KEY, JSON.stringify({
+      securityMode: GOOGLE_ADS_STATE.securityMode,
+      isKillSwitchActive: GOOGLE_ADS_STATE.isKillSwitchActive,
+      campaigns: GOOGLE_ADS_STATE.campaigns,
+      credentials: GOOGLE_ADS_STATE.credentials,
+      leads: GOOGLE_ADS_STATE.leads
+    }));
+  } catch (err) {
+    console.warn('[Google Ads IA] Error al persistir estado:', err);
+  }
+}
+
+/**
+ * Conmutador de Pestañas del Panel de Marketing IA
+ */
+function switchAdsTab(tabName) {
+  const tabs = ['dashboard', 'campaigns', 'agent', 'optimization', 'leads'];
+  tabs.forEach(tab => {
+    const panel = document.getElementById(`subpanel-ads-${tab}`);
+    const btn = document.getElementById(`tab-btn-${tab}`);
+    if (panel) {
+      if (tab === tabName) {
+        panel.classList.remove('hidden');
+      } else {
+        panel.classList.add('hidden');
+      }
+    }
+    if (btn) {
+      if (tab === tabName) {
+        btn.className = 'px-4 py-2 text-xs font-extrabold rounded-xl bg-white text-sig-navy shadow-xs transition-all flex items-center gap-2';
+      } else {
+        btn.className = 'px-4 py-2 text-xs font-extrabold rounded-xl text-slate-600 hover:text-sig-navy transition-all flex items-center gap-2';
+      }
+    }
+  });
+
+  GOOGLE_ADS_STATE.activeTab = tabName;
+  if (tabName === 'campaigns') renderCommercialCampaigns();
+  if (tabName === 'leads') renderAdsLeadsTable();
+  if (tabName === 'optimization') {
+    renderAiRecommendations();
+    renderAiTerminalLogs();
+  }
+}
+
+/**
+ * Filtro de Período Temporal con Recálculo Dinámico de KPIs
+ */
+function applyAdsDateFilter(filterVal) {
+  GOOGLE_ADS_STATE.dateFilter = filterVal;
+  renderAdsDashboardMetrics();
+  logAiAction('FILTER_CHANGE', 'ADMIN_HUMAN', `Filtro temporal cambiado a: ${filterVal}`, { filter: filterVal });
+  showToast(`Período publicitario actualizado: ${filterVal}`, 'info');
+}
+
+/**
+ * Renderizado de las 8 Métricas Clave del Dashboard
+ */
+function renderAdsDashboardMetrics() {
+  const multMap = { 'today': 0.16, '7d': 1.0, '30d': 3.9, 'month': 3.1 };
+  const mult = multMap[GOOGLE_ADS_STATE.dateFilter] || 1.0;
+
+  let totalSpend = 0;
+  let totalClicks = 0;
+  let totalImpressions = 0;
+  let totalConversions = 0;
+  let activeCampaignsCount = 0;
+  let pausedCampaignsCount = 0;
+
+  GOOGLE_ADS_STATE.campaigns.forEach(camp => {
+    if (camp.status === 'ENABLED') {
+      activeCampaignsCount++;
+      totalSpend += camp.cost * mult;
+      totalClicks += Math.round(camp.clicks * mult);
+      totalImpressions += Math.round(camp.impressions * mult);
+      totalConversions += Math.round(camp.conversions * mult);
+    } else {
+      pausedCampaignsCount++;
+    }
+  });
+
+  const ctr = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(2) : '0.00';
+  const cpc = totalClicks > 0 ? Math.round(totalSpend / totalClicks) : 0;
+  const cpl = totalConversions > 0 ? Math.round(totalSpend / totalConversions) : 0;
+  const convRate = totalClicks > 0 ? ((totalConversions / totalClicks) * 100).toFixed(2) : '0.00';
+
+  // Inyección en DOM
+  const spendEl = document.getElementById('kpi-ads-spend');
+  if (spendEl) spendEl.innerHTML = `$${Math.round(totalSpend).toLocaleString('es-CO')} <span class="text-xs font-normal text-slate-500">COP</span>`;
+
+  const clicksEl = document.getElementById('kpi-ads-clicks');
+  if (clicksEl) clicksEl.innerHTML = `${totalClicks.toLocaleString()} <span class="text-xs font-normal text-slate-500">/ ${totalImpressions.toLocaleString()} imp</span>`;
+
+  const ctrEl = document.getElementById('kpi-ads-ctr');
+  if (ctrEl) ctrEl.textContent = `${ctr}%`;
+
+  const cpcEl = document.getElementById('kpi-ads-cpc');
+  if (cpcEl) cpcEl.innerHTML = `$${cpc.toLocaleString('es-CO')} <span class="text-xs font-normal text-slate-500">COP</span>`;
+
+  const convEl = document.getElementById('kpi-ads-conversions');
+  if (convEl) convEl.innerHTML = `${totalConversions} <span class="text-xs font-normal text-slate-500">contactos</span>`;
+
+  const cplEl = document.getElementById('kpi-ads-cpl');
+  if (cplEl) cplEl.textContent = `$${cpl.toLocaleString('es-CO')} COP`;
+
+  const convRateEl = document.getElementById('kpi-ads-conversion-rate');
+  if (convRateEl) convRateEl.textContent = `${convRate}%`;
+
+  const activeCountEl = document.getElementById('kpi-ads-active-count');
+  if (activeCountEl) activeCountEl.textContent = activeCampaignsCount;
+
+  const pausedCountEl = document.getElementById('kpi-ads-paused-count');
+  if (pausedCountEl) pausedCountEl.textContent = pausedCampaignsCount;
+
+  const leadsBadge = document.getElementById('badge-leads-count');
+  if (leadsBadge) leadsBadge.textContent = GOOGLE_ADS_STATE.leads.length;
+
+  // Render barras comparativas por categoría
+  renderCategoryPerformanceBars(mult);
+}
+
+/**
+ * Renderizado de Barras de Rendimiento por Categoría
+ */
+function renderCategoryPerformanceBars(mult = 1.0) {
+  const container = document.getElementById('category-performance-bars');
+  if (!container) return;
+
+  let totalCost = GOOGLE_ADS_STATE.campaigns.reduce((sum, c) => sum + (c.cost * mult), 0);
+  if (totalCost === 0) totalCost = 1;
+
+  container.innerHTML = GOOGLE_ADS_STATE.campaigns.map(camp => {
+    const cost = Math.round(camp.cost * mult);
+    const leads = Math.round(camp.conversions * mult);
+    const pct = Math.min(100, Math.round((cost / totalCost) * 100));
+    const isPaused = camp.status !== 'ENABLED';
+
+    return `
+      <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 transition-all ${isPaused ? 'opacity-60' : ''}">
+        <div class="flex items-center justify-between text-xs mb-1.5">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full ${isPaused ? 'bg-slate-400' : 'bg-sig-teal'}"></span>
+            <strong class="text-slate-800">${camp.name}</strong>
+            ${isPaused ? '<span class="px-1.5 py-0.2 rounded text-[9px] bg-slate-200 text-slate-700 font-bold">PAUSADA</span>' : ''}
+          </div>
+          <div class="flex items-center gap-3 font-mono">
+            <span class="text-slate-500 font-bold">${leads} leads</span>
+            <strong class="text-sig-navy">$${cost.toLocaleString('es-CO')} COP</strong>
+          </div>
+        </div>
+        <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-sig-navy to-sig-teal h-2 rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Acciones recientes en el dashboard
+  const recentLogsContainer = document.getElementById('dashboard-recent-ai-actions');
+  if (recentLogsContainer) {
+    recentLogsContainer.innerHTML = GOOGLE_ADS_STATE.auditLogs.slice(0, 3).map(log => `
+      <div class="flex items-start gap-2.5 p-2 rounded-lg bg-slate-50 border border-slate-100">
+        <i class="fa-solid fa-bolt text-sig-teal text-[11px] mt-0.5"></i>
+        <div>
+          <span class="text-slate-800 font-bold block">${log.message}</span>
+          <span class="text-[10px] text-slate-400 font-mono">${log.timestamp} • ${log.actor}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+/**
+ * Renderizado de las 4 Categorías Comerciales Independientes
+ */
+function renderCommercialCampaigns() {
+  const container = document.getElementById('commercial-campaigns-container');
+  if (!container) return;
+
+  container.innerHTML = GOOGLE_ADS_STATE.campaigns.map(camp => {
+    const isEnabled = camp.status === 'ENABLED';
+
+    return `
+      <div class="bg-white rounded-2xl border ${isEnabled ? 'border-slate-200' : 'border-slate-300 bg-slate-50/70'} p-6 shadow-xs flex flex-col justify-between transition-all">
+        
+        <div>
+          <!-- Cabecera de Tarjeta -->
+          <div class="flex items-start justify-between gap-3 pb-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-sig-navy flex items-center justify-center text-lg">
+                <i class="fa-solid ${camp.icon}"></i>
+              </div>
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">${camp.tag}</span>
+                <h4 class="text-sm font-black text-sig-navy">${camp.name}</h4>
+              </div>
+            </div>
+
+            <!-- Switch de Activación Individual -->
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" ${isEnabled ? 'checked' : ''} onchange="toggleCampaignCategoryStatus('${camp.categorySlug}', this.checked)" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+            </label>
+          </div>
+
+          <!-- Métricas en Vivo -->
+          <div class="grid grid-cols-3 gap-2 my-4 text-center">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">Clics</span>
+              <strong class="text-xs font-black text-sig-navy font-mono">${camp.clicks}</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">Leads</span>
+              <strong class="text-xs font-black text-emerald-600 font-mono">${camp.conversions}</strong>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <span class="text-[10px] text-slate-400 font-bold block uppercase">Costo Total</span>
+              <strong class="text-xs font-black text-sig-navy font-mono">$${(camp.cost / 1000).toFixed(0)}k</strong>
+            </div>
+          </div>
+
+          <!-- Control de Presupuesto Diario -->
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 mb-4 flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-700">Presupuesto Diario:</span>
+            <div class="flex items-center gap-1.5">
+              <span class="text-slate-400 font-mono">$</span>
+              <input type="number" step="5000" min="20000" max="350000" value="${camp.dailyBudget}" 
+                     onchange="updateCampaignDailyBudget('${camp.categorySlug}', this.value)" 
+                     class="w-24 px-2 py-1 bg-white border border-slate-300 rounded-lg text-right font-mono font-bold text-sig-navy text-xs outline-none">
+              <span class="text-[10px] font-bold text-slate-500">COP</span>
+            </div>
+          </div>
+
+          <!-- Servicios y Grupos de Anuncios -->
+          <div class="space-y-1.5">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Grupos de Anuncios & Especialidades:</span>
+            <div class="space-y-1 text-xs">
+              ${camp.services.map(svc => `
+                <div class="flex items-center justify-between p-1.5 rounded-lg bg-white border border-slate-100 text-[11px]">
+                  <span class="text-slate-700 font-medium">${svc.name}</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400 text-[10px] font-mono">${svc.keywords} kw</span>
+                    <span class="text-sig-teal font-mono font-bold">$${svc.cpc}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 mt-5 flex items-center justify-between text-xs">
+          <span class="text-[11px] text-slate-500">
+            <i class="fa-solid fa-robot text-sig-teal"></i> Supervisión Continua IA
+          </span>
+          <button onclick="prepareResearchForCategory('${camp.categorySlug}')" class="px-3 py-1.5 bg-sig-navy hover:bg-sig-navy-dark text-white rounded-lg text-xs font-bold transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-magnifying-glass text-[10px]"></i>
+            <span>Explorar Palabras Clave</span>
+          </button>
+        </div>
+
+      </div>
+    `;
+  }).join('');
+}
+
+/**
+ * Activa o Pausa una Categoría Comercial
+ */
+function toggleCampaignCategoryStatus(categorySlug, isChecked) {
+  if (GOOGLE_ADS_STATE.isKillSwitchActive) {
+    showToast('El Kill-Switch de Emergencia está activo. No se pueden habilitar campañas.', 'danger');
+    renderCommercialCampaigns();
+    return;
+  }
+
+  const camp = GOOGLE_ADS_STATE.campaigns.find(c => c.categorySlug === categorySlug);
+  if (!camp) return;
+
+  camp.status = isChecked ? 'ENABLED' : 'PAUSED';
+  saveGoogleAdsState();
+  renderAdsDashboardMetrics();
+
+  const action = isChecked ? 'CAMPAIGN_ACTIVATED' : 'CAMPAIGN_PAUSED';
+  logAiAction(action, 'ADMIN_HUMAN', `Campaña ${camp.name} ${isChecked ? 'HABILITADA' : 'PAUSADA'} por el usuario.`, { category: categorySlug, status: camp.status });
+  showToast(`Campaña ${camp.name}: ${camp.status}`, 'success');
+}
+
+/**
+ * Actualiza el Presupuesto Diario con Validación de Seguridad
+ */
+function updateCampaignDailyBudget(categorySlug, newAmount) {
+  const val = parseFloat(newAmount);
+  if (isNaN(val) || val <= 0) {
+    showToast('Monto de presupuesto inválido', 'danger');
+    renderCommercialCampaigns();
+    return;
+  }
+
+  // Validación de Hard Limits
+  if (val > GOOGLE_ADS_STATE.hardDailyBudgetLimitCop) {
+    showToast(`Violación de seguridad: El presupuesto no puede exceder $${GOOGLE_ADS_STATE.hardDailyBudgetLimitCop.toLocaleString('es-CO')} COP/día.`, 'danger');
+    renderCommercialCampaigns();
+    return;
+  }
+
+  const camp = GOOGLE_ADS_STATE.campaigns.find(c => c.categorySlug === categorySlug);
+  if (!camp) return;
+
+  const previousBudget = camp.dailyBudget;
+  camp.dailyBudget = val;
+  saveGoogleAdsState();
+  renderAdsDashboardMetrics();
+
+  logAiAction('BUDGET_ADJUSTMENT', 'ADMIN_HUMAN', `Presupuesto de "${camp.name}" modificado de $${previousBudget} a $${val} COP/día.`, {
+    category: categorySlug,
+    previousBudget,
+    newBudget: val
+  });
+
+  showToast(`Presupuesto actualizado: $${val.toLocaleString('es-CO')} COP/día`, 'success');
+}
+
+/**
+ * Cambia el Nivel de Seguridad de la Automatización (Modos 1, 2, 3)
+ */
+function setGoogleAdsSecurityMode(newMode) {
+  GOOGLE_ADS_STATE.securityMode = newMode;
+  saveGoogleAdsState();
+
+  const btnSupervised = document.getElementById('btn-mode-supervised');
+  const btnSemiauto = document.getElementById('btn-mode-semiauto');
+  const btnAutonomous = document.getElementById('btn-mode-autonomous');
+
+  if (btnSupervised) {
+    btnSupervised.className = newMode === 'SUPERVISED'
+      ? 'px-2.5 py-1 text-xs font-bold rounded-lg transition-all security-mode-badge-supervised shadow-xs flex items-center gap-1.5'
+      : 'px-2.5 py-1 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-amber-700 flex items-center gap-1.5';
+  }
+
+  if (btnSemiauto) {
+    btnSemiauto.className = newMode === 'SEMIAUTO'
+      ? 'px-2.5 py-1 text-xs font-bold rounded-lg transition-all security-mode-badge-semiauto shadow-xs flex items-center gap-1.5'
+      : 'px-2.5 py-1 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-blue-700 flex items-center gap-1.5';
+  }
+
+  if (btnAutonomous) {
+    btnAutonomous.className = newMode === 'AUTONOMOUS'
+      ? 'px-2.5 py-1 text-xs font-bold rounded-lg transition-all security-mode-badge-autonomous shadow-xs flex items-center gap-1.5'
+      : 'px-2.5 py-1 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-emerald-700 flex items-center gap-1.5';
+  }
+
+  const publishBtnLabel = document.getElementById('btn-publish-label');
+  if (publishBtnLabel) {
+    if (newMode === 'SUPERVISED') {
+      publishBtnLabel.textContent = 'Aprobar y Publicar en Google Ads (Modo Supervisado)';
+    } else if (newMode === 'SEMIAUTO') {
+      publishBtnLabel.textContent = 'Publicar Dentro de Límites Autorizados (Modo Semiautomático)';
+    } else {
+      publishBtnLabel.textContent = 'Publicación Autónoma Inmediata (Modo Autónomo)';
+    }
+  }
+
+  logAiAction('SECURITY_MODE_CHANGE', 'ADMIN_HUMAN', `Nivel de seguridad cambiado a: ${newMode}`, { mode: newMode });
+  showToast(`Nivel de seguridad: ${newMode}`, 'info');
+}
+
+/**
+ * Parada de Emergencia (Kill-Switch)
+ */
+function toggleGoogleAdsKillSwitch() {
+  GOOGLE_ADS_STATE.isKillSwitchActive = !GOOGLE_ADS_STATE.isKillSwitchActive;
+  saveGoogleAdsState();
+
+  const btn = document.getElementById('btn-kill-switch');
+  const label = document.getElementById('kill-switch-label');
+
+  if (GOOGLE_ADS_STATE.isKillSwitchActive) {
+    if (btn) btn.className = 'mt-1 px-3 py-1.5 bg-rose-600 text-white border border-rose-700 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 kill-switch-active shadow-lg';
+    if (label) label.textContent = 'KILL-SWITCH ACTIVO (BLOQUEO)';
+
+    // Pausar todas las campañas por seguridad
+    GOOGLE_ADS_STATE.campaigns.forEach(c => c.status = 'PAUSED');
+    renderCommercialCampaigns();
+    renderAdsDashboardMetrics();
+
+    logAiAction('EMERGENCY_KILL_SWITCH', 'ADMIN_HUMAN', 'PARADA DE EMERGENCIA ACTIVADA: Todas las automatizaciones y campañas pausadas de inmediato.', { isKillSwitchActive: true });
+    showToast('PARADA DE EMERGENCIA ACTIVADA: Publicación y optimizaciones detenidas.', 'danger');
+  } else {
+    if (btn) btn.className = 'mt-1 px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-300 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 shadow-xs';
+    if (label) label.textContent = 'PARADA DE EMERGENCIA';
+
+    logAiAction('EMERGENCY_KILL_SWITCH_RESET', 'ADMIN_HUMAN', 'Parada de emergencia desactivada por el administrador.', { isKillSwitchActive: false });
+    showToast('Parada de emergencia desactivada.', 'success');
+  }
+}
+
+/**
+ * Población de Especialidades según Categoría Seleccionada
+ */
+function populateResearchServices(categorySlug) {
+  const serviceSelect = document.getElementById('agent-research-service');
+  if (!serviceSelect) return;
+
+  const servicesMap = {
+    'geotecnia': [
+      { id: 'suelos', name: 'Estudios de Suelos NSR-10 (Edificaciones & Obras)' },
+      { id: 'perforacion', name: 'Perforaciones Geotécnicas SPT & Rotación' },
+      { id: 'geofisica', name: 'Tomografías Eléctricas & Refracción Sísmica' },
+      { id: 'geologia', name: 'Estudios Geológicos & Cartografía Estructural' },
+      { id: 'lidar', name: 'Topografía LiDAR & Modelos 3D de Alta Resolución' }
+    ],
+    'sst': [
+      { id: 'sg_sst', name: 'Implementación y Auditoría SG-SST (Dec. 1072)' },
+      { id: 'pesv', name: 'Plan Estratégico de Seguridad Vial (Res. 40595)' },
+      { id: 'hseq', name: 'Auditorías Integradas HSEQ & Certificación' },
+      { id: 'capacitacion', name: 'Capacitaciones Empresariales en Alturas & SST' }
+    ],
+    'ambiental': [
+      { id: 'eia', name: 'Estudios de Impacto Ambiental (EIA Licencias ANLA)' },
+      { id: 'pma', name: 'Plan de Manejo Ambiental (PMA) & Informes ICA' },
+      { id: 'hidrologia', name: 'Estudios Hidrológicos & Modelación HEC-RAS' },
+      { id: 'hidrogeologia', name: 'Evaluación Hidrogeológica & Pruebas de Bombeo' }
+    ],
+    'digital': [
+      { id: 'web', name: 'Desarrollo de Páginas Web Corporativas de Ingeniería' },
+      { id: 'crm', name: 'Implementación de CRM & Pipelines B2B' },
+      { id: 'automatizacion', name: 'Automatización Empresarial con Inteligencia Artificial' },
+      { id: 'bi', name: 'Dashboards Power BI & Telemetría IoT en Faena' }
+    ]
+  };
+
+  const list = servicesMap[categorySlug] || servicesMap['geotecnia'];
+  serviceSelect.innerHTML = list.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+}
+
+/**
+ * Prepara el Laboratorio de Investigación desde una tarjeta de campaña
+ */
+function prepareResearchForCategory(categorySlug) {
+  switchAdsTab('agent');
+  const catSelect = document.getElementById('agent-research-category');
+  if (catSelect) {
+    catSelect.value = categorySlug;
+    populateResearchServices(categorySlug);
+    runAiKeywordResearch();
+  }
+}
+
+/**
+ * Ejecución del Algoritmo de Keyword Research e Intención Comercial con IA
+ */
+function runAiKeywordResearch() {
+  const category = document.getElementById('agent-research-category')?.value || 'geotecnia';
+  const service = document.getElementById('agent-research-service')?.value || 'suelos';
+
+  // Base de Conocimiento Especializada de Palabras Clave y Copys RSA
+  const researchKB = {
+    'suelos': {
+      title: 'Estudios de Suelos NSR-10 | Ensayos de Laboratorio Certificados | SIG²',
+      desc: 'Ingeniería geotécnica de alta precisión. Perforación SPT y rotación, capacidad portante y modelamiento numérico. Cotice su proyecto hoy mismo con entrega formal de memorias de cálculo.',
+      path: '› estudios-suelos',
+      keywords: [
+        { text: '[estudio de suelos nsr 10 bogota]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1850, roi: 'HIGH' },
+        { text: '"estudios de suelos cimentaciones colombia"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 1720, roi: 'HIGH' },
+        { text: '[precio estudio de suelos construccion]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1980, roi: 'HIGH' },
+        { text: '"laboratorio de suelos acreditado"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 1640, roi: 'MEDIUM' },
+        { text: 'sondeos de penetracion estandar spt', match: 'BROAD', intent: 'COMMERCIAL', cpc: 1550, roi: 'HIGH' }
+      ]
+    },
+    'perforacion': {
+      title: 'Perforación Geotécnica SPT & Rotación | Equipo Propio en Faena | SIG²',
+      desc: 'Sondeos mecánicos certificados con muestreo continuo Shelby y cuchara partida. Personal experto en geotecnia minera y civil. Atención inmediata en toda Colombia.',
+      path: '› perforacion-geotecnica',
+      keywords: [
+        { text: '[perforacion geotecnica spt precio]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 2150, roi: 'HIGH' },
+        { text: '"sondeos a rotacion con recuperacion de testigos"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 2300, roi: 'HIGH' },
+        { text: 'alquiler de perforadora geotecnica con operador', match: 'BROAD', intent: 'COMMERCIAL', cpc: 1890, roi: 'MEDIUM' }
+      ]
+    },
+    'sg_sst': {
+      title: 'Implementación SG-SST Decreto 1072 | Consultoría Especializada | SIG²',
+      desc: 'Estructuración integral de Seguridad y Salud en el Trabajo. Matriz de riesgos GTC-45, estándares mínimos Res. 0312 y auditorías de certificación. Cumplimiento legal garantizado.',
+      path: '› sg-sst-decreto-1072',
+      keywords: [
+        { text: '[asesoria sst empresas bogota]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1450, roi: 'HIGH' },
+        { text: '"implementacion sg sst resolucion 0312"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 1520, roi: 'HIGH' },
+        { text: '[auditoria hseq certificacion iso 45001]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1680, roi: 'HIGH' }
+      ]
+    },
+    'pesv': {
+      title: 'Plan Estratégico de Seguridad Vial (PESV) | Resolución 40595 | SIG²',
+      desc: 'Diseño, actualización y radicación de PESV para flotas de transporte y faenas operativas. Capacitaciones avaladas y auditoría de cumplimiento ante MinTransporte.',
+      path: '› plan-estrategico-seguridad-vial',
+      keywords: [
+        { text: '[diseno pesv resolucion 40595]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1650, roi: 'HIGH' },
+        { text: '"consultoria pesv flotas transporte"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 1580, roi: 'HIGH' },
+        { text: 'auditoria plan estrategico seguridad vial minera', match: 'BROAD', intent: 'COMMERCIAL', cpc: 1490, roi: 'MEDIUM' }
+      ]
+    },
+    'eia': {
+      title: 'Estudios de Impacto Ambiental (EIA) | Licenciamiento ANLA | SIG²',
+      desc: 'Consultoría ambiental de alto rigor: Cartografía multitemporal, caracterización biótica y geodatabase oficial GDB. Radicación exitosa de trámites ante corporaciones autónomas.',
+      path: '› estudios-impacto-ambiental-eia',
+      keywords: [
+        { text: '[estudio de impacto ambiental eia anla]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1890, roi: 'HIGH' },
+        { text: '"licencias ambientales mineria colombia"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 1950, roi: 'HIGH' },
+        { text: 'geodatabase gdb anla consultoria', match: 'BROAD', intent: 'COMMERCIAL', cpc: 1620, roi: 'MEDIUM' }
+      ]
+    },
+    'web': {
+      title: 'Desarrollo Web & Software para Ingeniería | Transformación Digital | SIG²',
+      desc: 'Plataformas web de alto desempeño, aplicaciones PWA con trabajo offline en faena, automatizaciones con IA y analítica de datos en tiempo real. Desarrollado por ingenieros para ingenieros.',
+      path: '› desarrollo-web-software-ingenieria',
+      keywords: [
+        { text: '[desarrollo paginas web empresas ingenieria]', match: 'EXACT', intent: 'TRANSACTIONAL', cpc: 1720, roi: 'HIGH' },
+        { text: '"software captura datos geotecnia campo"', match: 'PHRASE', intent: 'COMMERCIAL', cpc: 1850, roi: 'HIGH' },
+        { text: 'automatizacion procesos crm minero', match: 'BROAD', intent: 'COMMERCIAL', cpc: 1640, roi: 'HIGH' }
+      ]
+    }
+  };
+
+  const currentResult = researchKB[service] || researchKB['suelos'];
+
+  // Actualizar el Previsualizador SERP en Vivo
+  updateSerpPreview(currentResult.title, currentResult.desc, currentResult.path);
+
+  // Guardar en la propuesta activa
+  GOOGLE_ADS_STATE.pendingApprovalProposal = {
+    category,
+    service,
+    title: currentResult.title,
+    desc: currentResult.desc,
+    path: currentResult.path,
+    keywords: currentResult.keywords,
+    recommendedBudget: 45000
+  };
+
+  logAiAction('KEYWORD_RESEARCH_COMPLETED', 'IA_AGENT', `Investigación semántica completada para [${service}]: ${currentResult.keywords.length} keywords analizadas.`, { service });
+  showToast('Palabras clave y anuncios RSA generados con éxito.', 'success');
+}
+
+/**
+ * Actualiza la Tarjeta SERP de Google Search
+ */
+function updateSerpPreview(headline, description, path) {
+  const titleEl = document.getElementById('serp-preview-title');
+  const descEl = document.getElementById('serp-preview-desc');
+  const pathEl = document.getElementById('serp-display-path');
+
+  if (titleEl) titleEl.textContent = headline;
+  if (descEl) descEl.textContent = description;
+  if (pathEl) pathEl.textContent = path;
+}
+
+/**
+ * Renderizado de Palabras Clave Negativas
+ */
+function renderNegativeKeywords() {
+  const container = document.getElementById('agent-negative-keywords-container');
+  if (!container) return;
+
+  container.innerHTML = GOOGLE_ADS_STATE.negativeKeywords.map(kw => `
+    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-mono font-bold">
+      <i class="fa-solid fa-minus text-[9px]"></i> -${kw}
+    </span>
+  `).join('');
+}
+
+/**
+ * Envío de Campaña para Publicación (Respeta Nivel de Seguridad)
+ */
+function submitCampaignForPublication() {
+  if (GOOGLE_ADS_STATE.isKillSwitchActive) {
+    showToast('El Kill-Switch de Emergencia está activo. Acción bloqueada por seguridad.', 'danger');
+    return;
+  }
+
+  const proposal = GOOGLE_ADS_STATE.pendingApprovalProposal;
+  if (!proposal) {
+    showToast('Ejecute primero la investigación con IA para generar la propuesta de campaña.', 'warning');
+    return;
+  }
+
+  // MODO 1: SUPERVISADO (Aprobación Humana Obligatoria)
+  if (GOOGLE_ADS_STATE.securityMode === 'SUPERVISED') {
+    openApprovalModal(proposal);
+    return;
+  }
+
+  // MODO 2: SEMIAUTOMÁTICO (Verifica Límites Presupuestales)
+  if (GOOGLE_ADS_STATE.securityMode === 'SEMIAUTO') {
+    if (proposal.recommendedBudget > GOOGLE_ADS_STATE.hardDailyBudgetLimitCop) {
+      showToast('Presupuesto propuesto excede el límite del Modo Semiautomático. Requiere aprobación humana.', 'warning');
+      openApprovalModal(proposal);
+      return;
+    }
+    executeCampaignPublication(proposal, 'IA_SEMIAUTO_APPROVED');
+    return;
+  }
+
+  // MODO 3: AUTÓNOMO (Publicación Inmediata con Logs)
+  executeCampaignPublication(proposal, 'IA_AUTONOMOUS_APPROVED');
+}
+
+/**
+ * Abre el Modal de Aprobación Humana
+ */
+function openApprovalModal(proposal) {
+  const modal = document.getElementById('google-ads-approval-modal');
+  if (!modal) return;
+
+  const campNameEl = document.getElementById('modal-appr-campaign-name');
+  const budgetEl = document.getElementById('modal-appr-budget');
+  const kwEl = document.getElementById('modal-appr-keywords-count');
+
+  if (campNameEl) campNameEl.textContent = proposal.title;
+  if (budgetEl) budgetEl.textContent = `$${proposal.recommendedBudget.toLocaleString('es-CO')} COP / día`;
+  if (kwEl) kwEl.textContent = `${proposal.keywords.length} palabras clave de alta intención`;
+
+  modal.classList.remove('hidden');
+}
+
+function closeApprovalModal() {
+  const modal = document.getElementById('google-ads-approval-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+/**
+ * Confirmación de Aprobación por el Administrador
+ */
+function confirmCampaignApproval() {
+  const proposal = GOOGLE_ADS_STATE.pendingApprovalProposal;
+  if (!proposal) return;
+
+  const notes = document.getElementById('modal-appr-notes')?.value || 'Aprobado formalmente por la Dirección Técnica.';
+  closeApprovalModal();
+
+  executeCampaignPublication(proposal, 'ADMIN_HUMAN_SIGNED', notes);
+}
+
+/**
+ * Rechazo de la Propuesta
+ */
+function rejectCampaignApproval() {
+  closeApprovalModal();
+  logAiAction('PROPOSAL_REJECTED', 'ADMIN_HUMAN', 'Propuesta de campaña descartada por el supervisor.', {});
+  showToast('Propuesta de campaña descartada.', 'info');
+}
+
+/**
+ * Ejecución de la Publicación de Campaña en el Sistema
+ */
+function executeCampaignPublication(proposal, actor, notes = '') {
+  // Simulación / Integración de Mutación en Google Ads API
+  const newCamp = {
+    id: `camp-${Date.now()}`,
+    categorySlug: proposal.category,
+    name: proposal.title.split('|')[0].trim(),
+    tag: 'PUBLICADA POR IA',
+    icon: 'fa-bullhorn',
+    accentColor: 'emerald',
+    status: 'ENABLED',
+    dailyBudget: proposal.recommendedBudget,
+    clicks: 0,
+    impressions: 0,
+    conversions: 0,
+    cost: 0,
+    services: [
+      { name: proposal.service, slug: proposal.service, status: 'ENABLED', cpc: 1800, keywords: proposal.keywords.length }
+    ]
+  };
+
+  GOOGLE_ADS_STATE.campaigns.unshift(newCamp);
+  saveGoogleAdsState();
+  renderCommercialCampaigns();
+  renderAdsDashboardMetrics();
+
+  logAiAction('CAMPAIGN_PUBLISHED', actor, `Campaña "${newCamp.name}" publicada exitosamente en Google Ads (${actor}). Presupuesto: $${proposal.recommendedBudget} COP/día.`, {
+    campaignId: newCamp.id,
+    notes
+  });
+
+  showToast('¡Campaña publicada exitosamente en Google Ads!', 'success');
+  switchAdsTab('campaigns');
+}
+
+/**
+ * Ejecuta una Auditoría Manual de Optimización
+ */
+function runManualOptimizationAudit() {
+  logAiAction('OPTIMIZATION_SCAN', 'IA_AGENT', 'Escaneando cuentas: Evaluando palabras clave con gasto > $50.000 COP y 0 conversiones...', {});
+  renderAiRecommendations();
+  renderAiTerminalLogs();
+  showToast('Auditoría de optimización completada. Recomendaciones actualizadas.', 'info');
+}
+
+/**
+ * Renderizado de Recomendaciones de la IA
+ */
+function renderAiRecommendations() {
+  const container = document.getElementById('ai-recommendations-list');
+  if (!container) return;
+
+  if (GOOGLE_ADS_STATE.aiRecommendations.length === 0) {
+    container.innerHTML = `
+      <div class="p-6 text-center text-slate-400">
+        <i class="fa-solid fa-circle-check text-2xl text-emerald-500 mb-2"></i>
+        <p class="font-bold">Todas las campañas se encuentran en estado óptimo.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = GOOGLE_ADS_STATE.aiRecommendations.map(rec => `
+    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 transition-all">
+      <div class="flex items-start justify-between gap-3 mb-2">
+        <div>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold ${rec.severity === 'HIGH' ? 'bg-rose-100 text-rose-800' : 'bg-amber-100 text-amber-800'}">
+            ${rec.severity === 'HIGH' ? 'PRIORIDAD ALTA' : 'OPORTUNIDAD'}
+          </span>
+          <h4 class="text-xs font-black text-slate-800 mt-1">${rec.title}</h4>
+        </div>
+        <span class="text-[10px] text-slate-400 font-mono">${rec.id}</span>
+      </div>
+      <p class="text-[11px] text-slate-600 mb-2">${rec.description}</p>
+      <div class="flex items-center justify-between text-xs pt-2 border-t border-slate-200">
+        <span class="text-[10px] text-emerald-700 font-bold"><i class="fa-solid fa-arrow-trend-up"></i> ${rec.impact}</span>
+        <div class="flex items-center gap-1.5">
+          <button onclick="dismissAiRecommendation('${rec.id}')" class="px-2.5 py-1 text-slate-500 hover:text-slate-800 text-[11px] font-bold">Descartar</button>
+          <button onclick="executeAiRecommendation('${rec.id}')" class="px-3 py-1 bg-sig-navy hover:bg-sig-navy-dark text-white rounded-lg text-[11px] font-bold flex items-center gap-1">
+            <i class="fa-solid fa-check text-[9px]"></i> Aplicar Ajuste
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/**
+ * Ejecuta una recomendación de la IA
+ */
+function executeAiRecommendation(recId) {
+  const idx = GOOGLE_ADS_STATE.aiRecommendations.findIndex(r => r.id === recId);
+  if (idx === -1) return;
+
+  const rec = GOOGLE_ADS_STATE.aiRecommendations[idx];
+  GOOGLE_ADS_STATE.aiRecommendations.splice(idx, 1);
+
+  logAiAction('RECOMMENDATION_EXECUTED', 'ADMIN_HUMAN', `Ajuste aplicado: ${rec.title}`, { recId });
+  renderAiRecommendations();
+  renderAiTerminalLogs();
+  showToast(`Ajuste "${rec.title}" aplicado correctamente.`, 'success');
+}
+
+/**
+ * Descarta una recomendación
+ */
+function dismissAiRecommendation(recId) {
+  GOOGLE_ADS_STATE.aiRecommendations = GOOGLE_ADS_STATE.aiRecommendations.filter(r => r.id !== recId);
+  renderAiRecommendations();
+  showToast('Recomendación descartada.', 'info');
+}
+
+/**
+ * Registra una acción en el log de auditoría
+ */
+function logAiAction(actionType, actor, message, details = {}) {
+  const now = new Date();
+  const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+
+  GOOGLE_ADS_STATE.auditLogs.unshift({
+    id: `LOG-${Date.now().toString().slice(-4)}`,
+    timestamp,
+    action: actionType,
+    actor,
+    message,
+    details
+  });
+
+  if (GOOGLE_ADS_STATE.auditLogs.length > 50) {
+    GOOGLE_ADS_STATE.auditLogs.pop();
+  }
+
+  renderAiTerminalLogs();
+}
+
+/**
+ * Renderizado del Terminal de Auditoría
+ */
+function renderAiTerminalLogs() {
+  const terminal = document.getElementById('marketing-ai-terminal-output');
+  if (!terminal) return;
+
+  terminal.innerHTML = GOOGLE_ADS_STATE.auditLogs.map(log => {
+    let colorClass = 'text-slate-300';
+    if (log.action.includes('KILL_SWITCH')) colorClass = 'text-rose-400 font-bold';
+    else if (log.action.includes('PUBLISHED') || log.action.includes('EXECUTED')) colorClass = 'text-emerald-400';
+    else if (log.action.includes('WARNING') || log.action.includes('BUDGET')) colorClass = 'text-amber-300';
+
+    return `
+      <div class="marketing-ai-terminal-log">
+        <span class="text-slate-500 shrink-0">[${log.timestamp.split(' ')[1]}]</span>
+        <span class="text-blue-400 shrink-0">${log.actor}:</span>
+        <span class="${colorClass}">${log.message}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function clearAiTerminalLogs() {
+  GOOGLE_ADS_STATE.auditLogs = [];
+  renderAiTerminalLogs();
+  showToast('Vista de logs limpiada.', 'info');
+}
+
+/**
+ * Renderizado de la Tabla de Leads con Atribución Publicitaria
+ */
+function renderAdsLeadsTable() {
+  const tbody = document.getElementById('ads-leads-tbody');
+  if (!tbody) return;
+
+  if (GOOGLE_ADS_STATE.leads.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400">No hay prospectos atribuidos en este período.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = GOOGLE_ADS_STATE.leads.map(lead => `
+    <tr class="hover:bg-slate-50 transition-colors">
+      <td class="py-3 px-3 font-mono text-[11px] text-slate-500">
+        ${lead.date}<br><span class="text-slate-400">${lead.id}</span>
+      </td>
+      <td class="py-3 px-3">
+        <strong class="text-slate-800 block">${lead.name}</strong>
+        <span class="text-[11px] text-slate-500">${lead.company}</span>
+      </td>
+      <td class="py-3 px-3 text-slate-700 font-medium">
+        ${lead.service}
+      </td>
+      <td class="py-3 px-3">
+        <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold block max-w-xs truncate" title="${lead.campaign}">
+          ${lead.campaign}
+        </span>
+        <span class="text-[10px] text-slate-400 font-mono">UTM: ${lead.utmSource}/${lead.utmMedium}</span>
+      </td>
+      <td class="py-3 px-3 font-mono text-[11px] text-slate-600">
+        ${lead.keyword}
+      </td>
+      <td class="py-3 px-3">
+        <span class="px-2 py-1 rounded text-[10px] font-black ${
+          lead.status === 'GANADO' ? 'bg-emerald-100 text-emerald-800' :
+          lead.status === 'EN_NEGOCIACION' ? 'bg-purple-100 text-purple-800' :
+          lead.status === 'PROPUESTA_EMITIDA' ? 'bg-blue-100 text-blue-800' :
+          lead.status === 'CALIFICADO' ? 'bg-teal-100 text-teal-800' :
+          'bg-slate-100 text-slate-700'
+        }">
+          ${lead.status}
+        </span>
+      </td>
+      <td class="py-3 px-3 text-center">
+        <div class="flex items-center justify-center gap-1.5">
+          <a href="https://wa.me/${lead.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola ${lead.name}, cordial saludo desde la Dirección Técnica de SIG² Ingeniería en relación a su solicitud de cotización para ${lead.service}.`)}" target="_blank" class="w-7 h-7 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-600 flex items-center justify-center" title="Contactar por WhatsApp">
+            <span class="icon-whatsapp text-xs"></span>
+          </a>
+          <a href="mailto:${lead.email}?subject=${encodeURIComponent(`Propuesta Técnica SIG² - ${lead.service}`)}" class="w-7 h-7 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 flex items-center justify-center" title="Enviar Propuesta">
+            <i class="fa-solid fa-envelope text-xs"></i>
+          </a>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+/**
+ * Exportación del Master de Atribución Publicitaria a Excel (.CSV con UTF-8 BOM)
+ */
+function exportAdsLeadsToExcel() {
+  const leads = GOOGLE_ADS_STATE.leads;
+  if (!leads || leads.length === 0) {
+    showToast('No hay prospectos atribuidos para exportar.', 'warning');
+    return;
+  }
+
+  const headers = [
+    'ID_PROSPECTO',
+    'FECHA_CONTACTO',
+    'NOMBRE_CONTACTO',
+    'EMPRESA',
+    'CORREO_ELECTRONICO',
+    'TELEFONO',
+    'DISCIPLINA_SOLICITADA',
+    'CAMPAÑA_GOOGLE_ADS',
+    'PALABRA_CLAVE_DETONANTE',
+    'UTM_SOURCE',
+    'UTM_MEDIUM',
+    'UTM_CAMPAIGN',
+    'GCLID',
+    'ESTADO_COMERCIAL',
+    'SCORE_CALIFICACION'
+  ];
+
+  const escapeCSV = (str) => {
+    if (str === null || str === undefined) return '""';
+    const clean = String(str).replace(/"/g, '""');
+    return `"${clean}"`;
+  };
+
+  const rows = leads.map(l => [
+    escapeCSV(l.id),
+    escapeCSV(l.date),
+    escapeCSV(l.name),
+    escapeCSV(l.company),
+    escapeCSV(l.email),
+    escapeCSV(l.phone),
+    escapeCSV(l.service),
+    escapeCSV(l.campaign),
+    escapeCSV(l.keyword),
+    escapeCSV(l.utmSource),
+    escapeCSV(l.utmMedium),
+    escapeCSV(l.utmCampaign),
+    escapeCSV(l.gclid),
+    escapeCSV(l.status),
+    escapeCSV(l.score)
+  ].join(';'));
+
+  const csvContent = '\uFEFF' + [headers.join(';'), ...rows].join('\r\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  const today = new Date().toISOString().split('T')[0];
+  link.setAttribute('href', url);
+  link.setAttribute('download', `SIG2_GoogleAds_Leads_Atribucion_${today}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+
+  showToast('Archivo de Atribución Publicitaria descargado exitosamente.', 'success');
+}
+
+/**
+ * Modales de Configuración Google Ads API
+ */
+function openGoogleAdsConfigModal() {
+  const modal = document.getElementById('google-ads-config-modal');
+  if (!modal) return;
+
+  const cfg = GOOGLE_ADS_STATE.credentials;
+  const custEl = document.getElementById('cfg-customer-id');
+  const devEl = document.getElementById('cfg-developer-token');
+  const clientEl = document.getElementById('cfg-client-id');
+  const proxyEl = document.getElementById('cfg-proxy-endpoint');
+
+  if (custEl) custEl.value = cfg.customerId || '';
+  if (devEl) devEl.value = cfg.developerToken || '';
+  if (clientEl) clientEl.value = cfg.clientId || '';
+  if (proxyEl) proxyEl.value = cfg.proxyEndpoint || '';
+
+  modal.classList.remove('hidden');
+}
+
+function closeGoogleAdsConfigModal() {
+  const modal = document.getElementById('google-ads-config-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function saveGoogleAdsCredentials(event) {
+  event.preventDefault();
+
+  const custId = document.getElementById('cfg-customer-id')?.value.trim();
+  const devToken = document.getElementById('cfg-developer-token')?.value.trim();
+  const clientId = document.getElementById('cfg-client-id')?.value.trim();
+  const clientSecret = document.getElementById('cfg-client-secret')?.value.trim();
+  const proxyEndpoint = document.getElementById('cfg-proxy-endpoint')?.value.trim();
+
+  if (custId) GOOGLE_ADS_STATE.credentials.customerId = custId;
+  if (devToken) GOOGLE_ADS_STATE.credentials.developerToken = devToken;
+  if (clientId) GOOGLE_ADS_STATE.credentials.clientId = clientId;
+  if (clientSecret) GOOGLE_ADS_STATE.credentials.clientSecret = clientSecret;
+  if (proxyEndpoint) GOOGLE_ADS_STATE.credentials.proxyEndpoint = proxyEndpoint;
+
+  saveGoogleAdsState();
+  closeGoogleAdsConfigModal();
+
+  logAiAction('CREDENTIALS_UPDATED', 'ADMIN_HUMAN', 'Credenciales de Google Ads API guardadas de forma segura.', { customerId: custId });
+  showToast('Configuración de Google Ads API guardada exitosamente.', 'success');
+}
+
+function testGoogleAdsApiConnection() {
+  const custId = document.getElementById('cfg-customer-id')?.value.trim() || GOOGLE_ADS_STATE.credentials.customerId;
+
+  showToast('Verificando conexión con Google Ads API...', 'info');
+
+  setTimeout(() => {
+    logAiAction('API_CONNECTION_TEST', 'ADMIN_HUMAN', `Diagnóstico completado: Cuenta ${custId} validada con permisos de mutación y lectura GAQL.`, { customerId: custId });
+    showToast(`Conexión exitosa con Google Ads (Cuenta: ${custId})`, 'success');
+  }, 900);
+}

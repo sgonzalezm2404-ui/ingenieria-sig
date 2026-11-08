@@ -44,7 +44,32 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
   - Descarga instantánea de archivo `SIG2_CRM_Master_Leads_YYYY-MM-DD.csv` con codificación UTF-8 BOM para Microsoft Excel.
   - Despacho consolidado automático hacia **`ingenierotecnicocyc@gmail.com`**.
 
-### 3. Asistente Virtual Inteligente "Cadenero"
+### 3. Agente Autónomo de Google Ads con IA (`#marketing-ia-ads`)
+- **Administración Centralizada de Publicidad Digital:**
+  - Panel integral de 8 KPIs: Inversión, Clics, Impresiones, CTR, CPC, Conversiones, CPL y control presupuestal diario/mensual.
+  - **4 Categorías Comerciales Independientes:**
+    1. *Seguridad y Salud en el Trabajo & PESV:* SG-SST, Asesorías, Res. 40595, HSEQ y Capacitaciones.
+    2. *Ingeniería y Geotecnia:* Estudios de suelos NSR-10, Sondeos SPT, Tomografía eléctrica, Refracción sísmica, Geología e Instrumentación.
+    3. *Consultoría Ambiental:* Estudios de impacto ambiental (EIA), Hidrología, Hidrogeología, PMA/ICA y Gestión de Riesgos.
+    4. *Soluciones Digitales:* Desarrollo web para ingeniería, Automatización con IA, CRM y Telemetría.
+- **Laboratorio IA de Keyword Research & Generador RSA:**
+  - Clasificación semántica de intención de búsqueda (*Transaccional, Comercial B2B*).
+  - Generador de anuncios RSA con 15 títulos y 4 descripciones bajo límites oficiales de caracteres.
+  - Previsualizador interactivo idéntico a la SERP de Google Search.
+  - Base de palabras clave negativas para blindaje presupuestal.
+- **Sistema de Seguridad Tripartito:**
+  - *Modo 1: Supervisado* (Aprobación humana obligatoria antes de publicar en Google Ads).
+  - *Modo 2: Semiautomático* (Publicación y optimización dentro de límites estrictos autorizados).
+  - *Modo 3: Autónomo* (Gestión continua de pujas y reasignación de saldo).
+  - *Parada de Emergencia (Kill-Switch):* Detención instantánea en 1 clic de todas las automatizaciones.
+- **Trazabilidad y Atribución al CRM:**
+  - Registro de prospectos con atribución publicitaria (*Campaña, Palabra Clave detonante, UTM Source/Medium/Campaign y GCLID*).
+  - Exportación directa de Master de Atribución en formato Excel con codificación UTF-8 BOM.
+- **Persistencia y Backend Seguro:**
+  - Esquema relacional PostgreSQL con RLS en [`supabase-schema.sql`](supabase-schema.sql) (13 tablas relacionales).
+  - Proxy seguro para Edge Functions en [`google-ads-edge-proxy.js`](google-ads-edge-proxy.js) protegiendo el Developer Token y Client Secret fuera del frontend.
+
+### 4. Asistente Virtual Inteligente "Cadenero"
 - Chatbot flotante especializado en captación y calificación de leads técnicos.
 - Generación de expediente técnico CRM consolidado y transferencia directa a WhatsApp (+57 312 789 4040).
 
