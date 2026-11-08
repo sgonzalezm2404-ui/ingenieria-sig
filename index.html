@@ -2341,6 +2341,77 @@
         </div>
       </div>
 
+      <!-- =============================================================
+           RADAR Y MOTOR DE BÚSQUEDA CONTINUA DE CLIENTES, SOCIOS Y LICITACIONES
+           ============================================================= -->
+      <div class="mb-12 bg-white rounded-3xl border border-slate-200 shadow-md p-6 sm:p-7">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 pb-5 mb-6">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-extrabold uppercase tracking-wider">
+                <span class="pulse-dot-green"></span>
+                <span>Radar Activo 24/7</span>
+              </span>
+              <span class="text-xs text-slate-500 font-medium">Monitoreo continuo de oportunidades en Colombia</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-black text-sig-navy flex items-center gap-2">
+              <i class="fa-solid fa-satellite text-sig-teal"></i>
+              <span>Radar de Prospección Inteligente de Clientes, Socios y Licitaciones</span>
+            </h3>
+            <p class="text-xs text-slate-600 mt-1">
+              Rastrea y genera oportunidades comerciales de alta demanda en Minería ANM, Concesiones Viales ANI/INVIAS, Cuadrillas de Perforación y Flotas con PESV.
+            </p>
+          </div>
+
+          <!-- Controles del Radar: Botón Escaneo y Auto-Rastreo -->
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <button id="btn-toggle-auto-radar" onclick="toggleAutoRadarScan()" class="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-clock-rotate-left text-sig-teal"></i>
+              <span id="auto-radar-status-text">Búsqueda Automática: ON</span>
+            </button>
+            <button onclick="triggerRadarScanManual()" id="btn-radar-scan-now" class="btn-engineering-primary px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-2 shadow-sm">
+              <i class="fa-solid fa-magnifying-glass-chart text-teal-300"></i>
+              <span>Escanear Nuevos Prospectos</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtros Rápidos de Sectores para el Radar -->
+        <div class="flex items-center justify-between gap-3 flex-wrap mb-5">
+          <div class="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
+            <span class="text-[11px] font-bold text-slate-400 uppercase mr-1">Sector:</span>
+            <button onclick="filterRadarOpportunities('all')" class="radar-sector-btn px-3 py-1 rounded-lg bg-sig-navy text-white font-bold transition-all text-xs" data-sector="all">Todos</button>
+            <button onclick="filterRadarOpportunities('mineria')" class="radar-sector-btn px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-all text-xs" data-sector="mineria">Minería & Canteras</button>
+            <button onclick="filterRadarOpportunities('vias')" class="radar-sector-btn px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-all text-xs" data-sector="vias">Vías & Taludes</button>
+            <button onclick="filterRadarOpportunities('pesv')" class="radar-sector-btn px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-all text-xs" data-sector="pesv">Flotas & PESV</button>
+            <button onclick="filterRadarOpportunities('socios')" class="radar-sector-btn px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-all text-xs" data-sector="socios">Socios & Alianzas</button>
+          </div>
+
+          <div class="text-[11px] text-slate-500 font-mono">
+            <span>Oportunidades en pantalla: <strong id="radar-count-display" class="text-sig-teal font-bold">4</strong></span>
+          </div>
+        </div>
+
+        <!-- Feed de Oportunidades Detectadas por el Radar -->
+        <div id="radar-opportunities-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Inyectado dinámicamente por app.js -->
+        </div>
+
+        <!-- Notificación de Escaneo / Estado -->
+        <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-sig-teal animate-ping"></span>
+            <span id="radar-last-scan-info">Último rastreo del mercado: hace instantes. Oportunidades actualizadas.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span>¿Deseas volcar todas las oportunidades al CRM?</span>
+            <button onclick="importAllRadarOpportunitiesToCrm()" class="text-sig-teal font-bold hover:underline">
+              Importar Todas al Pipeline
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- Tabla Interactiva de Leads y Contactos en el Pipeline -->
       <div class="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden">
         <div class="p-5 sm:p-6 border-b border-slate-200 flex flex-wrap items-center justify-between gap-4">

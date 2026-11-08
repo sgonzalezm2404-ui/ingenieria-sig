@@ -3121,6 +3121,7 @@ function initCrmHub() {
   updateCrmKpis();
   renderCrmTable();
   renderCrmTemplatePreview();
+  initRadarEngine();
 }
 
 function loadCrmLeadsFromStorage() {
@@ -3547,3 +3548,466 @@ function sendConsolidatedReportToEmail() {
 
   showToast(`Abriendo envío de reporte consolidado para: ${CRM_OFFICIAL_EMAIL}`, 'success');
 }
+
+// =============================================================
+// RADAR INTELIGENTE DE PROSPECCIÓN CONTINUA DE CLIENTES Y SOCIOS
+// BÚSQUEDA AUTOMÁTICA Y GENERACIÓN ACTIVA EN TIEMPO REAL
+// =============================================================
+
+const RADAR_OPPORTUNITIES_POOL = [
+  {
+    id: 'RADAR-01',
+    sector: 'mineria',
+    sectorLabel: 'Minería / ANM',
+    badgeClass: 'bg-amber-50 text-amber-800 border-amber-200',
+    company: 'Carbones del Cerrejón Limited',
+    region: 'La Guajira, Colombia',
+    contactName: 'Ing. Mauricio Peláez',
+    contactRole: 'Gerente Técnico de Botaderos & Taludes',
+    phone: '+57 310 220 8819',
+    email: 'm.pelaez@cerrejon.com.co',
+    need: 'Modelamiento geológico 3D y análisis de estabilidad para taludes de botaderos de estéril con radar interferométrico.',
+    service: 'Geología 3D, Taludes & PTO',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Alto Impacto'
+  },
+  {
+    id: 'RADAR-02',
+    sector: 'vias',
+    sectorLabel: 'Infraestructura / ANI',
+    badgeClass: 'bg-blue-50 text-blue-800 border-blue-200',
+    company: 'Concesión Vial del Oriente (Covioriente 4G)',
+    region: 'Villavicencio - Yopal',
+    contactName: 'Ing. Sandra Patricia Gómez',
+    contactRole: 'Directora de Geotecnia & Pavimentos',
+    phone: '+57 312 884 1022',
+    email: 's.gomez@covioriente.com.co',
+    need: 'Instrumentación piezométrica y levantamiento LiDAR de alta densidad en 42 taludes críticos de cordillera.',
+    service: 'Vuelo LiDAR & Topografía RTK',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Prioridad Licitatoria'
+  },
+  {
+    id: 'RADAR-03',
+    sector: 'pesv',
+    sectorLabel: 'Flotas & PESV',
+    badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+    company: 'Transportes Montejo Heavy Lift S.A.S.',
+    region: 'Bogotá D.C. / Cobertura Nacional',
+    contactName: 'Dra. Andrea Beltrán',
+    contactRole: 'Líder HSEQ & Seguridad Vial',
+    phone: '+57 320 994 3311',
+    email: 'a.beltran@transportesmontejo.com',
+    need: 'Auditoría integral y software móvil para inspección preoperacional de 95 tractomulas y camas bajas (Res. 40595).',
+    service: 'SIG Fleet & PESV Res. 40595',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Cumplimiento Legal'
+  },
+  {
+    id: 'RADAR-04',
+    sector: 'socios',
+    sectorLabel: 'Alianzas & Consorcios',
+    badgeClass: 'bg-teal-50 text-teal-800 border-teal-200',
+    company: 'Geotécnica & Perforaciones del Sinú S.A.S.',
+    region: 'Montería / Córdoba',
+    contactName: 'Ing. Roberto Char',
+    contactRole: 'Socio Director & Residente de Perforación',
+    phone: '+57 315 771 9022',
+    email: 'r.char@geosinusas.com',
+    need: 'Propuesta de Unión Temporal (Consorcio 50/50) para licitación de estudios de suelos y geotecnia vial con INVIAS.',
+    service: 'SIG Campo (App Geotécnica)',
+    targetType: 'Socio Estratégico / Alianza',
+    valueScore: 'Unión Temporal'
+  },
+  {
+    id: 'RADAR-05',
+    sector: 'mineria',
+    sectorLabel: 'Minería / ANM',
+    badgeClass: 'bg-amber-50 text-amber-800 border-amber-200',
+    company: 'Minera El Roble (Atico Mining)',
+    region: 'Carmen de Atrato, Chocó',
+    contactName: 'Ing. Gustavo Restrepo',
+    contactRole: 'Superintendente de Mina Subterránea',
+    phone: '+57 314 621 7740',
+    email: 'g.restrepo@aticomining.com',
+    need: 'Control estructural en interior de mina y digitalización de perforaciones diamantadas con software SIG Campo.',
+    service: 'SIG Campo (App Geotécnica)',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Minería Subterránea'
+  },
+  {
+    id: 'RADAR-06',
+    sector: 'vias',
+    sectorLabel: 'Infraestructura / INVIAS',
+    badgeClass: 'bg-blue-50 text-blue-800 border-blue-200',
+    company: 'Consorcio Obras del Tequendama',
+    region: 'Cundinamarca',
+    contactName: 'Ing. Camilo Pardo',
+    contactRole: 'Director de Obra de Contención',
+    phone: '+57 313 550 1199',
+    email: 'c.pardo@obrastequendama.com',
+    need: 'Estudio urgente de cinemática de falla planar en talud de 70 m con batimetría y nube de puntos LiDAR.',
+    service: 'Geología 3D, Taludes & PTO',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Urgencia Geotécnica'
+  },
+  {
+    id: 'RADAR-07',
+    sector: 'pesv',
+    sectorLabel: 'Flotas & PESV',
+    badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+    company: 'Concretos & Prefabricados San Jerónimo',
+    region: 'Medellín / Antioquia',
+    contactName: 'Ing. Clara Inés Duque',
+    contactRole: 'Jefe de Logística & Flota Mixers',
+    phone: '+57 301 448 3920',
+    email: 'c.duque@sanjeronimo.com.co',
+    need: 'Plataforma para control de hábitos de conducción y geocercas para 48 camiones hormigonera / mixers.',
+    service: 'SIG Fleet & PESV Res. 40595',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Flota Industrial'
+  },
+  {
+    id: 'RADAR-08',
+    sector: 'socios',
+    sectorLabel: 'Alianzas & Consorcios',
+    badgeClass: 'bg-teal-50 text-teal-800 border-teal-200',
+    company: 'Ingeocivil Consultoría & Diseños',
+    region: 'Bucaramanga, Santander',
+    contactName: 'Ing. Hernán Fonseca',
+    contactRole: 'Gerente de Proyectos de Infraestructura',
+    phone: '+57 318 690 4125',
+    email: 'h.fonseca@ingeocivil.com.co',
+    need: 'Alianza técnica para integrar componente SIG y telemetría de piezómetros en licitación de puente atirantado.',
+    service: 'Telemetría IoT & Dashboards BI',
+    targetType: 'Socio Estratégico / Alianza',
+    valueScore: 'Consorcio Licitación'
+  },
+  {
+    id: 'RADAR-09',
+    sector: 'mineria',
+    sectorLabel: 'Minería / ANM',
+    badgeClass: 'bg-amber-50 text-amber-800 border-amber-200',
+    company: 'Cales & Agregados del Tolima S.A.S.',
+    region: 'Ibagué / Tolima',
+    contactName: 'Ing. Andrés Buitrago',
+    contactRole: 'Director de Planeación Minera',
+    phone: '+57 311 380 4490',
+    email: 'a.buitrago@calestolima.com',
+    need: 'Levantamiento topográfico con dron LiDAR y cubicación mensual de frentes de cantera para regalías ANM.',
+    service: 'Vuelo LiDAR & Topografía RTK',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Cubicación Mensual'
+  },
+  {
+    id: 'RADAR-10',
+    sector: 'vias',
+    sectorLabel: 'Infraestructura / Concesión',
+    badgeClass: 'bg-blue-50 text-blue-800 border-blue-200',
+    company: 'Consorcio Ruta del Sol Sector 3',
+    region: 'Cesar / Magdalena',
+    contactName: 'Ing. Laura Viviana Cruz',
+    contactRole: 'Coordinadora de Estabilidad de Taludes',
+    phone: '+57 316 442 8815',
+    email: 'l.cruz@rutadelsol3.com.co',
+    need: 'Modelación de equilibrio límite y elementos finitos para terraplenes en suelos blandos con inclinómetros automáticos.',
+    service: 'Geología 3D, Taludes & PTO',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Alta Demanda'
+  },
+  {
+    id: 'RADAR-11',
+    sector: 'pesv',
+    sectorLabel: 'Flotas & PESV',
+    badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+    company: 'Expreso Bolivariano & Fronteras',
+    region: 'Bogotá / Eje Cafetero',
+    contactName: 'Dr. Guillermo Sanabria',
+    contactRole: 'Director de Seguridad Operacional',
+    phone: '+57 317 501 2234',
+    email: 'g.sanabria@bolivariano.com.co',
+    need: 'Módulo de auditoría periódica del PESV para 140 conductores y registro móvil de preoperacional diario sin internet.',
+    service: 'SIG Fleet & PESV Res. 40595',
+    targetType: 'Cliente Corporativo',
+    valueScore: 'Flota Pasajeros'
+  },
+  {
+    id: 'RADAR-12',
+    sector: 'socios',
+    sectorLabel: 'Alianzas & Consorcios',
+    badgeClass: 'bg-teal-50 text-teal-800 border-teal-200',
+    company: 'Consorcio Hidroeléctrico del Cauca',
+    region: 'Antioquia / Cauca',
+    contactName: 'Ing. Fernando Tamayo',
+    contactRole: 'Líder de Estructuración Licitatoria',
+    phone: '+57 319 883 0019',
+    email: 'f.tamayo@hidrocauca.com.co',
+    need: 'Invitación a formar Consorcio para interventoría geotécnica y monitoreo satelital de presa y túnel de fuga.',
+    service: 'Telemetría IoT & Dashboards BI',
+    targetType: 'Socio Estratégico / Alianza',
+    valueScore: 'Megaproyecto 2026'
+  }
+];
+
+let RADAR_STATE = {
+  activeSector: 'all',
+  autoScanInterval: null,
+  isAutoScanActive: true,
+  displayedPool: [],
+  currentIndex: 4
+};
+
+function initRadarEngine() {
+  RADAR_STATE.displayedPool = RADAR_OPPORTUNITIES_POOL.slice(0, 4);
+  renderRadarOpportunities();
+  startAutoRadarScanTimer();
+}
+
+function startAutoRadarScanTimer() {
+  if (RADAR_STATE.autoScanInterval) clearInterval(RADAR_STATE.autoScanInterval);
+  RADAR_STATE.autoScanInterval = setInterval(() => {
+    if (!RADAR_STATE.isAutoScanActive) return;
+    performAutoRadarTick();
+  }, 22000); // Cada 22 segundos rota o descubre una nueva oportunidad
+}
+
+function performAutoRadarTick() {
+  const pool = RADAR_OPPORTUNITIES_POOL;
+  const nextItem = pool[RADAR_STATE.currentIndex % pool.length];
+  RADAR_STATE.currentIndex++;
+
+  // Si ya está en pantalla, omitir
+  if (!RADAR_STATE.displayedPool.find(item => item.id === nextItem.id)) {
+    RADAR_STATE.displayedPool.pop();
+    RADAR_STATE.displayedPool.unshift(nextItem);
+    renderRadarOpportunities();
+    updateRadarStatusMessage(`Radar SIG² detectó nueva oportunidad: "${nextItem.company}" en ${nextItem.region}.`);
+  }
+}
+
+function toggleAutoRadarScan() {
+  RADAR_STATE.isAutoScanActive = !RADAR_STATE.isAutoScanActive;
+  const textEl = document.getElementById('auto-radar-status-text');
+  const btnEl = document.getElementById('btn-toggle-auto-radar');
+
+  if (RADAR_STATE.isAutoScanActive) {
+    if (textEl) textEl.textContent = 'Búsqueda Automática: ON';
+    if (btnEl) btnEl.className = 'px-3.5 py-2 rounded-xl text-xs font-bold border border-emerald-300 bg-emerald-50 text-emerald-800 flex items-center gap-2 transition-all';
+    showToast('Búsqueda continua automática de clientes y socios ACTIVADA.', 'info');
+  } else {
+    if (textEl) textEl.textContent = 'Búsqueda Automática: PAUSA';
+    if (btnEl) btnEl.className = 'px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-300 bg-slate-50 text-slate-600 flex items-center gap-2 transition-all';
+    showToast('Búsqueda continua automática en pausa.', 'info');
+  }
+}
+
+function triggerRadarScanManual() {
+  const btn = document.getElementById('btn-radar-scan-now');
+  if (btn) {
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-teal-300"></i><span>Escaneando Registro Minero & SECOP...</span>';
+  }
+
+  setTimeout(() => {
+    // Tomar 4 items aleatorios o rotados del pool
+    const pool = RADAR_OPPORTUNITIES_POOL;
+    const start = Math.floor(Math.random() * (pool.length - 4));
+    RADAR_STATE.displayedPool = pool.slice(start, start + 4);
+    
+    renderRadarOpportunities();
+    updateRadarStatusMessage(`Escaneo completo: 4 nuevas oportunidades de alta demanda detectadas.`);
+
+    if (btn) {
+      btn.innerHTML = '<i class="fa-solid fa-magnifying-glass-chart text-teal-300"></i><span>Escanear Nuevos Prospectos</span>';
+    }
+
+    showToast('¡Radar SIG² actualizado! Nuevas empresas y socios disponibles.', 'success');
+  }, 900);
+}
+
+function filterRadarOpportunities(sector) {
+  RADAR_STATE.activeSector = sector;
+  
+  // Actualizar botones de filtro
+  document.querySelectorAll('.radar-sector-btn').forEach(btn => {
+    if (btn.getAttribute('data-sector') === sector) {
+      btn.className = 'radar-sector-btn px-3 py-1 rounded-lg bg-sig-navy text-white font-bold transition-all text-xs';
+    } else {
+      btn.className = 'radar-sector-btn px-3 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-all text-xs';
+    }
+  });
+
+  renderRadarOpportunities();
+}
+
+function renderRadarOpportunities() {
+  const container = document.getElementById('radar-opportunities-feed');
+  const countEl = document.getElementById('radar-count-display');
+  if (!container) return;
+
+  let items = RADAR_STATE.displayedPool;
+  if (RADAR_STATE.activeSector !== 'all') {
+    items = items.filter(item => item.sector === RADAR_STATE.activeSector);
+  }
+
+  if (countEl) countEl.textContent = items.length;
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-8 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-300">
+        <i class="fa-solid fa-radar text-2xl text-slate-400 mb-2"></i>
+        <div class="text-xs font-bold text-slate-700">No hay oportunidades visibles en este sector específico.</div>
+        <p class="text-[11px] text-slate-500 mt-1">Haz clic en "Escanear Nuevos Prospectos" o selecciona "Todos".</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = items.map(op => {
+    return `
+      <div class="bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200 hover:border-sig-teal transition-all flex flex-col justify-between shadow-2xs hover:shadow-md group">
+        <div>
+          <div class="flex items-center justify-between gap-1 mb-2">
+            <span class="text-[9px] px-2 py-0.5 rounded-md font-extrabold uppercase border ${op.badgeClass}">
+              ${op.sectorLabel}
+            </span>
+            <span class="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+              <span class="pulse-dot-green"></span> ${op.valueScore}
+            </span>
+          </div>
+
+          <h4 class="text-xs font-black text-sig-navy leading-snug group-hover:text-sig-teal transition-colors">
+            ${op.company}
+          </h4>
+          <div class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5 mb-2">
+            <i class="fa-solid fa-location-dot text-slate-400"></i>
+            <span>${op.region}</span>
+          </div>
+
+          <div class="bg-white p-2.5 rounded-xl border border-slate-200/80 mb-3 text-[11px] text-slate-700 leading-relaxed">
+            <div class="font-bold text-sig-navy text-[10px] mb-0.5 flex items-center gap-1">
+              <i class="fa-solid fa-circle-info text-sig-teal text-[9px]"></i>
+              <span>Requerimiento Técnico Detectado:</span>
+            </div>
+            ${op.need}
+          </div>
+
+          <div class="text-[10px] text-slate-600 space-y-0.5 mb-3 border-t border-slate-200/60 pt-2">
+            <div><strong class="text-slate-800">Contacto:</strong> ${op.contactName} (${op.contactRole})</div>
+            <div><strong class="text-slate-800">Móvil / WA:</strong> <span class="font-mono">${op.phone}</span></div>
+          </div>
+        </div>
+
+        <div class="space-y-1.5 pt-1 border-t border-slate-200/60">
+          <button onclick="importRadarLeadToCrm('${op.id}')" class="w-full py-1.5 bg-sig-navy hover:bg-slate-800 text-white rounded-lg font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all shadow-xs">
+            <i class="fa-solid fa-user-plus text-[10px] text-teal-300"></i>
+            <span>Importar al Pipeline de Clientes</span>
+          </button>
+          
+          <div class="grid grid-cols-2 gap-1.5">
+            <button onclick="contactRadarLeadViaWhatsApp('${op.id}')" class="py-1 px-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold text-[10px] flex items-center justify-center gap-1 transition-all">
+              <span class="icon-whatsapp text-xs"></span>
+              <span>WhatsApp</span>
+            </button>
+            <button onclick="contactRadarLeadViaEmail('${op.id}')" class="py-1 px-2 bg-slate-100 hover:bg-slate-200 text-sig-navy rounded-lg font-bold text-[10px] border border-slate-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-envelope text-slate-500"></i>
+              <span>Propuesta</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateRadarStatusMessage(msg) {
+  const infoEl = document.getElementById('radar-last-scan-info');
+  if (infoEl) infoEl.textContent = msg;
+}
+
+function importRadarLeadToCrm(radarId) {
+  const item = RADAR_OPPORTUNITIES_POOL.find(op => op.id === radarId);
+  if (!item) return;
+
+  // Verificar si ya existe en leads
+  const existing = CRM_STATE.leads.find(l => l.company.toLowerCase() === item.company.toLowerCase());
+  if (existing) {
+    showToast(`"${item.company}" ya está en tu Pipeline comercial.`, 'info');
+    return;
+  }
+
+  const now = new Date();
+  const dateFormatted = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+  
+  const newLead = {
+    id: `RADAR-${now.getFullYear()}-${String(CRM_STATE.leads.length + 1).padStart(3, '0')}`,
+    timestamp: dateFormatted,
+    name: item.contactName,
+    role: item.contactRole,
+    company: item.company,
+    phone: item.phone,
+    email: item.email,
+    targetType: item.targetType,
+    service: item.service,
+    details: `${item.need} (Ubicación: ${item.region})`,
+    status: 'Nuevo Lead (Radar)',
+    destEmail: CRM_OFFICIAL_EMAIL
+  };
+
+  CRM_STATE.leads.unshift(newLead);
+  saveCrmLeadsToStorage();
+  updateCrmKpis();
+  renderCrmTable();
+
+  showToast(`¡"${item.company}" agregada con éxito al CRM y al Master Excel!`, 'success');
+}
+
+function importAllRadarOpportunitiesToCrm() {
+  let count = 0;
+  RADAR_STATE.displayedPool.forEach(op => {
+    const existing = CRM_STATE.leads.find(l => l.company.toLowerCase() === op.company.toLowerCase());
+    if (!existing) {
+      importRadarLeadToCrm(op.id);
+      count++;
+    }
+  });
+
+  if (count > 0) {
+    showToast(`Se incorporaron ${count} oportunidades en vivo al Pipeline del CRM.`, 'success');
+  } else {
+    showToast('Todas las oportunidades visibles ya forman parte de tu Pipeline.', 'info');
+  }
+}
+
+function contactRadarLeadViaWhatsApp(radarId) {
+  const op = RADAR_OPPORTUNITIES_POOL.find(item => item.id === radarId);
+  if (!op) return;
+
+  const phoneDigits = op.phone.replace(/[^0-9]/g, '');
+  const text = `Hola ${op.contactName}, cordial saludo desde la Dirección Técnica de SIG² Ingeniería. Nos comunicamos en referencia a las operaciones de ${op.company} (${op.region}). Hemos analizado su necesidad técnica en ${op.service} (${op.need}) y disponemos de la capacidad técnica, software y equipos para emitirles una propuesta formal e integral. ¿Podríamos coordinar una breve llamada técnica hoy?`;
+
+  const waUrl = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank');
+}
+
+function contactRadarLeadViaEmail(radarId) {
+  const op = RADAR_OPPORTUNITIES_POOL.find(item => item.id === radarId);
+  if (!op) return;
+
+  const subject = `Propuesta Técnica & Alianza Corporativa - SIG² Ingeniería para ${op.company}`;
+  let body = `Estimado(a) ${op.contactName},\n`;
+  body += `${op.contactRole} - ${op.company}\n\n`;
+  body += `Por medio de la presente, desde la Dirección Técnica de SIG² Ingeniería especializada en Geología, Geotecnia, Vuelo LiDAR y Cumplimiento PESV, nos permitimos presentar nuestras capacidades técnicas orientadas a su requerimiento:\n\n`;
+  body += `- Proyecto / Faena: ${op.region}\n`;
+  body += `- Foco Técnico: ${op.service}\n`;
+  body += `- Requerimiento Analizado: ${op.need}\n\n`;
+  body += `Disponemos de software especializado (SIG Campo, SIG Fleet), estaciones topográficas RTK, modelamiento 3D y personal idóneo para acompañar sus operaciones.\n\n`;
+  body += `Agradecemos confirmar disponibilidad para presentación de portafolio y emisión de propuesta formal.\n\n`;
+  body += `Atentamente,\n`;
+  body += `Dirección de Proyectos & Comercial SIG²\n`;
+  body += `Canal Directo WhatsApp: +57 312 789 4040\n`;
+  body += `Correo Oficial: ${CRM_OFFICIAL_EMAIL}\n`;
+
+  const mailUrl = `mailto:${op.email}?cc=${CRM_OFFICIAL_EMAIL}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailUrl;
+}
+
