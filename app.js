@@ -1,9 +1,8 @@
 /**
- * SIG² | Sistemas e Ingeniería
- * Lógica Reactiva & Modular - Guía Oficial de Identidad Visual
- * Tipografía: Columbus
- * Enfoque: Consultoría & Cotización Técnica + Asistente Inteligente CRM "Cadenero"
+ * SIG² | Sistemas y Soluciones • Integrado e Ingeniería • Geográfico y Gestión
+ * División Logística & Soluciones Digitales
  * WhatsApp Oficial Directo: +57 312 789 4040
+ * Correo Oficial de Control: ingenierotecnicocyc@gmail.com
  */
 
 // Estado Global de la Aplicación y CRM de Cadenero
@@ -3574,7 +3573,7 @@ function getActiveCrmTemplateText() {
   const tab = CRM_STATE.currentMsgTab;
 
   if (tab === 'socio') {
-    return `Estimado(a) ${activeLead.name} (${activeLead.company}),\n\nDesde la Dirección de Proyectos de SIG² (Sistemas e Ingeniería) deseamos formalizar nuestro interés en conformar una ALIANZA ESTRATÉGICA / UNIÓN TEMPORAL con ${activeLead.company} para participar conjuntamente en los pliegos de licitación pública y proyectos de gran envergadura en el sector ${activeLead.service}.\n\nPonemos a su disposición nuestro equipo interdisciplinario, licencias de software propietario SIG Campo, sensores LiDAR de alta precisión y respaldo en GDB ANLA / ANM.\n\nQuedamos atentos para programar una reunión técnica de articulación.\n\nAtentamente,\nDirección de Alianzas & Nuevos Negocios | SIG²\nWhatsApp: +57 312 789 4040\nCorreo: ingenierotecnicocyc@gmail.com`;
+    return `Estimado(a) ${activeLead.name} (${activeLead.company}),\n\nDesde la Dirección de Proyectos de SIG² (Sistemas y Soluciones • Integrado e Ingeniería • Geográfico y Gestión | Logística) deseamos formalizar nuestro interés en conformar una ALIANZA ESTRATÉGICA / UNIÓN TEMPORAL con ${activeLead.company} para participar conjuntamente en los pliegos de licitación pública y proyectos de gran envergadura en el sector ${activeLead.service}.\n\nPonemos a su disposición nuestro equipo interdisciplinario, licencias de software propietario SIG Campo, sensores LiDAR de alta precisión y respaldo en GDB ANLA / ANM.\n\nQuedamos atentos para programar una reunión técnica de articulación.\n\nAtentamente,\nDirección de Alianzas & Nuevos Negocios | SIG²\nWhatsApp: +57 312 789 4040\nCorreo: ingenierotecnicocyc@gmail.com`;
   } else if (tab === 'contratista') {
     return `Apreciado(a) ${activeLead.name} (${activeLead.company}),\n\nLe confirmamos el inicio del proceso de HOMOLOGACIÓN TÉCNICA DE PROVEEDOR Y CONTRATISTA DE FAENA con SIG² para la disciplina: ${activeLead.service}.\n\nPara completar el expediente operativo en faena, le solicitamos remitir la ficha técnica de equipos, hojas de vida de operadores certificados y la política de cumplimiento PESV (Resolución 40595 de 2022).\n\nPuede coordinar la entrega documental directamente al correo oficial ingenierotecnicocyc@gmail.com o a nuestra línea técnica.\n\nAtentamente,\nCoordinación de Contratistas & HSEQ | SIG²\nWhatsApp: +57 312 789 4040`;
   } else {
@@ -3621,7 +3620,7 @@ function dispatchLeadEmailProposal(leadId) {
   if (!lead) return;
 
   const subject = `[PROPUESTA TÉCNICA SIG²] Requerimiento ${lead.service} - ${lead.company}`;
-  const body = `Estimado(a) ${lead.name},\n\nPresentamos nuestra propuesta técnica formal para los servicios de ${lead.service}.\n\nAtentamente,\nSIG² Sistemas e Ingeniería\nContacto: +57 312 789 4040\nCopia de control: ${CRM_OFFICIAL_EMAIL}`;
+  const body = `Estimado(a) ${lead.name},\n\nPresentamos nuestra propuesta técnica formal para los servicios de ${lead.service}.\n\nAtentamente,\nSIG² Sistemas y Soluciones | Integrado e Ingeniería | Geográfico y Gestión\nDivisión Logística\nContacto: +57 312 789 4040\nCopia de control: ${CRM_OFFICIAL_EMAIL}`;
 
   const mailtoUrl = `mailto:${lead.email}?cc=${CRM_OFFICIAL_EMAIL}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;

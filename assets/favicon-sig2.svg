@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <rect width="100" height="100" rx="20" fill="#FFFFFF"/>
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+  <!-- S -->
+  <text x="18" y="66" font-family="Arial, 'Helvetica Neue', sans-serif" font-size="44" font-weight="900" fill="#0A2540">S</text>
+  <!-- Vertical bar -->
+  <rect x="47" y="24" width="6" height="52" rx="2" fill="#0A2540"/>
+  <!-- G -->
+  <text x="56" y="66" font-family="Arial, 'Helvetica Neue', sans-serif" font-size="44" font-weight="900" fill="#0A2540">G</text>
+  <!-- ² -->
+  <text x="84" y="38" font-family="Arial, 'Helvetica Neue', sans-serif" font-size="24" font-weight="900" fill="#168F8A">²</text>
+</svg>
