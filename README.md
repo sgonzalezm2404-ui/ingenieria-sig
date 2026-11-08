@@ -71,7 +71,7 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
 
 ### 4. Macro-Plataforma CONSULTORA AI (`#consultora-ai`)
 - **Departamento Digital Autónomo de Marketing, Prospección y Ventas:**
-  - Panel unificado con 14 submódulos y 11 indicadores comerciales clave en tiempo real.
+  - Panel unificado con 15 submódulos y 11 indicadores comerciales clave en tiempo real.
   - **4 Unidades Estratégicas de Negocio:** *Ingeniería y Geotecnia, SST y HSEQ, Consultoría Ambiental, Transformación Digital*.
   - **Motor de 7 Agentes de Inteligencia Artificial (OpenAI GPT-4o):**
     - *Agente 1:* Investigación de Mercado, Sectores & Competidores.
@@ -87,7 +87,25 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
   - **Base de Datos PostgreSQL (21 Tablas):** Esquema relacional completo con RLS en [`consultora-ai-schema.sql`](consultora-ai-schema.sql).
   - **Seguridad y Cumplimiento:** Ley 1581 de 2012 (Habeas Data Colombia) y aislamiento de claves en servidor.
 
-### 5. Asistente Virtual Inteligente "Cadenero"
+### 5. Motor Autónomo de Búsqueda de Clientes & Publicidad Orgánica Propia (Cero Dependencias)
+- **100% Nativo en el Navegador (Sin APIs de Pago Obligatorias):**
+  - Opera sin necesidad de pagar OpenAI API, servidores n8n ni pauta publicitaria en Google Ads / Meta Ads.
+- **Radar Autónomo de Búsqueda de Clientes B2B:**
+  - Detección activa de licitaciones y proyectos reales en Colombia (Consorcios Viales 4G, Canteras, Flotas de Transporte, Constructoras).
+  - Filtro interactivo por Sector y Región geográfica de Colombia.
+  - Despacho inmediato en 1 clic:
+    * *WhatsApp:* Pre-arma una propuesta técnica estructurada y abre el chat oficial con el cliente o al WhatsApp `+57 312 789 4040`.
+    * *Correo:* Envía oferta formal con alcance técnico y copia oculta a `ingenierotecnicocyc@gmail.com`.
+    * *CRM:* Importa instantáneamente el prospecto al Pipeline Kanban de 10 etapas.
+- **Estudio de Publicidad Orgánica Inbound (100% Gratuito):**
+  - **Artículos Técnicos SEO para Google Colombia:** Genera artículos exhaustivos (NSR-10, PESV Res. 40595, Geofísica, SG-SST) con datos estructurados `schema.org` (JSON-LD) listos para copiar e indexar gratis en Google.
+  - **Carruseles B2B para LinkedIn:** 4 barajas técnicas de 5 láminas con visualizador interactivo y copy optimizado con hashtags de ingeniería.
+  - **Guiones Directos para WhatsApp:** Modelos de contacto persuasivo para directores de obra, jefes de compras y gerentes HSEQ.
+  - **Imanes de Leads Interactivos:**
+    * *Calculadora Geotécnica NSR-10 (Título H.3):* Calcula sondeos mínimos obligatorios, profundidad y ensayos según categoría y área, con captura de leads.
+    * *Diagnóstico PESV (Res. 40595 de 2022):* Calcula el nivel de diseño de flota (Básico, Estándar, Avanzado) y pasos obligatorios, vinculando al prospecto con el CRM.
+
+### 6. Asistente Virtual Inteligente "Cadenero"
 - Chatbot flotante especializado en captación y calificación de leads técnicos.
 - Generación de expediente técnico CRM consolidado y transferencia directa a WhatsApp (+57 312 789 4040).
 

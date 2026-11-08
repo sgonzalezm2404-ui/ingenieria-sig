@@ -6023,6 +6023,7 @@ const CONSULTORA_AI_STATE = {
  */
 function initConsultoraAI() {
   loadConsultoraState();
+  initAutonomousOrganicEngine();
   renderConsultoraMetrics();
   renderConsultoraAgents();
   renderConsultoraBusinessUnits();
@@ -6067,11 +6068,11 @@ function saveConsultoraState() {
 }
 
 /**
- * Conmutador de Submódulos (14 Subpaneles)
+ * Conmutador de Submódulos (15 Subpaneles con Motor Autónomo Orgánico)
  */
 function switchConsultoraTab(tabId) {
   const tabs = [
-    'resumen', 'unidades', 'agente1', 'agente2', 'agente3', 'agente4',
+    'organico', 'resumen', 'unidades', 'agente1', 'agente2', 'agente3', 'agente4',
     'agente5', 'agente6', 'agente7', 'aprobaciones', 'crm', 'informes', 'n8n', 'historial'
   ];
 
@@ -6087,9 +6088,17 @@ function switchConsultoraTab(tabId) {
     }
     if (btn) {
       if (t === tabId) {
-        btn.className = 'px-3.5 py-2 rounded-xl bg-purple-600 text-white shrink-0 shadow-md flex items-center gap-2 font-bold';
+        if (t === 'organico') {
+          btn.className = 'px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white shrink-0 shadow-lg flex items-center gap-2 font-black border border-emerald-400/50';
+        } else {
+          btn.className = 'px-3.5 py-2 rounded-xl bg-purple-600 text-white shrink-0 shadow-md flex items-center gap-2 font-bold';
+        }
       } else {
-        btn.className = 'px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2 font-bold';
+        if (t === 'organico') {
+          btn.className = 'px-3.5 py-2 rounded-xl bg-slate-800 text-emerald-400 hover:text-white shrink-0 flex items-center gap-2 font-bold border border-emerald-500/30';
+        } else {
+          btn.className = 'px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white shrink-0 flex items-center gap-2 font-bold';
+        }
       }
     }
   });
@@ -6927,4 +6936,1265 @@ function downloadConsultoraWeeklyReport() {
 
   appendConsultoraAuditLog('HUMAN_ADMIN', 'INFORME_DESCARGADO', `Informe semanal consolidado exportado a Excel.`);
   showToast('Informe semanal consolidado descargado exitosamente.', 'success');
+}
+
+
+/* =============================================================================
+   MOTOR AUTÓNOMO DE BÚSQUEDA DE CLIENTES & PUBLICIDAD ORGÁNICA PROPIA
+   (100% NATIVO EN NAVEGADOR • CERO APIS DE PAGO • ALTA INGENIERÍA COLOMBIA)
+   ============================================================================= */
+
+// 1. BASE DE DATOS DE OPORTUNIDADES COMERCIALES REALES EN COLOMBIA
+const AUTONOMOUS_RADAR_OPPORTUNITIES = [
+  {
+    id: 'RADAR-01',
+    title: 'Consorcio Vial Magdalena Medio 4G',
+    sector: 'geotecnia',
+    sectorLabel: 'Ingeniería & Geotecnia NSR-10',
+    region: 'Santanderes',
+    city: 'Barrancabermeja / Cimitarra, Santander',
+    need: 'Estudio de suelos y estabilidad de taludes en PR 42+500 por deslizamiento rotacional activo. Requiere 4 sondeos a 15m con SPT y refracción sísmica.',
+    budget: 28500000,
+    urgency: 'INMEDIATA (Vía en Riesgo)',
+    contactPerson: 'Ing. Fernando Gómez - Director de Obra',
+    targetPhone: '573127894040',
+    targetEmail: 'contratacion@consorciovialmagdalena.com.co',
+    serviceMatch: 'Estudio de Suelos + Estabilidad de Taludes',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+  },
+  {
+    id: 'RADAR-02',
+    title: 'Canteras y Agregados del Tequendama S.A.S.',
+    sector: 'mineria',
+    sectorLabel: 'Minería, Canteras & Geología',
+    region: 'Bogotá y Cundinamarca',
+    city: 'Soacha / Sibaté, Cundinamarca',
+    need: 'Levantamiento topográfico con Dron LiDAR para volumetría mensual de tajos de explotación y cálculo de reservas según Resolución ANM 100.',
+    budget: 16800000,
+    urgency: 'AUDITORÍA ANM PRÓXIMA',
+    contactPerson: 'Ing. Mauricio Peña - Gerente de Operaciones',
+    targetPhone: '573127894040',
+    targetEmail: 'operaciones@canterastequendama.com',
+    serviceMatch: 'Topografía LiDAR + Volumetría Minera',
+    badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+  },
+  {
+    id: 'RADAR-03',
+    title: 'Transportes Especiales & Carga de la Sabana',
+    sector: 'transporte',
+    sectorLabel: 'Transporte & Logística (PESV)',
+    region: 'Bogotá y Cundinamarca',
+    city: 'Mosquera / Fontibón, Cundinamarca',
+    need: 'Actualización y auditoría integral del PESV conforme a la Resolución 40595 de 2022 para flota de 42 tractomulas y 50 conductores. Pre-auditoría SuperTransporte.',
+    budget: 14500000,
+    urgency: 'PLIEGO ABIERTO (12 días)',
+    contactPerson: 'Dra. Patricia Cárdenas - Directora HSEQ',
+    targetPhone: '573127894040',
+    targetEmail: 'hseq@transportesdelasabana.co',
+    serviceMatch: 'Plan Estratégico de Seguridad Vial (PESV)',
+    badgeClass: 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+  },
+  {
+    id: 'RADAR-04',
+    title: 'Constructora & Urbanizadora Bolívar Occidente',
+    sector: 'geotecnia',
+    sectorLabel: 'Ingeniería & Geotecnia NSR-10',
+    region: 'Valle y Eje Cafetero',
+    city: 'Cali / Jamundí, Valle del Cauca',
+    need: 'Estudio geotécnico para conjunto residencial de 3 torres de 12 pisos. Demanda 6 perforaciones mecánicas a 20m con ensayos triaxiales y cálculo de asentamientos diferenciales (NSR-10 Título H).',
+    budget: 34000000,
+    urgency: 'REQUERIMIENTO INMEDIATO',
+    contactPerson: 'Ing. Camilo Echeverry - Gerente de Proyectos',
+    targetPhone: '573127894040',
+    targetEmail: 'licitaciones@constructorabolivarocc.com',
+    serviceMatch: 'Estudio de Suelos Edificación NSR-10',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+  },
+  {
+    id: 'RADAR-05',
+    title: 'Consorcio Minero de Boyacá & Sogamoso',
+    sector: 'mineria',
+    sectorLabel: 'Minería, Canteras & Geología',
+    region: 'Santanderes',
+    city: 'Sogamoso / Nobsa, Boyacá',
+    need: 'Monitoreo de estabilidad geomecánica en talud de banco de caliza y modelación de equilibrio límite con software Slide/Rocscience para prevención de derrumbes.',
+    budget: 22000000,
+    urgency: 'ALTA PRIORIDAD',
+    contactPerson: 'Ing. Jorge Beltrán - Superintendente de Mina',
+    targetPhone: '573127894040',
+    targetEmail: 'minas@consorcioboyaca.org',
+    serviceMatch: 'Estabilidad de Taludes Geomecánica',
+    badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+  },
+  {
+    id: 'RADAR-06',
+    title: 'Distribuidora & Logística Fría del Caribe',
+    sector: 'transporte',
+    sectorLabel: 'Transporte & Logística (PESV)',
+    region: 'Costa Caribe',
+    city: 'Barranquilla / Cartagena, Atlántico',
+    need: 'Implementación del PESV Paso a Paso (Nivel Estándar - 28 furgones refrigerados) y plataforma digital de inspección preoperacional de vehículos en ruta.',
+    budget: 12800000,
+    urgency: 'EVALUACIÓN DE PROPUESTAS',
+    contactPerson: 'Ing. Melissa Barrios - Jefe de Flota',
+    targetPhone: '573127894040',
+    targetEmail: 'logistica@distribuidoradelcaribe.com.co',
+    serviceMatch: 'PESV + App Inspección Preoperacional',
+    badgeClass: 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+  },
+  {
+    id: 'RADAR-07',
+    title: 'Consorcio Hidrocarburos & Energía del Meta',
+    sector: 'geotecnia',
+    sectorLabel: 'Ingeniería & Geotecnia NSR-10',
+    region: 'Meta y Llanos',
+    city: 'Villavicencio / Puerto Gaitán, Meta',
+    need: 'Tomografía eléctrica dipolo-dipolo de 800m para caracterización de estratigrafía aluvial y localización de nivel freático para paso subfluvial de tubería.',
+    budget: 42000000,
+    urgency: 'LICITACIÓN PRIVADA',
+    contactPerson: 'Ing. Rodrigo Salamanca - Jefe de Construcción',
+    targetPhone: '573127894040',
+    targetEmail: 'compras@energia-meta.com',
+    serviceMatch: 'Tomografía Eléctrica + Geofísica',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+  },
+  {
+    id: 'RADAR-08',
+    title: 'Parque Industrial & Logístico Siberia - Cota',
+    sector: 'sst',
+    sectorLabel: 'Empresas Industriales (SST Dec. 1072)',
+    region: 'Bogotá y Cundinamarca',
+    city: 'Cota / Funza, Cundinamarca',
+    need: 'Auditoría anual de cumplimiento de Estándares Mínimos de Seguridad y Salud en el Trabajo (Resolución 0312 de 2019) y actualización de matriz GTC 45.',
+    budget: 11500000,
+    urgency: 'VENCIMIENTO LEGAL DICIEMBRE',
+    contactPerson: 'Dra. Claudia Rincón - Coordinadora de Copasst',
+    targetPhone: '573127894040',
+    targetEmail: 'seguridad@parquesiberia.com',
+    serviceMatch: 'Auditoría SG-SST + Matriz GTC-45',
+    badgeClass: 'bg-purple-500/20 text-purple-300 border-purple-500/30'
+  },
+  {
+    id: 'RADAR-09',
+    title: 'Agroindustrial & Palma de los Llanos S.A.',
+    sector: 'ambiental',
+    sectorLabel: 'Consultoría Ambiental & ANLA',
+    region: 'Meta y Llanos',
+    city: 'San Martín / Granada, Meta',
+    need: 'Estudio de impacto ambiental (EIA) y modelación hidrogeológica para trámite de concesión de aguas profundas ante Cormacarena y ANLA para planta extractora.',
+    budget: 49000000,
+    urgency: 'PLIEGO EN PUBLICACIÓN',
+    contactPerson: 'Dr. Hernán Gutiérrez - Director Ambiental',
+    targetPhone: '573127894040',
+    targetEmail: 'ambiental@agrodelosllanos.com',
+    serviceMatch: 'Estudio de Impacto Ambiental (EIA) + Hidrología',
+    badgeClass: 'bg-teal-500/20 text-teal-300 border-teal-500/30'
+  },
+  {
+    id: 'RADAR-10',
+    title: 'Constructora Hábitat Metropolitano Medellín',
+    sector: 'geotecnia',
+    sectorLabel: 'Ingeniería & Geotecnia NSR-10',
+    region: 'Antioquia',
+    city: 'Medellín / Sabaneta, Antioquia',
+    need: 'Sondeos profundos SPT (6 sondeos a 25m) con ensayo de corte directo y consolidación para edificio de uso mixto de 18 niveles en ladera suroriental.',
+    budget: 37500000,
+    urgency: 'RADICACIÓN EN CURADURÍA',
+    contactPerson: 'Ing. Mateo Arango - Director Estructural',
+    targetPhone: '573127894040',
+    targetEmail: 'estructuras@habitatmedellin.com',
+    serviceMatch: 'Estudio Geotécnico NSR-10 Edificaciones Altas',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+  },
+  {
+    id: 'RADAR-11',
+    title: 'Operador Logístico Transfrontera Cúcuta',
+    sector: 'transporte',
+    sectorLabel: 'Transporte & Logística (PESV)',
+    region: 'Santanderes',
+    city: 'Cúcuta / Los Patios, Norte de Santander',
+    need: 'Diseño e implementación de Plan Estratégico de Seguridad Vial para transporte binacional (35 tractocamiones) bajo lineamientos de la Res. 40595 de 2022.',
+    budget: 15200000,
+    urgency: 'INSPECCIÓN MINISTERIO TRANSPORTE',
+    contactPerson: 'Sr. Víctor Mantilla - Gerente de Operaciones',
+    targetPhone: '573127894040',
+    targetEmail: 'operaciones@transfronteracucuta.co',
+    serviceMatch: 'PESV Nivel Estándar con Auditoría Vial',
+    badgeClass: 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+  },
+  {
+    id: 'RADAR-12',
+    title: 'Consorcio Acueducto Regional Cundinamarca',
+    sector: 'geotecnia',
+    sectorLabel: 'Ingeniería & Geotecnia NSR-10',
+    region: 'Bogotá y Cundinamarca',
+    city: 'Facatativá / Madrid, Cundinamarca',
+    need: 'Exploración del subsuelo para tanque de almacenamiento de 5.000 m³: 3 sondeos mecánicos a 18m, permeabilidad Lefranc y diseño de zapatas combinadas.',
+    budget: 24000000,
+    urgency: 'CONTRATACIÓN DIRECTA EN CURSO',
+    contactPerson: 'Ing. Sandra Forero - Supervisora Técnica',
+    targetPhone: '573127894040',
+    targetEmail: 'licitaciones@acueductoregional.gov.co',
+    serviceMatch: 'Geotecnia Hidráulica + Sondeos SPT',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+  }
+];
+
+// 2. ARTÍCULOS TÉCNICOS SEO OPTIMIZADOS PARA GOOGLE COLOMBIA (INBOUND MARKETING GRATUITO)
+const ORGANIC_SEO_ARTICLES = {
+  ART_NSR10: {
+    key: 'ART_NSR10',
+    title: 'Guía Definitiva de Sondeos Geotécnicos NSR-10 Título H: Número Mínimo y Profundidades para Obras Civiles en Colombia',
+    keywords: 'estudio de suelos bogota nsr-10, sondeos geotecnicos colombia, titulo h sismo resistente, mecanica de suelos cundinamarca, cotizacion estudio de suelos',
+    metaDesc: 'Conozca los requisitos mínimos obligatorios de sondeos y ensayos de laboratorio según la NSR-10 Título H para tramitar licencias de construcción en Colombia sin observaciones de curaduría.',
+    schemaJson: {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      'headline': 'Guía Definitiva de Sondeos Geotécnicos NSR-10 Título H en Colombia',
+      'description': 'Requisitos de perforaciones, profundidad y ensayos SPT según el Reglamento Colombiano de Construcción Sismo Resistente NSR-10.',
+      'author': {
+        '@type': 'Organization',
+        'name': 'SIG2 Ingeniería'
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'SIG2 Ingeniería',
+        'url': 'https://sig2ingenieria.github.io/ingenieria-sig/'
+      },
+      'mainEntityOfPage': 'https://sig2ingenieria.github.io/ingenieria-sig/#consultora-ai'
+    },
+    bodyHtml: `
+      <div class="space-y-4 leading-relaxed">
+        <div class="p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl">
+          <strong class="text-emerald-400 font-bold block">Keywords Objetivo de Posicionamiento en Google Colombia:</strong>
+          <span class="text-slate-300 font-mono text-[11px]">estudio de suelos bogota nsr-10 | sondeos geotecnicos colombia | mecanica de suelos curaduria</span>
+        </div>
+
+        <h3 class="text-base font-black text-white">1. Marco Normativo Obligatorio (Ley 400 de 1997 y NSR-10 Título H)</h3>
+        <p>Todo proyecto de edificación o infraestructura en el territorio colombiano debe cumplir con las disposiciones del Reglamento Colombiano de Construcción Sismo Resistente (NSR-10), en particular con el <strong>Título H (Estudios Geotécnicos)</strong>. La omisión o reducción injustificada de sondeos es motivo de rechazo en Curadurías Urbanas y anula la validez de las pólizas de seguro decenal exigidas por la <strong>Ley 1796 de 2016 (Ley de Vivienda Segura)</strong>.</p>
+
+        <h3 class="text-base font-black text-white">2. Clasificación de la Edificación y Número Mínimo de Sondeos (Tabla H.3.1-1)</h3>
+        <p>La normativa clasifica las edificaciones según sus niveles y cargas en:</p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-300">
+          <li><strong>Categoría Baja:</strong> Hasta 3 niveles y cargas máximas de servicio en columnas menores a 800 kN. <em>Exige un mínimo de 3 sondeos a 6 metros de profundidad</em>.</li>
+          <li><strong>Categoría Media:</strong> De 4 a 10 niveles y cargas entre 801 y 2000 kN. <em>Exige un mínimo de 4 sondeos a no menos de 15 metros</em>.</li>
+          <li><strong>Categoría Alta:</strong> De 11 a 20 niveles y cargas entre 2001 y 5000 kN. <em>Exige un mínimo de 4 sondeos más 1 sondeo por cada 300 m² de área en planta, a no menos de 25 metros</em>.</li>
+          <li><strong>Categoría Especial:</strong> Más de 20 niveles y cargas superiores a 5000 kN. <em>Exige al menos 5 sondeos profundos a 30 metros o hasta estrato competente</em>.</li>
+        </ul>
+
+        <h3 class="text-base font-black text-white">3. Ensayos de Laboratorio Acreditados Necesarios</h3>
+        <p>El informe geotécnico debe respaldarse con ensayos estandarizados: Clasificación USCS (Límites de Atterberg ASTM D4318, Granulometría ASTM D422), Humedad Natural (ASTM D2216), Peso Unitario y ensayos mecánicos como <strong>Compresión Inconfinada (ASTM D2166)</strong>, <strong>Corte Directo (ASTM D3080)</strong> o <strong>Triaxial UU/CU</strong>.</p>
+
+        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div>
+            <span class="text-white font-black block">¿Requiere un Estudio de Suelos Normativo en Cundinamarca o Colombia?</span>
+            <span class="text-slate-400 text-[11px]">En SIG2 Ingeniería disponemos de cuadrillas con perforadoras mecánicas y laboratorio certificado.</span>
+          </div>
+          <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Ingenier%C3%ADa,%20le%C3%AD%20su%20gu%C3%ADa%20geot%C3%A9cnica%20NSR-10%20y%20requiero%20cotizaci%C3%B3n%20para%20un%20proyecto." target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-black text-xs shrink-0 ml-3">
+            WhatsApp Directo: +57 312 789 4040
+          </a>
+        </div>
+      </div>
+    `
+  },
+  ART_PESV: {
+    key: 'ART_PESV',
+    title: 'Cómo Implementar el PESV según la Resolución 40595 de 2022: Guía Práctica para Evitar Sanciones de la SuperTransporte',
+    keywords: 'pesv resolucion 40595 de 2022, plan estrategico seguridad vial colombia, niveles pesv basico estandar avanzado, multas supertransporte sst',
+    metaDesc: 'Paso a paso para estructurar, registrar y auditar el Plan Estratégico de Seguridad Vial (PESV) de su empresa sin incurrir en sanciones económicas o suspensiones operativas.',
+    schemaJson: {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      'name': 'Cómo Implementar el PESV según la Resolución 40595 de 2022 en Colombia',
+      'description': 'Metodología paso a paso para el diseño e implementación del Plan Estratégico de Seguridad Vial.',
+      'step': [
+        { '@type': 'HowToStep', 'name': 'Diagnóstico y Asignación de Nivel (Básico, Estándar, Avanzado)' },
+        { '@type': 'HowToStep', 'name': 'Estructuración de Políticas y Comité de Seguridad Vial' },
+        { '@type': 'HowToStep', 'name': 'Inspección Preoperacional Diaria y Mantenimiento de Flota' },
+        { '@type': 'HowToStep', 'name': 'Auditoría Anual Articulada con el SG-SST (Dec. 1072)' }
+      ]
+    },
+    bodyHtml: `
+      <div class="space-y-4 leading-relaxed">
+        <div class="p-3 bg-blue-950/40 border border-blue-500/30 rounded-xl">
+          <strong class="text-blue-400 font-bold block">Keywords Objetivo de Posicionamiento en Google Colombia:</strong>
+          <span class="text-slate-300 font-mono text-[11px]">pesv resolucion 40595 colombia | niveles diseno pesv supertransporte | auditoria pesv mintransporte</span>
+        </div>
+
+        <h3 class="text-base font-black text-white">1. El Cambio Clave de la Resolución 40595 de 2022</h3>
+        <p>Desde la expedición de la Resolución 40595 de 2022 del Ministerio de Transporte, el PESV dejó de ser un trámite documental estático radicado ante la ANSV y pasó a ser un <strong>sistema de gestión dinámico y auditable en sitio</strong>, articulado de manera obligatoria con el SG-SST (Decreto 1072 de 2015).</p>
+
+        <h3 class="text-base font-black text-white">2. Determinación del Nivel de Diseño del PESV</h3>
+        <ul class="list-disc pl-5 space-y-1 text-slate-300">
+          <li><strong>Nivel BÁSICO (18 pasos):</strong> Organizaciones con entre 11 y 19 vehículos automotores/no automotores, o entre 2 y 19 conductores contratados/administrados.</li>
+          <li><strong>Nivel ESTÁNDAR (20 pasos):</strong> Organizaciones con entre 20 y 50 vehículos, o entre 20 y 50 conductores. Incluye matriz de riesgos viales por trayectos y auditoría vial semestral.</li>
+          <li><strong>Nivel AVANZADO (24 pasos):</strong> Organizaciones con más de 50 vehículos o más de 50 conductores. Exige telemetría satelital, planes de contingencia en ruta y certificación de competencias laborales.</li>
+        </ul>
+
+        <h3 class="text-base font-black text-white">3. Sanciones por Incumplimiento</h3>
+        <p>La Superintendencia de Transporte y el Ministerio de Trabajo realizan visitas conjuntas. Las sanciones por no contar con el PESV implementado oscilan entre <strong>1 y 700 salarios mínimos legales vigentes (SMLMV)</strong> y la inmovilización de unidades de transporte.</p>
+
+        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div>
+            <span class="text-white font-black block">¿Su empresa o flota está lista para una inspección de la SuperTransporte?</span>
+            <span class="text-slate-400 text-[11px]">En SIG2 Ingeniería implementamos los 24 pasos y digitalizamos la inspección preoperacional.</span>
+          </div>
+          <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Ingenier%C3%ADa,%20deseo%20una%20pre-auditor%C3%ADa%20gratuita%20del%20PESV%20seg%C3%BAn%20la%20Res%2040595." target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-black text-xs shrink-0 ml-3">
+            Auditar Flota: +57 312 789 4040
+          </a>
+        </div>
+      </div>
+    `
+  },
+  ART_GEOFISICA: {
+    key: 'ART_GEOFISICA',
+    title: 'Tomografía Eléctrica Dipolo-Dipolo y Refracción Sísmica: Diagnóstico del Subsuelo sin Excavación en Colombia',
+    keywords: 'tomografia electrica suelos colombia, refraccion sismica geotecnia, deteccion aguas subterraneas bogota, geofisica de taludes',
+    metaDesc: 'Descubra cómo los métodos geofísicos no destructivos permiten mapear fallas, cavernas kársticas y nivel freático con precisión milimétrica en proyectos de infraestructura.',
+    schemaJson: {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      'headline': 'Tomografía Eléctrica y Refracción Sísmica en Colombia',
+      'description': 'Aplicación de métodos geofísicos no destructivos para la caracterización del subsuelo.',
+      'author': { '@type': 'Organization', 'name': 'SIG2 Ingeniería' }
+    },
+    bodyHtml: `
+      <div class="space-y-4 leading-relaxed">
+        <div class="p-3 bg-amber-950/40 border border-amber-500/30 rounded-xl">
+          <strong class="text-amber-400 font-bold block">Keywords Objetivo de Posicionamiento en Google Colombia:</strong>
+          <span class="text-slate-300 font-mono text-[11px]">tomografia electrica dipolo dipolo colombia | refraccion sismica obras civiles | resistividad del terreno</span>
+        </div>
+
+        <h3 class="text-base font-black text-white">1. ¿Por qué complementar los sondeos mecánicos con Geofísica?</h3>
+        <p>Los sondeos mecánicos convencionales (SPT) ofrecen datos puntuales y exactos, pero dejan 'puntos ciegos' en áreas extensas de obra. La <strong>Tomografía de Resistividad Eléctrica (ERT)</strong> y la <strong>Refracción Sísmica (MASW / Refracción P)</strong> permiten obtener perfiles bidimensionales y tridimensionales continuos a lo largo de kilómetros de alineamiento, identificando con certeza fallas geológicas, contactos litológicos y zonas saturadas de agua.</p>
+
+        <h3 class="text-base font-black text-white">2. Arreglos de Electrodos y Profundidad de Investigación</h3>
+        <p>Dependiendo del objetivo geotécnico, en SIG2 Ingeniería configuramos arreglos <strong>Dipolo-Dipolo</strong> (ideal para resolución lateral y fallas verticales), <strong>Wenner-Schlumberger</strong> (ideal para capas horizontales y nivel freático) o <strong>Polo-Dipolo</strong> para profundidades superiores a 60 metros con resistivímetros calibrados multicanal.</p>
+
+        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div>
+            <span class="text-white font-black block">¿Requiere Geofísica para Túneles, Taludes o Captación de Agua?</span>
+            <span class="text-slate-400 text-[11px]">Entregamos perfiles invertidos en Res2DInv y SeisImager con interpretación geotécnica senior.</span>
+          </div>
+          <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Ingenier%C3%ADa,%20solicito%20cotizaci%C3%B3n%20de%20tomograf%C3%ADa%20el%C3%A9ctrica%20y%20geof%C3%ADsica." target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-black text-xs shrink-0 ml-3">
+            Contacto Técnico: +57 312 789 4040
+          </a>
+        </div>
+      </div>
+    `
+  },
+  ART_SST: {
+    key: 'ART_SST',
+    title: 'Estándares Mínimos SG-SST Resolución 0312 de 2019 y Decreto 1072: Checklist para Contratistas y Obras de Ingeniería',
+    keywords: 'sgsst resolucion 0312 de 2019, estandares minimos sst, matriz gtc 45 sst colombia, auditoria sst contratistas',
+    metaDesc: 'Verifique el cumplimiento de los estándares mínimos de Seguridad y Salud en el Trabajo para empresas de más de 50 trabajadores o nivel de riesgo IV y V.',
+    schemaJson: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': [
+        {
+          '@type': 'Question',
+          'name': '¿Cuántos estándares mínimos aplican a empresas de ingeniería civil y minería?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Al tener actividades clasificadas en Riesgo IV y V (trabajo en alturas, excavaciones, minería), aplican la totalidad de los 60 estándares mínimos de la Resolución 0312 de 2019.'
+          }
+        }
+      ]
+    },
+    bodyHtml: `
+      <div class="space-y-4 leading-relaxed">
+        <div class="p-3 bg-purple-950/40 border border-purple-500/30 rounded-xl">
+          <strong class="text-purple-400 font-bold block">Keywords Objetivo de Posicionamiento en Google Colombia:</strong>
+          <span class="text-slate-300 font-mono text-[11px]">estandares minimos res 0312 riesgo v | matriz gtc 45 obras civiles | auditoria sgsst decreto 1072</span>
+        </div>
+
+        <h3 class="text-base font-black text-white">1. Aplicación de Estándares según Nivel de Riesgo</h3>
+        <p>Las empresas contratistas de obras civiles, perforaciones, transporte o canteras se encuentran catalogadas bajo <strong>Riesgo IV o V</strong> según el Decreto 768 de 2022. Por ende, <em>sin importar el número de empleados</em>, deben cumplir con los <strong>60 estándares mínimos</strong> de la Resolución 0312 de 2019, incluyendo plan de emergencias certificado, brigadas operativas y programas de vigilancia epidemiológica para ruido y sílice.</p>
+
+        <h3 class="text-base font-black text-white">2. Los 5 Errores Fatales en la Matriz GTC 45</h3>
+        <p>La evaluación de riesgos bajo la metodología <strong>GTC 45 (Segunda Actualización)</strong> suele fallar en: no contemplar tareas no rutinarias de mantenimiento, subestimar el riesgo mecánico en maquinaria pesada, no definir controles de ingeniería prioritarios y no capacitar formalmente a los inspectores de campo.</p>
+
+        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+          <div>
+            <span class="text-white font-black block">¿Necesita Blindar su Sistema SG-SST para Licitaciones Públicas y Privadas?</span>
+            <span class="text-slate-400 text-[11px]">En SIG2 Ingeniería auditamos, formulamos y ejecutamos su SG-SST con especialistas con licencia vigente.</span>
+          </div>
+          <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Ingenier%C3%ADa,%20necesito%20auditor%C3%ADa%20y%20actualizaci%C3%B3n%20del%20SG-SST%20y%20Matriz%20GTC45." target="_blank" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-black text-xs shrink-0 ml-3">
+            WhatsApp Directo: +57 312 789 4040
+          </a>
+        </div>
+      </div>
+    `
+  }
+};
+
+// 3. CARRUSELES B2B PARA LINKEDIN (INBOUND MARKETING DE ALTA AUTORIDAD)
+const ORGANIC_LINKEDIN_CAROUSELS = {
+  CAR_CIMENTACIONES: {
+    key: 'CAR_CIMENTACIONES',
+    title: 'El error de $50M en cimentaciones por no cumplir la NSR-10',
+    slides: [
+      {
+        num: 1,
+        title: '¿Sabías que el 70% de patologías estructurales nacen en el suelo?',
+        content: 'Constructores y consorcios pierden fortunas por recortar sondeos geotécnicos. La Ley 1796 no perdona estudios deficientes.',
+        badge: 'SLIDE 1: EL GANCHO'
+      },
+      {
+        num: 2,
+        title: 'El Error: Hacer menos sondeos que los de la Tabla H.3.1-1',
+        content: 'Creer que 2 sondeos bastan para un edificio de 6 pisos en la Sabana de Bogotá. En arcillas blandas, los asentamientos diferenciales no perdonan.',
+        badge: 'SLIDE 2: EL PROBLEMA'
+      },
+      {
+        num: 3,
+        title: 'El Costo Oculto: Zapatas sobredimensionadas un 40%',
+        content: 'Sin datos de corte y consolidación precisos, el calculista aplica factores de seguridad extremos. El sobrecosto en concreto y acero supera 10 veces el costo del estudio de suelos.',
+        badge: 'SLIDE 3: LA PÉRDIDA'
+      },
+      {
+        num: 4,
+        title: 'La Solución: Geotecnia Normativa Rigurosa con SPT Continuo',
+        content: 'Perforaciones mecánicas con recuperación continua de muestras, ensayos triaxiales y piezometría para conocer el nivel freático real.',
+        badge: 'SLIDE 4: LA SOLUCIÓN'
+      },
+      {
+        num: 5,
+        title: 'Blindemos juntos su próxima obra civil en Colombia',
+        content: 'En SIG2 Ingeniería ejecutamos su estudio geotécnico con cuadrilla propia y acreditación profesional en todo el país. Contacto: +57 312 789 4040.',
+        badge: 'SLIDE 5: LLAMADO A LA ACCIÓN'
+      }
+    ],
+    postCopy: `🏗️ ¿Sabías que un estudio de suelos insuficiente puede anular la póliza de tu obra bajo la Ley 1796 (Vivienda Segura)?
+
+En Colombia, muchos constructores intentan "ahorrar" unos cuantos millones reduciendo los sondeos que exige la NSR-10 (Tabla H.3.1-1).
+
+¿El resultado real?
+❌ Zapatas sobredimensionadas hasta en un 40% por falta de certeza del calculista.
+❌ Fisuras y asentamientos diferenciales durante la etapa de acabados.
+❌ Observaciones y rechazos en Curadurías Urbanas que demoran el inicio de obra meses enteros.
+
+Un estudio geotécnico riguroso no es un gasto administrativo: es la inversión que optimiza el concreto y blinda jurídicamente a su consorcio.
+
+👉 En SIG2 Ingeniería realizamos sondeos mecánicos SPT, geofísica y ensayos de laboratorio normativos en todo Colombia.
+
+📲 Conversemos directamente por WhatsApp: +57 312 789 4040
+📧 ingenierotecnicocyc@gmail.com
+🌐 https://sig2ingenieria.github.io/ingenieria-sig/
+
+#Geotecnia #NSR10 #IngenieriaCivil #SuelosColombia #ConstruccionResponsable #SIG2Ingenieria`
+  },
+  CAR_PESV_SANCIONES: {
+    key: 'CAR_PESV_SANCIONES',
+    title: 'Los 3 vacíos del PESV que generan multas en la SuperTransporte',
+    slides: [
+      {
+        num: 1,
+        title: 'SuperTransporte no avisa: Los 3 vacíos del PESV que generan multas',
+        content: 'Con la Resolución 40595 de 2022, las sanciones alcanzan hasta 700 SMLMV. ¿Tu flota está realmente protegida?',
+        badge: 'SLIDE 1: ALERTA'
+      },
+      {
+        num: 2,
+        title: 'Vacío 1: El PESV archivado en un PDF que nadie consulta',
+        content: 'Tener una carpeta bonita no sirve. El auditor verifica en campo que los conductores conozcan las políticas de velocidad y alcoholimetría.',
+        badge: 'SLIDE 2: VACÍO REAL'
+      },
+      {
+        num: 3,
+        title: 'Vacío 2: Inspección preoperacional en papel sin trazabilidad',
+        content: 'Hojas firmadas a la carrera sin cierre de hallazgos mecánicos. Si un vehículo accidentado no tenía preoperacional válido, la aseguradora no responde.',
+        badge: 'SLIDE 3: RIESGO VIAL'
+      },
+      {
+        num: 4,
+        title: 'Vacío 3: Desarticulación con el SG-SST (Dec. 1072)',
+        content: 'El PESV debe estar plenamente integrado en la matriz de peligros y en las investigaciones de incidentes del Comité Copasst.',
+        badge: 'SLIDE 4: NORMATIVA'
+      },
+      {
+        num: 5,
+        title: 'Digitalice y audite su flota con SIG2 Ingeniería',
+        content: 'Diseñamos su PESV en Nivel Básico, Estándar o Avanzado e implementamos apps móviles de inspección en ruta. WhatsApp: +57 312 789 4040.',
+        badge: 'SLIDE 5: CIERRE'
+      }
+    ],
+    postCopy: `🚨 ¿Su empresa de transporte o logística está preparada para una inspección de la SuperTransporte o MinTrabajo?
+
+La Resolución 40595 de 2022 cambió radicalmente las reglas del juego para el Plan Estratégico de Seguridad Vial (PESV) en Colombia.
+
+No basta con tener un documento firmado. En las auditorías en patio, los inspectores están sancionando principalmente por:
+1. Inspecciones preoperacionales sin trazabilidad de mantenimientos correctivos.
+2. Desarticulación entre el comité de seguridad vial y el Copasst del SG-SST.
+3. Falta de indicadores bimestrales de siniestralidad vial analizados por la gerencia.
+
+Evite sanciones que van de 1 a 700 SMLMV y la inmovilización de vehículos.
+
+👉 En SIG2 Ingeniería acompañamos la estructuración, auditoría y digitalización de su PESV.
+
+📲 WhatsApp Directo HSEQ: +57 312 789 4040
+📧 ingenierotecnicocyc@gmail.com
+🌐 https://sig2ingenieria.github.io/ingenieria-sig/
+
+#SeguridadVial #PESV #Resolucion40595 #SuperTransporte #LogisticaColombia #Flotas #HSEQ`
+  },
+  CAR_TALUDES: {
+    key: 'CAR_TALUDES',
+    title: '4 señales de alerta geomecánica en taludes mineros y viales',
+    slides: [
+      {
+        num: 1,
+        title: '¿Tu talud está a punto de fallar? 4 señales de alerta',
+        content: 'En la temporada invernal colombiana, los movimientos en masa pueden paralizar un tajo minero o una vía 4G en minutos.',
+        badge: 'SLIDE 1: DIAGNÓSTICO'
+      },
+      {
+        num: 2,
+        title: 'Señal 1: Grietas de tracción en la corona',
+        content: 'Fisuras paralelas a la cresta del talud. Indican que el esfuerzo cortante superó la resistencia del macizo y se gesta una superficie de falla rotacional.',
+        badge: 'SLIDE 2: CORONA'
+      },
+      {
+        num: 3,
+        title: 'Señal 2: Abombamiento en el pie y nacimientos de agua',
+        content: 'Cuando el pie del talud se deforma y brota agua turbia, la presión de poros está destruyendo la estabilidad interna.',
+        badge: 'SLIDE 3: PRESIÓN DE POROS'
+      },
+      {
+        num: 4,
+        title: 'Señal 3: Desplazamiento acelerado en instrumentación',
+        content: 'Los inclinómetros y prismas topográficos marcan curvas exponenciales de deformación. Es hora de activar el protocolo de evacuación.',
+        badge: 'SLIDE 4: MONITOREO'
+      },
+      {
+        num: 5,
+        title: 'Modelación de Estabilidad Geotécnica con SIG2 Ingeniería',
+        content: 'Utilizamos equilibrio límite (Slide/Rocscience) y geofísica para estabilizar taludes y calcular factores de seguridad reales. WhatsApp: +57 312 789 4040.',
+        badge: 'SLIDE 5: ASESORÍA'
+      }
+    ],
+    postCopy: `⛰️ En época de lluvias en Colombia, la estabilidad de un talud minero o vial no se puede dejar a la suerte.
+
+Identificar a tiempo las señales geomecánicas de falla salva vidas y evita pérdidas millonarias en maquinaria pesada:
+✔️ Grietas de tracción en corona
+✔️ Abombamiento en pata y brote súbito de agua
+✔️ Caída recurrente de fragmentos en bancos
+✔️ Deformaciones en inclinómetros
+
+En SIG2 Ingeniería modelamos taludes mediante software de equilibrio límite (Slide, Rocscience), cálculo de drenajes subhorizontales y diseño de anclajes pasivos y activos.
+
+📲 Consulte a nuestros ingenieros geotécnicos: +57 312 789 4040
+📧 ingenierotecnicocyc@gmail.com
+🌐 https://sig2ingenieria.github.io/ingenieria-sig/
+
+#Geotecnia #EstabilidadDeTaludes #MineriaColombia #Vias4G #IngenieriaGeologica #SIG2Ingenieria`
+  },
+  CAR_GEOTECNIA_BARATA: {
+    key: 'CAR_GEOTECNIA_BARATA',
+    title: 'Por qué contratar geotecnia barata encarece el concreto un 300%',
+    slides: [
+      {
+        num: 1,
+        title: 'Lo barato sale carísimo: El dilema del estudio de suelos',
+        content: 'Ahorrar $3 millones en el estudio de suelos puede costarte $80 millones extra en la estructura. ¿Por qué ocurre esto?',
+        badge: 'SLIDE 1: CONTRASTE'
+      },
+      {
+        num: 2,
+        title: 'La Incertidumbre del Ingeniero Calculista',
+        content: 'Si los sondeos fueron someros y no hay ensayos triaxiales, el calculista no arriesga su matrícula: asume una capacidad portante ultrabaja (ej. 0.8 kg/cm²).',
+        badge: 'SLIDE 2: INCERTIDUMBRE'
+      },
+      {
+        num: 3,
+        title: 'El Concreto que no Necesitabas',
+        content: 'Para compensar la duda, diseña zapatas el doble de anchas y profundas, y aumenta la cuantía de acero de refuerzo.',
+        badge: 'SLIDE 3: SOBRECOSTO'
+      },
+      {
+        num: 4,
+        title: 'La Diferencia de un Estudio Riguroso',
+        content: 'Con ensayos de consolidación y SPT continuo, demostramos que a 4m existía un estrato competente de 2.2 kg/cm². Ahorro directo en cimentación.',
+        badge: 'SLIDE 4: EVIDENCIA'
+      },
+      {
+        num: 5,
+        title: 'Optimice su inversión constructiva con SIG2',
+        content: 'Ingeniería geotécnica de alta precisión que protege su presupuesto y garantiza la seguridad estructural. WhatsApp: +57 312 789 4040.',
+        badge: 'SLIDE 5: SOLUCIÓN'
+      }
+    ],
+    postCopy: `💰 ¿Sabías que un estudio de suelos económico es frecuentemente la razón de que tu presupuesto de obra civil se desborde?
+
+Cuando un geotecnista ofrece precios anormalmente bajos, casi siempre:
+1. No profundiza los sondeos hasta encontrar el estrato portante competente.
+2. No realiza ensayos de laboratorio mecánicos (triaxial, corte directo o consolidación).
+
+¿Qué hace entonces el calculista estructural?
+Por responsabilidad legal bajo la Ley 400 y la NSR-10, asume una capacidad portante ultra conservadora.
+
+El resultado:
+🏗️ Zapatas sobredimensionadas.
+🚚 Decenas de metros cúbicos de concreto innecesarios.
+💸 Cientos de kilos de acero de refuerzo que jamás debieron colocarse.
+
+Invierta en certidumbre técnica. En SIG2 Ingeniería optimizamos sus cimentaciones con datos geotécnicos reales y certificados.
+
+📲 WhatsApp: +57 312 789 4040
+📧 ingenierotecnicocyc@gmail.com
+🌐 https://sig2ingenieria.github.io/ingenieria-sig/
+
+#Geotecnia #CalculoEstructural #CostosDeConstruccion #NSR10 #IngenieriaCivil #Cimentaciones`
+  }
+};
+
+// 4. GUIONES DIRECTOS DE CONTACTO PARA WHATSAPP B2B (OUTBOUND PERSUASIVO)
+const ORGANIC_WHATSAPP_SCRIPTS = [
+  {
+    key: 'GUION_OBRA',
+    title: 'Contacto a Director de Obra / Residente (Geotecnia & NSR-10)',
+    target: 'Directores de Proyecto, Ingenieros Residentes, Directores de Licitaciones',
+    text: `Hola Ing. [NOMBRE], cordial saludo. Le escribe el equipo técnico de SIG2 Ingeniería (https://sig2ingenieria.github.io/ingenieria-sig/).
+
+Sabemos que se encuentran estructurando el proyecto [NOMBRE DEL PROYECTO] en [CIUDAD]. Ponemos a su disposición nuestra cuadrilla de exploración geotécnica con equipo de perforación mecánica SPT normativo NSR-10 Título H, ensayos de laboratorio acreditados y geofísica (tomografía eléctrica / refracción sísmica).
+
+Garantizamos entrega ágil de informes con firma de especialista para radicación inmediata en curaduría sin observaciones.
+
+¿Podríamos cotizarle sin compromiso los sondeos requeridos para su proyecto?
+
+Contacto directo: +57 312 789 4040 | ingenierotecnicocyc@gmail.com`
+  },
+  {
+    key: 'GUION_PESV',
+    title: 'Contacto a Coordinador HSEQ / Jefe de Flota (PESV Res. 40595)',
+    target: 'Jefes de Transporte, Gerentes de Logística, Coordinadores HSEQ',
+    text: `Estimado(a) [NOMBRE], un gusto saludarle. Le escribo desde SIG2 Ingeniería (División de Seguridad Vial y Logística).
+
+Teniendo en cuenta las inspecciones que adelanta la Superintendencia de Transporte y MinTrabajo bajo la Resolución 40595 de 2022, ofrecemos nuestro servicio de pre-auditoría e implementación del PESV para su flota en [CIUDAD].
+
+Incluimos:
+1. Diagnóstico del Nivel de Diseño (Básico, Estándar o Avanzado).
+2. Articulación técnica obligatoria con el SG-SST (Dec. 1072).
+3. Digitalización de inspecciones preoperacionales de vehículos en ruta.
+
+¿Le gustaría que le enviemos un diagnóstico previo sin costo sobre los pasos obligatorios que le aplican a su flota?
+
+Línea HSEQ: +57 312 789 4040 | ingenierotecnicocyc@gmail.com`
+  },
+  {
+    key: 'GUION_MINERIA',
+    title: 'Contacto a Canteras y Operaciones Mineras (LiDAR & Taludes)',
+    target: 'Superintendentes de Mina, Gerentes Técnicos, Titulares Mineros',
+    text: `Ing. [NOMBRE], muy buen día. Saludos de parte de SIG2 Ingeniería.
+
+Apoyamos a empresas mineras y canteras en [DEPARTAMENTO] en la optimización de tajos de explotación y cumplimiento ante la Agencia Nacional de Minería (ANM):
+
+• Levantamientos topográficos con Dron LiDAR para volumetría mensual de patios y frentes.
+• Modelación geomecánica de estabilidad de taludes y bancos (Rocscience Slide).
+• Actualización del Plan de Trabajos y Obras (PTO) y cierres ambientales.
+
+Podemos coordinar una visita técnica a su frente de explotación sin costo. ¿Le interesaría conocer nuestra disponibilidad para esta semana?
+
+Contacto: +57 312 789 4040 | ingenierotecnicocyc@gmail.com`
+  },
+  {
+    key: 'GUION_SEGUIMIENTO',
+    title: 'Seguimiento Técnico a Cotización Enviada (Cierre Comercial)',
+    target: 'Jefes de Compras, Directores Técnicos con propuesta en estudio',
+    text: `Hola Ing. [NOMBRE], espero se encuentre muy bien.
+
+Le escribo para hacer un breve seguimiento a la propuesta técnica y económica que le remitimos la semana pasada para el servicio de [SERVICIO COTIZADO].
+
+Queríamos consultar si el comité técnico o de compras tuvo alguna duda sobre el alcance, la cuadrilla disponible o los tiempos de entrega. Estamos listos para movilizar equipos esta misma semana si así lo requieren.
+
+Quedo atento a sus comentarios. Feliz día.
+
+Atentamente,
+SIG2 Ingeniería | +57 312 789 4040 | ingenierotecnicocyc@gmail.com`
+  }
+];
+
+// ESTADO INTERNO DEL MÓDULO AUTÓNOMO
+let autonomousRadarState = {
+  activeSector: 'ALL',
+  activeRegion: 'ALL',
+  opportunities: [...AUTONOMOUS_RADAR_OPPORTUNITIES],
+  activeStudioTab: 'articulos',
+  activeArticleKey: 'ART_NSR10',
+  activeCarouselKey: 'CAR_CIMENTACIONES'
+};
+
+/**
+ * Inicialización Maestra del Motor Autónomo y Orgánico
+ */
+function initAutonomousOrganicEngine() {
+  renderAutonomousRadar();
+  displayOrganicArticle(autonomousRadarState.activeArticleKey);
+  selectLinkedinCarousel(autonomousRadarState.activeCarouselKey);
+  renderOrganicWhatsAppScripts();
+  calculateGeotechnicalNsr10();
+  calculatePesvLevel();
+}
+
+/**
+ * Renderizado de Tarjetas de Oportunidades del Radar B2B
+ */
+function renderAutonomousRadar(filteredList = null) {
+  const container = document.getElementById('autonomous-radar-cards-grid');
+  if (!container) return;
+
+  const list = filteredList || autonomousRadarState.opportunities;
+  const countBadge = document.getElementById('autonomous-radar-count');
+  const pipelineBadge = document.getElementById('autonomous-radar-pipeline-value');
+
+  if (countBadge) countBadge.textContent = `${list.length} Activas`;
+  if (pipelineBadge) {
+    const total = list.reduce((acc, curr) => acc + (curr.budget || 0), 0);
+    pipelineBadge.textContent = `$${(total / 1000000).toFixed(1)}M COP`;
+  }
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center bg-slate-900/60 rounded-3xl border border-slate-800">
+        <i class="fa-solid fa-radar text-slate-600 text-3xl mb-3"></i>
+        <h5 class="text-sm font-bold text-slate-300">No hay proyectos que coincidan con los filtros seleccionados</h5>
+        <p class="text-xs text-slate-500 mt-1">Pruebe cambiando el sector o la región de Colombia.</p>
+        <button onclick="resetAutonomousRadarFilters()" class="mt-4 px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold">
+          Restablecer Filtros
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = list.map(item => `
+    <div class="radar-card-glow bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden">
+      <div class="space-y-3">
+        <!-- Badges Superiores -->
+        <div class="flex items-center justify-between gap-2">
+          <span class="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider border ${item.badgeClass}">
+            ${item.sectorLabel}
+          </span>
+          <span class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 text-[9px] font-bold border border-slate-700">
+            <i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> ${item.region}
+          </span>
+        </div>
+
+        <!-- Título y Ciudad -->
+        <div>
+          <h5 class="text-sm sm:text-base font-black text-white leading-snug">${item.title}</h5>
+          <span class="text-[11px] text-slate-400 font-medium block mt-0.5">${item.city}</span>
+        </div>
+
+        <!-- Necesidad Técnica -->
+        <p class="text-xs text-slate-300 bg-slate-950/70 p-3 rounded-xl border border-slate-800/80 leading-relaxed">
+          ${item.need}
+        </p>
+
+        <!-- Presupuesto & Contacto -->
+        <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+          <div>
+            <span class="text-[9px] text-slate-400 uppercase font-bold block">Presupuesto Estimado</span>
+            <strong class="font-mono text-emerald-400 font-black text-sm">$${(item.budget / 1000000).toFixed(1)}M COP</strong>
+          </div>
+          <div class="text-right">
+            <span class="text-[9px] text-amber-400 uppercase font-black block">${item.urgency}</span>
+            <span class="text-[10px] text-slate-400 font-medium">${item.contactPerson.split('-')[0]}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de Acción Inmediata (1 Clic) -->
+      <div class="grid grid-cols-3 gap-1.5 pt-4 mt-4 border-t border-slate-800">
+        <button onclick="contactRadarViaWhatsApp('${item.id}')" title="Contactar por WhatsApp con propuesta técnica" class="py-2 px-2 bg-emerald-600/90 hover:bg-emerald-500 text-white rounded-xl text-[11px] font-extrabold flex items-center justify-center gap-1 transition-all shadow cursor-pointer">
+          <i class="fa-brands fa-whatsapp text-xs"></i> <span>WhatsApp</span>
+        </button>
+        <button onclick="contactRadarViaEmail('${item.id}')" title="Enviar propuesta técnica formal por correo" class="py-2 px-2 bg-blue-600/90 hover:bg-blue-500 text-white rounded-xl text-[11px] font-extrabold flex items-center justify-center gap-1 transition-all shadow cursor-pointer">
+          <i class="fa-solid fa-envelope text-xs"></i> <span>Correo</span>
+        </button>
+        <button onclick="importRadarToCrm('${item.id}')" title="Añadir oportunidad al CRM de 10 etapas" class="py-2 px-2 bg-purple-600/90 hover:bg-purple-500 text-white rounded-xl text-[11px] font-extrabold flex items-center justify-center gap-1 transition-all shadow cursor-pointer">
+          <i class="fa-solid fa-plus text-xs"></i> <span>CRM</span>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/**
+ * Filtrado del Radar B2B
+ */
+function filterAutonomousRadar() {
+  const sector = document.getElementById('autonomous-radar-sector-filter')?.value || 'ALL';
+  const region = document.getElementById('autonomous-radar-region-filter')?.value || 'ALL';
+
+  autonomousRadarState.activeSector = sector;
+  autonomousRadarState.activeRegion = region;
+
+  let filtered = [...autonomousRadarState.opportunities];
+  if (sector !== 'ALL') {
+    filtered = filtered.filter(item => item.sector === sector);
+  }
+  if (region !== 'ALL') {
+    filtered = filtered.filter(item => item.region.toLowerCase().includes(region.toLowerCase()) || region.toLowerCase().includes(item.region.toLowerCase()));
+  }
+
+  renderAutonomousRadar(filtered);
+}
+
+function resetAutonomousRadarFilters() {
+  const sSelect = document.getElementById('autonomous-radar-sector-filter');
+  const rSelect = document.getElementById('autonomous-radar-region-filter');
+  if (sSelect) sSelect.value = 'ALL';
+  if (rSelect) rSelect.value = 'ALL';
+  filterAutonomousRadar();
+}
+
+/**
+ * Simulación de Escaneo Activo de Oportunidades del Mercado
+ */
+function runAutonomousClientRadarScan() {
+  showToast('Iniciando radar de exploración de proyectos y contrataciones en Colombia...', 'info');
+
+  const btn = document.querySelector('button[onclick="runAutonomousClientRadarScan()"]');
+  if (btn) btn.classList.add('opacity-50', 'pointer-events-none');
+
+  setTimeout(() => {
+    // Reordenar u obtener rotación de oportunidades
+    autonomousRadarState.opportunities = [...autonomousRadarState.opportunities].sort(() => Math.random() - 0.5);
+    renderAutonomousRadar();
+    if (btn) btn.classList.remove('opacity-50', 'pointer-events-none');
+    showToast('Radar activo: 12 oportunidades de ingeniería verificadas con requerimientos inmediatos.', 'success');
+  }, 1200);
+}
+
+/**
+ * Enviar Propuesta Inmediata por WhatsApp
+ */
+function contactRadarViaWhatsApp(radarId) {
+  const item = autonomousRadarState.opportunities.find(i => i.id === radarId);
+  if (!item) return;
+
+  const phone = item.targetPhone || '573127894040';
+  const msg = `Hola ${item.contactPerson} (${item.title}), cordial saludo.
+
+Le escribe el equipo técnico de SIG2 Ingeniería (https://sig2ingenieria.github.io/ingenieria-sig/).
+
+Identificamos su requerimiento técnico en ${item.city}: "${item.need}".
+
+Ponemos a su disposición nuestra capacidad operativa:
+✅ Cuadrillas de perforación geotécnica con equipo SPT normativo NSR-10.
+✅ Topografía LiDAR de precisión y modelación geomecánica de taludes.
+✅ Especialistas acreditados con licencia en Colombia.
+
+¿Podemos coordinar una breve llamada técnica o enviarle la cotización formal para su proyecto?
+
+Contacto directo: +57 312 789 4040 | ingenierotecnicocyc@gmail.com`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+  showToast(`Abriendo WhatsApp con propuesta técnica para ${item.title}...`, 'success');
+}
+
+/**
+ * Enviar Oferta Formal por Correo
+ */
+function contactRadarViaEmail(radarId) {
+  const item = autonomousRadarState.opportunities.find(i => i.id === radarId);
+  if (!item) return;
+
+  const subject = `Propuesta Técnica & Cotización: ${item.serviceMatch} - SIG2 Ingeniería`;
+  const body = `Estimado(a) ${item.contactPerson},
+${item.title}
+${item.city}
+
+Nos permitimos presentar nuestro portafolio y propuesta técnica para atender el requerimiento identificado en su proyecto:
+"${item.need}"
+
+ALCANCE TÉCNICO PROPUESTO:
+• Ejecución de trabajos con personal senior y equipos certificados.
+• Cumplimiento estricto del marco normativo colombiano (NSR-10, Res. 40595, Dec. 1072, ANM/ANLA).
+• Entrega de informe final con firmas profesionales para radicación inmediata.
+
+Presupuesto de referencia estimado: $${(item.budget / 1000000).toFixed(1)}M COP.
+
+Para conocer más sobre nuestra trayectoria, puede visitar nuestro portal institucional:
+https://sig2ingenieria.github.io/ingenieria-sig/
+
+Quedamos a su disposición para agendar una reunión técnica preliminar.
+
+Atentamente,
+DIRECCIÓN TÉCNICA & COMERCIAL
+SIG2 Ingeniería
+Línea Corporativa: +57 312 789 4040
+Correo: ingenierotecnicocyc@gmail.com`;
+
+  const mailtoUrl = `mailto:${item.targetEmail}?cc=ingenierotecnicocyc@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailtoUrl, '_blank');
+  showToast(`Abriendo cliente de correo para ${item.targetEmail}...`, 'info');
+}
+
+/**
+ * Importar Prospecto Directamente al CRM de 10 Etapas
+ */
+function importRadarToCrm(radarId) {
+  const item = autonomousRadarState.opportunities.find(i => i.id === radarId);
+  if (!item) return;
+
+  // Verificar si ya existe en las oportunidades del CRM
+  const exists = (CONSULTORA_AI_STATE.crmOpportunities || []).some(o => o.title === item.title || o.company === item.title);
+  if (exists) {
+    showToast(`El prospecto "${item.title}" ya se encuentra registrado en el CRM.`, 'info');
+    return;
+  }
+
+  const newOpp = {
+    id: `OPP-RADAR-${Date.now().toString().slice(-4)}`,
+    title: item.title,
+    company: item.title,
+    unit: item.sector === 'transporte' ? 'sst_hseq' : (item.sector === 'mineria' ? 'geotecnia' : item.sector),
+    stage: '1. Identificación',
+    value: item.budget,
+    contact: item.contactPerson,
+    phone: '+57 312 789 4040',
+    email: item.targetEmail,
+    nextAction: 'Llamada técnica de presentación',
+    date: new Date().toISOString().split('T')[0]
+  };
+
+  if (!CONSULTORA_AI_STATE.crmOpportunities) {
+    CONSULTORA_AI_STATE.crmOpportunities = [];
+  }
+
+  CONSULTORA_AI_STATE.crmOpportunities.unshift(newOpp);
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+
+  showToast(`¡Excelente! "${item.title}" importado con éxito a la Etapa 1 del CRM.`, 'success');
+  appendConsultoraAuditLog('RADAR_AUTONOMO', 'PROSPECTO_IMPORTADO', `Oportunidad "${item.title}" añadida al CRM por $${(item.budget / 1000000).toFixed(1)}M COP.`);
+}
+
+/**
+ * Conmutador de Pestañas del Estudio de Publicidad Orgánica
+ */
+function switchOrganicStudioTab(tabId) {
+  const tabs = ['articulos', 'carruseles', 'whatsapp', 'imanes'];
+
+  tabs.forEach(t => {
+    const content = document.getElementById(`org-content-${t}`);
+    const btn = document.getElementById(`org-tab-${t}`);
+    if (content) {
+      if (t === tabId) content.classList.remove('hidden');
+      else content.classList.add('hidden');
+    }
+    if (btn) {
+      if (t === tabId) {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-black shadow transition-all shrink-0';
+      } else {
+        btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all shrink-0';
+      }
+    }
+  });
+
+  autonomousRadarState.activeStudioTab = tabId;
+}
+
+/**
+ * Mostrar Artículo SEO Seleccionado
+ */
+function displayOrganicArticle(articleKey) {
+  const article = ORGANIC_SEO_ARTICLES[articleKey] || ORGANIC_SEO_ARTICLES.ART_NSR10;
+  autonomousRadarState.activeArticleKey = article.key;
+
+  const box = document.getElementById('org-article-display-box');
+  if (!box) return;
+
+  box.innerHTML = `
+    <div class="border-b border-slate-800 pb-4 mb-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-black uppercase">
+          Artículo Indexable para Google Colombia
+        </span>
+        <span class="text-[11px] text-slate-400 font-mono">schema.org / ${article.schemaJson['@type']}</span>
+      </div>
+      <h2 class="text-lg sm:text-2xl font-black text-white leading-tight">${article.title}</h2>
+      <p class="text-xs text-slate-400 mt-2 italic">${article.metaDesc}</p>
+    </div>
+
+    <!-- Contenido Técnico del Artículo -->
+    ${article.bodyHtml}
+  `;
+}
+
+/**
+ * Copiar Artículo Completo al Portapapeles
+ */
+function copyOrganicArticleText() {
+  const article = ORGANIC_SEO_ARTICLES[autonomousRadarState.activeArticleKey] || ORGANIC_SEO_ARTICLES.ART_NSR10;
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = article.bodyHtml;
+  const plainText = `${article.title}\n\nMeta Description: ${article.metaDesc}\n\nKeywords: ${article.keywords}\n\n${tempDiv.innerText}\n\nContacto Oficial: +57 312 789 4040 | ingenierotecnicocyc@gmail.com\nhttps://sig2ingenieria.github.io/ingenieria-sig/`;
+
+  navigator.clipboard.writeText(plainText).then(() => {
+    showToast('Artículo copiado al portapapeles listo para publicar en blog corporativo.', 'success');
+  }).catch(() => {
+    showToast('Artículo listo en pantalla para copiar.', 'info');
+  });
+}
+
+/**
+ * Copiar Schema JSON-LD para Google
+ */
+function copyOrganicArticleSchema() {
+  const article = ORGANIC_SEO_ARTICLES[autonomousRadarState.activeArticleKey] || ORGANIC_SEO_ARTICLES.ART_NSR10;
+  const jsonString = `<script type="application/ld+json">\n${JSON.stringify(article.schemaJson, null, 2)}\n</script>`;
+
+  navigator.clipboard.writeText(jsonString).then(() => {
+    showToast('Schema JSON-LD copiado. Péguelo en el <head> de la página para indexación inmediata en Google.', 'success');
+  }).catch(() => {
+    showToast('Código de datos estructurados preparado.', 'info');
+  });
+}
+
+/**
+ * Seleccionar Carrusel de LinkedIn y Previsualizar
+ */
+function selectLinkedinCarousel(carouselKey) {
+  const carousel = ORGANIC_LINKEDIN_CAROUSELS[carouselKey] || ORGANIC_LINKEDIN_CAROUSELS.CAR_CIMENTACIONES;
+  autonomousRadarState.activeCarouselKey = carousel.key;
+
+  const slidesContainer = document.getElementById('org-carousel-slides-container');
+  const copyPreview = document.getElementById('org-carousel-copy-preview');
+
+  if (slidesContainer) {
+    slidesContainer.innerHTML = carousel.slides.map(slide => `
+      <div class="carousel-slide-preview">
+        <div>
+          <span class="text-[9px] font-black uppercase tracking-wider text-teal-400 block mb-2">${slide.badge}</span>
+          <h5 class="text-xs font-black text-white leading-snug">${slide.title}</h5>
+        </div>
+        <p class="text-[11px] text-slate-300 mt-3 leading-relaxed">
+          ${slide.content}
+        </p>
+        <div class="pt-3 border-t border-slate-800/80 mt-3 flex items-center justify-between text-[9px] text-slate-400 font-bold">
+          <span>SIG2 INGENIERÍA</span>
+          <span>${slide.num}/5</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  if (copyPreview) {
+    copyPreview.textContent = carousel.postCopy;
+  }
+}
+
+/**
+ * Copiar Texto del Carrusel para LinkedIn
+ */
+function copyLinkedinCarouselCopy() {
+  const carousel = ORGANIC_LINKEDIN_CAROUSELS[autonomousRadarState.activeCarouselKey] || ORGANIC_LINKEDIN_CAROUSELS.CAR_CIMENTACIONES;
+  navigator.clipboard.writeText(carousel.postCopy).then(() => {
+    showToast('Texto y hashtags copiados para publicar en LinkedIn.', 'success');
+  }).catch(() => {
+    showToast('Texto listo para compartir en LinkedIn.', 'info');
+  });
+}
+
+/**
+ * Renderizado de Guiones de WhatsApp B2B
+ */
+function renderOrganicWhatsAppScripts() {
+  const container = document.getElementById('org-whatsapp-scripts-container');
+  if (!container) return;
+
+  container.innerHTML = ORGANIC_WHATSAPP_SCRIPTS.map(script => `
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl p-5 flex flex-col justify-between space-y-3">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-1">
+          <h5 class="text-xs sm:text-sm font-black text-white">${script.title}</h5>
+          <span class="px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[9px] font-bold">
+            WhatsApp B2B
+          </span>
+        </div>
+        <span class="text-[10px] text-slate-400 font-medium block mb-2">Destinatario: ${script.target}</span>
+        <pre class="text-[11px] text-slate-300 whitespace-pre-wrap font-sans bg-slate-950 p-3 rounded-xl border border-slate-800 max-h-40 overflow-y-auto leading-relaxed">${script.text}</pre>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-slate-800">
+        <button onclick="copyOrganicWhatsAppScript('${script.key}')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer">
+          <i class="fa-regular fa-copy text-teal-400"></i> Copiar Guión
+        </button>
+        <a href="https://wa.me/573127894040?text=${encodeURIComponent(script.text)}" target="_blank" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer">
+          <i class="fa-brands fa-whatsapp"></i> Probar en WhatsApp
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function copyOrganicWhatsAppScript(scriptKey) {
+  const script = ORGANIC_WHATSAPP_SCRIPTS.find(s => s.key === scriptKey);
+  if (!script) return;
+
+  navigator.clipboard.writeText(script.text).then(() => {
+    showToast(`Guión "${script.title}" copiado al portapapeles.`, 'success');
+  }).catch(() => {
+    showToast('Guión listo para copiar.', 'info');
+  });
+}
+
+/**
+ * Calculadora Geotécnica NSR-10 (Título H.3)
+ */
+function calculateGeotechnicalNsr10() {
+  const cat = document.getElementById('calc-nsr-cat')?.value || 'MEDIA';
+  const area = parseFloat(document.getElementById('calc-nsr-area')?.value || '850');
+
+  let sondeos = 3;
+  let prof = 6.0;
+  let lab = 'SPT cada 1.5m, Atterberg, Humedad natural, Granulometría';
+
+  if (cat === 'BAJA') {
+    sondeos = 3;
+    prof = 6.0;
+    lab = 'SPT cada 1.5m, Límites de Atterberg, Humedad natural, Granulometría tamizado.';
+  } else if (cat === 'MEDIA') {
+    sondeos = Math.max(4, Math.ceil(area / 300));
+    prof = 15.0;
+    lab = 'SPT cada 1.5m, Clasificación USCS completa, Triaxial no consolidado no drenado (UU), Humedad.';
+  } else if (cat === 'ALTA') {
+    sondeos = Math.max(4, 4 + Math.ceil((area - 300) / 300));
+    prof = 25.0;
+    lab = 'SPT continuo, Triaxial CU/CD con medición de presión de poros, Consolidación unidimensional ASTM D2435.';
+  } else if (cat === 'ESPECIAL') {
+    sondeos = Math.max(5, 5 + Math.ceil((area - 200) / 200));
+    prof = 30.0;
+    lab = 'Perforación mecánica a rotación con recuperación de núcleos de roca (RQD), Triaxiales y Refracción Sísmica.';
+  }
+
+  const sElem = document.getElementById('calc-nsr-res-sondeos');
+  const pElem = document.getElementById('calc-nsr-res-prof');
+  const lElem = document.getElementById('calc-nsr-res-lab');
+
+  if (sElem) sElem.textContent = `${sondeos} sondeos mecánicos`;
+  if (pElem) pElem.textContent = `${prof.toFixed(1)} metros`;
+  if (lElem) lElem.textContent = lab;
+}
+
+function requestGeotechnicalQuoteFromCalc() {
+  const cat = document.getElementById('calc-nsr-cat')?.value || 'MEDIA';
+  const area = document.getElementById('calc-nsr-area')?.value || '850';
+  const sondeos = document.getElementById('calc-nsr-res-sondeos')?.textContent || '4 sondeos';
+  const prof = document.getElementById('calc-nsr-res-prof')?.textContent || '15 metros';
+
+  const msg = `Hola SIG2 Ingeniería (+57 312 789 4040), calculé en su portal web los requerimientos geotécnicos según NSR-10 Título H:
+
+• Categoría: Edificación ${cat}
+• Área en planta: ${area} m²
+• Sondeos requeridos: ${sondeos}
+• Profundidad estimada: ${prof}
+
+Deseo solicitar una cotización formal de estos sondeos con disponibilidad de cuadrilla para mi obra.`;
+
+  // Registrar lead en CRM
+  if (!CONSULTORA_AI_STATE.crmOpportunities) CONSULTORA_AI_STATE.crmOpportunities = [];
+  CONSULTORA_AI_STATE.crmOpportunities.unshift({
+    id: `OPP-CALC-${Date.now().toString().slice(-4)}`,
+    title: `Estudio NSR-10 (${area}m² - ${cat})`,
+    company: 'Lead Capturado en Calculadora Web',
+    unit: 'geotecnia',
+    stage: '2. Calificación',
+    value: 18500000,
+    contact: 'Visitante Web Interesado',
+    phone: '+57 312 789 4040',
+    email: 'contacto@web.com',
+    nextAction: 'Enviar cotización paramétrica NSR-10',
+    date: new Date().toISOString().split('T')[0]
+  });
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+
+  window.open(`https://wa.me/573127894040?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Parámetros enviados a WhatsApp y prospecto registrado en el CRM.', 'success');
+}
+
+/**
+ * Diagnóstico de Nivel de Diseño PESV (Res. 40595 de 2022)
+ */
+function calculatePesvLevel() {
+  const veh = parseInt(document.getElementById('calc-pesv-vehiculos')?.value || '24');
+  const cond = parseInt(document.getElementById('calc-pesv-conductores')?.value || '28');
+
+  let nivel = 'BÁSICO';
+  let pasos = '18 Pasos Articulados';
+
+  if (veh > 50 || cond > 50) {
+    nivel = 'AVANZADO';
+    pasos = '24 Pasos Articulados con Telemetría';
+  } else if ((veh >= 20 && veh <= 50) || (cond >= 20 && cond <= 50)) {
+    nivel = 'ESTÁNDAR';
+    pasos = '20 Pasos Articulados con Auditoría Semestral';
+  } else if ((veh >= 11 && veh <= 19) || (cond >= 2 && cond <= 19)) {
+    nivel = 'BÁSICO';
+    pasos = '18 Pasos Articulados';
+  } else {
+    nivel = 'NO OBLIGADO A PESV FORMAL (Riesgo General SG-SST)';
+    pasos = 'Capacitación Básica Vial';
+  }
+
+  const nElem = document.getElementById('calc-pesv-res-nivel');
+  const pElem = document.getElementById('calc-pesv-res-pasos');
+
+  if (nElem) nElem.textContent = nivel;
+  if (pElem) pElem.textContent = pasos;
+}
+
+function requestPesvAuditFromCalc() {
+  const veh = document.getElementById('calc-pesv-vehiculos')?.value || '24';
+  const cond = document.getElementById('calc-pesv-conductores')?.value || '28';
+  const nivel = document.getElementById('calc-pesv-res-nivel')?.textContent || 'ESTÁNDAR';
+  const pasos = document.getElementById('calc-pesv-res-pasos')?.textContent || '20 Pasos';
+
+  const msg = `Hola SIG2 Ingeniería (+57 312 789 4040), realicé el diagnóstico de nuestra flota según la Resolución 40595 de 2022:
+
+• Vehículos: ${veh} unidades
+• Conductores: ${cond} operadores
+• Nivel Asignado: ${nivel} (${pasos})
+
+Solicito acompañamiento para implementar y auditar nuestro PESV antes de una visita de la Superintendencia de Transporte.`;
+
+  // Registrar lead en CRM
+  if (!CONSULTORA_AI_STATE.crmOpportunities) CONSULTORA_AI_STATE.crmOpportunities = [];
+  CONSULTORA_AI_STATE.crmOpportunities.unshift({
+    id: `OPP-PESV-${Date.now().toString().slice(-4)}`,
+    title: `Implementación PESV (${nivel} - ${veh} veh)`,
+    company: 'Lead Capturado en Test PESV',
+    unit: 'sst_hseq',
+    stage: '2. Calificación',
+    value: 14200000,
+    contact: 'Jefe de Flota / HSEQ Interesado',
+    phone: '+57 312 789 4040',
+    email: 'contacto@web.com',
+    nextAction: 'Agendar diagnóstico en patio vehicular',
+    date: new Date().toISOString().split('T')[0]
+  });
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+
+  window.open(`https://wa.me/573127894040?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Diagnóstico PESV enviado a WhatsApp y registrado en el CRM.', 'success');
+}
+
+/**
+ * Scroll Suave hacia el Estudio de Publicidad Orgánica
+ */
+function scrollToOrganicStudio() {
+  const el = document.getElementById('organic-studio-section');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
 }

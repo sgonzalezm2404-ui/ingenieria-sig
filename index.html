@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -44,7 +44,7 @@
   </script>
 
   <!-- Estilos Personalizados de Ingeniería con Cache-Buster -->
-  <link rel="stylesheet" href="styles.css?v=20261108_consultora_v2">
+  <link rel="stylesheet" href="styles.css?v=20261108_organico_v1">
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-sig-teal/20 selection:text-sig-navy min-h-screen flex flex-col font-sans">
 
@@ -2232,6 +2232,10 @@
            BARRA DE NAVEGACIÓN: LOS 14 SUBMÓDULOS DE CONSULTORA AI
            ===================================================================== -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-3 mb-8 text-xs font-bold scrollbar-thin">
+        <button onclick="switchConsultoraTab('organico')" id="c-tab-organico" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white shrink-0 shadow-lg flex items-center gap-2 border border-emerald-400/40 font-black">
+          <i class="fa-solid fa-satellite-dish text-emerald-200"></i> <span>Motor AutÃ³nomo & OrgÃ¡nico</span>
+          <span class="px-1.5 py-0.5 rounded-full bg-emerald-400 text-slate-950 font-black text-[9px] uppercase tracking-wider">Cero Dependencias</span>
+        </button>
         <button onclick="switchConsultoraTab('resumen')" id="c-tab-resumen" class="px-3.5 py-2 rounded-xl bg-purple-600 text-white shrink-0 shadow-md flex items-center gap-2">
           <i class="fa-solid fa-chart-pie"></i> <span>Resumen Ejecutivo</span>
         </button>
@@ -2279,7 +2283,332 @@
       <!-- =====================================================================
            SUBPANEL 1: RESUMEN EJECUTIVO & ESTADO DE LOS 7 AGENTES IA
            ===================================================================== -->
-      <div id="c-subpanel-resumen" class="space-y-6">
+            <!-- =====================================================================
+           SUBPANEL 0: MOTOR AUTÃ“NOMO DE CLIENTES & PUBLICIDAD ORGÃNICA PROPIA
+           (100% Nativo en Navegador - Cero Dependencias de APIs Externas de Pago)
+           ===================================================================== -->
+      <div id="c-subpanel-organico" class="space-y-8">
+        
+        <!-- Banner Principal de Modo AutÃ³nomo -->
+        <div class="bg-gradient-to-br from-slate-900 via-emerald-950/50 to-slate-900 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/70 border border-emerald-400/40 text-emerald-300 text-xs font-black uppercase tracking-wider mb-3">
+                <i class="fa-solid fa-bolt-lightning text-emerald-400"></i>
+                <span>SISTEMA AUTÃ“NOMO INDEPENDIENTE â€¢ CERO APIS DE PAGO</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              </div>
+              <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                Motor AutÃ³nomo de Clientes & Publicidad OrgÃ¡nica
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
+                Su pÃ¡gina web trabaja <strong>sin pagar suscripciones de OpenAI, n8n de pago ni Google Ads</strong>. El sistema escanea oportunidades de obras y proyectos reales en Colombia, genera artÃ­culos tÃ©cnicos que rankean <strong>gratis en Google</strong>, crea carruseles de alta autoridad para LinkedIn y captura leads calificados directamente a su WhatsApp <span class="text-emerald-400 font-bold">+57 312 789 4040</span>.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5">
+              <button onclick="runAutonomousClientRadarScan()" class="px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center gap-2.5 shadow-lg shadow-emerald-900/40 transition-all cursor-pointer">
+                <i class="fa-solid fa-satellite-dish animate-pulse"></i>
+                <span>Escanear Proyectos Ahora</span>
+              </button>
+              <button onclick="scrollToOrganicStudio()" class="px-4 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700 flex items-center gap-2 transition-all cursor-pointer">
+                <i class="fa-solid fa-pen-nib text-teal-400"></i>
+                <span>Estudio Publicidad OrgÃ¡nica</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- MÃ©tricas RÃ¡pidas del Modo AutÃ³nomo -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-800 relative z-10">
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-400 font-bold uppercase block">Costo en APIs Externas</span>
+              <span class="text-xl font-black text-emerald-400 font-mono">$0 COP</span>
+              <span class="text-[10px] text-slate-400 block mt-0.5">100% Nativo en Navegador</span>
+            </div>
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-400 font-bold uppercase block">Oportunidades en Radar</span>
+              <span id="autonomous-radar-count" class="text-xl font-black text-white font-mono">12 Activas</span>
+              <span class="text-[10px] text-teal-400 block mt-0.5">Obras Civiles, MinerÃ­a & PESV</span>
+            </div>
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-400 font-bold uppercase block">Presupuesto en Radar</span>
+              <span id="autonomous-radar-pipeline-value" class="text-xl font-black text-amber-400 font-mono">$318.3M COP</span>
+              <span class="text-[10px] text-slate-400 block mt-0.5">Demanda Detectada en Colombia</span>
+            </div>
+            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-slate-400 font-bold uppercase block">Canal Directo de Cierre</span>
+              <span class="text-base sm:text-lg font-black text-emerald-400 font-mono">+57 312 789 4040</span>
+              <span class="text-[10px] text-slate-400 block mt-0.5">WhatsApp & Correo Central</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             SECCIÃ“N 1: RADAR AUTÃ“NOMO DE BÃšSQUEDA DE CLIENTES B2B EN COLOMBIA
+             =================================================================== -->
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-800/80 p-4 rounded-2xl border border-slate-700">
+            <div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-radar text-emerald-400 text-lg"></i>
+                <h4 class="text-base font-black text-white">Radar AutÃ³nomo de Clientes y Oportunidades Comerciales</h4>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">
+                DetecciÃ³n continua de licitaciones privadas, consorcios viales, canteras y flotas que requieren servicios de ingenierÃ­a hoy.
+              </p>
+            </div>
+            
+            <!-- Filtros DinÃ¡micos del Radar -->
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-slate-400 font-bold uppercase">Sector:</span>
+                <select id="autonomous-radar-sector-filter" onchange="filterAutonomousRadar()" class="bg-transparent text-xs font-bold text-white outline-none cursor-pointer">
+                  <option value="ALL">Todos los Sectores</option>
+                  <option value="geotecnia">Geotecnia & Suelos NSR-10</option>
+                  <option value="mineria">MinerÃ­a & Canteras</option>
+                  <option value="transporte">Transporte & LogÃ­stica PESV</option>
+                  <option value="sst">Empresas Industriales SST</option>
+                  <option value="ambiental">Ambiental & Licencias ANLA</option>
+                </select>
+              </div>
+
+              <div class="flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
+                <span class="text-[10px] text-slate-400 font-bold uppercase">RegiÃ³n:</span>
+                <select id="autonomous-radar-region-filter" onchange="filterAutonomousRadar()" class="bg-transparent text-xs font-bold text-white outline-none cursor-pointer">
+                  <option value="ALL">Todo Colombia</option>
+                  <option value="BogotÃ¡ y Cundinamarca">BogotÃ¡ & Cundinamarca</option>
+                  <option value="Santanderes">Santanderes & BoyacÃ¡</option>
+                  <option value="Antioquia">Antioquia</option>
+                  <option value="Valle y Eje Cafetero">Valle & Eje Cafetero</option>
+                  <option value="Meta y Llanos">Meta & Llanos</option>
+                  <option value="Costa Caribe">Costa Caribe</option>
+                </select>
+              </div>
+
+              <button onclick="runAutonomousClientRadarScan()" title="Refrescar y escanear nuevas oportunidades" class="p-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-xs transition-all cursor-pointer">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Rejilla DinÃ¡mica de Tarjetas de Oportunidades del Radar -->
+          <div id="autonomous-radar-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Inyectado dinÃ¡micamente por app.js -->
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             SECCIÃ“N 2: ESTUDIO DE PUBLICIDAD ORGÃNICA PROPIA (INBOUND MARKETING)
+             =================================================================== -->
+        <div id="organic-studio-section" class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-700">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-emerald-500 flex items-center justify-center text-white shadow-lg">
+                <i class="fa-solid fa-bullhorn text-lg"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-black text-white">Estudio de Publicidad OrgÃ¡nica Inbound (100% Gratuito)</h4>
+                <p class="text-xs text-slate-400">Atraiga clientes corporativos de alto valor sin pagar un solo peso en anuncios de Google o Meta.</p>
+              </div>
+            </div>
+
+            <!-- PestaÃ±as internas del Estudio OrgÃ¡nico -->
+            <div class="flex items-center gap-1.5 bg-slate-900 p-1.5 rounded-xl border border-slate-700 text-xs font-bold overflow-x-auto">
+              <button onclick="switchOrganicStudioTab('articulos')" id="org-tab-articulos" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-black shadow transition-all shrink-0">
+                <i class="fa-solid fa-file-lines mr-1.5"></i> ArtÃ­culos SEO Google
+              </button>
+              <button onclick="switchOrganicStudioTab('carruseles')" id="org-tab-carruseles" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all shrink-0">
+                <i class="fa-brands fa-linkedin mr-1.5"></i> Carruseles LinkedIn
+              </button>
+              <button onclick="switchOrganicStudioTab('whatsapp')" id="org-tab-whatsapp" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all shrink-0">
+                <i class="fa-brands fa-whatsapp mr-1.5"></i> Guiones WhatsApp B2B
+              </button>
+              <button onclick="switchOrganicStudioTab('imanes')" id="org-tab-imanes" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all shrink-0">
+                <i class="fa-solid fa-magnet mr-1.5"></i> Imanes de Leads (Calculadoras)
+              </button>
+            </div>
+          </div>
+
+          <!-- PestaÃ±a 1: ArtÃ­culos TÃ©cnicos SEO para Google Colombia -->
+          <div id="org-content-articulos" class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-4 rounded-2xl border border-slate-700">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-300">Seleccionar ArtÃ­culo de IngenierÃ­a SEO:</span>
+                <select id="org-article-selector" onchange="displayOrganicArticle(this.value)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-bold text-white outline-none cursor-pointer">
+                  <option value="ART_NSR10">1. GuÃ­a de Sondeos GeotÃ©cnicos NSR-10 TÃ­tulo H (BogotÃ¡ / Colombia)</option>
+                  <option value="ART_PESV">2. CÃ³mo Implementar el PESV Res. 40595 sin Multas de SuperTransporte</option>
+                  <option value="ART_GEOFISICA">3. TomografÃ­a ElÃ©ctrica y RefracciÃ³n SÃ­smica en Obras Civiles</option>
+                  <option value="ART_SST">4. EstÃ¡ndares MÃ­nimos SG-SST Res. 0312 y Decreto 1072 para Contratistas</option>
+                </select>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <button onclick="copyOrganicArticleText()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer">
+                  <i class="fa-regular fa-copy text-teal-400"></i> Copiar ArtÃ­culo Completo
+                </button>
+                <button onclick="copyOrganicArticleSchema()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer">
+                  <i class="fa-solid fa-code text-amber-400"></i> Copiar Schema JSON-LD
+                </button>
+              </div>
+            </div>
+
+            <!-- Contenedor del ArtÃ­culo Previsualizado -->
+            <div id="org-article-display-box" class="bg-slate-900 rounded-2xl p-6 border border-slate-700 text-slate-200 space-y-4 text-xs sm:text-sm">
+              <!-- Inyectado por app.js -->
+            </div>
+          </div>
+
+          <!-- PestaÃ±a 2: Carruseles B2B para LinkedIn -->
+          <div id="org-content-carruseles" class="hidden space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-4 rounded-2xl border border-slate-700">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-slate-300">TemÃ¡tica de Carrusel B2B:</span>
+                <select id="org-carousel-selector" onchange="selectLinkedinCarousel(this.value)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-bold text-white outline-none cursor-pointer">
+                  <option value="CAR_CIMENTACIONES">1. El error de $50M en cimentaciones por no cumplir la NSR-10</option>
+                  <option value="CAR_PESV_SANCIONES">2. Los 3 vacÃ­os del PESV que generan multas en SuperTransporte</option>
+                  <option value="CAR_TALUDES">3. 4 seÃ±ales de alerta geomecÃ¡nica en taludes mineros y viales</option>
+                  <option value="CAR_GEOTECNIA_BARATA">4. Por quÃ© contratar geotecnia barata encarece el concreto un 300%</option>
+                </select>
+              </div>
+
+              <button onclick="copyLinkedinCarouselCopy()" class="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+                <i class="fa-brands fa-linkedin"></i> Copiar Copy & Hashtags
+              </button>
+            </div>
+
+            <!-- Previsualizador Visual de las 5 Diapositivas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" id="org-carousel-slides-container">
+              <!-- Inyectado por app.js -->
+            </div>
+
+            <!-- Caja con el Copy Completo de la PublicaciÃ³n -->
+            <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700">
+              <span class="text-[10px] text-slate-400 font-bold uppercase block mb-1">Texto listo para publicar en LinkedIn con WhatsApp +57 312 789 4040:</span>
+              <pre id="org-carousel-copy-preview" class="text-xs text-slate-300 whitespace-pre-wrap font-sans bg-slate-950 p-3 rounded-xl border border-slate-800 max-h-48 overflow-y-auto"></pre>
+            </div>
+          </div>
+
+          <!-- PestaÃ±a 3: Guiones Directos para WhatsApp y MensajerÃ­a B2B -->
+          <div id="org-content-whatsapp" class="hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="org-whatsapp-scripts-container">
+              <!-- Inyectado por app.js -->
+            </div>
+          </div>
+
+          <!-- PestaÃ±a 4: Imanes de Leads TÃ©cnicos (Calculadoras Interactivas) -->
+          <div id="org-content-imanes" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              
+              <!-- ImÃ¡n 1: Calculadora GeotÃ©cnica NSR-10 TÃ­tulo H -->
+              <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-6 shadow-xl space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">
+                    <i class="fa-solid fa-calculator"></i>
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-black text-white">Calculadora GeotÃ©cnica NSR-10 (TÃ­tulo H.3)</h5>
+                    <p class="text-[11px] text-slate-400">Determina sondeos obligatorios y ensayos de laboratorio</p>
+                  </div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <label class="text-slate-400 font-bold block mb-1">CategorÃ­a de la EdificaciÃ³n (Tabla H.3.1-1):</label>
+                    <select id="calc-nsr-cat" onchange="calculateGeotechnicalNsr10()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
+                      <option value="BAJA">Baja (1 a 3 pisos - Cargas < 800 kN)</option>
+                      <option value="MEDIA" selected>Media (4 a 10 pisos - Cargas 801 a 2000 kN)</option>
+                      <option value="ALTA">Alta (11 a 20 pisos - Cargas 2001 a 5000 kN)</option>
+                      <option value="ESPECIAL">Especial (> 20 pisos - Cargas > 5000 kN)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="text-slate-400 font-bold block mb-1">Ãrea en Planta del Proyecto (mÂ²):</label>
+                    <input type="number" id="calc-nsr-area" value="850" min="50" max="20000" oninput="calculateGeotechnicalNsr10()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
+                  </div>
+
+                  <!-- Resultados del CÃ¡lculo -->
+                  <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 mt-2">
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-400 font-bold">NÂ° MÃ­nimo de Sondeos:</span>
+                      <span id="calc-nsr-res-sondeos" class="font-mono text-emerald-400 font-black text-sm">4 sondeos mecÃ¡nicos</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-400 font-bold">Profundidad MÃ­nima Sugerida:</span>
+                      <span id="calc-nsr-res-prof" class="font-mono text-white font-black text-sm">15.0 metros</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-400 font-bold">Ensayos Obligatorios:</span>
+                      <span id="calc-nsr-res-lab" class="text-slate-300 font-bold text-[11px] text-right">SPT cada 1.5m, Atterberg, Humedad, Triaxial UU</span>
+                    </div>
+                  </div>
+
+                  <button onclick="requestGeotechnicalQuoteFromCalc()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all shadow-lg cursor-pointer">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Solicitar CotizaciÃ³n Inmediata con estos ParÃ¡metros</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- ImÃ¡n 2: DiagnÃ³stico RÃ¡pido de Nivel de DiseÃ±o PESV (Res. 40595) -->
+              <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-6 shadow-xl space-y-4">
+                <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg border border-blue-500/30">
+                    <i class="fa-solid fa-truck-front"></i>
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-black text-white">DiagnÃ³stico RÃ¡pido de Nivel de DiseÃ±o PESV</h5>
+                    <p class="text-[11px] text-slate-400">ResoluciÃ³n 40595 de 2022 â€¢ Mintransporte & SuperTransporte</p>
+                  </div>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <label class="text-slate-400 font-bold block mb-1">NÂ° de VehÃ­culos Propios / Tercerizados:</label>
+                    <input type="number" id="calc-pesv-vehiculos" value="24" min="1" max="1000" oninput="calculatePesvLevel()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
+                  </div>
+
+                  <div>
+                    <label class="text-slate-400 font-bold block mb-1">NÂ° de Conductores Contratados / Administrados:</label>
+                    <input type="number" id="calc-pesv-conductores" value="28" min="1" max="1000" oninput="calculatePesvLevel()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
+                  </div>
+
+                  <!-- Resultados del DiagnÃ³stico PESV -->
+                  <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 mt-2">
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-400 font-bold">Nivel de DiseÃ±o Asignado:</span>
+                      <span id="calc-pesv-res-nivel" class="font-mono text-blue-400 font-black text-sm">ESTÃNDAR</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-400 font-bold">Pasos Obligatorios a Cumplir:</span>
+                      <span id="calc-pesv-res-pasos" class="font-mono text-white font-black text-sm">20 Pasos Articulados</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span class="text-slate-400 font-bold">Ente de InspecciÃ³n:</span>
+                      <span class="text-amber-400 font-bold text-[11px]">SuperTransporte & MinTrabajo</span>
+                    </div>
+                  </div>
+
+                  <button onclick="requestPesvAuditFromCalc()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black flex items-center justify-center gap-2 transition-all shadow-lg cursor-pointer">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Solicitar DiagnÃ³stico & AuditorÃ­a PESV</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- =====================================================================
+           SUBPANEL 1: RESUMEN EJECUTIVO & ESTADO DE LOS 7 AGENTES IA
+           ===================================================================== -->
+      <div id="c-subpanel-resumen" class="hidden space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           <!-- Matriz de Estado de los 7 Agentes IA -->
@@ -4854,6 +5183,6 @@
   <div id="toast-container" class="fixed bottom-24 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- Scripts con Cache-Buster para GitHub Pages -->
-  <script src="app.js?v=20261108_consultora_v2"></script>
+  <script src="app.js?v=20261108_organico_v1"></script>
 </body>
 </html>
