@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS public.ads (
     descriptions JSONB NOT NULL, -- Array de objetos: [{"text": "Ensayos de laboratorio certificados...", "pinned": false}]
     path1 VARCHAR(15),
     path2 VARCHAR(15),
-    final_urls JSONB NOT NULL DEFAULT '["https://sgonzalezm2404-ui.github.io/sig2ingenieria/#servicios"]',
+    final_urls JSONB NOT NULL DEFAULT '["https://sig2ingenieria.github.io/ingenieria-sig/#servicios"]',
     sitelinks_json JSONB,
     callouts_json JSONB,
     call_extension_phone VARCHAR(50) DEFAULT '+573127894040',
