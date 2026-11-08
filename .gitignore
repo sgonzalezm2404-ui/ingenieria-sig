@@ -1,9 +1,11 @@
 # Archivos locales de desarrollo
 serve.ps1
+push_to_github.bat
 test_*.ps1
 check_*.ps1
 audit_*.ps1
 preview.png
+login_output.txt
 
 # SO
 Thumbs.db
