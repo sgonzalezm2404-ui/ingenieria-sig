@@ -4,7 +4,7 @@
 
 Bienvenido al repositorio oficial del código fuente de la plataforma web corporativa de **SIG²** (*Sistemas y Soluciones | Integrado e Ingeniería | Geográfico y Gestión | Logística*).
 
-- 🌐 **Enlace Público GitHub Pages:** [https://sgonzalezm2404-ui.github.io/ingenieria-sig/](https://sgonzalezm2404-ui.github.io/ingenieria-sig/)
+- 🌐 **Enlace Público GitHub Pages:** [https://sgonzalezm2404-ui.github.io/sig2ingenieria/](https://sgonzalezm2404-ui.github.io/sig2ingenieria/)
 - 📱 **Canal Directo WhatsApp:** [+57 312 789 4040](https://wa.me/573127894040)
 - ✉️ **Bandeja Oficial CRM & Auditoría:** `ingenierotecnicocyc@gmail.com`
 
@@ -78,7 +78,7 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
 ## 3. Despliegue en GitHub Pages
 
 Este repositorio cuenta con un flujo de trabajo automatizado en `.github/workflows/deploy.yml` que compila y publica los activos estáticos (`index.html`, `styles.css`, `app.js`, `assets/`) en:
-👉 **`https://sgonzalezm2404-ui.github.io/ingenieria-sig/`**
+👉 **`https://sgonzalezm2404-ui.github.io/sig2ingenieria/`**
 
 ---
 
