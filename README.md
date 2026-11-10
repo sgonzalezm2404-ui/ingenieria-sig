@@ -134,6 +134,23 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
 - **Prueba Social en Tiempo Real (Live Toast):** Notificaciones discretas en la esquina inferior que muestran empresas reales en Colombia cotizando servicios cada 24 segundos.
 - **Captura por Intención de Salida (Exit-Intent Modal):** Detección de salida del cursor o 35 segundos de navegación con oferta de diagnóstico previo sin costo.
 
+### 9. Arquitectura Minimalista, Misión/Visión, Cartografía y Hub de Plataformas
+- **Identidad Corporativa Sobria:**
+  * Nuevo logotipo oficial sobrio: **SIG² GRUPO** (*Sistemas • Ingeniería • Gestión • Logística*).
+- **Estructura Ejecutiva Limpia ("Sin Saturación"):**
+  * Flujo visual ordenado: *Inicio -> Presentación, Misión y Visión -> Servicios por Pestañas -> Alianza GESURA -> Hub de Plataformas Especializadas -> Contacto*.
+- **Presentación Corporativa, Misión & Visión 2030:**
+  * Misión enfocada en viabilidad técnica, jurídica y económica bajo normativa colombiana.
+  * Visión 2030 de liderazgo nacional en ingeniería integrada y desarrollo de software de campo.
+  * 4 Pilares: Rigor Normativo, Precisión Técnica en Campo, Software Propio y Alianzas Regionales.
+- **Servicios por Pestañas Minimalistas:**
+  * Categorización en pestañas que evitan la sobrecarga: *Geología & Cartografía, Consultoría Ambiental, SST & Alianza GESURA, Soluciones Digitales y Gestión de Flotas*.
+- **Nuevos Servicios Especializados de Cartografía:**
+  * *Cartografía Geológica Estructural, Sensores Remotos & SIG Minero* (cuadrángulos 1:10.000 / 1:25.000 SGC, teledetección multiespectral y modelos LiDAR).
+  * *Cartografía Ambiental Temática, Zonificación de Manejo & Modelo GDB ANLA* (metodología Corine Land Cover CLCCO, rondas hídricas y geodatabase para VITAL / ANLA).
+- **Hub de Plataformas Especializadas (`#plataformas`):**
+  * Selector interactivo de pestañas que permite alternar con un clic entre *SIG² Campo*, *SIG² Fleet*, *CONSULTORA AI*, *Radar Autónomo B2B* y *Google Ads IA*, eliminando el desplazamiento vertical excesivo.
+
 ---
 
 ## 3. Despliegue en GitHub Pages

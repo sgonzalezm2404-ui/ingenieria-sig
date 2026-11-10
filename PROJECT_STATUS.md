@@ -26,6 +26,7 @@
 | **FASE 12** | **Pruebas Integrales y Despliegue** | ✅ **COMPLETADA** | Verificación de sintaxis (1479 llaves, 2531 paréntesis), no-regresión de módulos y despliegue en GitHub Pages. |
 | **FASE 13** | **Motor Autónomo de Clientes & Publicidad Orgánica** | ✅ **COMPLETADA** | Sistema 100% independiente de APIs externas de pago. Radar de licitaciones en Colombia, generador de artículos SEO con Schema JSON-LD, carruseles LinkedIn B2B, guiones WhatsApp y calculadoras de captura de leads. |
 | **FASE 14** | **Máquina de 1 Cliente al Día & Alianza GESURA** | ✅ **COMPLETADA** | Alianza en sociedad con GESURA (Gestión Segura del Trabajo) para Guadalajara de Buga y Valle del Cauca. División operativa física (GESURA: Alturas, Espacios Confinados, LOTO) y virtual (SIG²: Batería Psicosocial Res. 2764, Software PESV, SG-SST). Calculadora de Batería, modal de portafolio en sociedad, prueba social en vivo y captura exit-intent. |
+| **FASE 15** | **Arquitectura Minimalista, Logo Sobrio, Misión/Visión & Cartografía** | ✅ **COMPLETADA** | Rediseño integral minimalista: Integración del nuevo logotipo sobrio SIG² GRUPO (Sistemas • Ingeniería • Gestión • Logística). Nueva sección institucional con Misión, Visión 2030 y 4 Pilares Estratégicos. División por pestañas de servicios. Incorporación de servicios de Cartografía Geológica Estructural (SGC) y Cartografía Ambiental Temática (GDB ANLA/CLCCO). Hub de Plataformas Interactivas con selector de pestañas que elimina la saturación visual y el scroll infinito. |
 
 ---
 
@@ -59,3 +60,9 @@
   - Implementación de la sección co-branded `#alianza-gesura` y modal `#gesura-portfolio-modal`.
   - Integración del calculador de Batería de Riesgo Psicosocial (Res. 2764) y despacho TAR en Guadalajara de Buga y Valle del Cauca.
   - Activación del motor de prueba social viva `#social-proof-toast` y captura exit-intent `#exit-intent-modal`.
+- **Prueba 07 (2026-11-10):** Rediseño Minimalista, Misión/Visión, Cartografía y Hub de Plataformas por Pestañas:
+  - Verificación de balance sintáctico en `app.js` (1800 llaves balanceadas, 508 corchetes balanceados).
+  - Integración de los 2 nuevos servicios de Cartografía (`geo-cartografia-01` y `amb-cartografia-01`).
+  - Creación de `#plataformas` con función `switchPlatformTab()` y escucha de `hashchange`.
+  - Reubicación y modularización de `#pesv-app` para evitar sobrecarga y scroll infinito.
+  - Actualización del logotipo sobrio `assets/sig2-logo-grupo.jpg` en Navbar, Modals y Footer.

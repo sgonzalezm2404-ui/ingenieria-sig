@@ -56,6 +56,22 @@ const SERVICES_CATALOG = [
     demoLink: '#sig-campo'
   },
   {
+    id: 'geo-cartografia-01',
+    category: 'geologia-mineria',
+    categoryName: 'Geología & Minería',
+    title: 'Cartografía Geológica Estructural, Sensores Remotos & SIG Minero',
+    shortDesc: 'Mapeo geológico sistemático de superficie y subsuelo, cuadrángulos 1:10.000 / 1:25.000 bajo estándares del Servicio Geológico Colombiano (SGC), teledetección multiespectral y modelos de sombras LiDAR.',
+    specs: [
+      'Levantamiento geológico y estructural de campo con brújula geológica digital y GPS submétrico GNSS',
+      'Fotointerpretación con imágenes de satélite Sentinel-2, Landsat-8 y fotogrametría aérea con drones',
+      'Estructuración de geodatabases espaciales geológicas en ArcGIS Pro y QGIS conforme al modelo oficial SGC / ANM'
+    ],
+    deliverables: 'Mapa geológico georreferenciado MAGNA-SIRGAS (PDF y vectoriales SHP/GDB), memoria técnica explicativa, columnas estratigráficas y secciones estructurales.',
+    software: 'ArcGIS Pro, QGIS, Global Mapper, Leapfrog Geo, Receptores GNSS RTK, Dron DJI Matrice LiDAR',
+    image: 'assets/pto-pot-minero-cartografia.jpg',
+    tag: '🗺️ Cartografía Geológica'
+  },
+  {
     id: 'geo-01',
     category: 'geologia-mineria',
     categoryName: 'Geología & Minería',
@@ -117,6 +133,23 @@ const SERVICES_CATALOG = [
   },
 
   // 2. Ingeniería Ambiental
+  {
+    id: 'amb-cartografia-01',
+    category: 'ingenieria-ambiental',
+    categoryName: 'Ingeniería Ambiental',
+    title: 'Cartografía Ambiental Temática, Zonificación & Geodatabase GDB ANLA',
+    shortDesc: 'Elaboración integral de cartografía ambiental oficial para licenciamiento y seguimiento ante la ANLA y CARs. Metodología Corine Land Cover (CLCCO), rondas hídricas, zonificación de manejo y geodatabase oficial.',
+    specs: [
+      'Mapas temáticos de coberturas vegetales, ecosistemas estratégicos, geología ambiental, pendientes y susceptibilidad',
+      'Análisis multitemporal de cambios de cobertura y dinámica de deforestación con imágenes satelitales de alta resolución',
+      'Modelamiento de zonificación ambiental (Áreas de Exclusión, Intervención con Restricción y Sin Restricción)',
+      'Estructuración de Geodatabase (GDB) oficial sin errores topológicos, validada mediante CartoGIS y herramientas ANLA'
+    ],
+    deliverables: 'Geodatabase GDB oficial en coordenadas MAGNA-SIRGAS para radicación en VITAL/ANLA, salidas gráficas cartográficas (1:10.000 / 1:25.000) y memoria técnica del EIA/PMA.',
+    software: 'ArcGIS Pro, ArcPy, QGIS, CartoGIS ANLA Validator, Imágenes Satelitales PlanetScope / Sentinel',
+    image: 'assets/dron-cartografia-multitemporal.jpg',
+    tag: '🌿 Cartografía Ambiental'
+  },
   {
     id: 'env-01',
     category: 'ingenieria-ambiental',
@@ -8757,3 +8790,40 @@ function switchGesuraPortfolioTab(tabId) {
     }
   });
 }
+
+/* =============================================================================
+   HUB DE PLATAFORMAS & SOLUCIONES INTERACTIVAS - GESTOR DE PESTAÑAS
+   ============================================================================= */
+function switchPlatformTab(tabId) {
+  const platformIds = ['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'];
+  
+  platformIds.forEach(id => {
+    const el = document.getElementById(id);
+    const btn = document.getElementById(`ptab-${id}`);
+
+    if (el) {
+      if (id === tabId) {
+        el.style.display = 'block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        el.style.display = 'none';
+      }
+    }
+
+    if (btn) {
+      if (id === tabId) {
+        btn.className = 'platform-tab-btn px-4 py-2.5 rounded-xl font-black bg-sig-navy text-white shadow-md border border-sig-teal/40 transition-all text-xs flex items-center gap-2 cursor-pointer';
+      } else {
+        btn.className = 'platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer';
+      }
+    }
+  });
+}
+
+// Escuchar cambios de hash en la URL
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'].includes(hash)) {
+    switchPlatformTab(hash);
+  }
+});
