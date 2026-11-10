@@ -1061,6 +1061,7 @@
             <i class="fa-solid fa-bore-hole text-emerald-400"></i>
             <span>SIG² Campo (Geotecnia SPT)</span>
           </button>
+          <button onclick="switchPlatformTab('almacen-app')" id="ptab-almacen-app" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer"><i class="fa-solid fa-boxes-stacked text-amber-400"></i><span>SIGÂ² AlmacÃ©n & LogÃ­stica (Demo)</span></button>
           <button onclick="switchPlatformTab('pesv-app')" id="ptab-pesv-app" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer">
             <i class="fa-solid fa-truck-pickup text-blue-400"></i>
             <span>SIG² Fleet (PESV & Flotas)</span>
@@ -1077,7 +1078,6 @@
             <i class="fa-brands fa-google text-red-400"></i>
             <span>Google Ads IA</span>
           </button>
-          <button onclick="switchPlatformTab('almacen-app')" id="ptab-almacen-app" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer"><i class="fa-solid fa-boxes-stacked text-amber-400"></i><span>SIG² Almacén (Demo Logística)</span></button>
         </div>
       </div>
 
@@ -4959,72 +4959,336 @@
        NUEVA SECCIÃ“N: SIG² ALMACÃ‰N & LOGÍSTICA (DEMO INTERACTIVA)
        CONTROL DE INVENTARIOS, KARDEX, ENTRADAS/SALIDAS Y STOCK CRÍTICO EN FAENA
        ========================================================================= -->
-  <section id="almacen-app" class="py-10 bg-white border-b border-slate-200" style="display: none;">
+  <!-- =========================================================================
+       SECCIÓN ESPECIAL: SIG² ALMACÉN & LOGÍSTICA DE FAENA (DEMO NATIVA EN VIVO)
+       INCLUYE: TERMINAL RUGGED DE INVENTARIO + KARDEX EN VIVO + DESPACHOS + PWA
+       ========================================================================= -->
+  <section id="almacen-app" class="py-20 bg-slate-100/90 border-b border-slate-200" style="display: none;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Encabezado de la Demo de Almacén -->
-      <div class="bg-gradient-to-r from-slate-900 via-sig-navy to-slate-900 rounded-2xl p-6 sm:p-8 text-white mb-8 shadow-xl border border-slate-800">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div class="space-y-3 max-w-3xl">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-black uppercase tracking-wider border border-amber-500/30">
-                <i class="fa-solid fa-boxes-stacked mr-1"></i> Demo Interactiva en Vivo
-              </span>
-              <span class="px-3 py-1 rounded-full bg-sig-teal/20 text-teal-300 text-[10px] font-black uppercase tracking-wider border border-sig-teal/30">
-                <i class="fa-solid fa-warehouse mr-1"></i> Control de Stock & Kardex
-              </span>
-              <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-black uppercase tracking-wider border border-blue-500/30">
-                <i class="fa-solid fa-truck-ramp-box mr-1"></i> Logística de Faena
-              </span>
-            </div>
+      <!-- Encabezado de Sección de Alto Impacto -->
+      <div class="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-black uppercase tracking-wider mb-3 shadow-xs">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          SOFTWARE INDUSTRIAL DE LOGÍSTICA <span class="opacity-40 mx-1">/</span> CONTROL DE INVENTARIO & KARDEX
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-sig-navy tracking-tight">
+          SIG² Almacén: Control de Stock, Insumos de Faena & Kardex Operativo
+        </h2>
+        <p class="text-sig-graphite text-sm sm:text-base mt-3 leading-relaxed">
+          Digitalice el control de bodegas de campamento, pañoles de herramientas y frentes de perforación. Administre entradas, salidas y préstamos de insumos con <strong class="text-sig-navy font-bold">trazabilidad en tiempo real</strong>, alertas de stock mínimo de brocas o repuestos críticos, exportación de actas y sincronización con Google Sheets.
+        </p>
+      </div>
 
-            <h3 class="text-xl sm:text-3xl font-black text-white tracking-tight">
-              SIG² Almacén: Control de Inventario, Entradas/Salidas y Kardex Operativo
-            </h3>
-
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Módulo de demostración para la trazabilidad y administración centralizada de inventarios, insumos de perforación, repuestos de maquinaria, herramientas bajo custodia y alertas automáticas de reposición en campamento y almacén central.
-            </p>
-
-            <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-1">
-              <div class="flex items-center gap-1.5">
-                <i class="fa-solid fa-check text-emerald-400"></i>
-                <span>Gestión de catálogo y SKU</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <i class="fa-solid fa-check text-emerald-400"></i>
-                <span>Entradas y despachos con firma</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <i class="fa-solid fa-check text-emerald-400"></i>
-                <span>Historial de movimientos en tiempo real</span>
-              </div>
-            </div>
+      <!-- 4 Pilares de Productividad Logística (Igual a Geotecnia) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12 reveal-on-scroll">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-sig-navy hover:-translate-y-1">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-warehouse"></i>
           </div>
+          <h3 class="text-sm font-black text-sig-navy mb-1.5">100% Offline en Faena</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Opere sin señal en túneles, canteras o campamentos aislados. Los despachos se encolan con timestamp y se sincronizan al recuperar cobertura.
+          </p>
+        </div>
 
-          <!-- Botones de Acción de la Demo -->
-          <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-            <a href="apps/almacen/index.html" target="_blank" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
-              <i class="fa-solid fa-up-right-from-square"></i>
-              <span>Abrir en Pantalla Completa</span>
-            </a>
-
-            <button onclick="document.getElementById('iframe-almacen-demo').contentWindow.location.reload();" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 flex items-center justify-center gap-2 transition-all cursor-pointer">
-              <i class="fa-solid fa-rotate-right"></i>
-              <span>Recargar Demo</span>
-            </button>
-
-            <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Grupo,%20vi%20la%20demo%20de%20SIG2%20Almac%C3%A9n%20y%20deseo%20implementar%20este%20software%20de%20log%C3%ADstica%20para%20mi%20empresa." target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>Solicitar para su Empresa</span>
-            </a>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-sig-teal hover:-translate-y-1">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 text-sig-teal flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-calculator"></i>
           </div>
+          <h3 class="text-sm font-black text-sig-navy mb-1.5">Kardex en Tiempo Real</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Cálculo inmediato de saldo remanente tras cada despacho. Trazabilidad exacta de responsable, motivo y frente de obra donde se consume cada insumo.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-sig-navy hover:-translate-y-1">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-sig-navy flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3 class="text-sm font-black text-sig-navy mb-1.5">Semáforo de Stock Crítico</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Detección automática de insumos por debajo del stock mínimo seguro (brocas NQ, bentonita, filtros). Evita paradas operativas no planificadas.
+          </p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-emerald-600 hover:-translate-y-1">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-3">
+            <i class="fa-solid fa-file-excel"></i>
+          </div>
+          <h3 class="text-sm font-black text-sig-navy mb-1.5">Exportación & Google Sheets</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Sincronización directa con hojas de cálculo Drive mediante Google Apps Script y descarga de kardex en Excel/CSV con un solo clic.
+          </p>
         </div>
       </div>
 
-      <!-- Iframe Contenedor Interactivo de la Aplicación -->
-      <div class="relative w-full rounded-2xl overflow-hidden border border-slate-300 shadow-2xl bg-slate-900" style="min-height: 720px; height: 82vh;">
-        <iframe id="iframe-almacen-demo" src="apps/almacen/index.html" class="w-full h-full border-0" allow="fullscreen" loading="lazy"></iframe>
+      <!-- =====================================================================
+           SIMULADOR DE TERMINAL INDUSTRIAL RUGGED: APLICACIÓN NATIVA SIG² ALMACÉN
+           ===================================================================== -->
+      <div class="tablet-mockup-frame reveal-on-scroll bg-slate-900 rounded-3xl overflow-hidden border border-slate-700 shadow-2xl">
+        
+        <!-- Muesca y Barra de Estado Superior de la Terminal -->
+        <div class="py-2.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between px-6 text-[11px] text-slate-400 font-mono">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <span class="text-white font-bold">SIG² ALMACÉN <span class="opacity-40 mx-1">/</span> TERMINAL RUGGED DE CONTROL DE INVENTARIO v3.2</span>
+          </div>
+          <div class="hidden sm:flex items-center gap-3 text-xs">
+            <span><i class="fa-solid fa-warehouse text-amber-400 mr-1"></i> BODEGA CENTRAL FAENA</span>
+            <span><i class="fa-solid fa-battery-three-quarters text-emerald-400 mr-1"></i> 98%</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-900/60 text-emerald-300 font-bold border border-emerald-500/30">ONLINE SINCRONIZADO</span>
+          </div>
+        </div>
+
+        <!-- Barra de Navegación Interna de la Terminal -->
+        <div class="p-4 sm:p-5 bg-slate-900 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2 overflow-x-auto scrollbar-none">
+            <button onclick="switchAlmacenTab('catalogo')" id="almacen-nav-catalogo" class="almacen-tab-nav-btn px-4 py-2.5 rounded-xl font-black bg-amber-500 text-slate-950 shadow-sm text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Catálogo & Stock</span>
+            </button>
+            <button onclick="switchAlmacenTab('movimiento')" id="almacen-nav-movimiento" class="almacen-tab-nav-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+              <i class="fa-solid fa-dolly"></i>
+              <span>Registrar Movimiento</span>
+            </button>
+            <button onclick="switchAlmacenTab('kardex')" id="almacen-nav-kardex" class="almacen-tab-nav-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+              <i class="fa-solid fa-table-list"></i>
+              <span>Kardex en Vivo</span>
+            </button>
+            <button onclick="switchAlmacenTab('pwa')" id="almacen-nav-pwa" class="almacen-tab-nav-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <span>App PWA Completa</span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs text-slate-300">
+            <div class="bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700 flex items-center gap-2">
+              <span class="text-slate-400">Stock Crítico:</span>
+              <strong id="almacen-kpi-criticos" class="text-amber-400 font-bold font-mono">1</strong>
+            </div>
+            <div class="bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700 flex items-center gap-2">
+              <span class="text-slate-400">Total Unidades:</span>
+              <strong id="almacen-kpi-unidades" class="text-teal-300 font-bold font-mono">107</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENIDO INTERNO 1: CATÁLOGO Y STOCK -->
+        <div id="almacen-pane-catalogo" class="p-6 bg-slate-50">
+          
+          <!-- Barra de Filtros y Búsqueda -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div class="relative flex-1 max-w-md">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+              <input type="text" oninput="filterAlmacenCatalog(this.value)" placeholder="Buscar por nombre, código PRD o ubicación..." class="w-full pl-9 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs text-slate-800 focus:border-sig-navy focus:ring-1 focus:ring-sig-navy outline-hidden shadow-xs">
+            </div>
+
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <button onclick="filterAlmacenCatalog(undefined, 'all')" data-cat="all" class="almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-black bg-sig-navy text-white shadow-xs">Todos</button>
+              <button onclick="filterAlmacenCatalog(undefined, 'herramientas')" data-cat="herramientas" class="almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">Herramientas</button>
+              <button onclick="filterAlmacenCatalog(undefined, 'quimicos')" data-cat="quimicos" class="almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">Químicos & Lodos</button>
+              <button onclick="filterAlmacenCatalog(undefined, 'repuestos')" data-cat="repuestos" class="almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">Repuestos</button>
+              <button onclick="filterAlmacenCatalog(undefined, 'epps')" data-cat="epps" class="almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">EPPs SST</button>
+            </div>
+          </div>
+
+          <!-- Cuadrícula Reactiva de Productos -->
+          <div id="almacen-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Inyectado dinámicamente por app.js -->
+          </div>
+        </div>
+
+        <!-- CONTENIDO INTERNO 2: REGISTRO DE MOVIMIENTOS -->
+        <div id="almacen-pane-movimiento" class="p-6 bg-slate-50 hidden">
+          <div class="max-w-3xl mx-auto bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <div class="border-b border-slate-200 pb-4 mb-6 flex items-center justify-between">
+              <div>
+                <h3 class="text-base sm:text-lg font-black text-sig-navy">Registrar Transacción en Faena</h3>
+                <p class="text-xs text-slate-500">Asiento de inventario con validación de saldo en tiempo real.</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                <i class="fa-solid fa-barcode text-amber-500 mr-1"></i> Modo Offline-First
+              </span>
+            </div>
+
+            <!-- Selector de Tipo de Operación -->
+            <div class="mb-6">
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Tipo de Operación:</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" id="almacen-mtype-btn-salida" onclick="setAlmacenMovementType('salida')" class="py-2.5 px-3 rounded-xl font-black bg-rose-600 text-white shadow-xs text-xs flex items-center justify-center gap-1.5 transition-all">
+                  <i class="fa-solid fa-arrow-up-from-bracket"></i> Salida a Faena
+                </button>
+                <button type="button" id="almacen-mtype-btn-entrada" onclick="setAlmacenMovementType('entrada')" class="py-2.5 px-3 rounded-xl font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs flex items-center justify-center gap-1.5 transition-all border border-slate-200">
+                  <i class="fa-solid fa-arrow-down-to-bracket"></i> Recepción / Ingreso
+                </button>
+                <button type="button" id="almacen-mtype-btn-prestamo" onclick="setAlmacenMovementType('prestamo')" class="py-2.5 px-3 rounded-xl font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs flex items-center justify-center gap-1.5 transition-all border border-slate-200">
+                  <i class="fa-solid fa-hand-holding-hand"></i> Préstamo de Equipo
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+              <!-- Selector de Producto -->
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Producto o Herramienta a Mover *</label>
+                <select id="almacen-movement-product" onchange="onAlmacenProductSelectChange(this.value)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-800 outline-hidden focus:border-sig-navy">
+                  <option value="PRD-GEO-01">Broca Diamantada NQ3 (Matriz 12 Impregnada) [NQ3-IMP-12]</option>
+                  <option value="PRD-GEO-02">Bentonita Sódica Especial de Perforación [BEN-SOD-50K]</option>
+                  <option value="PRD-MAQ-03">Filtro Hidráulico Parker 10 Micras para Sonda [FLT-HYD-10M]</option>
+                  <option value="PRD-SST-04">Arnés de Seguridad Dieléctrico 4 Argollas [ARN-DIE-04A]</option>
+                  <option value="PRD-GEO-05">Tubo Portatestigo Doble HQ (Longitud 3.0 m) [TUB-HQ-3000]</option>
+                  <option value="PRD-MAQ-06">Grasa Sintética EP-2 Alta Presión Martinete [GRA-EP2-CAN]</option>
+                  <option value="PRD-SST-07">Detector Multigas Portátil Calibrado (4 Gases) [DET-GAS-CAL]</option>
+                  <option value="PRD-GEO-08">Cuchara Partida SPT Normalizada ASTM D1586 [CUCH-SPT-1586]</option>
+                </select>
+              </div>
+
+              <!-- Stepper de Cantidad -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Cantidad de Unidades *</label>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="changeAlmacenQty(-1)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-minus text-xs"></i>
+                  </button>
+                  <input type="number" id="almacen-movement-qty" value="2" min="1" oninput="changeAlmacenQty(0)" class="w-20 text-center py-2 bg-slate-50 border border-slate-300 rounded-xl font-mono font-bold text-base text-slate-800 outline-hidden">
+                  <button type="button" onclick="changeAlmacenQty(1)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+                <div class="flex items-center gap-1 mt-2">
+                  <button type="button" onclick="setAlmacenQuickQty(1)" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">+1</button>
+                  <button type="button" onclick="setAlmacenQuickQty(5)" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">+5</button>
+                  <button type="button" onclick="setAlmacenQuickQty(10)" class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200">+10</button>
+                </div>
+              </div>
+
+              <!-- Responsable Operativo -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Responsable en Faena *</label>
+                <input type="text" id="almacen-movement-user" value="Carlos Mendoza (Perforador Jefe)" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-hidden focus:border-sig-navy">
+              </div>
+
+              <!-- Frente de Obra / Destino -->
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Destino / Frente de Perforación o Taller *</label>
+                <input type="text" id="almacen-movement-dest" value="Sondeo SPT-03 / Talud Km 12+400" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 outline-hidden focus:border-sig-navy">
+              </div>
+            </div>
+
+            <!-- Previsualización Dinámica del Balance -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 mb-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Producto Seleccionado:</span>
+                <strong id="almacen-preview-name" class="text-sig-navy font-bold">Broca Diamantada NQ3</strong>
+                <span class="text-slate-500 block text-[11px]">Ubicación: <span id="almacen-preview-loc">Estante A-02</span></span>
+              </div>
+              <div class="flex items-center gap-4 text-center">
+                <div>
+                  <span class="text-slate-400 block text-[10px] uppercase font-bold">Stock Actual</span>
+                  <span id="almacen-preview-current" class="font-mono font-bold text-slate-700">14 un</span>
+                </div>
+                <i class="fa-solid fa-arrow-right text-slate-300"></i>
+                <div>
+                  <span class="text-slate-400 block text-[10px] uppercase font-bold">Nuevo Saldo</span>
+                  <span id="almacen-preview-next" class="font-mono font-bold text-emerald-600">12 un</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" onclick="submitAlmacenMovement()" class="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-check-double text-sm"></i>
+              <span>Confirmar y Asentar en Kardex</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTENIDO INTERNO 3: KARDEX DIGITAL EN VIVO -->
+        <div id="almacen-pane-kardex" class="p-6 bg-slate-50 hidden">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-4 bg-slate-100 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h4 class="text-xs sm:text-sm font-black text-sig-navy">Kardex de Movimientos & Trazabilidad de Faena</h4>
+                <p class="text-[11px] text-slate-500">Historial permanente sincronizado en almacenamiento local seguro.</p>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <button onclick="exportAlmacenCSV()" class="px-3.5 py-2 rounded-xl bg-sig-navy hover:bg-sig-navy-dark text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs">
+                  <i class="fa-solid fa-file-csv text-emerald-400"></i> Exportar CSV
+                </button>
+                <button onclick="resetAlmacenDemo()" class="px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all cursor-pointer" title="Restablecer Datos">
+                  <i class="fa-solid fa-rotate-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-slate-50 border-b border-slate-200 text-[10px] uppercase font-bold text-slate-500">
+                    <th class="py-2.5 px-3">ID Transacción</th>
+                    <th class="py-2.5 px-3">Fecha / Hora</th>
+                    <th class="py-2.5 px-3">Tipo Operación</th>
+                    <th class="py-2.5 px-3">Producto / Referencia</th>
+                    <th class="py-2.5 px-3">Cantidad</th>
+                    <th class="py-2.5 px-3">Saldo Kardex</th>
+                    <th class="py-2.5 px-3">Responsable</th>
+                    <th class="py-2.5 px-3">Frente / Destino</th>
+                  </tr>
+                </thead>
+                <tbody id="almacen-kardex-tbody">
+                  <!-- Inyectado dinámicamente por app.js -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="p-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+              <span>Total asientos registrados: <strong id="almacen-kardex-count" class="text-sig-navy font-bold">3</strong></span>
+              <span class="text-[11px]"><i class="fa-solid fa-shield-check text-emerald-600 mr-1"></i> Auditoría digital inalterable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENIDO INTERNO 4: APP PWA COMPLETA & IFRAME -->
+        <div id="almacen-pane-pwa" class="p-6 bg-slate-900 hidden">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 text-white">
+            <div>
+              <h4 class="text-sm font-black text-amber-400">Aplicación PWA Independiente: SIG² Almacén</h4>
+              <p class="text-xs text-slate-300">Entorno standalone completo con soporte táctil para smartphones y tablets de faena.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="apps/almacen/index.html" target="_blank" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs flex items-center gap-1.5 transition-all shadow-md">
+                <i class="fa-solid fa-up-right-from-square"></i> Abrir en Pantalla Completa
+              </a>
+              <button onclick="document.getElementById('iframe-almacen-demo').contentWindow.location.reload();" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs border border-slate-700 flex items-center gap-1.5 transition-all">
+                <i class="fa-solid fa-rotate-right"></i> Recargar
+              </button>
+            </div>
+          </div>
+
+          <div class="relative w-full rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-950" style="min-height: 650px; height: 75vh;">
+            <iframe id="iframe-almacen-demo" src="apps/almacen/index.html" class="w-full h-full border-0" allow="fullscreen" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra de Respaldo y Contacto Técnico -->
+      <div class="mt-8 p-5 bg-white rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg shrink-0">
+            <i class="fa-solid fa-network-wired"></i>
+          </div>
+          <div>
+            <strong class="text-sig-navy block font-bold">¿Desea implementar este sistema en las bodegas y frentes de su empresa?</strong>
+            <span class="text-slate-500">Personalizamos catálogos, campos específicos de perforación, roles de acceso y enlace con SAP o Google Workspace.</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Grupo,%20deseo%20solicitar%20informaci%C3%B3n%20para%20implementar%20el%20software%20SIG2%20Almac%C3%A9n%20en%20nuestras%20bodegas." target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow-md transition-all shrink-0 flex items-center gap-2 cursor-pointer">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>Solicitar Implementación Bodega</span>
+        </a>
       </div>
 
     </div>

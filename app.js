@@ -567,6 +567,7 @@ function initApp() {
     ['initGoogleAdsAgent', () => initGoogleAdsAgent()],
     ['initConsultoraAI', () => initConsultoraAI()],
     ['initDailyMachine', () => initDailyMachine()],
+    ['initAlmacenDemo', () => initAlmacenDemo()],
     ['initNavigationTabs', () => {
       const hash = window.location.hash.replace('#', '');
       const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas'];
@@ -8852,4 +8853,392 @@ function navigateToTab(tabId, subCategory = null) {
   if (mobileDrawer && !mobileDrawer.classList.contains('hidden')) {
     mobileDrawer.classList.add('hidden');
   }
+}
+
+
+/* =============================================================================
+   MÓDULO INTERACTIVO NATIVO: SIG² ALMACÉN & LOGÍSTICA (DEMO EN VIVO)
+   SIMULADOR DE CONTROL DE INVENTARIO, KARDEX Y DESPACHOS EN FAENA
+   ============================================================================= */
+
+const SIG_ALMACEN_STATE = {
+  activeTab: 'catalogo',
+  activeCategory: 'all',
+  searchQuery: '',
+  selectedProductId: 'PRD-GEO-01',
+  movementType: 'salida',
+  movementQty: 2,
+  products: [
+    { id: 'PRD-GEO-01', code: 'NQ3-IMP-12', name: 'Broca Diamantada NQ3 (Matriz 12 Impregnada)', category: 'herramientas', stock: 14, minStock: 5, unit: 'un', location: 'Estante A-02 (Faena)', cost: 1850000, status: 'normal' },
+    { id: 'PRD-GEO-02', name: 'Bentonita Sódica Especial de Perforación', code: 'BEN-SOD-50K', category: 'quimicos', stock: 42, minStock: 20, unit: 'bultos', location: 'Bodega Principal Patio B', cost: 68000, status: 'normal' },
+    { id: 'PRD-MAQ-03', name: 'Filtro Hidráulico Parker 10 Micras para Sonda', code: 'FLT-HYD-10M', category: 'repuestos', stock: 2, minStock: 6, unit: 'un', location: 'Gaveta R-04', cost: 320000, status: 'critico' },
+    { id: 'PRD-SST-04', name: 'Arnés de Seguridad Dieléctrico 4 Argollas', code: 'ARN-DIE-04A', category: 'epps', stock: 18, minStock: 8, unit: 'un', location: 'Pañol SST Casillero 3', cost: 245000, status: 'normal' },
+    { id: 'PRD-GEO-05', name: 'Tubo Portatestigo Doble HQ (Longitud 3.0 m)', code: 'TUB-HQ-3000', category: 'herramientas', stock: 3, minStock: 4, unit: 'un', location: 'Taller de Sondas', cost: 4200000, status: 'bajo' },
+    { id: 'PRD-MAQ-06', name: 'Grasa Sintética EP-2 Alta Presión Martinete', code: 'GRA-EP2-CAN', category: 'insumos', stock: 9, minStock: 3, unit: 'canecas', location: 'Bodega Químicos Q-1', cost: 185000, status: 'normal' },
+    { id: 'PRD-SST-07', name: 'Detector Multigas Portátil Calibrado (4 Gases)', code: 'DET-GAS-CAL', category: 'herramientas', stock: 4, minStock: 2, unit: 'un', location: 'Armario Instrumentación', cost: 3800000, status: 'normal' },
+    { id: 'PRD-GEO-08', name: 'Cuchara Partida SPT Normalizada ASTM D1586', code: 'CUCH-SPT-1586', category: 'herramientas', stock: 6, minStock: 3, unit: 'un', location: 'Estante B-01', cost: 920000, status: 'normal' }
+  ],
+  movements: [
+    { id: 'MOV-1092', time: 'Hoy 08:30 AM', type: 'salida', typeLabel: 'Salida a Faena', typeBadge: 'bg-rose-100 text-rose-800 border-rose-300', product: 'Broca Diamantada NQ3 (Matriz 12 Impregnada)', qty: 2, unit: 'un', user: 'Carlos Mendoza (Perforador)', dest: 'Sondeo SPT-02 Talud Norte', balance: 14 },
+    { id: 'MOV-1091', time: 'Hoy 07:15 AM', type: 'entrada', typeLabel: 'Recepción / Entrada', typeBadge: 'bg-emerald-100 text-emerald-800 border-emerald-300', product: 'Bentonita Sódica Especial de Perforación', qty: 15, unit: 'bultos', user: 'Sofía Rivas (Almacén)', dest: 'Recepción Proveedor Químicos del Valle', balance: 42 },
+    { id: 'MOV-1090', time: 'Ayer 04:45 PM', type: 'prestamo', typeLabel: 'Préstamo Temporal', typeBadge: 'bg-blue-100 text-blue-800 border-blue-300', product: 'Detector Multigas Portátil Calibrado (4 Gases)', qty: 1, unit: 'un', user: 'Ing. Mateo Gómez (HSEQ)', dest: 'Inspección Espacio Confinado Silo 3', balance: 4 }
+  ]
+};
+
+function initAlmacenDemo() {
+  renderAlmacenCatalog();
+  renderAlmacenKardex();
+  updateAlmacenMovementPreview();
+}
+
+function switchAlmacenTab(tabId) {
+  SIG_ALMACEN_STATE.activeTab = tabId;
+  const tabs = ['catalogo', 'movimiento', 'kardex', 'pwa'];
+  tabs.forEach(t => {
+    const pane = document.getElementById(`almacen-pane-${t}`);
+    const btn = document.getElementById(`almacen-nav-${t}`);
+    if (pane) {
+      if (t === tabId) {
+        pane.classList.remove('hidden');
+        pane.style.display = 'block';
+      } else {
+        pane.classList.add('hidden');
+        pane.style.display = 'none';
+      }
+    }
+    if (btn) {
+      if (t === tabId) {
+        btn.className = `almacen-tab-nav-btn px-4 py-2.5 rounded-xl font-black bg-amber-500 text-slate-950 shadow-sm text-xs flex items-center gap-1.5 transition-all cursor-pointer`;
+      } else {
+        btn.className = `almacen-tab-nav-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 text-xs flex items-center gap-1.5 transition-all cursor-pointer`;
+      }
+    }
+  });
+
+  if (tabId === 'catalogo') renderAlmacenCatalog();
+  if (tabId === 'kardex') renderAlmacenKardex();
+  if (tabId === 'movimiento') updateAlmacenMovementPreview();
+}
+
+function filterAlmacenCatalog(query, category) {
+  if (query !== undefined) SIG_ALMACEN_STATE.searchQuery = query.toLowerCase().trim();
+  if (category !== undefined) {
+    SIG_ALMACEN_STATE.activeCategory = category;
+    document.querySelectorAll('.almacen-cat-btn').forEach(btn => {
+      const cat = btn.getAttribute('data-cat');
+      if (cat === category) {
+        btn.className = 'almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-black bg-sig-navy text-white shadow-xs';
+      } else {
+        btn.className = 'almacen-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200';
+      }
+    });
+  }
+  renderAlmacenCatalog();
+}
+
+function renderAlmacenCatalog() {
+  const container = document.getElementById('almacen-catalog-grid');
+  if (!container) return;
+
+  const filtered = SIG_ALMACEN_STATE.products.filter(p => {
+    const matchesCat = SIG_ALMACEN_STATE.activeCategory === 'all' || p.category === SIG_ALMACEN_STATE.activeCategory;
+    const matchesQuery = !SIG_ALMACEN_STATE.searchQuery || 
+      p.name.toLowerCase().includes(SIG_ALMACEN_STATE.searchQuery) || 
+      p.code.toLowerCase().includes(SIG_ALMACEN_STATE.searchQuery) ||
+      p.id.toLowerCase().includes(SIG_ALMACEN_STATE.searchQuery);
+    return matchesCat && matchesQuery;
+  });
+
+  // Actualizar contadores
+  const totalItems = SIG_ALMACEN_STATE.products.length;
+  const criticalCount = SIG_ALMACEN_STATE.products.filter(p => p.stock <= p.minStock).length;
+  const totalStockUnits = SIG_ALMACEN_STATE.products.reduce((acc, p) => acc + p.stock, 0);
+
+  const kpiEl = document.getElementById('almacen-kpi-criticos');
+  if (kpiEl) kpiEl.textContent = criticalCount;
+  const kpiTotal = document.getElementById('almacen-kpi-unidades');
+  if (kpiTotal) kpiTotal.textContent = totalStockUnits;
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center text-slate-400">
+        <i class="fa-solid fa-boxes-packing text-4xl mb-2 opacity-50"></i>
+        <p class="text-sm font-bold">No se encontraron productos coincidentes en el inventario.</p>
+        <button onclick="filterAlmacenCatalog('', 'all')" class="mt-3 text-xs text-sig-teal font-bold hover:underline">Restablecer filtros</button>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = filtered.map(p => {
+    let badge = '';
+    if (p.stock <= 0) {
+      badge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-red-100 text-red-700 border border-red-300 animate-pulse"><i class="fa-solid fa-circle-exclamation mr-1"></i>Agotado</span>';
+    } else if (p.stock <= p.minStock) {
+      badge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-amber-100 text-amber-800 border border-amber-300"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Stock Crítico</span>';
+    } else {
+      badge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-emerald-100 text-emerald-800 border border-emerald-300"><i class="fa-solid fa-check mr-1"></i>Stock Óptimo</span>';
+    }
+
+    const categoryIcons = {
+      herramientas: 'fa-screwdriver-wrench text-blue-500',
+      quimicos: 'fa-flask text-teal-500',
+      repuestos: 'fa-gears text-purple-500',
+      epps: 'fa-helmet-safety text-amber-500',
+      insumos: 'fa-oil-can text-amber-600'
+    };
+    const icon = categoryIcons[p.category] || 'fa-box text-slate-500';
+
+    return `
+      <div class="bg-white rounded-2xl p-4 border ${p.stock <= p.minStock ? 'border-amber-300 ring-2 ring-amber-100' : 'border-slate-200'} shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+        <div>
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <span class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">${p.code}</span>
+            ${badge}
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-sig-navy mb-1 leading-snug flex items-center gap-1.5">
+            <i class="fa-solid ${icon} text-xs"></i>
+            <span>${p.name}</span>
+          </h4>
+          <p class="text-[11px] text-slate-500 mb-3 flex items-center gap-1">
+            <i class="fa-solid fa-location-dot text-slate-400"></i> ${p.location}
+          </p>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100">
+          <div class="flex items-center justify-between mb-3 text-xs">
+            <div>
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Stock en Bodega</span>
+              <span class="text-base font-black ${p.stock <= p.minStock ? 'text-amber-600' : 'text-sig-navy'} font-mono">${p.stock} <span class="text-xs font-normal text-slate-500">${p.unit}</span></span>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Mínimo Seguro</span>
+              <span class="text-xs font-bold text-slate-600 font-mono">${p.minStock} ${p.unit}</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="prepAlmacenMovement('${p.id}', 'salida')" class="py-2 px-2.5 rounded-xl bg-slate-900 hover:bg-sig-navy text-white text-[11px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer">
+              <i class="fa-solid fa-arrow-up-from-bracket text-rose-400 text-[10px]"></i> Despachar
+            </button>
+            <button onclick="prepAlmacenMovement('${p.id}', 'entrada')" class="py-2 px-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer border border-slate-200">
+              <i class="fa-solid fa-arrow-down-to-bracket text-emerald-600 text-[10px]"></i> Ingresar
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function prepAlmacenMovement(productId, movementType) {
+  SIG_ALMACEN_STATE.selectedProductId = productId;
+  if (movementType) SIG_ALMACEN_STATE.movementType = movementType;
+  SIG_ALMACEN_STATE.movementQty = 1;
+
+  switchAlmacenTab('movimiento');
+
+  const select = document.getElementById('almacen-movement-product');
+  if (select) select.value = productId;
+
+  setAlmacenMovementType(SIG_ALMACEN_STATE.movementType);
+  updateAlmacenMovementPreview();
+}
+
+function setAlmacenMovementType(type) {
+  SIG_ALMACEN_STATE.movementType = type;
+  const types = ['salida', 'entrada', 'prestamo'];
+  types.forEach(t => {
+    const btn = document.getElementById(`almacen-mtype-btn-${t}`);
+    if (btn) {
+      if (t === type) {
+        if (t === 'salida') btn.className = 'py-2 px-3 rounded-xl font-black bg-rose-600 text-white shadow-xs text-xs flex items-center justify-center gap-1.5 transition-all';
+        if (t === 'entrada') btn.className = 'py-2 px-3 rounded-xl font-black bg-emerald-600 text-white shadow-xs text-xs flex items-center justify-center gap-1.5 transition-all';
+        if (t === 'prestamo') btn.className = 'py-2 px-3 rounded-xl font-black bg-blue-600 text-white shadow-xs text-xs flex items-center justify-center gap-1.5 transition-all';
+      } else {
+        btn.className = 'py-2 px-3 rounded-xl font-bold bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs flex items-center justify-center gap-1.5 transition-all border border-slate-200';
+      }
+    }
+  });
+  updateAlmacenMovementPreview();
+}
+
+function changeAlmacenQty(delta) {
+  const current = SIG_ALMACEN_STATE.movementQty || 1;
+  const next = Math.max(1, current + delta);
+  SIG_ALMACEN_STATE.movementQty = next;
+  const input = document.getElementById('almacen-movement-qty');
+  if (input) input.value = next;
+  updateAlmacenMovementPreview();
+}
+
+function setAlmacenQuickQty(qty) {
+  SIG_ALMACEN_STATE.movementQty = qty;
+  const input = document.getElementById('almacen-movement-qty');
+  if (input) input.value = qty;
+  updateAlmacenMovementPreview();
+}
+
+function onAlmacenProductSelectChange(productId) {
+  SIG_ALMACEN_STATE.selectedProductId = productId;
+  updateAlmacenMovementPreview();
+}
+
+function updateAlmacenMovementPreview() {
+  const p = SIG_ALMACEN_STATE.products.find(item => item.id === SIG_ALMACEN_STATE.selectedProductId);
+  if (!p) return;
+
+  const currentStock = p.stock;
+  const qty = parseInt(SIG_ALMACEN_STATE.movementQty, 10) || 1;
+  let nextStock = currentStock;
+
+  if (SIG_ALMACEN_STATE.movementType === 'salida' || SIG_ALMACEN_STATE.movementType === 'prestamo') {
+    nextStock = Math.max(0, currentStock - qty);
+  } else if (SIG_ALMACEN_STATE.movementType === 'entrada') {
+    nextStock = currentStock + qty;
+  }
+
+  const pNameEl = document.getElementById('almacen-preview-name');
+  if (pNameEl) pNameEl.textContent = `${p.name} (${p.code})`;
+
+  const pCurrEl = document.getElementById('almacen-preview-current');
+  if (pCurrEl) pCurrEl.textContent = `${currentStock} ${p.unit}`;
+
+  const pNextEl = document.getElementById('almacen-preview-next');
+  if (pNextEl) {
+    pNextEl.textContent = `${nextStock} ${p.unit}`;
+    if (nextStock <= p.minStock && SIG_ALMACEN_STATE.movementType !== 'entrada') {
+      pNextEl.className = 'font-mono font-bold text-amber-600';
+    } else {
+      pNextEl.className = 'font-mono font-bold text-emerald-600';
+    }
+  }
+
+  const locEl = document.getElementById('almacen-preview-loc');
+  if (locEl) locEl.textContent = p.location;
+}
+
+function submitAlmacenMovement() {
+  const p = SIG_ALMACEN_STATE.products.find(item => item.id === SIG_ALMACEN_STATE.selectedProductId);
+  if (!p) {
+    showToast('Seleccione un producto válido.', 'warning');
+    return;
+  }
+
+  const qty = parseInt(document.getElementById('almacen-movement-qty')?.value, 10) || 1;
+  const user = document.getElementById('almacen-movement-user')?.value || 'Carlos Mendoza (Operador)';
+  const dest = document.getElementById('almacen-movement-dest')?.value || 'Frente de Obra en Faena';
+  const obs = document.getElementById('almacen-movement-obs')?.value || 'Movimiento asentado en terminal demo.';
+
+  if ((SIG_ALMACEN_STATE.movementType === 'salida' || SIG_ALMACEN_STATE.movementType === 'prestamo') && qty > p.stock) {
+    showToast(`Stock insuficiente. Stock actual disponible: ${p.stock} ${p.unit}.`, 'error');
+    return;
+  }
+
+  let typeLabel = 'Salida a Faena';
+  let typeBadge = 'bg-rose-100 text-rose-800 border-rose-300';
+  if (SIG_ALMACEN_STATE.movementType === 'entrada') {
+    p.stock += qty;
+    typeLabel = 'Recepción / Entrada';
+    typeBadge = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+  } else if (SIG_ALMACEN_STATE.movementType === 'salida') {
+    p.stock -= qty;
+    typeLabel = 'Salida / Consumo';
+    typeBadge = 'bg-rose-100 text-rose-800 border-rose-300';
+  } else if (SIG_ALMACEN_STATE.movementType === 'prestamo') {
+    p.stock -= qty;
+    typeLabel = 'Préstamo Temporal';
+    typeBadge = 'bg-blue-100 text-blue-800 border-blue-300';
+  }
+
+  // Actualizar status
+  if (p.stock <= 0) p.status = 'agotado';
+  else if (p.stock <= p.minStock) p.status = 'critico';
+  else p.status = 'normal';
+
+  const now = new Date();
+  const timeStr = `Hoy ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+  const newMovId = `MOV-${Math.floor(1000 + Math.random() * 9000)}`;
+
+  SIG_ALMACEN_STATE.movements.unshift({
+    id: newMovId,
+    time: timeStr,
+    type: SIG_ALMACEN_STATE.movementType,
+    typeLabel,
+    typeBadge,
+    product: p.name,
+    qty,
+    unit: p.unit,
+    user,
+    dest,
+    balance: p.stock
+  });
+
+  showToast(`Movimiento ${newMovId} registrado con éxito. Nuevo stock: ${p.stock} ${p.unit}.`, 'success');
+
+  renderAlmacenCatalog();
+  renderAlmacenKardex();
+  switchAlmacenTab('kardex');
+}
+
+function renderAlmacenKardex() {
+  const tbody = document.getElementById('almacen-kardex-tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = SIG_ALMACEN_STATE.movements.map(m => `
+    <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors text-xs">
+      <td class="py-3 px-3 font-mono font-bold text-slate-500">${m.id}</td>
+      <td class="py-3 px-3 text-slate-500">${m.time}</td>
+      <td class="py-3 px-3">
+        <span class="px-2 py-0.5 rounded-full text-[10px] font-black border ${m.typeBadge}">${m.typeLabel}</span>
+      </td>
+      <td class="py-3 px-3 font-bold text-sig-navy">${m.product}</td>
+      <td class="py-3 px-3 font-mono font-black ${m.type === 'entrada' ? 'text-emerald-600' : 'text-rose-600'}">
+        ${m.type === 'entrada' ? '+' : '-'}${m.qty} <span class="text-[10px] font-normal text-slate-400">${m.unit}</span>
+      </td>
+      <td class="py-3 px-3 font-mono font-bold text-slate-700">${m.balance} ${m.unit}</td>
+      <td class="py-3 px-3 text-slate-600">${m.user}</td>
+      <td class="py-3 px-3 text-slate-500 truncate max-w-xs">${m.dest}</td>
+    </tr>
+  `).join('');
+
+  const countEl = document.getElementById('almacen-kardex-count');
+  if (countEl) countEl.textContent = SIG_ALMACEN_STATE.movements.length;
+}
+
+function exportAlmacenCSV() {
+  const headers = ['ID_Movimiento', 'Fecha_Hora', 'Tipo', 'Producto', 'Cantidad', 'Unidad', 'Saldo_Kardex', 'Responsable', 'Destino'];
+  const rows = SIG_ALMACEN_STATE.movements.map(m => [
+    m.id,
+    `"${m.time}"`,
+    `"${m.typeLabel}"`,
+    `"${m.product}"`,
+    m.qty,
+    `"${m.unit}"`,
+    m.balance,
+    `"${m.user}"`,
+    `"${m.dest}"`
+  ]);
+
+  const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `SIG2_Almacen_Kardex_${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Kardex exportado exitosamente en formato CSV.', 'success');
+}
+
+function resetAlmacenDemo() {
+  SIG_ALMACEN_STATE.products[0].stock = 14;
+  SIG_ALMACEN_STATE.products[1].stock = 42;
+  SIG_ALMACEN_STATE.products[2].stock = 2;
+  SIG_ALMACEN_STATE.products[3].stock = 18;
+  SIG_ALMACEN_STATE.products[4].stock = 3;
+  renderAlmacenCatalog();
+  renderAlmacenKardex();
+  showToast('Datos de demostración del almacén restablecidos.', 'info');
 }
