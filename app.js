@@ -551,7 +551,7 @@ window.addEventListener('load', () => {
 
 function initApp() {
   const steps = [
-    ['renderServicesCatalog', () => renderServicesCatalog('all')],
+    ['renderServicesCatalog', () => renderServicesCatalog('geologia-mineria')],
     ['renderEngineeringStore', () => renderEngineeringStore()],
     ['initProjectSimulator', () => initProjectSimulator()],
     ['initTelemetryChart', () => initTelemetryChart()],
@@ -568,7 +568,16 @@ function initApp() {
     ['initConsultoraAI', () => initConsultoraAI()],
     ['initSocialProofLive', () => initSocialProofLive()],
     ['initExitIntentCapture', () => initExitIntentCapture()],
-    ['initDailyMachine', () => initDailyMachine()]
+    ['initDailyMachine', () => initDailyMachine()],
+    ['initPlatformHub', () => {
+      const hash = window.location.hash.replace('#', '');
+      const validTabs = ['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'];
+      if (validTabs.includes(hash)) {
+        switchPlatformTab(hash);
+      } else {
+        switchPlatformTab('sig-campo');
+      }
+    }]
   ];
 
   for (const [name, fn] of steps) {
