@@ -873,12 +873,25 @@ input[type="range"]::-webkit-slider-thumb:hover {
    MÁQUINA DE 1 CLIENTE AL DÍA: PRUEBA SOCIAL Y RETENCIÓN
    ========================================================================= */
 #social-proof-toast {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: none !important;
 }
-#social-proof-toast.social-proof-visible {
-  transform: translateY(0) !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+
+/* =========================================================================
+   SISTEMA DE VISTAS POR PESTAÑAS (TRANSICIONES MINIMALISTAS SPA)
+   ========================================================================= */
+.main-tab-view {
+  animation: fadeInTabView 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInTabView {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 

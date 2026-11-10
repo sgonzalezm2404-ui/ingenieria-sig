@@ -87,166 +87,69 @@
   </script>
 
   <!-- Estilos Personalizados de Ingeniería con Cache-Buster -->
-  <link rel="stylesheet" href="styles.css?v=20261109_gesura_v1">
+  <link rel="stylesheet" href="styles.css?v=20261110_multiview_v1">
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-sig-teal/20 selection:text-sig-navy min-h-screen flex flex-col font-sans">
 
   <!-- Top Announcement Bar: Captación Inmediata de Clientes con WhatsApp Directo -->
-  <aside aria-label="Aviso urgente de cotización" class="bg-gradient-to-r from-sig-navy via-slate-900 to-emerald-950 text-white text-xs py-2 px-4 border-b border-emerald-500/40 relative z-50 shadow-md">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-      <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-black text-[10px] uppercase border border-emerald-500/40 animate-pulse">
-          <i class="fa-solid fa-bolt text-emerald-400"></i> Disponibilidad Inmediata
-        </span>
-        <span class="text-slate-200 font-medium text-[11px] sm:text-xs">
-          ¿Requiere <strong>Estudio de Suelos NSR-10</strong> o <strong>Auditoría PESV Res. 40595</strong> hoy? Cuadrilla activa en obra en Colombia.
-        </span>
-      </div>
-      <div class="flex items-center justify-center gap-3">
-        <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Ingenier%C3%ADa,%20necesito%20cotizaci%C3%B3n%20urgente%20para%20un%20proyecto." target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-[11px] shadow-sm transition-all cursor-pointer">
-          <i class="fa-brands fa-whatsapp text-xs"></i>
-          <span>Cotizar en 5 Min: +57 312 789 4040</span>
-        </a>
-      </div>
-    </div>
-  </aside>
+  
 
   <!-- =========================================================================
        HEADER / NAVEGACIÓN STICKY CORPORATIVA (FONDO BLANCO, LOGO ORIGINAL)
        ========================================================================= -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all duration-300 shadow-xs">
+    <!-- =========================================================================
+       HEADER / NAVEGACIÃ“N CORPORATIVA POR PESTAÃ‘AS (SIGÂ² GRUPO)
+       ========================================================================= -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all duration-300 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20 sm:h-24">
+      <div class="flex items-center justify-between h-20 sm:h-22">
         
-        <!-- Logotipo Oficial Original SIG² (Nuevo Logotipo Corporativo con Matriz y División Logística) -->
-        <a href="#inicio" class="flex items-center py-2 group" title="SIG² | Sistemas y Soluciones • Integrado e Ingeniería • Geográfico y Gestión | Logística">
-          <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² Sistemas y Soluciones | Integrado e Ingeniería | Geográfico y Gestión | Logística" class="h-14 sm:h-16 md:h-18 w-auto object-contain transition-transform group-hover:scale-[1.02]">
-        </a>
+        <!-- Logotipo Oficial Sobrio SIGÂ² GRUPO -->
+        <button onclick="navigateToTab('inicio')" class="flex items-center py-2 group text-left cursor-pointer" title="SIGÂ² GRUPO | Inicio">
+          <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIGÂ² GRUPO | Sistemas â€¢ IngenierÃ­a â€¢ GestiÃ³n â€¢ LogÃ­stica" class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-[1.02]">
+        </button>
 
-        <!-- Enlaces Principales de Navegación Minimalistas (Desktop) -->
-        <nav class="hidden lg:flex items-center gap-6 xl:gap-7 text-xs xl:text-sm font-bold tracking-wide text-slate-700">
-          <a href="#inicio" class="text-sig-navy hover:text-sig-teal transition-colors">
+        <!-- NavegaciÃ³n Principal por PestaÃ±as (Desktop) -->
+        <nav class="hidden lg:flex items-center gap-1.5 xl:gap-2">
+          <button onclick="navigateToTab('inicio')" class="tab-nav-inicio px-3.5 py-2 rounded-xl text-xs xl:text-sm font-black bg-sig-navy text-white shadow-xs transition-all cursor-pointer">
             Inicio
-          </a>
-          <a href="#nosotros" class="hover:text-sig-navy transition-colors">
+          </button>
+          <button onclick="navigateToTab('nosotros')" class="tab-nav-nosotros px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer">
             Sobre Nosotros
-          </a>
-          <a href="#servicios" class="hover:text-sig-navy transition-colors">
-            Servicios
-          </a>
-
-          <!-- Alianza GESURA - Portafolio en Sociedad SST (Valle del Cauca) -->
-          <a href="#alianza-gesura" class="hover:text-sig-navy transition-colors flex items-center gap-1.5 text-blue-900 font-black" title="Alianza Estratégica SIG² & GESURA (Guadalajara de Buga & Valle del Cauca)">
-            <i class="fa-solid fa-handshake-angle text-xs text-blue-600"></i>
+          </button>
+          <button onclick="navigateToTab('servicios')" class="tab-nav-servicios px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer">
+            Servicios & CartografÃ­a
+          </button>
+          <button onclick="navigateToTab('alianza-gesura')" class="tab-nav-alianza-gesura px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-handshake-angle text-blue-600 text-xs"></i>
             <span>Alianza GESURA</span>
-            <span class="px-1.5 py-0.2 rounded text-[9px] bg-blue-100 text-blue-900 font-black border border-blue-200">Buga</span>
-          </a>
-
-          <!-- Dropdown Plataformas, Software & Hub IA -->
-          <div class="relative group py-2">
-            <a href="#plataformas" class="hover:text-sig-navy transition-colors flex items-center gap-1.5 font-bold text-slate-700 group-hover:text-sig-navy">
-              <span class="w-2 h-2 rounded-full bg-sig-teal animate-pulse"></span>
-              <span>Plataformas & Software</span>
-              <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 group-hover:rotate-180 transition-transform"></i>
-            </a>
-            <div class="absolute left-0 top-full pt-1 hidden group-hover:block w-72 z-50">
-              <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-2 space-y-1">
-                <a href="#plataformas" onclick="switchPlatformTab('sig-campo')" class="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-teal-50 text-sig-teal flex items-center justify-center text-sm shrink-0">
-                    <i class="fa-solid fa-bore-hole"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-sig-navy flex items-center gap-1">
-                      <span>SIG² Campo</span>
-                      <span class="text-[9px] px-1.5 py-0.2 rounded bg-teal-50 text-sig-teal border border-teal-200 font-extrabold">Geotecnia</span>
-                    </div>
-                    <div class="text-[10px] text-slate-500">PWA Perforación & SPT NSR-10</div>
-                  </div>
-                </a>
-                <a href="#plataformas" onclick="switchPlatformTab('pesv-app')" class="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center text-sm shrink-0">
-                    <i class="fa-solid fa-truck-pickup"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-sig-navy flex items-center gap-1">
-                      <span>SIG² Fleet & PESV</span>
-                      <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-50 text-blue-700 font-extrabold">Flotas</span>
-                    </div>
-                    <div class="text-[10px] text-slate-500">Telemetría GPS & Res. 40595</div>
-                  </div>
-                </a>
-                <a href="#plataformas" onclick="switchPlatformTab('consultora-ai')" class="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors border-t border-slate-100 mt-1 pt-2">
-                  <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center text-sm shrink-0">
-                    <i class="fa-solid fa-brain"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-sig-navy flex items-center gap-1">
-                      <span>CONSULTORA AI</span>
-                      <span class="text-[9px] px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 font-black">CRM 10 Etapas</span>
-                    </div>
-                    <div class="text-[10px] text-slate-500">Marketing & Ventas B2B</div>
-                  </div>
-                </a>
-                <a href="#plataformas" onclick="switchPlatformTab('radar-autonomo')" class="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm shrink-0">
-                    <i class="fa-solid fa-radar"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-sig-navy flex items-center gap-1">
-                      <span>Radar Autónomo B2B</span>
-                      <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 font-black">Licitaciones</span>
-                    </div>
-                    <div class="text-[10px] text-slate-500">Prospección en Colombia</div>
-                  </div>
-                </a>
-                <a href="#plataformas" onclick="switchPlatformTab('marketing-ia-ads')" class="flex items-center gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors">
-                  <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center text-sm shrink-0">
-                    <i class="fa-brands fa-google"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-sig-navy flex items-center gap-1">
-                      <span>Marketing IA (Google Ads)</span>
-                      <span class="text-[9px] px-1.5 py-0.2 rounded bg-red-100 text-red-800 font-black">Search</span>
-                    </div>
-                    <div class="text-[10px] text-slate-500">Gestor de Campañas</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <a href="#noticias" class="hover:text-sig-navy transition-colors">
-            Noticias
-          </a>
-          <a href="#contacto" class="hover:text-sig-navy transition-colors">
+            <span class="px-1.5 py-0.2 rounded text-[9px] bg-blue-100 text-blue-900 font-black border border-blue-200">Valle</span>
+          </button>
+          <button onclick="navigateToTab('plataformas')" class="tab-nav-plataformas px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-sig-teal"></span>
+            <span>Plataformas & Software</span>
+          </button>
+          <button onclick="navigateToTab('contacto')" class="tab-nav-contacto px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer">
             Contacto
-          </a>
+          </button>
         </nav>
 
-        <!-- Botones de Acción / Portal Clientes / Carrito / WhatsApp Directo -->
-        <div class="hidden sm:flex items-center gap-2.5">
-          <button onclick="openCartDrawer()" class="relative p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-sig-navy transition-all shadow-xs" title="Ver Paquetes para Cotizar">
-            <i class="fa-solid fa-layer-group text-sm"></i>
-            <span id="cart-count-badge" class="hidden absolute -top-1.5 -right-1.5 bg-sig-teal text-white font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-xs">0</span>
-          </button>
-
-          <button onclick="openClientPortalModal()" class="px-3 py-2 text-xs font-bold text-sig-navy bg-slate-50 hover:bg-slate-100 border border-slate-300 hover:border-sig-navy rounded-xl transition-all flex items-center gap-1.5 shadow-xs">
+        <!-- Botones de AcciÃ³n Prudentes y Discretos -->
+        <div class="hidden sm:flex items-center gap-3">
+          <button onclick="openClientPortalModal()" class="px-3 py-2 text-xs font-bold text-sig-navy bg-slate-50 hover:bg-slate-100 border border-slate-300 rounded-xl transition-all flex items-center gap-1.5 shadow-xs">
             <i class="fa-solid fa-lock text-sig-teal text-xs"></i>
             <span>Portal Clientes</span>
           </button>
 
-          <a href="https://wa.me/573127894040?text=Hola,%20solicito%20atenci%C3%B3n%20t%C3%A9cnica%20con%20la%20direcci%C3%B3n%20de%20proyectos%20de%20SIG%C2%B2" target="_blank" class="btn-engineering-primary btn-shine-effect px-4 py-2 text-xs font-bold rounded-xl flex items-center gap-2">
-            <span class="icon-whatsapp text-emerald-400"></span>
-            <span>WhatsApp (+57 312 789 4040)</span>
+          <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Grupo,%20deseo%20solicitar%20atenci%C3%B3n%20t%C3%A9cnica." target="_blank" class="px-4 py-2 text-xs font-black rounded-xl bg-slate-900 hover:bg-sig-navy text-white flex items-center gap-2 transition-all shadow-xs cursor-pointer">
+            <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+            <span>+57 312 789 4040</span>
           </a>
         </div>
 
-        <!-- Botón Menú Móvil -->
+        <!-- BotÃ³n MenÃº MÃ³vil -->
         <div class="flex items-center gap-2 lg:hidden">
-          <button onclick="openCartDrawer()" class="relative p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-            <i class="fa-solid fa-layer-group text-sm"></i>
-          </button>
-          <button id="mobile-menu-toggle" class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 hover:text-black" aria-label="Abrir menú">
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 hover:text-black" aria-label="Abrir menÃº">
             <i class="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
@@ -254,52 +157,30 @@
       </div>
     </div>
 
-    <!-- Menú Desplegable Móvil -->
-    <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2.5 text-sm shadow-xl">
+    <!-- MenÃº Desplegable MÃ³vil por PestaÃ±as -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 text-sm shadow-xl">
       <div class="pb-3 border-b border-slate-100 flex items-center justify-between">
-        <img src="assets/sig2-logo-grupo.jpg?v=20261110" class="h-10 w-auto object-contain" alt="SIG²">
-        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Navegación</span>
+        <img src="assets/sig2-logo-grupo.jpg?v=20261110" class="h-10 w-auto object-contain" alt="SIGÂ² GRUPO">
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">NavegaciÃ³n</span>
       </div>
-      <a href="#inicio" class="mobile-nav-link block py-2 text-sig-navy font-bold border-b border-slate-100">Inicio</a>
-      <a href="#nosotros" class="mobile-nav-link block py-2 text-slate-700 hover:text-sig-navy border-b border-slate-100">Sobre Nosotros</a>
-      <a href="#servicios" class="mobile-nav-link block py-2 text-slate-700 hover:text-sig-navy border-b border-slate-100">Servicios & Cartografía</a>
-      <a href="#alianza-gesura" class="mobile-nav-link block py-2 text-blue-900 font-black border-b border-slate-100 flex items-center justify-between">
-        <span class="flex items-center gap-2"><i class="fa-solid fa-handshake-angle text-blue-600"></i> Alianza GESURA (Valle del Cauca)</span>
-        <span class="px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-900 font-black">BUGA</span>
-      </a>
-      
-      <!-- Bloque Plataformas & Software en Móvil -->
-      <div class="py-2 border-b border-slate-100 space-y-2">
-        <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Plataformas & Software</span>
-        <a href="#plataformas" onclick="switchPlatformTab('sig-campo')" class="mobile-nav-link block py-1.5 pl-3 text-sig-navy font-bold flex items-center justify-between bg-slate-50 rounded-lg">
-          <span class="flex items-center gap-2"><i class="fa-solid fa-bore-hole text-sig-teal"></i> SIG² Campo (Geotecnia)</span>
-          <span class="px-2 py-0.5 rounded text-[10px] bg-teal-50 text-sig-teal border border-teal-200 font-extrabold mr-2">PWA</span>
-        </a>
-        <a href="#plataformas" onclick="switchPlatformTab('pesv-app')" class="mobile-nav-link block py-1.5 pl-3 text-blue-700 font-bold flex items-center justify-between bg-slate-50 rounded-lg">
-          <span class="flex items-center gap-2"><i class="fa-solid fa-truck-pickup text-blue-600"></i> SIG² Fleet & PESV</span>
-          <span class="px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-800 font-bold mr-2">Flotas</span>
-        </a>
-        <a href="#plataformas" onclick="switchPlatformTab('consultora-ai')" class="mobile-nav-link block py-1.5 pl-3 text-purple-700 font-bold flex items-center justify-between bg-slate-50 rounded-lg">
-          <span class="flex items-center gap-2"><i class="fa-solid fa-brain text-purple-600"></i> CONSULTORA AI (CRM 10 Etapas)</span>
-          <span class="px-2 py-0.5 rounded text-[10px] bg-purple-100 text-purple-800 font-bold mr-2">B2B</span>
-        </a>
-        <a href="#plataformas" onclick="switchPlatformTab('radar-autonomo')" class="mobile-nav-link block py-1.5 pl-3 text-amber-600 font-bold flex items-center justify-between bg-slate-50 rounded-lg">
-          <span class="flex items-center gap-2"><i class="fa-solid fa-radar text-amber-500"></i> Radar Autónomo B2B</span>
-          <span class="px-2 py-0.5 rounded text-[10px] bg-amber-100 text-amber-800 font-bold mr-2">Licitaciones</span>
-        </a>
-        <a href="#plataformas" onclick="switchPlatformTab('marketing-ia-ads')" class="mobile-nav-link block py-1 pl-3 text-slate-600 hover:text-sig-navy flex items-center gap-2">
-          <i class="fa-brands fa-google text-xs text-red-500"></i> Google Ads IA (Campañas Search)
-        </a>
-      </div>
-
-      <a href="#noticias" class="mobile-nav-link block py-2 text-slate-700 hover:text-sig-navy border-b border-slate-100">Noticias & Artículos</a>
-      <a href="#contacto" class="mobile-nav-link block py-2 text-slate-700 hover:text-sig-navy border-b border-slate-100">Contacto Técnico</a>
-      <div class="pt-3 flex flex-col gap-2">
+      <button onclick="navigateToTab('inicio')" class="tab-nav-inicio w-full text-left py-2.5 px-3 rounded-lg font-black bg-sig-navy text-white block">Inicio</button>
+      <button onclick="navigateToTab('nosotros')" class="tab-nav-nosotros w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Sobre Nosotros</button>
+      <button onclick="navigateToTab('servicios')" class="tab-nav-servicios w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Servicios & CartografÃ­a</button>
+      <button onclick="navigateToTab('alianza-gesura')" class="tab-nav-alianza-gesura w-full text-left py-2.5 px-3 rounded-lg font-bold text-blue-900 bg-blue-50/50 flex items-center justify-between">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-handshake-angle text-blue-600"></i> Alianza GESURA</span>
+        <span class="px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-900 font-black">Valle</span>
+      </button>
+      <button onclick="navigateToTab('plataformas')" class="tab-nav-plataformas w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-sig-teal"></span>
+        <span>Plataformas & Software</span>
+      </button>
+      <button onclick="navigateToTab('contacto')" class="tab-nav-contacto w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Contacto</button>
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
         <button onclick="openClientPortalModal()" class="w-full py-2.5 bg-slate-100 text-sig-navy border border-slate-300 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
           <i class="fa-solid fa-lock text-sig-teal"></i> Acceso Portal Clientes
         </button>
-        <a href="https://wa.me/573127894040" target="_blank" class="w-full py-2.5 btn-engineering-primary text-white rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2">
-          <span class="icon-whatsapp text-emerald-400"></span>
+        <a href="https://wa.me/573127894040" target="_blank" class="w-full py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold text-center flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-emerald-400"></i>
           <span>WhatsApp (+57 312 789 4040)</span>
         </a>
       </div>
@@ -309,216 +190,192 @@
   <!-- =========================================================================
        HERO SECTION: INGENIERÍA DE ALTA PRECISIÓN (ESTÉTICA APPLE CON EFECTO LÁSER)
        ========================================================================= -->
-  <section id="inicio" class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 bg-white bg-grid-sober border-b border-slate-200 overflow-hidden">
+    <!-- =========================================================================
+       PESTAÃ‘A / VISTA 1: INICIO (SOBRIO, CAPTIVANTE, SIN SATURACIÃ“N)
+       ========================================================================= -->
+  <div id="view-inicio" class="main-tab-view block">
     
-    <!-- Haz Láser LiDAR de Escaneo Dinámico de Ingeniería -->
-    <div class="lidar-scan-line"></div>
+    <!-- Hero Principal -->
+    <section class="relative pt-16 pb-20 lg:pt-24 lg:pb-28 bg-white bg-grid-sober border-b border-slate-200 overflow-hidden">
+      <!-- Haz LÃ¡ser LiDAR DinÃ¡mico -->
+      <div class="lidar-scan-line"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="lg:col-span-7 space-y-6 reveal-on-scroll">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-300 text-sig-navy text-xs font-bold shadow-xs">
-            <span class="pulse-dot-teal"></span>
-            <span class="tracking-wider">INGENIERÍA MULTIDISCIPLINAR <span class="opacity-40 mx-1">/</span> VIGENCIA 2026</span>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          
+          <!-- Identidad de Marca -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-sig-navy text-xs font-black uppercase tracking-wider mb-6 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-sig-teal animate-pulse"></span>
+            <span>SIGÂ² GRUPO â€¢ SISTEMAS â€¢ INGENIERÃA â€¢ GESTIÃ“N â€¢ LOGÃSTICA</span>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-sig-navy tracking-tight leading-[1.1]">
-            Innovación, Ingeniería y Soluciones Tecnológicas de <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#06466C] via-[#168F8A] to-[#0096C7]">Alta Precisión</span>
+          <!-- TÃ­tulo Principal de Alto Impacto -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-sig-navy tracking-tight leading-[1.12] mb-6">
+            IngenierÃ­a de Alta PrecisiÃ³n, GeologÃ­a y Soluciones Integradas
           </h1>
 
-          <p class="text-base sm:text-lg text-sig-graphite leading-relaxed font-normal">
-            Plataforma corporativa de <strong class="text-sig-navy font-bold">SIG²</strong>. Desarrollamos proyectos estratégicos integrando modelamiento 3D geológico, análisis geomecánico de taludes, cartografía LiDAR de precisión milimétrica, gestión ambiental (EIA/PMA), SG-SST, PESV y transformación digital con <strong class="text-sig-navy font-bold">Business Intelligence y analítica de datos</strong>.
+          <!-- SubtÃ­tulo Claro y Persuasivo -->
+          <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
+            ConsultorÃ­a tÃ©cnica multidisciplinaria con estricto rigor normativo colombiano y plataformas digitales avanzadas para la industria, la minerÃ­a y la infraestructura.
           </p>
 
-          <!-- Barra de Identidad Corporativa Unificada (Matriz Oficial del Logotipo) -->
-          <div class="bg-slate-50/90 rounded-2xl border border-slate-200/90 p-3 shadow-xs">
-            <div class="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 text-center">
-              <div class="py-1 px-3">
-                <span class="text-sig-navy font-black text-xs sm:text-sm block tracking-wide">SISTEMAS Y</span>
-                <span class="text-sig-navy font-black text-xs sm:text-sm block tracking-wide">SOLUCIONES</span>
-              </div>
-              <div class="py-1 px-3">
-                <span class="text-sig-teal font-black text-xs sm:text-sm block tracking-wide">INTEGRADO</span>
-                <span class="text-sig-teal font-black text-xs sm:text-sm block tracking-wide">E INGENIERÍA</span>
-              </div>
-              <div class="py-1 px-3">
-                <span class="text-sig-navy font-black text-xs sm:text-sm block tracking-wide">GEOGRÁFICO</span>
-                <span class="text-sig-navy font-black text-xs sm:text-sm block tracking-wide">Y GESTIÓN</span>
-              </div>
-              <div class="py-1 px-3">
-                <span class="text-slate-700 font-extrabold text-[11px] sm:text-xs block tracking-normal">SISTEMAS Y SOLUCIONES</span>
-                <span class="text-slate-800 font-light text-xs sm:text-sm block tracking-[0.25em] uppercase">LOGÍSTICA</span>
-              </div>
-            </div>
+          <!-- Botones de AcciÃ³n Elegantes (Sin saturar) -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <button onclick="navigateToTab('servicios')" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-sig-navy hover:bg-sig-navy-dark text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span>Explorar Portafolio de Servicios</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+            <button onclick="navigateToTab('nosotros')" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-sig-navy font-bold text-sm border border-slate-300 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
+              <i class="fa-solid fa-building text-sig-teal text-xs"></i>
+              <span>Sobre Nosotros (MisiÃ³n & VisiÃ³n)</span>
+            </button>
           </div>
 
-          <!-- Botones de Acción con Alta Profundidad y Sombras -->
-          <div class="flex flex-wrap items-center gap-4 pt-3">
-            <a href="#servicios" class="btn-engineering-primary btn-shine-effect px-7 py-4 text-xs sm:text-sm uppercase tracking-wider font-extrabold rounded-xl flex items-center gap-2.5">
-              <i class="fa-solid fa-cubes text-sm text-teal-300"></i>
-              <span>Explorar Catálogo Técnico</span>
-            </a>
-
-            <a href="#pesv-app" class="btn-engineering-secondary px-7 py-4 text-xs sm:text-sm uppercase tracking-wider font-extrabold rounded-xl flex items-center gap-2">
-              <i class="fa-solid fa-satellite-dish text-sig-teal text-sm"></i>
-              <span>Monitoreo de Flotas & PESV</span>
-            </a>
-          </div>
-
-          <!-- Cotizador Exprés en 3 Clics con Despacho Directo a WhatsApp -->
-          <div class="bg-gradient-to-br from-slate-900 via-sig-navy to-slate-900 text-white p-4 sm:p-5 rounded-2xl border border-emerald-500/40 shadow-xl space-y-3 mt-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-700/80 pb-2.5">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="text-xs font-black uppercase text-emerald-300 tracking-wider">Cotizador Rápido de Proyectos</span>
+          <!-- 3 Indicadores de Solvencia TÃ©cnica -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-slate-200/80 max-w-3xl mx-auto text-left">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-50 text-sig-navy flex items-center justify-center text-lg shrink-0 font-black">
+                <i class="fa-solid fa-calendar-check"></i>
               </div>
-              <span class="text-[11px] text-slate-300 font-mono"><i class="fa-solid fa-clock text-emerald-400 mr-1"></i>Respuesta técnica en &lt; 15 min</span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
               <div>
-                <label class="text-[10px] text-slate-300 font-bold uppercase block mb-1">Servicio Requerido:</label>
-                <select id="hero-quick-service" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none cursor-pointer">
-                  <option value="Estudio de Suelos NSR-10 (Sondeos SPT)">1. Estudio de Suelos NSR-10</option>
-                  <option value="Plan Estratégico de Seguridad Vial (PESV 40595)">2. Auditoría PESV Res. 40595</option>
-                  <option value="Auditoría SG-SST (Dec. 1072 / Res. 0312)">3. Auditoría SG-SST Dec. 1072</option>
-                  <option value="Topografía LiDAR & Dron Minero">4. Topografía LiDAR & Dron</option>
-                  <option value="Estabilidad de Taludes & Geofísica">5. Taludes & Tomografía Eléctrica</option>
-                </select>
+                <span class="text-lg font-black text-sig-navy block">+15 AÃ±os</span>
+                <span class="text-xs text-slate-500">Experiencia en consultorÃ­a tÃ©cnica y faena en Colombia</span>
               </div>
+            </div>
 
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 text-sig-teal flex items-center justify-center text-lg shrink-0 font-black">
+                <i class="fa-solid fa-certificate"></i>
+              </div>
               <div>
-                <label class="text-[10px] text-slate-300 font-bold uppercase block mb-1">Ubicación del Proyecto:</label>
-                <select id="hero-quick-city" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none cursor-pointer">
-                  <option value="Bogotá D.C. / Cundinamarca">Bogotá / Cundinamarca</option>
-                  <option value="Antioquia / Medellín">Antioquia / Medellín</option>
-                  <option value="Santanderes / Boyacá">Santanderes / Boyacá</option>
-                  <option value="Valle del Cauca / Cali">Valle / Eje Cafetero</option>
-                  <option value="Meta / Llanos Orientales">Meta / Llanos</option>
-                  <option value="Costa Caribe">Costa Caribe</option>
-                </select>
+                <span class="text-lg font-black text-sig-navy block">100% Normativo</span>
+                <span class="text-xs text-slate-500">NSR-10, Dec. 1072, Res. 2764, Res. 40595 y ANLA</span>
               </div>
+            </div>
 
-              <div class="flex flex-col justify-end">
-                <button onclick="dispatchHeroQuickQuote()" class="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/40 transition-all cursor-pointer">
-                  <i class="fa-brands fa-whatsapp text-sm"></i>
-                  <span>Cotizar por WhatsApp</span>
-                </button>
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-lg shrink-0 font-black">
+                <i class="fa-solid fa-dolly"></i>
+              </div>
+              <div>
+                <span class="text-lg font-black text-sig-navy block">Equipamiento Propio</span>
+                <span class="text-xs text-slate-500">Drones LiDAR, GNSS geodÃ©sico y cuadrillas activas</span>
               </div>
             </div>
           </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Disciplinas EstratÃ©gicas: Acceso RÃ¡pido y Minimalista -->
+    <section class="py-16 bg-slate-50/70 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold text-sig-teal uppercase tracking-widest block mb-1">Especialidades del Grupo</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-sig-navy">Soluciones TÃ©cnicas por Disciplina</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-2">Seleccione un Ã¡rea para consultar alcance tÃ©cnico, normativo y modalidades de contrataciÃ³n.</p>
         </div>
 
-        <!-- Columna Derecha: HUD de Telemetría e Ingeniería en Tiempo Real -->
-        <div class="lg:col-span-5 reveal-on-scroll stagger-2">
-          <div class="bg-white/95 backdrop-blur-md border border-slate-200 rounded-3xl p-6 shadow-2xl relative transition-all duration-300 hover:shadow-sig-navy/15">
-            
-            <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4 text-xs">
-              <div class="flex items-center gap-2.5">
-                <span class="w-3 h-3 rounded-full bg-sig-teal animate-pulse"></span>
-                <span class="text-sig-navy font-extrabold tracking-wide">HUD OPERACIONAL SIG²</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card 1: GeologÃ­a & CartografÃ­a -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-sig-navy flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-mountain"></i>
               </div>
-              <span class="text-sig-teal font-bold text-[11px] bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">
-                <i class="fa-solid fa-satellite mr-1"></i> RTK FIX: ±0.008m
-              </span>
+              <h3 class="text-base font-black text-sig-navy mb-2">GeologÃ­a, Geotecnia & CartografÃ­a</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Sondeos SPT normativos NSR-10 TÃ­tulo H, anÃ¡lisis geomecÃ¡nico de taludes, geofÃ­sica y cartografÃ­a geolÃ³gica estructural (SGC).
+              </p>
             </div>
-
-            <!-- Visual con Capa de Escaneo -->
-            <div class="relative rounded-2xl overflow-hidden mb-4 border border-slate-200 shadow-inner group">
-              <img src="assets/geotecnia-perforacion-taludes.jpg" alt="Ingeniero geotécnico con tablet y perforadora sobre orugas en talud cordillerano" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              
-              <!-- Telemetría HUD superpuesta -->
-              <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-teal-300 px-2.5 py-1 rounded text-[10px] font-mono border border-teal-500/30">
-                COORD: 4°35'56.2"N 74°04'51.8"W
-              </div>
-              
-              <div class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white px-2.5 py-1 rounded text-[10px] font-mono border border-slate-700">
-                ALT: 2,640 msnm
-              </div>
-
-              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs bg-white/95 backdrop-blur-md p-2.5 rounded-xl shadow-lg border border-slate-200">
-                <span class="text-sig-navy font-bold flex items-center gap-1.5">
-                  <i class="fa-solid fa-mountain-sun text-sig-teal"></i>
-                  <span>FAENA NORTE: SECTOR LOS ANDES</span>
-                </span>
-                <span class="text-emerald-700 font-extrabold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  ESTABILIDAD: 99.8%
-                </span>
-              </div>
-            </div>
-
-            <!-- Indicadores Rápidos -->
-            <div class="grid grid-cols-2 gap-3 text-xs mb-4">
-              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 shadow-xs">
-                <div class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Supervisión Satelital</div>
-                <div class="text-sig-navy font-black text-sm mt-0.5 flex items-center gap-1.5">
-                  <i class="fa-solid fa-truck-moving text-sig-teal"></i>
-                  <span class="tabular-nums">450 VEHÍCULOS</span>
-                </div>
-                <div class="text-[10px] text-emerald-700 font-bold mt-1 flex items-center gap-1.5">
-                  <span class="pulse-dot-green"></span>
-                  <span>100% En Rango Seguro</span>
-                </div>
-              </div>
-
-              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 shadow-xs">
-                <div class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Geodesia & LiDAR</div>
-                <div class="text-sig-teal font-black text-sm mt-0.5 flex items-center gap-1.5">
-                  <i class="fa-solid fa-crosshairs text-sig-navy"></i>
-                  <span class="tabular-nums">120 pts/m²</span>
-                </div>
-                <div class="text-[10px] text-slate-600 font-semibold mt-1">Nube LAS MAGNA-SIRGAS</div>
-              </div>
-            </div>
-
-            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-              <span class="text-slate-500 text-[11px] font-semibold">Integración BI & Telemetría IoT</span>
-              <a href="#telemetria" class="text-sig-navy hover:text-sig-teal font-extrabold flex items-center gap-1.5 transition-colors">
-                <span>Ver Telemetría en Vivo</span>
-                <i class="fa-solid fa-chevron-right text-[10px]"></i>
-              </a>
-            </div>
+            <button onclick="navigateToTab('servicios', 'geologia-mineria')" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-sig-navy text-sig-navy hover:text-white font-bold text-xs border border-slate-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>Ver Servicios</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
           </div>
+
+          <!-- Card 2: ConsultorÃ­a Ambiental -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-teal-50 text-sig-teal flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+              <h3 class="text-base font-black text-sig-navy mb-2">ConsultorÃ­a Ambiental & GDB ANLA</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                Estudios de Impacto Ambiental (EIA), Planes de Manejo (PMA), rondas hÃ­dricas y geodatabases cartogrÃ¡ficas oficiales para VITAL.
+              </p>
+            </div>
+            <button onclick="navigateToTab('servicios', 'ingenieria-ambiental')" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-sig-teal text-sig-navy hover:text-white font-bold text-xs border border-slate-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>Ver Servicios</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+
+          <!-- Card 3: SST & Alianza GESURA -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-handshake-angle"></i>
+              </div>
+              <h3 class="text-base font-black text-sig-navy mb-2">SST & Alianza GESURA (Valle)</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                AcompaÃ±amiento presencial en Tareas de Alto Riesgo (TAR) en Guadalajara de Buga y Valle del Cauca, y BaterÃ­a Psicosocial Res. 2764.
+              </p>
+            </div>
+            <button onclick="navigateToTab('alianza-gesura')" class="w-full py-2.5 px-3 rounded-xl bg-blue-50/70 hover:bg-blue-900 text-blue-900 hover:text-white font-bold text-xs border border-blue-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>Conocer Alianza</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+
+          <!-- Card 4: Software & Plataformas -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <h3 class="text-base font-black text-sig-navy mb-2">Plataformas Propietarias</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                PWA SIGÂ² Campo para sondeos sin papel, telemetrÃ­a SIG Fleet PESV (Res. 40595) y centro de control comercial CONSULTORA AI.
+              </p>
+            </div>
+            <button onclick="navigateToTab('plataformas')" class="w-full py-2.5 px-3 rounded-xl bg-purple-50/70 hover:bg-purple-900 text-purple-900 hover:text-white font-bold text-xs border border-purple-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <span>Abrir Plataformas</span>
+              <i class="fa-solid fa-chevron-right text-[10px]"></i>
+            </button>
+          </div>
+
         </div>
 
       </div>
+    </section>
 
-      <!-- Métricas y KPIs de Ingeniería Clave (Estilo Apple con Números Impactantes) -->
-      <div class="mt-16 pt-10 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center reveal-on-scroll">
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-50/90 border border-slate-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-          <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-sig-navy tracking-tight tabular-nums whitespace-nowrap overflow-hidden text-ellipsis">+1,250,000</div>
-          <div class="text-xs text-sig-teal mt-1.5 uppercase tracking-wider font-extrabold">Hectáreas LiDAR</div>
-          <div class="text-[11px] sm:text-xs text-sig-graphite mt-1 leading-snug">Topografía Aérea & RTK</div>
-        </div>
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-50/90 border border-slate-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-          <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-sig-navy tracking-tight tabular-nums whitespace-nowrap overflow-hidden text-ellipsis">±0.005 m</div>
-          <div class="text-xs text-sig-teal mt-1.5 uppercase tracking-wider font-extrabold">Precisión Geodésica</div>
-          <div class="text-[11px] sm:text-xs text-sig-graphite mt-1 leading-snug">Red GNSS MAGNA-SIRGAS</div>
-        </div>
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-50/90 border border-slate-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-          <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-sig-navy tracking-tight tabular-nums whitespace-nowrap overflow-hidden text-ellipsis">+480</div>
-          <div class="text-xs text-sig-teal mt-1.5 uppercase tracking-wider font-extrabold">Proyectos Aprobados</div>
-          <div class="text-[11px] sm:text-xs text-sig-graphite mt-1 leading-snug">PTO, EIA, PMA & PESV</div>
-        </div>
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-50/90 border border-slate-200 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-          <div class="text-2xl sm:text-3xl lg:text-4xl font-black text-sig-navy tracking-tight tabular-nums whitespace-nowrap overflow-hidden text-ellipsis">100%</div>
-          <div class="text-xs text-sig-teal mt-1.5 uppercase tracking-wider font-extrabold">Viabilidad Técnica</div>
-          <div class="text-[11px] sm:text-xs text-sig-graphite mt-1 leading-snug">Sustentación ante ANM y ANLA</div>
+    <!-- Llamado al DiÃ¡logo TÃ©cnico Discreto -->
+    <section class="py-14 bg-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-xl sm:text-2xl font-black text-sig-navy mb-3">Â¿Desea evaluar el alcance tÃ©cnico de su proyecto?</h3>
+        <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mb-6">
+          Un ingeniero especialista de SIGÂ² GRUPO revisarÃ¡ sus requerimientos de normativa, plazos de entrega y disponibilidad de cuadrilla sin compromiso.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <button onclick="navigateToTab('contacto')" class="px-6 py-3 rounded-xl bg-sig-navy hover:bg-sig-navy-dark text-white font-bold text-xs shadow-xs transition-all cursor-pointer">
+            <i class="fa-solid fa-envelope mr-1.5"></i> Formulario de CotizaciÃ³n
+          </button>
+          <a href="https://wa.me/573127894040?text=Hola,%20solicito%20atenci%C3%B3n%20t%C3%A9cnica%20con%20un%20ingeniero%20especialista." target="_blank" class="px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-sig-navy font-bold text-xs border border-slate-300 transition-all flex items-center gap-2 cursor-pointer">
+            <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i>
+            <span>Chat TÃ©cnico (+57 312 789 4040)</span>
+          </a>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+  </div>
 
-  <!-- =========================================================================
-       NUEVA SECCIÓN: SOBRE NOSOTROS (RIGOR TÉCNICO, TECNOLOGÍA & CONFIANZA)
-       ========================================================================= -->
-    <!-- =========================================================================
-       PRESENTACIÃ“N CORPORATIVA, MISIÃ“N & VISIÃ“N: SIGÂ² GRUPO
-       ========================================================================= -->
-  <section id="nosotros" class="py-20 bg-slate-50/70 border-b border-slate-200 scroll-mt-20">
+<div id="view-nosotros" class="main-tab-view hidden">
+<section id="nosotros" class="py-20 bg-slate-50/70 border-b border-slate-200 scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- PresentaciÃ³n Institucional -->
@@ -661,7 +518,11 @@
   </section>
 
 
-  <section id="servicios" class="py-20 bg-slate-50/70 border-b border-slate-200">
+  
+</div>
+
+<div id="view-servicios" class="main-tab-view hidden">
+<section id="servicios" class="py-20 bg-slate-50/70 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
@@ -730,7 +591,11 @@
        HUB DE PLATAFORMAS, SOFTWARE & SOLUCIONES INTERACTIVAS
        ORGANIZADO POR PESTAÃ‘AS PARA UNA EXPERIENCIA MINIMALISTA Y LIMPIA
        ========================================================================= -->
-  <section id="plataformas" class="py-16 bg-slate-900 text-slate-100 border-b border-slate-800 scroll-mt-20">
+  
+</div>
+
+<div id="view-plataformas" class="main-tab-view hidden">
+<section id="plataformas" class="py-16 bg-slate-900 text-slate-100 border-b border-slate-800 scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-10 reveal-on-scroll">
@@ -1311,7 +1176,8 @@
        ALIANZA ESTRATÉGICA REGIONAL: SIG² & GESURA (GESTIÓN SEGURA DEL TRABAJO)
        PORTAFOLIO ESPECIAL EN SOCIEDAD SST • GUADALAJARA DE BUGA Y VALLE DEL CAUCA
        ========================================================================= -->
-  <section id="alianza-gesura" class="py-20 bg-gradient-to-b from-white via-blue-50/30 to-slate-50 border-b border-slate-200 scroll-mt-20 relative overflow-hidden">
+  <div id="view-alianza-gesura" class="main-tab-view hidden">
+<section id="alianza-gesura" class="py-20 bg-gradient-to-b from-white via-blue-50/30 to-slate-50 border-b border-slate-200 scroll-mt-20 relative overflow-hidden">
     
     <!-- Elementos Decorativos de Fondo -->
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -1760,7 +1626,10 @@
   </section>
 
 
-  <section id="sig-campo" class="py-20 bg-slate-100/90 border-b border-slate-200" style="display: block;">
+  
+</div>
+
+<section id="sig-campo" class="py-20 bg-slate-100/90 border-b border-slate-200" style="display: block;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Encabezado de Sección de Alto Impacto -->
@@ -5090,7 +4959,11 @@
   <!-- =========================================================================
        NUEVA SECCIÓN: NOTICIAS & ARTÍCULOS TÉCNICOS / SALA DE PRENSA DE INGENIERÍA
        ========================================================================= -->
-  <section id="noticias" class="py-20 bg-slate-50/70 border-b border-slate-200">
+  
+</div>
+
+<div id="view-contacto" class="main-tab-view hidden">
+<section id="noticias" class="py-20 bg-slate-50/70 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-on-scroll">
@@ -5402,7 +5275,10 @@
   <!-- =========================================================================
        FOOTER PROFESIONAL CORPORATIVO (SOBRIO BLANCO & SLATE)
        ========================================================================= -->
-  <footer class="bg-slate-50 border-t border-slate-200 pt-16 pb-12 text-slate-600 text-xs">
+  
+</div>
+
+<footer class="bg-slate-50 border-t border-slate-200 pt-16 pb-12 text-slate-600 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
@@ -5866,7 +5742,7 @@
   </div>
 
   <!-- Notificación Flotante de Prueba Social B2B (Social Proof en Vivo) -->
-  <div id="social-proof-toast" class="fixed bottom-5 left-5 z-40 max-w-sm bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-3.5 shadow-2xl transition-all duration-500 transform translate-y-10 opacity-0 pointer-events-none flex items-center gap-3">
+  <div id="social-proof-toast" style="display: none !important;" class="fixed bottom-5 left-5 z-40 max-w-sm bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-3.5 shadow-2xl transition-all duration-500 transform translate-y-10 opacity-0 pointer-events-none flex items-center gap-3">
     <div id="social-proof-icon" class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shrink-0 border border-emerald-200">
       <i class="fa-solid fa-hard-hat"></i>
     </div>
@@ -5888,7 +5764,7 @@
   </div>
 
   <!-- Modal de Captura / Exit-Intent & Cotización Exprés -->
-  <div id="exit-intent-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div id="exit-intent-modal" style="display: none !important;" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-white border border-emerald-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl text-center space-y-4">
       <button onclick="closeExitIntentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-black w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer">
         <i class="fa-solid fa-xmark"></i>
@@ -6161,6 +6037,7 @@
   <div id="toast-container" class="fixed bottom-24 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- Scripts con Cache-Buster para GitHub Pages -->
-  <script src="app.js?v=20261109_gesura_v1"></script>
+  <!-- Scripts de Aplicación & Lógica de Negocio con Cache-Buster -->
+  <script src="app.js?v=20261110_multiview_v1"></script>
 </body>
 </html>

@@ -566,16 +566,17 @@ function initApp() {
     ['initCrmHub', () => initCrmHub()],
     ['initGoogleAdsAgent', () => initGoogleAdsAgent()],
     ['initConsultoraAI', () => initConsultoraAI()],
-    ['initSocialProofLive', () => initSocialProofLive()],
-    ['initExitIntentCapture', () => initExitIntentCapture()],
     ['initDailyMachine', () => initDailyMachine()],
-    ['initPlatformHub', () => {
+    ['initNavigationTabs', () => {
       const hash = window.location.hash.replace('#', '');
-      const validTabs = ['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'];
-      if (validTabs.includes(hash)) {
+      const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas', 'contacto'];
+      if (validViews.includes(hash)) {
+        navigateToTab(hash);
+      } else if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'].includes(hash)) {
+        navigateToTab('plataformas');
         switchPlatformTab(hash);
       } else {
-        switchPlatformTab('sig-campo');
+        navigateToTab('inicio');
       }
     }]
   ];
@@ -8589,63 +8590,24 @@ function dispatchHeroQuickQuote() {
 }
 
 /**
- * Sistema de Prueba Social en Vivo (Social Proof Toast)
+ * Sistema de Prueba Social - Desactivado por solicitud para navegación limpia y prudente
  */
 function initSocialProofLive() {
-  showNextSocialProof();
-  socialProofTimer = setInterval(showNextSocialProof, 24000);
+  // Desactivado para evitar interrupciones o avisos emergentes
 }
 
-function showNextSocialProof() {
-  const toast = document.getElementById('social-proof-toast');
-  if (!toast) return;
-
-  const event = SOCIAL_PROOF_EVENTS[socialProofIndex];
-  socialProofIndex = (socialProofIndex + 1) % SOCIAL_PROOF_EVENTS.length;
-
-  const textElem = document.getElementById('social-proof-text');
-  const timeElem = document.getElementById('social-proof-time');
-  const iconElem = document.getElementById('social-proof-icon');
-
-  if (textElem) textElem.textContent = event.text;
-  if (timeElem) timeElem.textContent = event.time;
-  if (iconElem) iconElem.innerHTML = `<i class="fa-solid ${event.icon}"></i>`;
-
-  toast.classList.add('social-proof-visible');
-
-  setTimeout(() => {
-    toast.classList.remove('social-proof-visible');
-  }, 6500);
-}
-
-function dismissSocialProof() {
-  const toast = document.getElementById('social-proof-toast');
-  if (toast) {
-    toast.classList.remove('social-proof-visible');
-    if (socialProofTimer) clearInterval(socialProofTimer);
-  }
-}
+function showNextSocialProof() {}
+function dismissSocialProof() {}
 
 /**
- * Captura por Exit-Intent / Inactividad
+ * Captura por Exit-Intent - Desactivado por solicitud
  */
 function initExitIntentCapture() {
-  let shown = false;
-
-  document.addEventListener('mouseleave', (e) => {
-    if (e.clientY <= 0 && !shown) {
-      shown = true;
-      openExitIntentModal();
-    }
-  });
-
-  setTimeout(() => {
-    if (!shown) {
-      shown = true;
-      openExitIntentModal();
-    }
-  }, 35000);
+  // Desactivado para no interrumpir al usuario
 }
+
+function openExitIntentModal() {}
+function closeExitIntentModal() {}
 
 function openExitIntentModal() {
   if (sessionStorage.getItem('sig2_exit_intent_shown')) return;
@@ -8832,7 +8794,62 @@ function switchPlatformTab(tabId) {
 // Escuchar cambios de hash en la URL
 window.addEventListener('hashchange', () => {
   const hash = window.location.hash.replace('#', '');
-  if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'].includes(hash)) {
-    switchPlatformTab(hash);
+  const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas', 'contacto'];
+  if (validViews.includes(hash)) {
+    navigateToTab(hash);
+  } else if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'].includes(hash)) {
+    navigateToTab('plataformas');
+    if (typeof switchPlatformTab === 'function') switchPlatformTab(hash);
   }
 });
+
+/* =============================================================================
+   SISTEMA DE NAVEGACIÓN POR PESTAÑAS / VISTAS INDEPENDIENTES (SPA MINIMALISTA)
+   ============================================================================= */
+function navigateToTab(tabId, subCategory = null) {
+  const allViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas', 'contacto'];
+  if (!allViews.includes(tabId)) tabId = 'inicio';
+
+  allViews.forEach(v => {
+    const el = document.getElementById(`view-${v}`);
+    if (el) {
+      if (v === tabId) {
+        el.style.display = 'block';
+        el.classList.remove('hidden');
+      } else {
+        el.style.display = 'none';
+        el.classList.add('hidden');
+      }
+    }
+
+    // Actualizar estilo visual del botón de pestaña en Desktop y Móvil
+    const desktopLinks = document.querySelectorAll(`.tab-nav-${v}`);
+    desktopLinks.forEach(link => {
+      if (v === tabId) {
+        link.className = `tab-nav-${v} px-3.5 py-2 rounded-xl text-xs xl:text-sm font-black bg-sig-navy text-white shadow-xs transition-all cursor-pointer`;
+      } else {
+        link.className = `tab-nav-${v} px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer`;
+      }
+    });
+  });
+
+  // Si se solicitó una sub-categoría específica para servicios (ej: geologia-mineria o ingenieria-ambiental)
+  if (tabId === 'servicios' && subCategory) {
+    const catBtn = document.querySelector(`.service-tab-btn[data-category="${subCategory}"]`);
+    if (catBtn) catBtn.click();
+  }
+
+  // Scroll suave al inicio de la página para que la vista empiece desde arriba
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Sincronizar URL hash
+  if (window.location.hash !== `#${tabId}`) {
+    history.replaceState(null, null, `#${tabId}`);
+  }
+
+  // Cerrar menú móvil si está abierto
+  const mobileDrawer = document.getElementById('mobile-menu-drawer');
+  if (mobileDrawer && !mobileDrawer.classList.contains('hidden')) {
+    mobileDrawer.classList.add('hidden');
+  }
+}
