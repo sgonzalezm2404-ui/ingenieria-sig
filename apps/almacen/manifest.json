@@ -1,0 +1,16 @@
+{
+  "short_name": "SIG² Almacén",
+  "name": "SIG² Gestión de Inventario & Almacén (Demo)",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2306466C'/><text x='50%' y='65%' font-size='50' font-weight='800' fill='white' text-anchor='middle' font-family='sans-serif'>S|G</text></svg>",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#04324E",
+  "theme_color": "#06466C",
+  "display": "standalone",
+  "orientation": "portrait"
+}

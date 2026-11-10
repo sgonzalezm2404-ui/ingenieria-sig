@@ -569,10 +569,10 @@ function initApp() {
     ['initDailyMachine', () => initDailyMachine()],
     ['initNavigationTabs', () => {
       const hash = window.location.hash.replace('#', '');
-      const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas', 'contacto'];
+      const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas'];
       if (validViews.includes(hash)) {
         navigateToTab(hash);
-      } else if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'].includes(hash)) {
+      } else if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads', 'almacen-app'].includes(hash)) {
         navigateToTab('plataformas');
         switchPlatformTab(hash);
       } else {
@@ -7227,45 +7227,45 @@ const AUTONOMOUS_RADAR_OPPORTUNITIES = [
     sectorLabel: 'Empresas Agroindustriales (Valle)',
     region: 'Valle y Eje Cafetero',
     city: 'Guadalajara de Buga / El Cerrito, Valle del Cauca',
-    need: 'AplicaciÃ³n urgente de BaterÃ­a de Riesgo Psicosocial (ResoluciÃ³n 2764 de 2022) para 145 colaboradores de planta y campo. Demanda psicÃ³logo con licencia SST vigente y plan de intervenciÃ³n ante comitÃ© de convivencia.',
+    need: 'Aplicación urgente de Batería de Riesgo Psicosocial (Resolución 2764 de 2022) para 145 colaboradores de planta y campo. Demanda psicólogo con licencia SST vigente y plan de intervención ante comité de convivencia.',
     budget: 9500000,
     urgency: 'REQUERIMIENTO INMEDIATO',
-    contactPerson: 'Dra. Liliana MondragÃ³n - Directora Talento Humano',
+    contactPerson: 'Dra. Liliana Mondragón - Directora Talento Humano',
     targetPhone: '573127894040',
     targetEmail: 'talentohumano@agroindustriavalle.com.co',
-    serviceMatch: 'BaterÃ­a Psicosocial Res. 2764 con GESURA/SIGÂ²',
+    serviceMatch: 'Batería Psicosocial Res. 2764 con GESURA/SIG²',
     badgeClass: 'bg-purple-500/20 text-purple-300 border-purple-500/30'
   },
   {
     id: 'RADAR-VALLE-02',
     title: 'Silos & Granos del Valle del Cauca',
     sector: 'sst',
-    sectorLabel: 'LogÃ­stica & Agroindustria (Valle)',
+    sectorLabel: 'Logística & Agroindustria (Valle)',
     region: 'Valle y Eje Cafetero',
     city: 'Guadalajara de Buga / Yotoco, Valle del Cauca',
-    need: 'AcompaÃ±amiento tÃ©cnico en faena para ingreso a Espacios Confinados (Res. 0491 de 2020) y trabajo en alturas en silos de 24 metros (Res. 4272 de 2021). Requiere coordinador en sitio y equipo de rescate.',
+    need: 'Acompañamiento técnico en faena para ingreso a Espacios Confinados (Res. 0491 de 2020) y trabajo en alturas en silos de 24 metros (Res. 4272 de 2021). Requiere coordinador en sitio y equipo de rescate.',
     budget: 8800000,
     urgency: 'PARADA DE PLANTA PROGRAMADA',
-    contactPerson: 'Ing. Carlos HernÃ¡n Caicedo - Jefe de Seguridad y Salud',
+    contactPerson: 'Ing. Carlos Hernán Caicedo - Jefe de Seguridad y Salud',
     targetPhone: '573127894040',
     targetEmail: 'seguridad@silosdelvalle.com',
-    serviceMatch: 'AcompaÃ±amiento en Sitio TAR GESURA',
+    serviceMatch: 'Acompañamiento en Sitio TAR GESURA',
     badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/30'
   },
   {
     id: 'RADAR-VALLE-03',
-    title: 'Molinos Centrales & Alimentos de TuluÃ¡',
+    title: 'Molinos Centrales & Alimentos de Tuluá',
     sector: 'sst',
-    sectorLabel: 'Sector Alimentos & MolinerÃ­a',
+    sectorLabel: 'Sector Alimentos & Molinería',
     region: 'Valle y Eje Cafetero',
-    city: 'TuluÃ¡ / San Pedro, Valle del Cauca',
-    need: 'AuditorÃ­a integral al SG-SST (Dec. 1072) y acompaÃ±amiento en procedimientos de Bloqueo y Etiquetado LOTO en mantenimiento de molinos de martillo.',
+    city: 'Tuluá / San Pedro, Valle del Cauca',
+    need: 'Auditoría integral al SG-SST (Dec. 1072) y acompañamiento en procedimientos de Bloqueo y Etiquetado LOTO en mantenimiento de molinos de martillo.',
     budget: 7200000,
     urgency: 'PLIEGO ACTIVO',
     contactPerson: 'Dra. Marcela Osorio - Coordinadora HSEQ',
     targetPhone: '573127894040',
     targetEmail: 'hseq@molinostulua.com',
-    serviceMatch: 'AuditorÃ­a SG-SST + Bloqueo LOTO',
+    serviceMatch: 'Auditoría SG-SST + Bloqueo LOTO',
     badgeClass: 'bg-blue-500/20 text-blue-300 border-blue-500/30'
   }
 ];
@@ -8766,7 +8766,7 @@ function switchGesuraPortfolioTab(tabId) {
    HUB DE PLATAFORMAS & SOLUCIONES INTERACTIVAS - GESTOR DE PESTAÑAS
    ============================================================================= */
 function switchPlatformTab(tabId) {
-  const platformIds = ['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'];
+  const platformIds = ['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads', 'almacen-app'];
   
   platformIds.forEach(id => {
     const el = document.getElementById(id);
@@ -8794,10 +8794,10 @@ function switchPlatformTab(tabId) {
 // Escuchar cambios de hash en la URL
 window.addEventListener('hashchange', () => {
   const hash = window.location.hash.replace('#', '');
-  const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas', 'contacto'];
+  const validViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas'];
   if (validViews.includes(hash)) {
     navigateToTab(hash);
-  } else if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads'].includes(hash)) {
+  } else if (['sig-campo', 'pesv-app', 'consultora-ai', 'radar-autonomo', 'marketing-ia-ads', 'almacen-app'].includes(hash)) {
     navigateToTab('plataformas');
     if (typeof switchPlatformTab === 'function') switchPlatformTab(hash);
   }
@@ -8807,7 +8807,7 @@ window.addEventListener('hashchange', () => {
    SISTEMA DE NAVEGACIÓN POR PESTAÑAS / VISTAS INDEPENDIENTES (SPA MINIMALISTA)
    ============================================================================= */
 function navigateToTab(tabId, subCategory = null) {
-  const allViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas', 'contacto'];
+  const allViews = ['inicio', 'nosotros', 'servicios', 'alianza-gesura', 'plataformas'];
   if (!allViews.includes(tabId)) tabId = 'inicio';
 
   allViews.forEach(v => {

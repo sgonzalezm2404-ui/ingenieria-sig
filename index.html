@@ -98,18 +98,18 @@
        HEADER / NAVEGACIÓN STICKY CORPORATIVA (FONDO BLANCO, LOGO ORIGINAL)
        ========================================================================= -->
     <!-- =========================================================================
-       HEADER / NAVEGACIÃ“N CORPORATIVA POR PESTAÃ‘AS (SIGÂ² GRUPO)
+       HEADER / NAVEGACIÃ“N CORPORATIVA POR PESTAÃ‘AS (SIG² GRUPO)
        ========================================================================= -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all duration-300 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20 sm:h-22">
         
-        <!-- Logotipo Oficial Sobrio SIGÂ² GRUPO -->
-        <button onclick="navigateToTab('inicio')" class="flex items-center py-2 group text-left cursor-pointer" title="SIGÂ² GRUPO | Inicio">
-          <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIGÂ² GRUPO | Sistemas â€¢ IngenierÃ­a â€¢ GestiÃ³n â€¢ LogÃ­stica" class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-[1.02]">
+        <!-- Logotipo Oficial Sobrio SIG² GRUPO -->
+        <button onclick="navigateToTab('inicio')" class="flex items-center py-2 group text-left cursor-pointer" title="SIG² GRUPO | Inicio">
+          <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² GRUPO" class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-[1.02]">
         </button>
 
-        <!-- NavegaciÃ³n Principal por PestaÃ±as (Desktop) -->
+        <!-- Navegación Principal por Pestañas (Desktop) -->
         <nav class="hidden lg:flex items-center gap-1.5 xl:gap-2">
           <button onclick="navigateToTab('inicio')" class="tab-nav-inicio px-3.5 py-2 rounded-xl text-xs xl:text-sm font-black bg-sig-navy text-white shadow-xs transition-all cursor-pointer">
             Inicio
@@ -117,9 +117,7 @@
           <button onclick="navigateToTab('nosotros')" class="tab-nav-nosotros px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer">
             Sobre Nosotros
           </button>
-          <button onclick="navigateToTab('servicios')" class="tab-nav-servicios px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer">
-            Servicios & CartografÃ­a
-          </button>
+          <button onclick="navigateToTab('servicios')" class="tab-nav-servicios w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Servicios</button>
           <button onclick="navigateToTab('alianza-gesura')" class="tab-nav-alianza-gesura px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer flex items-center gap-1.5">
             <i class="fa-solid fa-handshake-angle text-blue-600 text-xs"></i>
             <span>Alianza GESURA</span>
@@ -129,12 +127,9 @@
             <span class="w-1.5 h-1.5 rounded-full bg-sig-teal"></span>
             <span>Plataformas & Software</span>
           </button>
-          <button onclick="navigateToTab('contacto')" class="tab-nav-contacto px-3.5 py-2 rounded-xl text-xs xl:text-sm font-bold text-slate-600 hover:text-sig-navy hover:bg-slate-100 transition-all cursor-pointer">
-            Contacto
-          </button>
         </nav>
 
-        <!-- Botones de AcciÃ³n Prudentes y Discretos -->
+        <!-- Botones de Acción Prudentes y Discretos -->
         <div class="hidden sm:flex items-center gap-3">
           <button onclick="openClientPortalModal()" class="px-3 py-2 text-xs font-bold text-sig-navy bg-slate-50 hover:bg-slate-100 border border-slate-300 rounded-xl transition-all flex items-center gap-1.5 shadow-xs">
             <i class="fa-solid fa-lock text-sig-teal text-xs"></i>
@@ -147,9 +142,9 @@
           </a>
         </div>
 
-        <!-- BotÃ³n MenÃº MÃ³vil -->
+        <!-- Botón Menú Móvil -->
         <div class="flex items-center gap-2 lg:hidden">
-          <button id="mobile-menu-toggle" class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 hover:text-black" aria-label="Abrir menÃº">
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 hover:text-black" aria-label="Abrir menú">
             <i class="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
@@ -157,15 +152,15 @@
       </div>
     </div>
 
-    <!-- MenÃº Desplegable MÃ³vil por PestaÃ±as -->
+    <!-- Menú Desplegable Móvil por Pestañas -->
     <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2 text-sm shadow-xl">
       <div class="pb-3 border-b border-slate-100 flex items-center justify-between">
-        <img src="assets/sig2-logo-grupo.jpg?v=20261110" class="h-10 w-auto object-contain" alt="SIGÂ² GRUPO">
-        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">NavegaciÃ³n</span>
+        <img src="assets/sig2-logo-grupo.jpg?v=20261110" class="h-10 w-auto object-contain" alt="SIG² GRUPO">
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Navegación</span>
       </div>
       <button onclick="navigateToTab('inicio')" class="tab-nav-inicio w-full text-left py-2.5 px-3 rounded-lg font-black bg-sig-navy text-white block">Inicio</button>
       <button onclick="navigateToTab('nosotros')" class="tab-nav-nosotros w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Sobre Nosotros</button>
-      <button onclick="navigateToTab('servicios')" class="tab-nav-servicios w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Servicios & CartografÃ­a</button>
+      <button onclick="navigateToTab('servicios')" class="tab-nav-servicios w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Servicios</button>
       <button onclick="navigateToTab('alianza-gesura')" class="tab-nav-alianza-gesura w-full text-left py-2.5 px-3 rounded-lg font-bold text-blue-900 bg-blue-50/50 flex items-center justify-between">
         <span class="flex items-center gap-2"><i class="fa-solid fa-handshake-angle text-blue-600"></i> Alianza GESURA</span>
         <span class="px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-900 font-black">Valle</span>
@@ -174,7 +169,6 @@
         <span class="w-2 h-2 rounded-full bg-sig-teal"></span>
         <span>Plataformas & Software</span>
       </button>
-      <button onclick="navigateToTab('contacto')" class="tab-nav-contacto w-full text-left py-2.5 px-3 rounded-lg font-bold text-slate-700 hover:bg-slate-50 block">Contacto</button>
       <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
         <button onclick="openClientPortalModal()" class="w-full py-2.5 bg-slate-100 text-sig-navy border border-slate-300 rounded-xl text-xs font-bold flex items-center justify-center gap-2">
           <i class="fa-solid fa-lock text-sig-teal"></i> Acceso Portal Clientes
@@ -197,7 +191,7 @@
     
     <!-- Hero Principal -->
     <section class="relative pt-16 pb-20 lg:pt-24 lg:pb-28 bg-white bg-grid-sober border-b border-slate-200 overflow-hidden">
-      <!-- Haz LÃ¡ser LiDAR DinÃ¡mico -->
+      <!-- Haz Láser LiDAR Dinámico -->
       <div class="lidar-scan-line"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -206,20 +200,20 @@
           <!-- Identidad de Marca -->
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-sig-navy text-xs font-black uppercase tracking-wider mb-6 shadow-2xs">
             <span class="w-2 h-2 rounded-full bg-sig-teal animate-pulse"></span>
-            <span>SIGÂ² GRUPO â€¢ SISTEMAS â€¢ INGENIERÃA â€¢ GESTIÃ“N â€¢ LOGÃSTICA</span>
+            <span>SIG² GRUPO â€¢ SISTEMAS â€¢ INGENIERÍA â€¢ GESTIÃ“N â€¢ LOGÍSTICA</span>
           </div>
 
-          <!-- TÃ­tulo Principal de Alto Impacto -->
+          <!-- Título Principal de Alto Impacto -->
           <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-sig-navy tracking-tight leading-[1.12] mb-6">
-            IngenierÃ­a de Alta PrecisiÃ³n, GeologÃ­a y Soluciones Integradas
+            Ingeniería de Alta Precisión, Geología y Soluciones Integradas
           </h1>
 
-          <!-- SubtÃ­tulo Claro y Persuasivo -->
+          <!-- Subtítulo Claro y Persuasivo -->
           <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
-            ConsultorÃ­a tÃ©cnica multidisciplinaria con estricto rigor normativo colombiano y plataformas digitales avanzadas para la industria, la minerÃ­a y la infraestructura.
+            Consultoría técnica multidisciplinaria con estricto rigor normativo colombiano y plataformas digitales avanzadas para la industria, la minería y la infraestructura.
           </p>
 
-          <!-- Botones de AcciÃ³n Elegantes (Sin saturar) -->
+          <!-- Botones de Acción Elegantes (Sin saturar) -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <button onclick="navigateToTab('servicios')" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-sig-navy hover:bg-sig-navy-dark text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
               <span>Explorar Portafolio de Servicios</span>
@@ -227,19 +221,19 @@
             </button>
             <button onclick="navigateToTab('nosotros')" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-sig-navy font-bold text-sm border border-slate-300 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
               <i class="fa-solid fa-building text-sig-teal text-xs"></i>
-              <span>Sobre Nosotros (MisiÃ³n & VisiÃ³n)</span>
+              <span>Sobre Nosotros (Misión & Visión)</span>
             </button>
           </div>
 
-          <!-- 3 Indicadores de Solvencia TÃ©cnica -->
+          <!-- 3 Indicadores de Solvencia Técnica -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-slate-200/80 max-w-3xl mx-auto text-left">
             <div class="flex items-start gap-3">
               <div class="w-10 h-10 rounded-xl bg-blue-50 text-sig-navy flex items-center justify-center text-lg shrink-0 font-black">
                 <i class="fa-solid fa-calendar-check"></i>
               </div>
               <div>
-                <span class="text-lg font-black text-sig-navy block">+15 AÃ±os</span>
-                <span class="text-xs text-slate-500">Experiencia en consultorÃ­a tÃ©cnica y faena en Colombia</span>
+                <span class="text-lg font-black text-sig-navy block">+15 Años</span>
+                <span class="text-xs text-slate-500">Experiencia en consultoría técnica y faena en Colombia</span>
               </div>
             </div>
 
@@ -259,7 +253,7 @@
               </div>
               <div>
                 <span class="text-lg font-black text-sig-navy block">Equipamiento Propio</span>
-                <span class="text-xs text-slate-500">Drones LiDAR, GNSS geodÃ©sico y cuadrillas activas</span>
+                <span class="text-xs text-slate-500">Drones LiDAR, GNSS geodésico y cuadrillas activas</span>
               </div>
             </div>
           </div>
@@ -268,27 +262,27 @@
       </div>
     </section>
 
-    <!-- 4 Disciplinas EstratÃ©gicas: Acceso RÃ¡pido y Minimalista -->
+    <!-- 4 Disciplinas Estratégicas: Acceso Rápido y Minimalista -->
     <section class="py-16 bg-slate-50/70 border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-12">
           <span class="text-xs font-bold text-sig-teal uppercase tracking-widest block mb-1">Especialidades del Grupo</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-sig-navy">Soluciones TÃ©cnicas por Disciplina</h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-2">Seleccione un Ã¡rea para consultar alcance tÃ©cnico, normativo y modalidades de contrataciÃ³n.</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-sig-navy">Soluciones Técnicas por Disciplina</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-2">Seleccione un área para consultar alcance técnico, normativo y modalidades de contratación.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <!-- Card 1: GeologÃ­a & CartografÃ­a -->
+          <!-- Card 1: Geología & Cartografía -->
           <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div class="w-12 h-12 rounded-xl bg-blue-50 text-sig-navy flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
                 <i class="fa-solid fa-mountain"></i>
               </div>
-              <h3 class="text-base font-black text-sig-navy mb-2">GeologÃ­a, Geotecnia & CartografÃ­a</h3>
+              <h3 class="text-base font-black text-sig-navy mb-2">Geología, Geotecnia & Cartografía</h3>
               <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                Sondeos SPT normativos NSR-10 TÃ­tulo H, anÃ¡lisis geomecÃ¡nico de taludes, geofÃ­sica y cartografÃ­a geolÃ³gica estructural (SGC).
+                Sondeos SPT normativos NSR-10 Título H, análisis geomecánico de taludes, geofísica y cartografía geológica estructural (SGC).
               </p>
             </div>
             <button onclick="navigateToTab('servicios', 'geologia-mineria')" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-sig-navy text-sig-navy hover:text-white font-bold text-xs border border-slate-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
@@ -297,15 +291,15 @@
             </button>
           </div>
 
-          <!-- Card 2: ConsultorÃ­a Ambiental -->
+          <!-- Card 2: Consultoría Ambiental -->
           <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div class="w-12 h-12 rounded-xl bg-teal-50 text-sig-teal flex items-center justify-center text-xl mb-4 group-hover:scale-105 transition-transform">
                 <i class="fa-solid fa-leaf"></i>
               </div>
-              <h3 class="text-base font-black text-sig-navy mb-2">ConsultorÃ­a Ambiental & GDB ANLA</h3>
+              <h3 class="text-base font-black text-sig-navy mb-2">Consultoría Ambiental & GDB ANLA</h3>
               <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                Estudios de Impacto Ambiental (EIA), Planes de Manejo (PMA), rondas hÃ­dricas y geodatabases cartogrÃ¡ficas oficiales para VITAL.
+                Estudios de Impacto Ambiental (EIA), Planes de Manejo (PMA), rondas hídricas y geodatabases cartográficas oficiales para VITAL.
               </p>
             </div>
             <button onclick="navigateToTab('servicios', 'ingenieria-ambiental')" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-sig-teal text-sig-navy hover:text-white font-bold text-xs border border-slate-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
@@ -322,7 +316,7 @@
               </div>
               <h3 class="text-base font-black text-sig-navy mb-2">SST & Alianza GESURA (Valle)</h3>
               <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                AcompaÃ±amiento presencial en Tareas de Alto Riesgo (TAR) en Guadalajara de Buga y Valle del Cauca, y BaterÃ­a Psicosocial Res. 2764.
+                Acompañamiento presencial en Tareas de Alto Riesgo (TAR) en Guadalajara de Buga y Valle del Cauca, y Batería Psicosocial Res. 2764.
               </p>
             </div>
             <button onclick="navigateToTab('alianza-gesura')" class="w-full py-2.5 px-3 rounded-xl bg-blue-50/70 hover:bg-blue-900 text-blue-900 hover:text-white font-bold text-xs border border-blue-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
@@ -339,7 +333,7 @@
               </div>
               <h3 class="text-base font-black text-sig-navy mb-2">Plataformas Propietarias</h3>
               <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                PWA SIGÂ² Campo para sondeos sin papel, telemetrÃ­a SIG Fleet PESV (Res. 40595) y centro de control comercial CONSULTORA AI.
+                PWA SIG² Campo para sondeos sin papel, telemetría SIG Fleet PESV (Res. 40595) y centro de control comercial CONSULTORA AI.
               </p>
             </div>
             <button onclick="navigateToTab('plataformas')" class="w-full py-2.5 px-3 rounded-xl bg-purple-50/70 hover:bg-purple-900 text-purple-900 hover:text-white font-bold text-xs border border-purple-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer">
@@ -353,20 +347,18 @@
       </div>
     </section>
 
-    <!-- Llamado al DiÃ¡logo TÃ©cnico Discreto -->
+    <!-- Llamado al Diálogo Técnico Discreto -->
     <section class="py-14 bg-white">
       <div class="max-w-4xl mx-auto px-4 text-center">
-        <h3 class="text-xl sm:text-2xl font-black text-sig-navy mb-3">Â¿Desea evaluar el alcance tÃ©cnico de su proyecto?</h3>
+        <h3 class="text-xl sm:text-2xl font-black text-sig-navy mb-3">¿Desea evaluar el alcance técnico de su proyectoâ€¢</h3>
         <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mb-6">
-          Un ingeniero especialista de SIGÂ² GRUPO revisarÃ¡ sus requerimientos de normativa, plazos de entrega y disponibilidad de cuadrilla sin compromiso.
+          Un ingeniero especialista de SIG² GRUPO revisará sus requerimientos de normativa, plazos de entrega y disponibilidad de cuadrilla sin compromiso.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <button onclick="navigateToTab('contacto')" class="px-6 py-3 rounded-xl bg-sig-navy hover:bg-sig-navy-dark text-white font-bold text-xs shadow-xs transition-all cursor-pointer">
-            <i class="fa-solid fa-envelope mr-1.5"></i> Formulario de CotizaciÃ³n
-          </button>
+          <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Grupo,%20deseo%20solicitar%20asesor%C3%ADa%20t%C3%A9cnica%20para%20un%20proyecto." target="_blank" class="px-6 py-3 rounded-xl bg-sig-navy hover:bg-sig-navy-dark text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 cursor-pointer"><i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i><span>Solicitar Asesoría o Cotización</span></a>
           <a href="https://wa.me/573127894040?text=Hola,%20solicito%20atenci%C3%B3n%20t%C3%A9cnica%20con%20un%20ingeniero%20especialista." target="_blank" class="px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-sig-navy font-bold text-xs border border-slate-300 transition-all flex items-center gap-2 cursor-pointer">
             <i class="fa-brands fa-whatsapp text-emerald-500 text-sm"></i>
-            <span>Chat TÃ©cnico (+57 312 789 4040)</span>
+            <span>Chat Técnico (+57 312 789 4040)</span>
           </a>
         </div>
       </div>
@@ -378,64 +370,64 @@
 <section id="nosotros" class="py-20 bg-slate-50/70 border-b border-slate-200 scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- PresentaciÃ³n Institucional -->
+      <!-- Presentación Institucional -->
       <div class="max-w-3xl mx-auto text-center mb-16 reveal-on-scroll">
         <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sig-teal/15 border border-sig-teal/30 text-sig-teal text-xs font-black uppercase tracking-wider mb-3">
           <i class="fa-solid fa-building-shield"></i>
-          PRESENTACIÃ“N CORPORATIVA â€¢ SIGÂ² GRUPO
+          PRESENTACIÃ“N CORPORATIVA â€¢ SIG² GRUPO
         </span>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-sig-navy tracking-tight">
-          IngenierÃ­a Aplicada, Soluciones Operativas y Rigor Normativo
+          Ingeniería Aplicada, Soluciones Operativas y Rigor Normativo
         </h2>
         <p class="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed">
-          <strong class="text-sig-navy">SIGÂ² GRUPO</strong> (Sistemas â€¢ IngenierÃ­a â€¢ GestiÃ³n â€¢ LogÃ­stica) es una firma multidisciplinaria de ingenierÃ­a y consultorÃ­a tÃ©cnica. Unimos la rigurosidad cientÃ­fica de la geologÃ­a, geotecnia y cartografÃ­a de campo con plataformas digitales propietarias, auditorÃ­a jurÃ­dica y acompaÃ±amiento operacional en toda Colombia.
+          <strong class="text-sig-navy">SIG² GRUPO</strong> (Sistemas â€¢ Ingeniería â€¢ Gestión â€¢ Logística) es una firma multidisciplinaria de ingeniería y consultoría técnica. Unimos la rigurosidad científica de la geología, geotecnia y cartografía de campo con plataformas digitales propietarias, auditoría jurídica y acompañamiento operacional en toda Colombia.
         </p>
       </div>
 
-      <!-- MisiÃ³n & VisiÃ³n en Tarjetas Ejecutivas Minimalistas -->
+      <!-- Misión & Visión en Tarjetas Ejecutivas Minimalistas -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
         
-        <!-- Tarjeta: MisiÃ³n -->
+        <!-- Tarjeta: Misión -->
         <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group">
           <div class="absolute top-0 left-0 w-2 h-full bg-sig-navy"></div>
           <div>
             <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 text-sig-navy flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-105 transition-transform">
               <i class="fa-solid fa-bullseye"></i>
             </div>
-            <span class="text-xs font-bold text-sig-teal uppercase tracking-widest block mb-1">PropÃ³sito Fundamental</span>
-            <h3 class="text-2xl font-black text-sig-navy mb-4">Nuestra MisiÃ³n</h3>
+            <span class="text-xs font-bold text-sig-teal uppercase tracking-widest block mb-1">Propósito Fundamental</span>
+            <h3 class="text-2xl font-black text-sig-navy mb-4">Nuestra Misión</h3>
             <p class="text-sm text-slate-600 leading-relaxed">
-              Brindar soluciones integrales de alta ingenierÃ­a, geologÃ­a, geotecnia, cartografÃ­a avanzada, consultorÃ­a ambiental, seguridad industrial (SST/PESV) y sistemas de informaciÃ³n bajo el mÃ¡s riguroso cumplimiento normativo colombiano (NSR-10, Dec. 1072, Res. 2764, Res. 40595) y estÃ¡ndares internacionales. Integramos la precisiÃ³n de faena con software analÃ­tico de vanguardia para garantizar seguridad operacional, viabilidad legal y rentabilidad a la industria y la infraestructura del paÃ­s.
+              Brindar soluciones integrales de alta ingeniería, geología, geotecnia, cartografía avanzada, consultoría ambiental, seguridad industrial (SST/PESV) y sistemas de información bajo el más riguroso cumplimiento normativo colombiano (NSR-10, Dec. 1072, Res. 2764, Res. 40595) y estándares internacionales. Integramos la precisión de faena con software analítico de vanguardia para garantizar seguridad operacional, viabilidad legal y rentabilidad a la industria y la infraestructura del país.
             </p>
           </div>
           <div class="mt-8 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-sig-navy">
             <i class="fa-solid fa-circle-check text-emerald-500"></i>
-            <span>Certeza TÃ©cnica, Legal y Operacional</span>
+            <span>Certeza Técnica, Legal y Operacional</span>
           </div>
         </div>
 
-        <!-- Tarjeta: VisiÃ³n -->
+        <!-- Tarjeta: Visión -->
         <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group">
           <div class="absolute top-0 left-0 w-2 h-full bg-sig-teal"></div>
           <div>
             <div class="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-200 text-sig-teal flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-105 transition-transform">
               <i class="fa-solid fa-eye"></i>
             </div>
-            <span class="text-xs font-bold text-sig-navy uppercase tracking-widest block mb-1">Rumbo EstratÃ©gico 2030</span>
-            <h3 class="text-2xl font-black text-sig-navy mb-4">Nuestra VisiÃ³n</h3>
+            <span class="text-xs font-bold text-sig-navy uppercase tracking-widest block mb-1">Rumbo Estratégico 2030</span>
+            <h3 class="text-2xl font-black text-sig-navy mb-4">Nuestra Visión</h3>
             <p class="text-sm text-slate-600 leading-relaxed">
-              Consolidarnos para el aÃ±o 2030 como el grupo empresarial referente en Colombia y la regiÃ³n en ingenierÃ­a integrada, cartografÃ­a y consultorÃ­a tÃ©cnica estratÃ©gica. Seremos reconocidos por la excelencia irrenunciable en terreno, la solvencia tÃ©cnica ante las autoridades y entidades reguladoras (ANM, ANLA, MinTrabajo, SuperTransporte), y el liderazgo en la transformaciÃ³n digital de la ingenierÃ­a mediante software offline, telemetrÃ­a e inteligencia artificial.
+              Consolidarnos para el año 2030 como el grupo empresarial referente en Colombia y la región en ingeniería integrada, cartografía y consultoría técnica estratégica. Seremos reconocidos por la excelencia irrenunciable en terreno, la solvencia técnica ante las autoridades y entidades reguladoras (ANM, ANLA, MinTrabajo, SuperTransporte), y el liderazgo en la transformación digital de la ingeniería mediante software offline, telemetría e inteligencia artificial.
             </p>
           </div>
           <div class="mt-8 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-sig-teal">
             <i class="fa-solid fa-rocket text-sig-teal"></i>
-            <span>Liderazgo en IngenierÃ­a Integrada & Software</span>
+            <span>Liderazgo en Ingeniería Integrada & Software</span>
           </div>
         </div>
 
       </div>
 
-      <!-- 4 Pilares EstratÃ©gicos Corporativos -->
+      <!-- 4 Pilares Estratégicos Corporativos -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
@@ -445,7 +437,7 @@
             </div>
             <h4 class="text-sm font-black text-sig-navy mb-1">Rigor Normativo</h4>
             <p class="text-xs text-slate-500 leading-relaxed">
-              Estricto cumplimiento de la NSR-10 TÃ­tulo H, Decreto 1072, Resoluciones 0312, 2764, 40595 y guÃ­as ANLA sin riesgo de glosas.
+              Estricto cumplimiento de la NSR-10 Título H, Decreto 1072, Resoluciones 0312, 2764, 40595 y guías ANLA sin riesgo de glosas.
             </p>
           </div>
         </div>
@@ -455,9 +447,9 @@
             <div class="w-10 h-10 rounded-xl bg-slate-100 text-sig-teal flex items-center justify-center text-base mb-3 font-black">
               <i class="fa-solid fa-ruler-combined"></i>
             </div>
-            <h4 class="text-sm font-black text-sig-navy mb-1">PrecisiÃ³n en Campo</h4>
+            <h4 class="text-sm font-black text-sig-navy mb-1">Precisión en Campo</h4>
             <p class="text-xs text-slate-500 leading-relaxed">
-              Cuadrillas propias de sondeos SPT, receptores GNSS geodÃ©sicos RTK multifrecuencia, drones LiDAR y toma de muestras acreditada.
+              Cuadrillas propias de sondeos SPT, receptores GNSS geodésicos RTK multifrecuencia, drones LiDAR y toma de muestras acreditada.
             </p>
           </div>
         </div>
@@ -469,7 +461,7 @@
             </div>
             <h4 class="text-sm font-black text-sig-navy mb-1">Software Propio</h4>
             <p class="text-xs text-slate-500 leading-relaxed">
-              PWA SIGÂ² Campo offline-first, telemetrÃ­a IoT vehicular, simuladores de geotecnia y dashboards de Business Intelligence en vivo.
+              PWA SIG² Campo offline-first, telemetría IoT vehicular, simuladores de geotecnia y dashboards de Business Intelligence en vivo.
             </p>
           </div>
         </div>
@@ -481,7 +473,7 @@
             </div>
             <h4 class="text-sm font-black text-sig-navy mb-1">Alianzas Regionales</h4>
             <p class="text-xs text-slate-500 leading-relaxed">
-              Alianza estratÃ©gica con GESURA para Tareas de Alto Riesgo (TAR) e inspecciÃ³n fÃ­sica en Guadalajara de Buga y Valle del Cauca.
+              Alianza estratégica con GESURA para Tareas de Alto Riesgo (TAR) e inspección física en Guadalajara de Buga y Valle del Cauca.
             </p>
           </div>
         </div>
@@ -491,10 +483,10 @@
       <!-- Respaldo de Equipamiento & Certificaciones -->
       <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-md flex flex-col lg:flex-row items-center justify-between gap-8 reveal-on-scroll">
         <div class="space-y-2 max-w-xl">
-          <span class="text-xs font-bold text-sig-teal uppercase tracking-widest">Capacidad TÃ©cnica Propia</span>
+          <span class="text-xs font-bold text-sig-teal uppercase tracking-widest">Capacidad Técnica Propia</span>
           <h4 class="text-xl font-black text-sig-navy">Hardware y Software de Clase Mundial sin Intermediarios</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Operamos con flota de drones DJI Matrice 350 RTK con sensor LiDAR Zenmuse L2, estaciones totales y receptores geodÃ©sicos Leica Geosystems, estaciones de cÃ³mputo con aceleraciÃ³n de GPU y licencias corporativas originales.
+            Operamos con flota de drones DJI Matrice 350 RTK con sensor LiDAR Zenmuse L2, estaciones totales y receptores geodésicos Leica Geosystems, estaciones de cómputo con aceleración de GPU y licencias corporativas originales.
           </p>
         </div>
 
@@ -509,7 +501,7 @@
           </div>
           <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200">
             <i class="fa-solid fa-satellite text-sig-navy text-base"></i>
-            <span>Red GeodÃ©sica MAGNA-SIRGAS</span>
+            <span>Red Geodésica MAGNA-SIRGAS</span>
           </div>
         </div>
       </div>
@@ -594,6 +586,459 @@
   
 </div>
 
+<div id="view-alianza-gesura" class="main-tab-view hidden">
+<section id="alianza-gesura" class="py-20 bg-gradient-to-b from-white via-blue-50/30 to-slate-50 border-b border-slate-200 scroll-mt-20 relative overflow-hidden">
+    
+    <!-- Elementos Decorativos de Fondo -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-sig-teal/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Encabezado de la Alianza con Co-Branding de Alto Nivel -->
+      <div class="text-center max-w-4xl mx-auto mb-16">
+        
+        <!-- Insignia de Alianza Empresarial Regional -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-xs font-black uppercase tracking-wider mb-4 shadow-xs">
+          <i class="fa-solid fa-handshake text-blue-600"></i>
+          <span>ALIANZA ESTRATÉGICA REGIONAL • VALLE DEL CAUCA</span>
+          <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+        </div>
+
+        <!-- Co-Branding Visual: Logos SIG² + GESURA -->
+        <div class="flex items-center justify-center gap-6 sm:gap-10 my-6 flex-wrap">
+          <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-md transition-transform hover:scale-105">
+            <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² GRUPO" class="h-14 sm:h-18 w-auto object-contain">
+          </div>
+
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sig-navy via-sig-teal to-blue-600 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+
+          <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-md transition-transform hover:scale-105">
+            <img src="assets/gesura-logo.jpg" alt="GESURA - Gestión Segura del Trabajo" class="h-14 sm:h-18 w-auto object-contain">
+          </div>
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-black text-sig-navy tracking-tight leading-tight">
+          Alianza Estratégica <span class="text-transparent bg-clip-text bg-gradient-to-r from-sig-navy via-blue-600 to-sig-teal">SIG² & GESURA</span>
+        </h2>
+        <h3 class="text-base sm:text-xl font-bold text-slate-700 mt-2">
+          Portafolio Especial en Sociedad: Seguridad, Salud en el Trabajo & Tareas de Alto Riesgo
+        </h3>
+        <p class="text-xs sm:text-sm text-sig-graphite mt-3 max-w-3xl mx-auto leading-relaxed">
+          Unimos la <strong>fuerza operativa y acompañamiento presencial en campo de GESURA</strong> en Guadalajara de Buga y el departamento del Valle del Cauca, con la <strong>plataforma tecnológica, analítica de datos y evaluación de Batería de Riesgo Psicosocial de SIG²</strong> con cobertura para toda Colombia.
+        </p>
+
+        <!-- Cobertura Regional Destacada -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+          <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mr-1"><i class="fa-solid fa-map-location-dot text-rose-500 mr-1"></i> Cobertura Prioritaria:</span>
+          <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 font-extrabold text-[11px] border border-blue-200">Guadalajara de Buga (Sede Operativa)</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Yotoco & Zona Franca</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Tuluá</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Guacarí & San Pedro</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">El Cerrito & Palmira</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Cali & Yumbo</span>
+          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Buenaventura (Puerto)</span>
+        </div>
+
+        <!-- Botones de Acción Rápida de la Alianza -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-6">
+          <button onclick="openGesuraPortfolioModal()" class="px-6 py-3 bg-sig-navy hover:bg-sig-navy-dark text-white rounded-xl text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Ver Portafolio en Sociedad Completo</span>
+          </button>
+          <a href="#modulo-bateria-psicosocial" class="px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer">
+            <i class="fa-solid fa-brain"></i>
+            <span>Cotizar Batería Psicosocial (Res. 2764)</span>
+          </a>
+          <a href="#modulo-alto-riesgo-gesura" class="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer">
+            <i class="fa-solid fa-person-falling"></i>
+            <span>Acompañamiento en Alturas / Confinados</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sinergia de Capacidades: GESURA (Físico) vs SIG² (Digital / Psicosocial) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        
+        <!-- Tarjeta GESURA: Operación Física en Campo (Buga & Valle) -->
+        <div class="bg-white border-2 border-blue-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-blue-500 transition-all">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full pointer-events-none"></div>
+          <div>
+            <div class="flex items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center p-1.5 shadow-sm">
+                  <img src="assets/gesura-logo.jpg" alt="GESURA" class="h-full w-auto object-contain">
+                </div>
+                <div>
+                  <span class="text-[10px] font-black uppercase tracking-wider text-blue-700 block">OPERACIÓN FÍSICA Y EN CAMPO</span>
+                  <h4 class="text-xl font-black text-sig-navy">GESURA • Gestión Segura del Trabajo</h4>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-black uppercase">
+                Valle del Cauca
+              </span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+              Especialistas en <strong>acompañamiento presencial en faena, auditoría física y supervisión permanente</strong> para empresas agroindustriales, ingenios, plantas de manufactura, bodegas y obras civiles en Guadalajara de Buga y municipios vecinos.
+            </p>
+
+            <!-- Lista de Tareas de Alto Riesgo -->
+            <div class="space-y-4">
+              
+              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-person-falling text-amber-500 text-base"></i>
+                  <span>1. Trabajo Seguro en Alturas (Resolución 4272 de 2021)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Coordinadores de alturas certificados en sitio, validación técnica de permisos de trabajo, inspección de puntos de anclaje, líneas de vida y brigada de rescate vertical.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-dungeon text-purple-600 text-base"></i>
+                  <span>2. Espacios Confinados (Resolución 0491 de 2020)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Monitoreo continuo de atmósferas peligrosas (O₂, CO, H₂S, LEL) con equipos multigas certificados, vigías de espacios confinados y ventilación forzada.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-fire-burner text-rose-500 text-base"></i>
+                  <span>3. Trabajos en Caliente (Soldadura, Oxicorte y Corte)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Control estricto de fuentes de ignición en áreas clasificadas, permisos de fuego, pantallas parachispas y vigías de fuego para prevenir incendios industriales.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-lock text-emerald-600 text-base"></i>
+                  <span>4. Bloqueo y Etiquetado LOTO (Energías Peligrosas)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Desenergización segura de maquinaria, candados y tarjetas para corte de energía eléctrica, hidráulica, neumática y vapor en paradas de planta.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-clipboard-check text-blue-600 text-base"></i>
+                  <span>5. Inspecciones Físicas de Planta & Brigadas</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Inspección técnica de calderas, silos de almacenamiento, montacargas, orden y aseo (5S) y entrenamiento práctico de brigadas de emergencia.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-bold">
+              <i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Buga & Valle del Cauca
+            </span>
+            <a href="https://wa.me/573127894040?text=Hola,%20deseo%20solicitar%20acompa%C3%B1amiento%20f%C3%ADsico%20de%20GESURA%20en%20Tareas%20de%20Alto%20Riesgo%20para%20Buga%20o%20Valle%20del%20Cauca." target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-black flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Solicitar Cuadrilla a Faena</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta SIG²: Gestión Virtual, Batería Psicosocial & Digital -->
+        <div class="bg-white border-2 border-sig-teal/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-sig-teal transition-all">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-sig-teal/10 rounded-bl-full pointer-events-none"></div>
+          <div>
+            <div class="flex items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center p-1.5 shadow-sm">
+                  <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² GRUPO" class="h-full w-auto object-contain">
+                </div>
+                <div>
+                  <span class="text-[10px] font-black uppercase tracking-wider text-sig-teal block">GESTIÓN VIRTUAL, PSICOSOCIAL & SOFTWARE</span>
+                  <h4 class="text-xl font-black text-sig-navy">SIG² • Sistemas, Ingeniería & Soluciones</h4>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-sig-teal border border-teal-200 text-xs font-black uppercase">
+                Nacional
+              </span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+              Líderes en <strong>evaluación psicológica especializada, telemetría, software normativo y analítica de datos</strong> para garantizar el 100% de cumplimiento legal sin fricción operativa.
+            </p>
+
+            <!-- Lista de Servicios SIG² -->
+            <div class="space-y-4">
+              
+              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-brain text-purple-600 text-base"></i>
+                  <span>1. Batería de Riesgo Psicosocial (Resolución 2764 de 2022)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Aplicación virtual o híbrida estandarizada por MinTrabajo. Evaluación Intralaboral (Forma A y B), Extralaboral y Cuestionario de Estrés con firma de <strong>Psicólogo Especialista con Licencia SST vigente</strong>.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-heart-pulse text-rose-500 text-base"></i>
+                  <span>2. Plan de Intervención y Monitoreo Epidemiológico</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Diseño formal de talleres de clima laboral, manejo del estrés, liderazgo y programas de vigilancia epidemiológica para prevenir enfermedades laborales de origen psicosocial.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-truck-pickup text-blue-600 text-base"></i>
+                  <span>3. Software PESV & App de Preoperacionales (Res. 40595)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Digitalización completa de listas de verificación de vehículos en ruta, telemetría satelital en vivo y dashboards de auditoría para la Superintendencia de Transporte.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-file-shield text-sig-teal text-base"></i>
+                  <span>4. Auditoría SG-SST (Dec. 1072 / Res. 0312 de 2019)</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Evaluación de los 60 Estándares Mínimos, actualización de matriz de requisitos legales y preparación de informes de rendición de cuentas anual ante MinTrabajo.
+                </p>
+              </div>
+
+              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
+                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
+                  <i class="fa-solid fa-graduation-cap text-amber-500 text-base"></i>
+                  <span>5. Plataforma E-Learning de Capacitación Virtual</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 pl-6">
+                  Cursos virtuales gamificados y trazables con emisión automática de certificados para inducciones de personal, Copasst y Comité de Convivencia Laboral.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-bold">
+              <i class="fa-solid fa-globe text-sig-teal mr-1"></i> Cobertura Nacional
+            </span>
+            <a href="https://wa.me/573127894040?text=Hola,%20deseo%20cotizar%20la%20Bater%C3%ADa%20de%20Riesgo%20Psicosocial%20(Res.%202764)%20o%20software%20SST%20con%20SIG%C2%B2." target="_blank" class="px-4 py-2 bg-sig-teal hover:bg-teal-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Cotizar Psicosocial / Software</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =====================================================================
+           MÓDULO INTERACTIVO 1: CALCULADORA & COTIZADOR DE BATERÍA PSICOSOCIAL
+           (Resolución 2764 de 2022 del Ministerio del Trabajo)
+           ===================================================================== -->
+      <div id="modulo-bateria-psicosocial" class="bg-gradient-to-br from-slate-900 via-purple-950/40 to-slate-900 border-2 border-purple-500/40 rounded-3xl p-6 sm:p-10 shadow-2xl text-white mb-16 scroll-mt-24 relative overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-purple-500/30 mb-8 relative z-10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-900/60 border border-purple-400/40 text-purple-300 text-xs font-black uppercase tracking-wider mb-2">
+              <i class="fa-solid fa-brain text-purple-400"></i>
+              <span>RESOLUCIÓN 2764 DE 2022 • MINTRABAJO</span>
+            </div>
+            <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+              Batería de Instrumentos de Riesgo Psicosocial
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
+              Cumplimiento legal obligatorio para todas las empresas en Colombia. Evaluamos factores intralaborales, extralaborales y nivel de estrés con <strong>informe oficial avalado por Psicólogo Especialista en SST con Licencia vigente</strong>.
+            </p>
+          </div>
+
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-purple-500/30 text-center shrink-0">
+            <span class="text-[10px] text-purple-300 uppercase font-black block">Vigencia Obligatoria</span>
+            <span class="text-lg font-black text-white font-mono mt-0.5">Anual / Bianual</span>
+            <span class="text-[10px] text-slate-400 block mt-0.5">Evite sanciones de MinTrabajo</span>
+          </div>
+        </div>
+
+        <!-- Calculador Interactivo de Batería Psicosocial -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+          
+          <!-- Controles de Configuración -->
+          <div class="lg:col-span-6 space-y-4 text-xs">
+            <div>
+              <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Número Total de Trabajadores en la Organización:</label>
+              <select id="psico-workers-count" onchange="calculatePsychosocialQuote()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-purple-400">
+                <option value="15">1 a 20 trabajadores (Micro / Pyme)</option>
+                <option value="40" selected>21 a 50 trabajadores (Mediana Empresa)</option>
+                <option value="85">51 a 100 trabajadores (Estándar)</option>
+                <option value="180">101 a 250 trabajadores (Gran Empresa)</option>
+                <option value="450">Más de 250 trabajadores (Corporativo / Ingenio)</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Modalidad de Aplicación:</label>
+                <select id="psico-modality" onchange="calculatePsychosocialQuote()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-bold outline-none cursor-pointer focus:border-purple-400">
+                  <option value="Hibrida" selected>Híbrida (Virtual + Asesoría)</option>
+                  <option value="Virtual">100% Digital en Plataforma</option>
+                  <option value="Presencial">Presencial en Buga / Valle</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Sector Económico:</label>
+                <select id="psico-sector" onchange="calculatePsychosocialQuote()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-bold outline-none cursor-pointer focus:border-purple-400">
+                  <option value="Agroindustrial / Alimentos" selected>Agroindustrial / Ingenios</option>
+                  <option value="Manufactura / Industria">Manufactura / Industria</option>
+                  <option value="Transporte & Logística">Transporte & Logística</option>
+                  <option value="Comercio y Servicios">Comercio y Servicios</option>
+                  <option value="Construcción e Infraestructura">Construcción</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="p-3 bg-purple-950/50 rounded-xl border border-purple-500/30 text-purple-200 text-[11px] leading-relaxed">
+              <i class="fa-solid fa-circle-check text-purple-400 mr-1.5"></i>
+              <strong>Garantía de Validez Legal:</strong> Todo informe incluye número de tarjeta profesional y resolución de licencia SST del psicólogo especialista responsable ante el Ministerio del Trabajo.
+            </div>
+          </div>
+
+          <!-- Resumen de Entregables & Botón de Cotización -->
+          <div class="lg:col-span-6 bg-slate-950/80 rounded-2xl p-5 border border-purple-500/30 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] text-purple-300 uppercase font-black tracking-wider block mb-2">Entregables Oficiales Incluidos:</span>
+              
+              <ul class="space-y-2 text-xs text-slate-300">
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span><strong id="psico-res-cuestionarios" class="text-white font-mono">40</strong> aplicaciones de cuestionarios (Intralaboral Forma A/B, Extralaboral y Estrés).</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span>Informe estadístico baremado con semáforo de riesgo por dimensiones y dominios.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span>Firma oficial de <strong>Psicólogo Especialista en SST con Licencia vigente</strong>.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span>Plan de Intervención Psicosocial ajustado a los hallazgos prioritarios.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span>Socialización ejecutiva a la gerencia y Copasst (Virtual o Presencial Buga/Valle).</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-800">
+              <button onclick="dispatchPsychosocialQuoteWhatsApp()" class="w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Solicitar Cotización de Batería Psicosocial vía WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           MÓDULO INTERACTIVO 2: SOLICITUD DE ACOMPAÑAMIENTO FÍSICO EN FAENA
+           TAREAS DE ALTO RIESGO EN GUADALAJARA DE BUGA & VALLE DEL CAUCA (GESURA)
+           ===================================================================== -->
+      <div id="modulo-alto-riesgo-gesura" class="bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border-2 border-blue-500/40 rounded-3xl p-6 sm:p-10 shadow-2xl text-white scroll-mt-24 relative overflow-hidden">
+        <div class="absolute -left-16 -top-16 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-blue-500/30 mb-8 relative z-10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/60 border border-blue-400/40 text-blue-300 text-xs font-black uppercase tracking-wider mb-2">
+              <i class="fa-solid fa-helmet-safety text-amber-400"></i>
+              <span>OPERACIÓN EN FAENA • GUADALAJARA DE BUGA & VALLE</span>
+            </div>
+            <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+              Acompañamiento en Tareas de Alto Riesgo en Faena
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
+              Despliegue inmediato de <strong>coordinadores de alturas, supervisores de espacios confinados y vigías de fuego certificados por GESURA</strong> para paradas de planta, obras e intervenciones críticas.
+            </p>
+          </div>
+
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-blue-500/30 text-center shrink-0">
+            <span class="text-[10px] text-blue-300 uppercase font-black block">Respuesta Rápida</span>
+            <span class="text-lg font-black text-emerald-400 font-mono mt-0.5">&lt; 24 Horas</span>
+            <span class="text-[10px] text-slate-400 block mt-0.5">Cuadrilla dotada en Valle</span>
+          </div>
+        </div>
+
+        <!-- Formulario Rápido de Solicitud de Cuadrilla -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10 text-xs">
+          <div>
+            <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Tipo de Tarea de Alto Riesgo:</label>
+            <select id="tar-type" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-blue-400">
+              <option value="Trabajo Seguro en Alturas (Res. 4272/2021)">1. Trabajo Seguro en Alturas (Coordinador en Sitio)</option>
+              <option value="Espacios Confinados (Res. 0491/2020)">2. Espacios Confinados (Vigía + Medición de Gases)</option>
+              <option value="Trabajos en Caliente (Fuego y Soldadura)">3. Trabajos en Caliente (Vigía de Fuego)</option>
+              <option value="Bloqueo y Etiquetado LOTO">4. Bloqueo y Etiquetado LOTO (Energías Peligrosas)</option>
+              <option value="Inspección Física y Auditoría en Planta">5. Inspección Física de Planta / Silos / Calderas</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Municipio o Sector del Valle:</label>
+            <select id="tar-municipality" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-blue-400">
+              <option value="Guadalajara de Buga (Sede Principal)" selected>Guadalajara de Buga (Casco Urbano / Zona Industrial)</option>
+              <option value="Yotoco / Zona Franca">Yotoco / Zona Franca / Vía al Mar</option>
+              <option value="Tuluá y Centro del Valle">Tuluá / San Pedro / Andalucía</option>
+              <option value="Guacarí y El Cerrito">Guacarí / El Cerrito / Ginebra</option>
+              <option value="Palmira y Cali">Palmira / Cali / Yumbo</option>
+              <option value="Buenaventura">Buenaventura (Zona Portuaria)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Duración de la Actividad:</label>
+            <select id="tar-duration" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-blue-400">
+              <option value="Jornada Puntual (1 a 3 días)">Jornada Puntual (1 a 3 días de intervención)</option>
+              <option value="Parada de Planta (1 a 2 semanas)">Parada de Planta (1 a 2 semanas intensivas)</option>
+              <option value="Acompañamiento Mensual Continuo">Acompañamiento Mensual Continuo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
+          <div class="text-xs text-slate-300 flex items-center gap-2">
+            <i class="fa-solid fa-truck-pickup text-blue-400 text-base"></i>
+            <span>Personal certificado con EPP dieléctrico, equipos de rescate y detectores de gas calibrados vigentes.</span>
+          </div>
+
+          <button onclick="dispatchHighRiskAssistanceWhatsApp()" class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>Solicitar Cuadrilla GESURA en Sitio</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  
+</div>
+
 <div id="view-plataformas" class="main-tab-view hidden">
 <section id="plataformas" class="py-16 bg-slate-900 text-slate-100 border-b border-slate-800 scroll-mt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -607,18 +1052,18 @@
           Hub de Plataformas, Software & Soluciones IA
         </h2>
         <p class="text-xs sm:text-sm text-slate-300 mt-2">
-          Explore nuestras aplicaciones y centros de control interactivos. Seleccione la plataforma que desea operar sin saturar la navegaciÃ³n.
+          Explore nuestras aplicaciones y centros de control interactivos. Seleccione la plataforma que desea operar sin saturar la navegación.
         </p>
 
-        <!-- Selector de PestaÃ±as de Plataformas -->
+        <!-- Selector de Pestañas de Plataformas -->
         <div class="flex items-center justify-center gap-2 overflow-x-auto pt-6 pb-2 scrollbar-none flex-wrap">
           <button onclick="switchPlatformTab('sig-campo')" id="ptab-sig-campo" class="platform-tab-btn px-4 py-2.5 rounded-xl font-black bg-sig-navy text-white shadow-md border border-sig-teal/40 transition-all text-xs flex items-center gap-2 cursor-pointer">
             <i class="fa-solid fa-bore-hole text-emerald-400"></i>
-            <span>SIGÂ² Campo (Geotecnia SPT)</span>
+            <span>SIG² Campo (Geotecnia SPT)</span>
           </button>
           <button onclick="switchPlatformTab('pesv-app')" id="ptab-pesv-app" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer">
             <i class="fa-solid fa-truck-pickup text-blue-400"></i>
-            <span>SIGÂ² Fleet (PESV & Flotas)</span>
+            <span>SIG² Fleet (PESV & Flotas)</span>
           </button>
           <button onclick="switchPlatformTab('consultora-ai')" id="ptab-consultora-ai" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer">
             <i class="fa-solid fa-brain text-purple-400"></i>
@@ -626,12 +1071,13 @@
           </button>
           <button onclick="switchPlatformTab('radar-autonomo')" id="ptab-radar-autonomo" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer">
             <i class="fa-solid fa-radar text-amber-400"></i>
-            <span>Radar AutÃ³nomo B2B</span>
+            <span>Radar Autónomo B2B</span>
           </button>
           <button onclick="switchPlatformTab('marketing-ia-ads')" id="ptab-marketing-ia-ads" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer">
             <i class="fa-brands fa-google text-red-400"></i>
             <span>Google Ads IA</span>
           </button>
+          <button onclick="switchPlatformTab('almacen-app')" id="ptab-almacen-app" class="platform-tab-btn px-4 py-2.5 rounded-xl font-bold bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-all text-xs flex items-center gap-2 cursor-pointer"><i class="fa-solid fa-boxes-stacked text-amber-400"></i><span>SIG² Almacén (Demo Logística)</span></button>
         </div>
       </div>
 
@@ -1176,459 +1622,7 @@
        ALIANZA ESTRATÉGICA REGIONAL: SIG² & GESURA (GESTIÓN SEGURA DEL TRABAJO)
        PORTAFOLIO ESPECIAL EN SOCIEDAD SST • GUADALAJARA DE BUGA Y VALLE DEL CAUCA
        ========================================================================= -->
-  <div id="view-alianza-gesura" class="main-tab-view hidden">
-<section id="alianza-gesura" class="py-20 bg-gradient-to-b from-white via-blue-50/30 to-slate-50 border-b border-slate-200 scroll-mt-20 relative overflow-hidden">
-    
-    <!-- Elementos Decorativos de Fondo -->
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-sig-teal/5 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <!-- Encabezado de la Alianza con Co-Branding de Alto Nivel -->
-      <div class="text-center max-w-4xl mx-auto mb-16">
-        
-        <!-- Insignia de Alianza Empresarial Regional -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-xs font-black uppercase tracking-wider mb-4 shadow-xs">
-          <i class="fa-solid fa-handshake text-blue-600"></i>
-          <span>ALIANZA ESTRATÉGICA REGIONAL • VALLE DEL CAUCA</span>
-          <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-        </div>
-
-        <!-- Co-Branding Visual: Logos SIG² + GESURA -->
-        <div class="flex items-center justify-center gap-6 sm:gap-10 my-6 flex-wrap">
-          <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-md transition-transform hover:scale-105">
-            <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² Sistemas y Soluciones | Ingeniería" class="h-14 sm:h-18 w-auto object-contain">
-          </div>
-
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sig-navy via-sig-teal to-blue-600 flex items-center justify-center text-white text-xl shadow-lg border-2 border-white">
-            <i class="fa-solid fa-plus"></i>
-          </div>
-
-          <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-md transition-transform hover:scale-105">
-            <img src="assets/gesura-logo.jpg" alt="GESURA - Gestión Segura del Trabajo" class="h-14 sm:h-18 w-auto object-contain">
-          </div>
-        </div>
-
-        <h2 class="text-3xl sm:text-5xl font-black text-sig-navy tracking-tight leading-tight">
-          Alianza Estratégica <span class="text-transparent bg-clip-text bg-gradient-to-r from-sig-navy via-blue-600 to-sig-teal">SIG² & GESURA</span>
-        </h2>
-        <h3 class="text-base sm:text-xl font-bold text-slate-700 mt-2">
-          Portafolio Especial en Sociedad: Seguridad, Salud en el Trabajo & Tareas de Alto Riesgo
-        </h3>
-        <p class="text-xs sm:text-sm text-sig-graphite mt-3 max-w-3xl mx-auto leading-relaxed">
-          Unimos la <strong>fuerza operativa y acompañamiento presencial en campo de GESURA</strong> en Guadalajara de Buga y el departamento del Valle del Cauca, con la <strong>plataforma tecnológica, analítica de datos y evaluación de Batería de Riesgo Psicosocial de SIG²</strong> con cobertura para toda Colombia.
-        </p>
-
-        <!-- Cobertura Regional Destacada -->
-        <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
-          <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mr-1"><i class="fa-solid fa-map-location-dot text-rose-500 mr-1"></i> Cobertura Prioritaria:</span>
-          <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 font-extrabold text-[11px] border border-blue-200">Guadalajara de Buga (Sede Operativa)</span>
-          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Yotoco & Zona Franca</span>
-          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Tuluá</span>
-          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Guacarí & San Pedro</span>
-          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">El Cerrito & Palmira</span>
-          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Cali & Yumbo</span>
-          <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[11px] border border-slate-200">Buenaventura (Puerto)</span>
-        </div>
-
-        <!-- Botones de Acción Rápida de la Alianza -->
-        <div class="flex flex-wrap items-center justify-center gap-3 mt-6">
-          <button onclick="openGesuraPortfolioModal()" class="px-6 py-3 bg-sig-navy hover:bg-sig-navy-dark text-white rounded-xl text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer">
-            <i class="fa-solid fa-book-open"></i>
-            <span>Ver Portafolio en Sociedad Completo</span>
-          </button>
-          <a href="#modulo-bateria-psicosocial" class="px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer">
-            <i class="fa-solid fa-brain"></i>
-            <span>Cotizar Batería Psicosocial (Res. 2764)</span>
-          </a>
-          <a href="#modulo-alto-riesgo-gesura" class="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-black flex items-center gap-2 shadow-lg transition-all cursor-pointer">
-            <i class="fa-solid fa-person-falling"></i>
-            <span>Acompañamiento en Alturas / Confinados</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Sinergia de Capacidades: GESURA (Físico) vs SIG² (Digital / Psicosocial) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-        
-        <!-- Tarjeta GESURA: Operación Física en Campo (Buga & Valle) -->
-        <div class="bg-white border-2 border-blue-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-blue-500 transition-all">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full pointer-events-none"></div>
-          <div>
-            <div class="flex items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center p-1.5 shadow-sm">
-                  <img src="assets/gesura-logo.jpg" alt="GESURA" class="h-full w-auto object-contain">
-                </div>
-                <div>
-                  <span class="text-[10px] font-black uppercase tracking-wider text-blue-700 block">OPERACIÓN FÍSICA Y EN CAMPO</span>
-                  <h4 class="text-xl font-black text-sig-navy">GESURA • Gestión Segura del Trabajo</h4>
-                </div>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-xs font-black uppercase">
-                Valle del Cauca
-              </span>
-            </div>
-
-            <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-              Especialistas en <strong>acompañamiento presencial en faena, auditoría física y supervisión permanente</strong> para empresas agroindustriales, ingenios, plantas de manufactura, bodegas y obras civiles en Guadalajara de Buga y municipios vecinos.
-            </p>
-
-            <!-- Lista de Tareas de Alto Riesgo -->
-            <div class="space-y-4">
-              
-              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-person-falling text-amber-500 text-base"></i>
-                  <span>1. Trabajo Seguro en Alturas (Resolución 4272 de 2021)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Coordinadores de alturas certificados en sitio, validación técnica de permisos de trabajo, inspección de puntos de anclaje, líneas de vida y brigada de rescate vertical.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-dungeon text-purple-600 text-base"></i>
-                  <span>2. Espacios Confinados (Resolución 0491 de 2020)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Monitoreo continuo de atmósferas peligrosas (O₂, CO, H₂S, LEL) con equipos multigas certificados, vigías de espacios confinados y ventilación forzada.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-fire-burner text-rose-500 text-base"></i>
-                  <span>3. Trabajos en Caliente (Soldadura, Oxicorte y Corte)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Control estricto de fuentes de ignición en áreas clasificadas, permisos de fuego, pantallas parachispas y vigías de fuego para prevenir incendios industriales.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-lock text-emerald-600 text-base"></i>
-                  <span>4. Bloqueo y Etiquetado LOTO (Energías Peligrosas)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Desenergización segura de maquinaria, candados y tarjetas para corte de energía eléctrica, hidráulica, neumática y vapor en paradas de planta.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-blue-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-clipboard-check text-blue-600 text-base"></i>
-                  <span>5. Inspecciones Físicas de Planta & Brigadas</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Inspección técnica de calderas, silos de almacenamiento, montacargas, orden y aseo (5S) y entrenamiento práctico de brigadas de emergencia.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-bold">
-              <i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Buga & Valle del Cauca
-            </span>
-            <a href="https://wa.me/573127894040?text=Hola,%20deseo%20solicitar%20acompa%C3%B1amiento%20f%C3%ADsico%20de%20GESURA%20en%20Tareas%20de%20Alto%20Riesgo%20para%20Buga%20o%20Valle%20del%20Cauca." target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-black flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
-              <i class="fa-brands fa-whatsapp"></i>
-              <span>Solicitar Cuadrilla a Faena</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Tarjeta SIG²: Gestión Virtual, Batería Psicosocial & Digital -->
-        <div class="bg-white border-2 border-sig-teal/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden flex flex-col justify-between hover:border-sig-teal transition-all">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-sig-teal/10 rounded-bl-full pointer-events-none"></div>
-          <div>
-            <div class="flex items-center justify-between gap-3 pb-4 border-b border-slate-100 mb-6">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-teal-50 border border-teal-200 flex items-center justify-center p-1.5 shadow-sm">
-                  <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG²" class="h-full w-auto object-contain">
-                </div>
-                <div>
-                  <span class="text-[10px] font-black uppercase tracking-wider text-sig-teal block">GESTIÓN VIRTUAL, PSICOSOCIAL & SOFTWARE</span>
-                  <h4 class="text-xl font-black text-sig-navy">SIG² • Sistemas, Ingeniería & Soluciones</h4>
-                </div>
-              </div>
-              <span class="px-3 py-1 rounded-full bg-teal-50 text-sig-teal border border-teal-200 text-xs font-black uppercase">
-                Nacional
-              </span>
-            </div>
-
-            <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-              Líderes en <strong>evaluación psicológica especializada, telemetría, software normativo y analítica de datos</strong> para garantizar el 100% de cumplimiento legal sin fricción operativa.
-            </p>
-
-            <!-- Lista de Servicios SIG² -->
-            <div class="space-y-4">
-              
-              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-brain text-purple-600 text-base"></i>
-                  <span>1. Batería de Riesgo Psicosocial (Resolución 2764 de 2022)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Aplicación virtual o híbrida estandarizada por MinTrabajo. Evaluación Intralaboral (Forma A y B), Extralaboral y Cuestionario de Estrés con firma de <strong>Psicólogo Especialista con Licencia SST vigente</strong>.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-heart-pulse text-rose-500 text-base"></i>
-                  <span>2. Plan de Intervención y Monitoreo Epidemiológico</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Diseño formal de talleres de clima laboral, manejo del estrés, liderazgo y programas de vigilancia epidemiológica para prevenir enfermedades laborales de origen psicosocial.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-truck-pickup text-blue-600 text-base"></i>
-                  <span>3. Software PESV & App de Preoperacionales (Res. 40595)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Digitalización completa de listas de verificación de vehículos en ruta, telemetría satelital en vivo y dashboards de auditoría para la Superintendencia de Transporte.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-file-shield text-sig-teal text-base"></i>
-                  <span>4. Auditoría SG-SST (Dec. 1072 / Res. 0312 de 2019)</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Evaluación de los 60 Estándares Mínimos, actualización de matriz de requisitos legales y preparación de informes de rendición de cuentas anual ante MinTrabajo.
-                </p>
-              </div>
-
-              <div class="p-3.5 bg-slate-50 hover:bg-teal-50/50 rounded-2xl border border-slate-200 transition-all">
-                <div class="flex items-center gap-2.5 font-bold text-xs sm:text-sm text-sig-navy">
-                  <i class="fa-solid fa-graduation-cap text-amber-500 text-base"></i>
-                  <span>5. Plataforma E-Learning de Capacitación Virtual</span>
-                </div>
-                <p class="text-xs text-slate-500 mt-1 pl-6">
-                  Cursos virtuales gamificados y trazables con emisión automática de certificados para inducciones de personal, Copasst y Comité de Convivencia Laboral.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-bold">
-              <i class="fa-solid fa-globe text-sig-teal mr-1"></i> Cobertura Nacional
-            </span>
-            <a href="https://wa.me/573127894040?text=Hola,%20deseo%20cotizar%20la%20Bater%C3%ADa%20de%20Riesgo%20Psicosocial%20(Res.%202764)%20o%20software%20SST%20con%20SIG%C2%B2." target="_blank" class="px-4 py-2 bg-sig-teal hover:bg-teal-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
-              <i class="fa-brands fa-whatsapp"></i>
-              <span>Cotizar Psicosocial / Software</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- =====================================================================
-           MÓDULO INTERACTIVO 1: CALCULADORA & COTIZADOR DE BATERÍA PSICOSOCIAL
-           (Resolución 2764 de 2022 del Ministerio del Trabajo)
-           ===================================================================== -->
-      <div id="modulo-bateria-psicosocial" class="bg-gradient-to-br from-slate-900 via-purple-950/40 to-slate-900 border-2 border-purple-500/40 rounded-3xl p-6 sm:p-10 shadow-2xl text-white mb-16 scroll-mt-24 relative overflow-hidden">
-        <div class="absolute -right-16 -top-16 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-purple-500/30 mb-8 relative z-10">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-900/60 border border-purple-400/40 text-purple-300 text-xs font-black uppercase tracking-wider mb-2">
-              <i class="fa-solid fa-brain text-purple-400"></i>
-              <span>RESOLUCIÓN 2764 DE 2022 • MINTRABAJO</span>
-            </div>
-            <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              Batería de Instrumentos de Riesgo Psicosocial
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
-              Cumplimiento legal obligatorio para todas las empresas en Colombia. Evaluamos factores intralaborales, extralaborales y nivel de estrés con <strong>informe oficial avalado por Psicólogo Especialista en SST con Licencia vigente</strong>.
-            </p>
-          </div>
-
-          <div class="p-4 bg-slate-900/90 rounded-2xl border border-purple-500/30 text-center shrink-0">
-            <span class="text-[10px] text-purple-300 uppercase font-black block">Vigencia Obligatoria</span>
-            <span class="text-lg font-black text-white font-mono mt-0.5">Anual / Bianual</span>
-            <span class="text-[10px] text-slate-400 block mt-0.5">Evite sanciones de MinTrabajo</span>
-          </div>
-        </div>
-
-        <!-- Calculador Interactivo de Batería Psicosocial -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
-          
-          <!-- Controles de Configuración -->
-          <div class="lg:col-span-6 space-y-4 text-xs">
-            <div>
-              <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Número Total de Trabajadores en la Organización:</label>
-              <select id="psico-workers-count" onchange="calculatePsychosocialQuote()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-purple-400">
-                <option value="15">1 a 20 trabajadores (Micro / Pyme)</option>
-                <option value="40" selected>21 a 50 trabajadores (Mediana Empresa)</option>
-                <option value="85">51 a 100 trabajadores (Estándar)</option>
-                <option value="180">101 a 250 trabajadores (Gran Empresa)</option>
-                <option value="450">Más de 250 trabajadores (Corporativo / Ingenio)</option>
-              </select>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Modalidad de Aplicación:</label>
-                <select id="psico-modality" onchange="calculatePsychosocialQuote()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-bold outline-none cursor-pointer focus:border-purple-400">
-                  <option value="Hibrida" selected>Híbrida (Virtual + Asesoría)</option>
-                  <option value="Virtual">100% Digital en Plataforma</option>
-                  <option value="Presencial">Presencial en Buga / Valle</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Sector Económico:</label>
-                <select id="psico-sector" onchange="calculatePsychosocialQuote()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-bold outline-none cursor-pointer focus:border-purple-400">
-                  <option value="Agroindustrial / Alimentos" selected>Agroindustrial / Ingenios</option>
-                  <option value="Manufactura / Industria">Manufactura / Industria</option>
-                  <option value="Transporte & Logística">Transporte & Logística</option>
-                  <option value="Comercio y Servicios">Comercio y Servicios</option>
-                  <option value="Construcción e Infraestructura">Construcción</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="p-3 bg-purple-950/50 rounded-xl border border-purple-500/30 text-purple-200 text-[11px] leading-relaxed">
-              <i class="fa-solid fa-circle-check text-purple-400 mr-1.5"></i>
-              <strong>Garantía de Validez Legal:</strong> Todo informe incluye número de tarjeta profesional y resolución de licencia SST del psicólogo especialista responsable ante el Ministerio del Trabajo.
-            </div>
-          </div>
-
-          <!-- Resumen de Entregables & Botón de Cotización -->
-          <div class="lg:col-span-6 bg-slate-950/80 rounded-2xl p-5 border border-purple-500/30 flex flex-col justify-between">
-            <div>
-              <span class="text-[10px] text-purple-300 uppercase font-black tracking-wider block mb-2">Entregables Oficiales Incluidos:</span>
-              
-              <ul class="space-y-2 text-xs text-slate-300">
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-emerald-400"></i>
-                  <span><strong id="psico-res-cuestionarios" class="text-white font-mono">40</strong> aplicaciones de cuestionarios (Intralaboral Forma A/B, Extralaboral y Estrés).</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-emerald-400"></i>
-                  <span>Informe estadístico baremado con semáforo de riesgo por dimensiones y dominios.</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-emerald-400"></i>
-                  <span>Firma oficial de <strong>Psicólogo Especialista en SST con Licencia vigente</strong>.</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-emerald-400"></i>
-                  <span>Plan de Intervención Psicosocial ajustado a los hallazgos prioritarios.</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="fa-solid fa-check text-emerald-400"></i>
-                  <span>Socialización ejecutiva a la gerencia y Copasst (Virtual o Presencial Buga/Valle).</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="mt-5 pt-4 border-t border-slate-800">
-              <button onclick="dispatchPsychosocialQuoteWhatsApp()" class="w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>Solicitar Cotización de Batería Psicosocial vía WhatsApp</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- =====================================================================
-           MÓDULO INTERACTIVO 2: SOLICITUD DE ACOMPAÑAMIENTO FÍSICO EN FAENA
-           TAREAS DE ALTO RIESGO EN GUADALAJARA DE BUGA & VALLE DEL CAUCA (GESURA)
-           ===================================================================== -->
-      <div id="modulo-alto-riesgo-gesura" class="bg-gradient-to-br from-slate-900 via-blue-950/40 to-slate-900 border-2 border-blue-500/40 rounded-3xl p-6 sm:p-10 shadow-2xl text-white scroll-mt-24 relative overflow-hidden">
-        <div class="absolute -left-16 -top-16 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-blue-500/30 mb-8 relative z-10">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-900/60 border border-blue-400/40 text-blue-300 text-xs font-black uppercase tracking-wider mb-2">
-              <i class="fa-solid fa-helmet-safety text-amber-400"></i>
-              <span>OPERACIÓN EN FAENA • GUADALAJARA DE BUGA & VALLE</span>
-            </div>
-            <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              Acompañamiento en Tareas de Alto Riesgo en Faena
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
-              Despliegue inmediato de <strong>coordinadores de alturas, supervisores de espacios confinados y vigías de fuego certificados por GESURA</strong> para paradas de planta, obras e intervenciones críticas.
-            </p>
-          </div>
-
-          <div class="p-4 bg-slate-900/90 rounded-2xl border border-blue-500/30 text-center shrink-0">
-            <span class="text-[10px] text-blue-300 uppercase font-black block">Respuesta Rápida</span>
-            <span class="text-lg font-black text-emerald-400 font-mono mt-0.5">&lt; 24 Horas</span>
-            <span class="text-[10px] text-slate-400 block mt-0.5">Cuadrilla dotada en Valle</span>
-          </div>
-        </div>
-
-        <!-- Formulario Rápido de Solicitud de Cuadrilla -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10 text-xs">
-          <div>
-            <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Tipo de Tarea de Alto Riesgo:</label>
-            <select id="tar-type" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-blue-400">
-              <option value="Trabajo Seguro en Alturas (Res. 4272/2021)">1. Trabajo Seguro en Alturas (Coordinador en Sitio)</option>
-              <option value="Espacios Confinados (Res. 0491/2020)">2. Espacios Confinados (Vigía + Medición de Gases)</option>
-              <option value="Trabajos en Caliente (Fuego y Soldadura)">3. Trabajos en Caliente (Vigía de Fuego)</option>
-              <option value="Bloqueo y Etiquetado LOTO">4. Bloqueo y Etiquetado LOTO (Energías Peligrosas)</option>
-              <option value="Inspección Física y Auditoría en Planta">5. Inspección Física de Planta / Silos / Calderas</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Municipio o Sector del Valle:</label>
-            <select id="tar-municipality" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-blue-400">
-              <option value="Guadalajara de Buga (Sede Principal)" selected>Guadalajara de Buga (Casco Urbano / Zona Industrial)</option>
-              <option value="Yotoco / Zona Franca">Yotoco / Zona Franca / Vía al Mar</option>
-              <option value="Tuluá y Centro del Valle">Tuluá / San Pedro / Andalucía</option>
-              <option value="Guacarí y El Cerrito">Guacarí / El Cerrito / Ginebra</option>
-              <option value="Palmira y Cali">Palmira / Cali / Yumbo</option>
-              <option value="Buenaventura">Buenaventura (Zona Portuaria)</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="text-slate-300 font-bold block mb-1 uppercase tracking-wider">Duración de la Actividad:</label>
-            <select id="tar-duration" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold outline-none cursor-pointer focus:border-blue-400">
-              <option value="Jornada Puntual (1 a 3 días)">Jornada Puntual (1 a 3 días de intervención)</option>
-              <option value="Parada de Planta (1 a 2 semanas)">Parada de Planta (1 a 2 semanas intensivas)</option>
-              <option value="Acompañamiento Mensual Continuo">Acompañamiento Mensual Continuo</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mt-6 pt-5 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
-          <div class="text-xs text-slate-300 flex items-center gap-2">
-            <i class="fa-solid fa-truck-pickup text-blue-400 text-base"></i>
-            <span>Personal certificado con EPP dieléctrico, equipos de rescate y detectores de gas calibrados vigentes.</span>
-          </div>
-
-          <button onclick="dispatchHighRiskAssistanceWhatsApp()" class="w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
-            <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Solicitar Cuadrilla GESURA en Sitio</span>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
   
-</div>
-
 <section id="sig-campo" class="py-20 bg-slate-100/90 border-b border-slate-200" style="display: block;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -2063,7 +2057,7 @@
             <!-- Encabezado Oficial SIG² -->
             <div class="grid grid-cols-12 gap-4 items-center border-b-2 border-slate-800 pb-5">
               <div class="col-span-3">
-                <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG²" class="h-12 sm:h-14 w-auto object-contain">
+                <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² GRUPO" class="h-12 sm:h-14 w-auto object-contain">
               </div>
               <div class="col-span-6 text-center">
                 <h3 class="text-sm sm:text-base font-black text-sig-navy uppercase tracking-wide">
@@ -2213,7 +2207,7 @@
             SOLUCIONES PARA FIRMAS DE INGENIERÍA Y LABORATORIOS
           </div>
           <h3 class="text-xl sm:text-2xl font-black text-sig-navy">
-            ¿Desea implementar SIG² Campo en los frentes de perforación de su empresa?
+            ¿Desea implementar SIG² Campo en los frentes de perforación de su empresaâ€¢
           </h3>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
             Ofrecemos modalidades de licenciamiento corporativo, personalización de formatos según el estándar interno de su cliente (Ecopetrol, ANI, INVÍAS, Minería) y sincronización con sus bases de datos en la nube.
@@ -2735,7 +2729,7 @@
            ===================================================================== -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-3 mb-8 text-xs font-bold scrollbar-thin">
         <button onclick="switchConsultoraTab('organico')" id="c-tab-organico" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white shrink-0 shadow-lg flex items-center gap-2 border border-emerald-400/40 font-black">
-          <i class="fa-solid fa-satellite-dish text-emerald-200"></i> <span>Motor AutÃ³nomo & OrgÃ¡nico</span>
+          <i class="fa-solid fa-satellite-dish text-emerald-200"></i> <span>Motor Autónomo & Orgánico</span>
           <span class="px-1.5 py-0.5 rounded-full bg-emerald-400 text-slate-950 font-black text-[9px] uppercase tracking-wider">Cero Dependencias</span>
         </button>
         <button onclick="switchConsultoraTab('resumen')" id="c-tab-resumen" class="px-3.5 py-2 rounded-xl bg-purple-600 text-white shrink-0 shadow-md flex items-center gap-2">
@@ -2786,12 +2780,12 @@
            SUBPANEL 1: RESUMEN EJECUTIVO & ESTADO DE LOS 7 AGENTES IA
            ===================================================================== -->
             <!-- =====================================================================
-           SUBPANEL 0: MOTOR AUTÃ“NOMO DE CLIENTES & PUBLICIDAD ORGÃNICA PROPIA
+           SUBPANEL 0: MOTOR AUTÃ“NOMO DE CLIENTES & PUBLICIDAD ORGÁNICA PROPIA
            (100% Nativo en Navegador - Cero Dependencias de APIs Externas de Pago)
            ===================================================================== -->
       <div id="c-subpanel-organico" class="space-y-8">
         
-        <!-- Banner Principal de Modo AutÃ³nomo -->
+        <!-- Banner Principal de Modo Autónomo -->
         <div class="bg-gradient-to-br from-slate-900 via-emerald-950/50 to-slate-900 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
           <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
           
@@ -2803,10 +2797,10 @@
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               </div>
               <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
-                Motor AutÃ³nomo de Clientes & Publicidad OrgÃ¡nica
+                Motor Autónomo de Clientes & Publicidad Orgánica
               </h3>
               <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
-                Su pÃ¡gina web trabaja <strong>sin pagar suscripciones de OpenAI, n8n de pago ni Google Ads</strong>. El sistema escanea oportunidades de obras y proyectos reales en Colombia, genera artÃ­culos tÃ©cnicos que rankean <strong>gratis en Google</strong>, crea carruseles de alta autoridad para LinkedIn y captura leads calificados directamente a su WhatsApp <span class="text-emerald-400 font-bold">+57 312 789 4040</span>.
+                Su página web trabaja <strong>sin pagar suscripciones de OpenAI, n8n de pago ni Google Ads</strong>. El sistema escanea oportunidades de obras y proyectos reales en Colombia, genera artículos técnicos que rankean <strong>gratis en Google</strong>, crea carruseles de alta autoridad para LinkedIn y captura leads calificados directamente a su WhatsApp <span class="text-emerald-400 font-bold">+57 312 789 4040</span>.
               </p>
             </div>
 
@@ -2817,12 +2811,12 @@
               </button>
               <button onclick="scrollToOrganicStudio()" class="px-4 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700 flex items-center gap-2 transition-all cursor-pointer">
                 <i class="fa-solid fa-pen-nib text-teal-400"></i>
-                <span>Estudio Publicidad OrgÃ¡nica</span>
+                <span>Estudio Publicidad Orgánica</span>
               </button>
             </div>
           </div>
 
-          <!-- MÃ©tricas RÃ¡pidas del Modo AutÃ³nomo -->
+          <!-- Métricas Rápidas del Modo Autónomo -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-800 relative z-10">
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
               <span class="text-[10px] text-slate-400 font-bold uppercase block">Costo en APIs Externas</span>
@@ -2832,7 +2826,7 @@
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
               <span class="text-[10px] text-slate-400 font-bold uppercase block">Oportunidades en Radar</span>
               <span id="autonomous-radar-count" class="text-xl font-black text-white font-mono">12 Activas</span>
-              <span class="text-[10px] text-teal-400 block mt-0.5">Obras Civiles, MinerÃ­a & PESV</span>
+              <span class="text-[10px] text-teal-400 block mt-0.5">Obras Civiles, Minería & PESV</span>
             </div>
             <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
               <span class="text-[10px] text-slate-400 font-bold uppercase block">Presupuesto en Radar</span>
@@ -2908,33 +2902,33 @@
             <div>
               <div class="flex items-center gap-2">
                 <i class="fa-solid fa-radar text-emerald-400 text-lg"></i>
-                <h4 class="text-base font-black text-white">Radar AutÃ³nomo de Clientes y Oportunidades Comerciales</h4>
+                <h4 class="text-base font-black text-white">Radar Autónomo de Clientes y Oportunidades Comerciales</h4>
               </div>
               <p class="text-xs text-slate-400 mt-1">
-                DetecciÃ³n continua de licitaciones privadas, consorcios viales, canteras y flotas que requieren servicios de ingenierÃ­a hoy.
+                Detección continua de licitaciones privadas, consorcios viales, canteras y flotas que requieren servicios de ingeniería hoy.
               </p>
             </div>
             
-            <!-- Filtros DinÃ¡micos del Radar -->
+            <!-- Filtros Dinámicos del Radar -->
             <div class="flex flex-wrap items-center gap-2">
               <div class="flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
                 <span class="text-[10px] text-slate-400 font-bold uppercase">Sector:</span>
                 <select id="autonomous-radar-sector-filter" onchange="filterAutonomousRadar()" class="bg-transparent text-xs font-bold text-white outline-none cursor-pointer">
                   <option value="ALL">Todos los Sectores</option>
                   <option value="geotecnia">Geotecnia & Suelos NSR-10</option>
-                  <option value="mineria">MinerÃ­a & Canteras</option>
-                  <option value="transporte">Transporte & LogÃ­stica PESV</option>
+                  <option value="mineria">Minería & Canteras</option>
+                  <option value="transporte">Transporte & Logística PESV</option>
                   <option value="sst">Empresas Industriales SST</option>
                   <option value="ambiental">Ambiental & Licencias ANLA</option>
                 </select>
               </div>
 
               <div class="flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700">
-                <span class="text-[10px] text-slate-400 font-bold uppercase">RegiÃ³n:</span>
+                <span class="text-[10px] text-slate-400 font-bold uppercase">Región:</span>
                 <select id="autonomous-radar-region-filter" onchange="filterAutonomousRadar()" class="bg-transparent text-xs font-bold text-white outline-none cursor-pointer">
                   <option value="ALL">Todo Colombia</option>
-                  <option value="BogotÃ¡ y Cundinamarca">BogotÃ¡ & Cundinamarca</option>
-                  <option value="Santanderes">Santanderes & BoyacÃ¡</option>
+                  <option value="Bogotá y Cundinamarca">Bogotá & Cundinamarca</option>
+                  <option value="Santanderes">Santanderes & Boyacá</option>
                   <option value="Antioquia">Antioquia</option>
                   <option value="Valle y Eje Cafetero">Valle & Eje Cafetero</option>
                   <option value="Meta y Llanos">Meta & Llanos</option>
@@ -2948,14 +2942,14 @@
             </div>
           </div>
 
-          <!-- Rejilla DinÃ¡mica de Tarjetas de Oportunidades del Radar -->
+          <!-- Rejilla Dinámica de Tarjetas de Oportunidades del Radar -->
           <div id="autonomous-radar-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Inyectado dinÃ¡micamente por app.js -->
+            <!-- Inyectado dinámicamente por app.js -->
           </div>
         </div>
 
         <!-- ===================================================================
-             SECCIÃ“N 2: ESTUDIO DE PUBLICIDAD ORGÃNICA PROPIA (INBOUND MARKETING)
+             SECCIÃ“N 2: ESTUDIO DE PUBLICIDAD ORGÁNICA PROPIA (INBOUND MARKETING)
              =================================================================== -->
         <div id="organic-studio-section" class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 sm:p-8 space-y-6">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-700">
@@ -2964,15 +2958,15 @@
                 <i class="fa-solid fa-bullhorn text-lg"></i>
               </div>
               <div>
-                <h4 class="text-lg font-black text-white">Estudio de Publicidad OrgÃ¡nica Inbound (100% Gratuito)</h4>
+                <h4 class="text-lg font-black text-white">Estudio de Publicidad Orgánica Inbound (100% Gratuito)</h4>
                 <p class="text-xs text-slate-400">Atraiga clientes corporativos de alto valor sin pagar un solo peso en anuncios de Google o Meta.</p>
               </div>
             </div>
 
-            <!-- PestaÃ±as internas del Estudio OrgÃ¡nico -->
+            <!-- Pestañas internas del Estudio Orgánico -->
             <div class="flex items-center gap-1.5 bg-slate-900 p-1.5 rounded-xl border border-slate-700 text-xs font-bold overflow-x-auto">
               <button onclick="switchOrganicStudioTab('articulos')" id="org-tab-articulos" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-black shadow transition-all shrink-0">
-                <i class="fa-solid fa-file-lines mr-1.5"></i> ArtÃ­culos SEO Google
+                <i class="fa-solid fa-file-lines mr-1.5"></i> Artículos SEO Google
               </button>
               <button onclick="switchOrganicStudioTab('carruseles')" id="org-tab-carruseles" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all shrink-0">
                 <i class="fa-brands fa-linkedin mr-1.5"></i> Carruseles LinkedIn
@@ -2986,22 +2980,22 @@
             </div>
           </div>
 
-          <!-- PestaÃ±a 1: ArtÃ­culos TÃ©cnicos SEO para Google Colombia -->
+          <!-- Pestaña 1: Artículos Técnicos SEO para Google Colombia -->
           <div id="org-content-articulos" class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-4 rounded-2xl border border-slate-700">
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-slate-300">Seleccionar ArtÃ­culo de IngenierÃ­a SEO:</span>
+                <span class="text-xs font-bold text-slate-300">Seleccionar Artículo de Ingeniería SEO:</span>
                 <select id="org-article-selector" onchange="displayOrganicArticle(this.value)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-bold text-white outline-none cursor-pointer">
-                  <option value="ART_NSR10">1. GuÃ­a de Sondeos GeotÃ©cnicos NSR-10 TÃ­tulo H (BogotÃ¡ / Colombia)</option>
-                  <option value="ART_PESV">2. CÃ³mo Implementar el PESV Res. 40595 sin Multas de SuperTransporte</option>
-                  <option value="ART_GEOFISICA">3. TomografÃ­a ElÃ©ctrica y RefracciÃ³n SÃ­smica en Obras Civiles</option>
-                  <option value="ART_SST">4. EstÃ¡ndares MÃ­nimos SG-SST Res. 0312 y Decreto 1072 para Contratistas</option>
+                  <option value="ART_NSR10">1. Guía de Sondeos Geotécnicos NSR-10 Título H (Bogotá / Colombia)</option>
+                  <option value="ART_PESV">2. Cómo Implementar el PESV Res. 40595 sin Multas de SuperTransporte</option>
+                  <option value="ART_GEOFISICA">3. Tomografía Eléctrica y Refracción Sísmica en Obras Civiles</option>
+                  <option value="ART_SST">4. Estándares Mínimos SG-SST Res. 0312 y Decreto 1072 para Contratistas</option>
                 </select>
               </div>
 
               <div class="flex items-center gap-2">
                 <button onclick="copyOrganicArticleText()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer">
-                  <i class="fa-regular fa-copy text-teal-400"></i> Copiar ArtÃ­culo Completo
+                  <i class="fa-regular fa-copy text-teal-400"></i> Copiar Artículo Completo
                 </button>
                 <button onclick="copyOrganicArticleSchema()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer">
                   <i class="fa-solid fa-code text-amber-400"></i> Copiar Schema JSON-LD
@@ -3009,22 +3003,22 @@
               </div>
             </div>
 
-            <!-- Contenedor del ArtÃ­culo Previsualizado -->
+            <!-- Contenedor del Artículo Previsualizado -->
             <div id="org-article-display-box" class="bg-slate-900 rounded-2xl p-6 border border-slate-700 text-slate-200 space-y-4 text-xs sm:text-sm">
               <!-- Inyectado por app.js -->
             </div>
           </div>
 
-          <!-- PestaÃ±a 2: Carruseles B2B para LinkedIn -->
+          <!-- Pestaña 2: Carruseles B2B para LinkedIn -->
           <div id="org-content-carruseles" class="hidden space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900/80 p-4 rounded-2xl border border-slate-700">
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-slate-300">TemÃ¡tica de Carrusel B2B:</span>
+                <span class="text-xs font-bold text-slate-300">Temática de Carrusel B2B:</span>
                 <select id="org-carousel-selector" onchange="selectLinkedinCarousel(this.value)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-bold text-white outline-none cursor-pointer">
                   <option value="CAR_CIMENTACIONES">1. El error de $50M en cimentaciones por no cumplir la NSR-10</option>
-                  <option value="CAR_PESV_SANCIONES">2. Los 3 vacÃ­os del PESV que generan multas en SuperTransporte</option>
-                  <option value="CAR_TALUDES">3. 4 seÃ±ales de alerta geomecÃ¡nica en taludes mineros y viales</option>
-                  <option value="CAR_GEOTECNIA_BARATA">4. Por quÃ© contratar geotecnia barata encarece el concreto un 300%</option>
+                  <option value="CAR_PESV_SANCIONES">2. Los 3 vacíos del PESV que generan multas en SuperTransporte</option>
+                  <option value="CAR_TALUDES">3. 4 señales de alerta geomecánica en taludes mineros y viales</option>
+                  <option value="CAR_GEOTECNIA_BARATA">4. Por qué contratar geotecnia barata encarece el concreto un 300%</option>
                 </select>
               </div>
 
@@ -3038,39 +3032,39 @@
               <!-- Inyectado por app.js -->
             </div>
 
-            <!-- Caja con el Copy Completo de la PublicaciÃ³n -->
+            <!-- Caja con el Copy Completo de la Publicación -->
             <div class="bg-slate-900 p-4 rounded-2xl border border-slate-700">
               <span class="text-[10px] text-slate-400 font-bold uppercase block mb-1">Texto listo para publicar en LinkedIn con WhatsApp +57 312 789 4040:</span>
               <pre id="org-carousel-copy-preview" class="text-xs text-slate-300 whitespace-pre-wrap font-sans bg-slate-950 p-3 rounded-xl border border-slate-800 max-h-48 overflow-y-auto"></pre>
             </div>
           </div>
 
-          <!-- PestaÃ±a 3: Guiones Directos para WhatsApp y MensajerÃ­a B2B -->
+          <!-- Pestaña 3: Guiones Directos para WhatsApp y Mensajería B2B -->
           <div id="org-content-whatsapp" class="hidden space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="org-whatsapp-scripts-container">
               <!-- Inyectado por app.js -->
             </div>
           </div>
 
-          <!-- PestaÃ±a 4: Imanes de Leads TÃ©cnicos (Calculadoras Interactivas) -->
+          <!-- Pestaña 4: Imanes de Leads Técnicos (Calculadoras Interactivas) -->
           <div id="org-content-imanes" class="hidden space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
-              <!-- ImÃ¡n 1: Calculadora GeotÃ©cnica NSR-10 TÃ­tulo H -->
+              <!-- Imán 1: Calculadora Geotécnica NSR-10 Título H -->
               <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-6 shadow-xl space-y-4">
                 <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
                   <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg border border-emerald-500/30">
                     <i class="fa-solid fa-calculator"></i>
                   </div>
                   <div>
-                    <h5 class="text-sm font-black text-white">Calculadora GeotÃ©cnica NSR-10 (TÃ­tulo H.3)</h5>
+                    <h5 class="text-sm font-black text-white">Calculadora Geotécnica NSR-10 (Título H.3)</h5>
                     <p class="text-[11px] text-slate-400">Determina sondeos obligatorios y ensayos de laboratorio</p>
                   </div>
                 </div>
 
                 <div class="space-y-3 text-xs">
                   <div>
-                    <label class="text-slate-400 font-bold block mb-1">CategorÃ­a de la EdificaciÃ³n (Tabla H.3.1-1):</label>
+                    <label class="text-slate-400 font-bold block mb-1">Categoría de la Edificación (Tabla H.3.1-1):</label>
                     <select id="calc-nsr-cat" onchange="calculateGeotechnicalNsr10()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
                       <option value="BAJA">Baja (1 a 3 pisos - Cargas < 800 kN)</option>
                       <option value="MEDIA" selected>Media (4 a 10 pisos - Cargas 801 a 2000 kN)</option>
@@ -3080,18 +3074,18 @@
                   </div>
 
                   <div>
-                    <label class="text-slate-400 font-bold block mb-1">Ãrea en Planta del Proyecto (mÂ²):</label>
+                    <label class="text-slate-400 font-bold block mb-1">Área en Planta del Proyecto (m²):</label>
                     <input type="number" id="calc-nsr-area" value="850" min="50" max="20000" oninput="calculateGeotechnicalNsr10()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
                   </div>
 
-                  <!-- Resultados del CÃ¡lculo -->
+                  <!-- Resultados del Cálculo -->
                   <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 mt-2">
                     <div class="flex items-center justify-between">
-                      <span class="text-slate-400 font-bold">NÂ° MÃ­nimo de Sondeos:</span>
-                      <span id="calc-nsr-res-sondeos" class="font-mono text-emerald-400 font-black text-sm">4 sondeos mecÃ¡nicos</span>
+                      <span class="text-slate-400 font-bold">N° Mínimo de Sondeos:</span>
+                      <span id="calc-nsr-res-sondeos" class="font-mono text-emerald-400 font-black text-sm">4 sondeos mecánicos</span>
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="text-slate-400 font-bold">Profundidad MÃ­nima Sugerida:</span>
+                      <span class="text-slate-400 font-bold">Profundidad Mínima Sugerida:</span>
                       <span id="calc-nsr-res-prof" class="font-mono text-white font-black text-sm">15.0 metros</span>
                     </div>
                     <div class="flex items-center justify-between">
@@ -3102,53 +3096,53 @@
 
                   <button onclick="requestGeotechnicalQuoteFromCalc()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center justify-center gap-2 transition-all shadow-lg cursor-pointer">
                     <i class="fa-brands fa-whatsapp"></i>
-                    <span>Solicitar CotizaciÃ³n Inmediata con estos ParÃ¡metros</span>
+                    <span>Solicitar Cotización Inmediata con estos Parámetros</span>
                   </button>
                 </div>
               </div>
 
-              <!-- ImÃ¡n 2: DiagnÃ³stico RÃ¡pido de Nivel de DiseÃ±o PESV (Res. 40595) -->
+              <!-- Imán 2: Diagnóstico Rápido de Nivel de Diseño PESV (Res. 40595) -->
               <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-6 shadow-xl space-y-4">
                 <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
                   <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg border border-blue-500/30">
                     <i class="fa-solid fa-truck-front"></i>
                   </div>
                   <div>
-                    <h5 class="text-sm font-black text-white">DiagnÃ³stico RÃ¡pido de Nivel de DiseÃ±o PESV</h5>
-                    <p class="text-[11px] text-slate-400">ResoluciÃ³n 40595 de 2022 â€¢ Mintransporte & SuperTransporte</p>
+                    <h5 class="text-sm font-black text-white">Diagnóstico Rápido de Nivel de Diseño PESV</h5>
+                    <p class="text-[11px] text-slate-400">Resolución 40595 de 2022 â€¢ Mintransporte & SuperTransporte</p>
                   </div>
                 </div>
 
                 <div class="space-y-3 text-xs">
                   <div>
-                    <label class="text-slate-400 font-bold block mb-1">NÂ° de VehÃ­culos Propios / Tercerizados:</label>
+                    <label class="text-slate-400 font-bold block mb-1">N° de Vehículos Propios / Tercerizados:</label>
                     <input type="number" id="calc-pesv-vehiculos" value="24" min="1" max="1000" oninput="calculatePesvLevel()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
                   </div>
 
                   <div>
-                    <label class="text-slate-400 font-bold block mb-1">NÂ° de Conductores Contratados / Administrados:</label>
+                    <label class="text-slate-400 font-bold block mb-1">N° de Conductores Contratados / Administrados:</label>
                     <input type="number" id="calc-pesv-conductores" value="28" min="1" max="1000" oninput="calculatePesvLevel()" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold outline-none">
                   </div>
 
-                  <!-- Resultados del DiagnÃ³stico PESV -->
+                  <!-- Resultados del Diagnóstico PESV -->
                   <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 mt-2">
                     <div class="flex items-center justify-between">
-                      <span class="text-slate-400 font-bold">Nivel de DiseÃ±o Asignado:</span>
-                      <span id="calc-pesv-res-nivel" class="font-mono text-blue-400 font-black text-sm">ESTÃNDAR</span>
+                      <span class="text-slate-400 font-bold">Nivel de Diseño Asignado:</span>
+                      <span id="calc-pesv-res-nivel" class="font-mono text-blue-400 font-black text-sm">ESTÁNDAR</span>
                     </div>
                     <div class="flex items-center justify-between">
                       <span class="text-slate-400 font-bold">Pasos Obligatorios a Cumplir:</span>
                       <span id="calc-pesv-res-pasos" class="font-mono text-white font-black text-sm">20 Pasos Articulados</span>
                     </div>
                     <div class="flex items-center justify-between">
-                      <span class="text-slate-400 font-bold">Ente de InspecciÃ³n:</span>
+                      <span class="text-slate-400 font-bold">Ente de Inspección:</span>
                       <span class="text-amber-400 font-bold text-[11px]">SuperTransporte & MinTrabajo</span>
                     </div>
                   </div>
 
                   <button onclick="requestPesvAuditFromCalc()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-black flex items-center justify-center gap-2 transition-all shadow-lg cursor-pointer">
                     <i class="fa-brands fa-whatsapp"></i>
-                    <span>Solicitar DiagnÃ³stico & AuditorÃ­a PESV</span>
+                    <span>Solicitar Diagnóstico & Auditoría PESV</span>
                   </button>
                 </div>
               </div>
@@ -3499,7 +3493,7 @@
               </div>
 
               <div id="agent4-preview-body" class="text-xs text-slate-800 leading-relaxed space-y-2">
-                <p>¿Conoce el impacto real de no realizar una adecuada corrección energética del valor N en ensayos de penetración estándar SPT según la norma NSR-10 Título H?</p>
+                <p>¿Conoce el impacto real de no realizar una adecuada corrección energética del valor N en ensayos de penetración estándar SPT según la norma NSR-10 Título Hâ€¢</p>
                 <p>En faenas de alta exigencia, la variación entre la energía teórica y real del martinete puede subestimar la resistencia admisible del estrato portante, provocando sobrecostos del 35% en cimentaciones profundas.</p>
                 <p>Desde la Dirección Técnica de SIG² integramos correlaciones automáticas en software propietario SIG Campo con entrega formal de memorias de cálculo auditables.</p>
                 <p class="text-blue-700 font-semibold">#Geotecnia #NSR10 #EstudioDeSuelos #IngenieriaCivil #SondeosSPT #SIG2</p>
@@ -4888,7 +4882,7 @@
             <span id="radar-last-scan-info">Último rastreo del mercado: hace instantes. Oportunidades actualizadas.</span>
           </div>
           <div class="flex items-center gap-2">
-            <span>¿Deseas volcar todas las oportunidades al CRM?</span>
+            <span>¿Deseas volcar todas las oportunidades al CRMâ€¢</span>
             <button onclick="importAllRadarOpportunitiesToCrm()" class="text-sig-teal font-bold hover:underline">
               Importar Todas al Pipeline
             </button>
@@ -4960,323 +4954,81 @@
        NUEVA SECCIÓN: NOTICIAS & ARTÍCULOS TÉCNICOS / SALA DE PRENSA DE INGENIERÍA
        ========================================================================= -->
   
-</div>
-
-<div id="view-contacto" class="main-tab-view hidden">
-<section id="noticias" class="py-20 bg-slate-50/70 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-on-scroll">
-        <div>
-          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-sig-teal text-xs font-extrabold uppercase tracking-wider mb-2.5 shadow-xs">
-            <i class="fa-solid fa-newspaper"></i>
-            SALA DE PRENSA & ACTUALIDAD TÉCNICA
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-black text-sig-navy tracking-tight">
-            Noticias, Normativa & Casos de Éxito de Ingeniería
-          </h2>
-          <p class="text-sm sm:text-base text-sig-graphite max-w-2xl mt-2 leading-relaxed">
-            Publicaciones técnicas especializadas, novedades regulatorias (SuperTransporte, ANM, ANLA) y casos de aplicación en minería, medio ambiente y geotecnia.
-          </p>
-        </div>
-
-        <!-- Filtros de Noticias -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
-          <button onclick="filterNewsArticles('all')" class="news-filter-btn px-3.5 py-2 rounded-xl bg-sig-navy text-white font-bold transition-all shadow-xs" data-category="all">
-            Todas
-          </button>
-          <button onclick="filterNewsArticles('pesv')" class="news-filter-btn px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold border border-slate-300 transition-all shadow-xs" data-category="pesv">
-            Normativa PESV
-          </button>
-          <button onclick="filterNewsArticles('mineria')" class="news-filter-btn px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold border border-slate-300 transition-all shadow-xs" data-category="mineria">
-            Minería & Geología
-          </button>
-          <button onclick="filterNewsArticles('ambiental')" class="news-filter-btn px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold border border-slate-300 transition-all shadow-xs" data-category="ambiental">
-            Ingeniería Ambiental
-          </button>
-        </div>
-      </div>
-
-      <!-- Cuadrícula de Artículos Técnicos -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="news-grid-container">
-        
-        <!-- Artículo 1: PESV -->
-        <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-1" data-news-category="pesv">
-          <div>
-            <div class="relative h-48 overflow-hidden group">
-              <img src="assets/flotas-transporte-pesv-inspeccion.jpg" alt="Inspección preoperacional de tractocamiones y volquetas bajo Resolución 40595 PESV" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-              <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
-                Resolución 40595
-              </span>
-            </div>
-            <div class="p-5 space-y-2">
-              <div class="text-[10px] text-slate-500 flex items-center gap-1.5 font-semibold">
-                <i class="fa-regular fa-calendar text-sig-teal"></i> Noviembre 2026 <span class="opacity-30 mx-1">/</span> <i class="fa-regular fa-clock text-sig-teal"></i> <span class="tabular-nums">6</span> min
-              </div>
-              <h3 class="text-sm font-black text-sig-navy leading-snug hover:text-sig-teal transition-colors">
-                Fiscalización PESV: Cómo superar las inspecciones de SuperTransporte sin sanciones
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                Los 5 hallazgos más comunes en auditorías a flotas contratistas y cómo la digitalización de la inspección preoperacional blinda jurídicamente a la empresa.
-              </p>
-            </div>
-          </div>
-          <div class="p-5 pt-0">
-            <a href="https://wa.me/573127894040?text=Hola,%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20Fiscalizaci%C3%B3n%20PESV%20y%20deseo%20asesor%C3%ADa%20t%C3%A9cnica" target="_blank" class="w-full py-2.5 btn-engineering-secondary text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
-              <span>Consultar Especialista</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- Artículo 2: Minería 3D -->
-        <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-2" data-news-category="mineria">
-          <div>
-            <div class="relative h-48 overflow-hidden group">
-              <img src="assets/mineria-cielo-abierto-taludes.jpg" alt="Minería a cielo abierto con bermas, taludes y camiones de extracción minera" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-              <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
-                Minería & Geología
-              </span>
-            </div>
-            <div class="p-5 space-y-2">
-              <div class="text-[10px] text-slate-500 flex items-center gap-1.5 font-semibold">
-                <i class="fa-regular fa-calendar text-sig-teal"></i> Octubre 2026 <span class="opacity-30 mx-1">/</span> <i class="fa-regular fa-clock text-sig-teal"></i> <span class="tabular-nums">8</span> min
-              </div>
-              <h3 class="text-sm font-black text-sig-navy leading-snug hover:text-sig-teal transition-colors">
-                Modelamiento 3D y Certificación de Recursos NI 43-101 en Leapfrog Geo
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                Integración de nubes LiDAR de alta densidad con bases de datos de sondajes diamantinos para reducir el sesgo volumétrico en tajos abiertos y vetas.
-              </p>
-            </div>
-          </div>
-          <div class="p-5 pt-0">
-            <a href="https://wa.me/573127894040?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20Modelamiento%203D%20y%20C%C3%A1lculo%20de%20Reservas" target="_blank" class="w-full py-2.5 btn-engineering-secondary text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
-              <span>Consultar Especialista</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- Artículo 3: Ambiental ANLA -->
-        <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-3" data-news-category="ambiental">
-          <div>
-            <div class="relative h-48 overflow-hidden group">
-              <img src="assets/geotecnia-perforacion-taludes.jpg" alt="Estudio ambiental de cuenca y perforación hidrogeológica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-              <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
-                Licenciamiento ANLA
-              </span>
-            </div>
-            <div class="p-5 space-y-2">
-              <div class="text-[10px] text-slate-500 flex items-center gap-1.5 font-semibold">
-                <i class="fa-regular fa-calendar text-sig-teal"></i> Octubre 2026 <span class="opacity-30 mx-1">/</span> <i class="fa-regular fa-clock text-sig-teal"></i> <span class="tabular-nums">5</span> min
-              </div>
-              <h3 class="text-sm font-black text-sig-navy leading-snug hover:text-sig-teal transition-colors">
-                Nuevo Estándar de Geodatabases (GDB) ANLA 2026 para EIA y DAA
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                Reglas topológicas y estructura de metadatos espaciales para radicación formal sin objeciones en la plataforma Vital de la ANLA.
-              </p>
-            </div>
-          </div>
-          <div class="p-5 pt-0">
-            <a href="https://wa.me/573127894040?text=Hola,%20requiero%20asesor%C3%ADa%20en%20Geodatabases%20GDB%20y%20EIA%20ante%20la%20ANLA" target="_blank" class="w-full py-2.5 btn-engineering-secondary text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
-              <span>Consultar Especialista</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- Artículo 4: Geotecnia & IoT -->
-        <article class="news-card card-engineering overflow-hidden flex flex-col justify-between reveal-on-scroll stagger-4" data-news-category="mineria">
-          <div>
-            <div class="relative h-48 overflow-hidden group">
-              <img src="assets/tunel-subterraneo-geotecnia.jpg" alt="Excavación subterránea de túnel con arcos de acero, concreto lanzado e instrumentación geotécnica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-              <span class="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-sm text-teal-300 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border border-teal-500/30">
-                Geotecnia & IoT
-              </span>
-            </div>
-            <div class="p-5 space-y-2">
-              <div class="text-[10px] text-slate-500 flex items-center gap-1.5 font-semibold">
-                <i class="fa-regular fa-calendar text-sig-teal"></i> Septiembre 2026 <span class="opacity-30 mx-1">/</span> <i class="fa-regular fa-clock text-sig-teal"></i> <span class="tabular-nums">7</span> min
-              </div>
-              <h3 class="text-sm font-black text-sig-navy leading-snug hover:text-sig-teal transition-colors">
-                Monitoreo de Deformación de Taludes con Sensores IoT e Iridium
-              </h3>
-              <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                Implementación de piezómetros de cuerda vibrante e inclinómetros digitales para alerta temprana en presas de relaves y laderas críticas.
-              </p>
-            </div>
-          </div>
-          <div class="p-5 pt-0">
-            <a href="https://wa.me/573127894040?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20Monitoreo%20Geot%C3%A9cnico%20de%20Taludes%20IoT" target="_blank" class="w-full py-2.5 btn-engineering-secondary text-xs font-bold rounded-xl flex items-center justify-center gap-2 transition-all">
-              <span>Consultar Especialista</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-          </div>
-        </article>
-
-      </div>
-
-    </div>
-  </section>
 
   <!-- =========================================================================
-       FORMULARIO DE CONTACTO TÉCNICO Y CANALES DIRECTOS
+       NUEVA SECCIÃ“N: SIG² ALMACÃ‰N & LOGÍSTICA (DEMO INTERACTIVA)
+       CONTROL DE INVENTARIOS, KARDEX, ENTRADAS/SALIDAS Y STOCK CRÍTICO EN FAENA
        ========================================================================= -->
-  <section id="contacto" class="py-20 bg-white">
+  <section id="almacen-app" class="py-10 bg-white border-b border-slate-200" style="display: none;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        <div class="lg:col-span-5 space-y-6">
-          <span class="inline-flex items-center gap-1.5 text-xs font-bold text-sig-teal uppercase tracking-widest">
-            <i class="fa-solid fa-satellite-dish"></i>
-            <span>Canales Institucionales</span>
-          </span>
-
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-sig-navy">
-            Inicie su Proyecto con la Precisión de SIG²
-          </h2>
-
-          <p class="text-sm text-sig-graphite leading-relaxed">
-            Consulte con nuestros directores de ingeniería en Geología, Medio Ambiente, SST, Seguridad Vial (PESV) o Transformación Digital. Atendemos requerimientos de licitaciones públicas y proyectos privados con despliegue en campo.
-          </p>
-
-          <div class="space-y-4 pt-2 text-xs">
-            <div class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <i class="fa-solid fa-briefcase text-sig-navy text-sm mt-0.5"></i>
-              <div>
-                <strong class="text-sig-navy block font-bold">Atención Técnica a Proyectos:</strong>
-                <span class="text-slate-600">Despliegue Operativo en Faenas y Zonas Minero-Ambientales</span>
-                <div class="text-xs text-sig-teal mt-0.5 font-semibold">Cobertura Nacional e Internacional</div>
-              </div>
+      <!-- Encabezado de la Demo de Almacén -->
+      <div class="bg-gradient-to-r from-slate-900 via-sig-navy to-slate-900 rounded-2xl p-6 sm:p-8 text-white mb-8 shadow-xl border border-slate-800">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-3 max-w-3xl">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-black uppercase tracking-wider border border-amber-500/30">
+                <i class="fa-solid fa-boxes-stacked mr-1"></i> Demo Interactiva en Vivo
+              </span>
+              <span class="px-3 py-1 rounded-full bg-sig-teal/20 text-teal-300 text-[10px] font-black uppercase tracking-wider border border-sig-teal/30">
+                <i class="fa-solid fa-warehouse mr-1"></i> Control de Stock & Kardex
+              </span>
+              <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-black uppercase tracking-wider border border-blue-500/30">
+                <i class="fa-solid fa-truck-ramp-box mr-1"></i> Logística de Faena
+              </span>
             </div>
 
-            <div class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <span class="icon-whatsapp text-emerald-600 text-base mt-0.5"></span>
-              <div>
-                <strong class="text-sig-navy block font-bold">WhatsApp Directo de Cotización:</strong>
-                <a href="https://wa.me/573127894040" target="_blank" class="text-emerald-700 hover:underline block font-semibold font-mono tabular-nums">+57 312 789 4040</a>
-                <span class="text-xs text-slate-500">Atención inmediata con directores de proyecto</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <i class="fa-solid fa-envelope-open-text text-sig-navy text-sm mt-0.5"></i>
-              <div>
-                <strong class="text-sig-navy block font-bold">Correos Institucionales:</strong>
-                <a href="mailto:cotizaciones@sig2-ingenieria.com" class="text-sig-teal hover:underline block font-semibold">cotizaciones@sig2-ingenieria.com</a>
-                <a href="mailto:direccion.tecnica@sig2-ingenieria.com" class="text-slate-500 hover:underline block text-xs">direccion.tecnica@sig2-ingenieria.com</a>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <i class="fa-solid fa-phone text-sig-navy text-sm mt-0.5"></i>
-              <div>
-                <strong class="text-sig-navy block font-bold">Línea de Guardia Técnica 24/7:</strong>
-                <span class="text-slate-700">+57 (604) 448-9210 / Cel: +57 312 789-4040</span>
-                <span class="text-xs text-sig-teal block font-semibold">Atención prioritaria para emergencias operativas</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
-            <div class="text-xs font-bold text-sig-navy flex items-center gap-2 mb-1">
-              <i class="fa-solid fa-lock text-sig-teal"></i> Cláusula de Confidencialidad Técnica
-            </div>
-            <p class="text-xs text-slate-500 leading-relaxed">
-              Toda información geológica, topográfica y corporativa suministrada es tratada bajo estrictos Acuerdos de Confidencialidad y No Divulgación (NDA).
-            </p>
-          </div>
-        </div>
-
-        <!-- Formulario Oficial de Cotización -->
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-slate-300 shadow-md">
-          <div class="border-b border-slate-200 pb-3 mb-6">
-            <h3 class="text-lg font-bold text-sig-navy flex items-center gap-2">
-              <i class="fa-solid fa-file-signature text-sig-teal"></i>
-              <span>Formulario de Solicitud de Cotización</span>
+            <h3 class="text-xl sm:text-3xl font-black text-white tracking-tight">
+              SIG² Almacén: Control de Inventario, Entradas/Salidas y Kardex Operativo
             </h3>
-            <p class="text-xs text-slate-500 mt-1">
-              Los requerimientos ingresados generan un código de radicado preliminar de atención técnica directa.
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Módulo de demostración para la trazabilidad y administración centralizada de inventarios, insumos de perforación, repuestos de maquinaria, herramientas bajo custodia y alertas automáticas de reposición en campamento y almacén central.
             </p>
+
+            <div class="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-1">
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-check text-emerald-400"></i>
+                <span>Gestión de catálogo y SKU</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-check text-emerald-400"></i>
+                <span>Entradas y despachos con firma</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-check text-emerald-400"></i>
+                <span>Historial de movimientos en tiempo real</span>
+              </div>
+            </div>
           </div>
 
-          <form id="contact-form" class="space-y-4 text-xs">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="contact-name" class="block uppercase font-bold text-slate-700 mb-1">Nombre & Apellido *</label>
-                <input type="text" id="contact-name" required placeholder="Ing. Alejandro Restrepo" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-              </div>
-              <div>
-                <label for="contact-company" class="block uppercase font-bold text-slate-700 mb-1">Empresa / Razón Social *</label>
-                <input type="text" id="contact-company" required placeholder="Minera Los Andes S.A.S." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-              </div>
-            </div>
+          <!-- Botones de Acción de la Demo -->
+          <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+            <a href="apps/almacen/index.html" target="_blank" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer">
+              <i class="fa-solid fa-up-right-from-square"></i>
+              <span>Abrir en Pantalla Completa</span>
+            </a>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="contact-email" class="block uppercase font-bold text-slate-700 mb-1">Correo Electrónico Corporativo *</label>
-                <input type="email" id="contact-email" required placeholder="a.restrepo@empresa.com" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-              </div>
-              <div>
-                <label for="contact-phone" class="block uppercase font-bold text-slate-700 mb-1">Teléfono / WhatsApp Móvil *</label>
-                <input type="tel" id="contact-phone" required placeholder="+57 312 000 0000" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-              </div>
-            </div>
+            <button onclick="document.getElementById('iframe-almacen-demo').contentWindow.location.reload();" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 flex items-center justify-center gap-2 transition-all cursor-pointer">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Recargar Demo</span>
+            </button>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="contact-sector" class="block uppercase font-bold text-slate-700 mb-1">Sector de Interés *</label>
-                <select id="contact-sector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-                  <option value="mineria">Geología & Minería (PTO, Modelado 3D, Taludes)</option>
-                  <option value="ambiental">Ingeniería Ambiental (EIA, PMA, ICA)</option>
-                  <option value="sst">SST & PESV (App de Flotas y Telemetría)</option>
-                  <option value="digitales">Soluciones Digitales, BI & Apps Offline</option>
-                  <option value="gestion">Gestión, Contaduría & Logística de Faenas</option>
-                  <option value="multidisciplinar">Proyecto Multidisciplinar Llave en Mano</option>
-                </select>
-              </div>
-              <div>
-                <label for="contact-urgency" class="block uppercase font-bold text-slate-700 mb-1">Nivel de Urgencia Operativa *</label>
-                <select id="contact-urgency" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-                  <option value="inmediata">Inmediata (Emergencia Geotécnica o Vial &lt; 48h)</option>
-                  <option value="corto-plazo" selected>Corto Plazo (Ejecución dentro de 15 días)</option>
-                  <option value="licitacion">Licitación / Proyecto Programado (1 a 3 meses)</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="contact-subject" class="block uppercase font-bold text-slate-700 mb-1">Asunto Técnico del Requerimiento *</label>
-              <input type="text" id="contact-subject" required placeholder="Ej: Cotización Levantamiento LiDAR 200 Has y Modelado Geológico 3D" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none">
-            </div>
-
-            <div>
-              <label for="contact-message" class="block uppercase font-bold text-slate-700 mb-1">Detalle del Alcance & Localización del Predio *</label>
-              <textarea id="contact-message" rows="4" required placeholder="Describa el municipio, características de la faena o requerimiento normativo..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-800 focus:border-sig-navy focus:outline-none"></textarea>
-            </div>
-
-            <div class="pt-2">
-              <button type="submit" id="btn-contact-submit" class="w-full py-3.5 bg-sig-navy hover:bg-sig-navy-dark text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm transition-all flex items-center justify-center gap-2">
-                <span>Radicar Solicitud de Cotización</span>
-                <i class="fa-solid fa-paper-plane text-xs"></i>
-              </button>
-            </div>
-          </form>
+            <a href="https://wa.me/573127894040?text=Hola%20SIG2%20Grupo,%20vi%20la%20demo%20de%20SIG2%20Almac%C3%A9n%20y%20deseo%20implementar%20este%20software%20de%20log%C3%ADstica%20para%20mi%20empresa." target="_blank" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Solicitar para su Empresa</span>
+            </a>
+          </div>
         </div>
+      </div>
 
+      <!-- Iframe Contenedor Interactivo de la Aplicación -->
+      <div class="relative w-full rounded-2xl overflow-hidden border border-slate-300 shadow-2xl bg-slate-900" style="min-height: 720px; height: 82vh;">
+        <iframe id="iframe-almacen-demo" src="apps/almacen/index.html" class="w-full h-full border-0" allow="fullscreen" loading="lazy"></iframe>
       </div>
 
     </div>
-  </section>
-
-  <!-- =========================================================================
-       FOOTER PROFESIONAL CORPORATIVO (SOBRIO BLANCO & SLATE)
-       ========================================================================= -->
-  
-</div>
+  </section></div>
 
 <footer class="bg-slate-50 border-t border-slate-200 pt-16 pb-12 text-slate-600 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -5286,7 +5038,7 @@
         <!-- Columna 1: Marca con Logotipo Oficial Conservado -->
         <div class="lg:col-span-2 space-y-4">
           <div class="bg-white p-2.5 rounded-lg border border-slate-200 inline-block shadow-sm">
-            <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² Corporativo" class="h-14 sm:h-16 w-auto object-contain">
+            <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² GRUPO" class="h-14 sm:h-16 w-auto object-contain">
           </div>
 
           <p class="text-xs text-sig-graphite leading-relaxed pr-6">
@@ -5363,7 +5115,7 @@
           <span class="opacity-40">/</span>
           <a href="#" class="hover:text-slate-800">Normativa ANM / ANLA</a>
           <span class="opacity-40">/</span>
-          <a href="#contacto" class="text-sig-teal hover:underline font-bold">Atención a Proyectos</a>
+          <a href="https://wa.me/573127894040" target="_blank" class="text-sig-teal hover:underline font-bold">Atención a Proyectos</a>
         </div>
       </div>
 
@@ -5581,7 +5333,7 @@
           ¡Hola! Soy <strong>Cadenero</strong>, el asistente técnico de ingeniería y CRM de <strong>SIG²</strong>.<br><br>
           Conozco a fondo todas nuestras soluciones: geología 3D, estabilidad de taludes, radicación de PTO ante la ANM, cartografía LiDAR, estudios ambientales (EIA/PMA) y nuestra <strong>App de Flotas para el PESV (Res. 40595)</strong>.<br><br>
           Para canalizar tu requerimiento técnico y transferir tu cotización directa a WhatsApp (+57 312 789 4040):<br><br>
-          <strong>¿Qué tipo de vinculación deseas establecer con nosotros hoy?</strong>
+          <strong>¿Qué tipo de vinculación deseas establecer con nosotros hoyâ€¢</strong>
         </div>
       </div>
 
@@ -5779,7 +5531,7 @@
           ⚡ Respuesta en menos de 15 minutos
         </span>
         <h3 class="text-xl sm:text-2xl font-black text-sig-navy tracking-tight">
-          ¿Necesita cotizar un Estudio de Suelos, PESV o Geofísica hoy?
+          ¿Necesita cotizar un Estudio de Suelos, PESV o Geofísica hoyâ€¢
         </h3>
         <p class="text-xs text-slate-600 mt-2 max-w-sm mx-auto">
           No pierda tiempo en trámites lentos. Un ingeniero especialista senior le atiende de inmediato por WhatsApp para enviarle una propuesta técnica preliminar.
@@ -5813,7 +5565,7 @@
       <div class="p-5 sm:p-6 bg-gradient-to-r from-sig-navy via-slate-900 to-blue-950 text-white flex items-center justify-between border-b border-slate-800 shrink-0">
         <div class="flex items-center gap-4">
           <div class="flex items-center gap-2 bg-white/10 p-1.5 rounded-xl border border-white/20">
-            <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG²" class="h-8 sm:h-10 w-auto object-contain rounded">
+            <img src="assets/sig2-logo-grupo.jpg?v=20261110" alt="SIG² GRUPO" class="h-8 sm:h-10 w-auto object-contain rounded">
             <span class="text-xs font-bold text-slate-300">+</span>
             <img src="assets/gesura-logo.jpg" alt="GESURA" class="h-8 sm:h-10 w-auto object-contain rounded">
           </div>
