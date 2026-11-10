@@ -239,6 +239,42 @@ const SERVICES_CATALOG = [
     image: 'assets/tunel-subterraneo-geotecnia.jpg',
     tag: 'Certificación Personal'
   },
+  {
+    id: 'sst-gesura-01',
+    category: 'sst-pesv',
+    categoryName: 'SST & PESV',
+    title: 'Alianza GESURA: Acompañamiento en Tareas de Alto Riesgo (TAR)',
+    shortDesc: 'Acompañamiento presencial e inspección de campo en Guadalajara de Buga y Valle del Cauca para trabajo seguro en alturas (Res. 4272/2021), espacios confinados (Res. 0491/2020), trabajos en caliente y bloqueo LOTO.',
+    specs: [
+      'Cuadrilla de campo con coordinador de alturas y vigía certificado para faenas en sitio',
+      'Protocolos de permisos de trabajo, ATS y equipos de rescate certificados',
+      'Cobertura directa en Buga, Tuluá, Yotoco, Guacarí, Palmira, Cali y Buenaventura'
+    ],
+    deliverables: 'Permisos de trabajo validados, listas de chequeo en sitio y reporte fotográfico de seguridad de faena.',
+    software: 'Normativa Res. 4272/2021, Res. 0491/2020, GESURA Field Audit',
+    image: 'assets/gesura-logo.jpg',
+    tag: '🤝 Alianza GESURA Valle',
+    hasDemoBtn: true,
+    demoLink: '#alianza-gesura'
+  },
+  {
+    id: 'sst-gesura-02',
+    category: 'sst-pesv',
+    categoryName: 'SST & PESV',
+    title: 'Batería de Riesgo Psicosocial Certificada (Res. 2764 / 2022)',
+    shortDesc: 'Evaluación integral intralaboral, extralaboral y estrés aplicada por Psicólogo Especialista en SST con Licencia vigente, plataforma de recolección híbrida y plan de intervención normativo ante MinTrabajo.',
+    specs: [
+      'Instrumento oficial Ministerio del Trabajo (Res. 2764 de 2022 y Res. 2404 de 2019)',
+      'Aplicación confidencial digital o presencial con tabulación estadística inmediata',
+      'Firma y aval de Psicólogo especialista SST con registro y tarjeta profesional vigente'
+    ],
+    deliverables: 'Informe diagnóstico sectorial, matriz de nivel de riesgo y plan de intervención psicosocial para la empresa.',
+    software: 'Resolución 2764/2022, Plataforma SIG² Psicosocial Analytics',
+    image: 'assets/asistente-ia-normativa-minera.jpg',
+    tag: '🧠 Batería Psicosocial',
+    hasDemoBtn: true,
+    demoLink: '#alianza-gesura'
+  },
 
   // 4. Soluciones Digitales y BI
   {
@@ -496,7 +532,10 @@ function initApp() {
     ['initSigCampoSimulator', () => initSigCampoSimulator()],
     ['initCrmHub', () => initCrmHub()],
     ['initGoogleAdsAgent', () => initGoogleAdsAgent()],
-    ['initConsultoraAI', () => initConsultoraAI()]
+    ['initConsultoraAI', () => initConsultoraAI()],
+    ['initSocialProofLive', () => initSocialProofLive()],
+    ['initExitIntentCapture', () => initExitIntentCapture()],
+    ['initDailyMachine', () => initDailyMachine()]
   ];
 
   for (const [name, fn] of steps) {
@@ -7137,6 +7176,54 @@ const AUTONOMOUS_RADAR_OPPORTUNITIES = [
     targetEmail: 'licitaciones@acueductoregional.gov.co',
     serviceMatch: 'Geotecnia Hidráulica + Sondeos SPT',
     badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+  },
+  {
+    id: 'RADAR-VALLE-01',
+    title: 'Ingenio & Agroindustria del Valle S.A.S.',
+    sector: 'sst',
+    sectorLabel: 'Empresas Agroindustriales (Valle)',
+    region: 'Valle y Eje Cafetero',
+    city: 'Guadalajara de Buga / El Cerrito, Valle del Cauca',
+    need: 'AplicaciÃ³n urgente de BaterÃ­a de Riesgo Psicosocial (ResoluciÃ³n 2764 de 2022) para 145 colaboradores de planta y campo. Demanda psicÃ³logo con licencia SST vigente y plan de intervenciÃ³n ante comitÃ© de convivencia.',
+    budget: 9500000,
+    urgency: 'REQUERIMIENTO INMEDIATO',
+    contactPerson: 'Dra. Liliana MondragÃ³n - Directora Talento Humano',
+    targetPhone: '573127894040',
+    targetEmail: 'talentohumano@agroindustriavalle.com.co',
+    serviceMatch: 'BaterÃ­a Psicosocial Res. 2764 con GESURA/SIGÂ²',
+    badgeClass: 'bg-purple-500/20 text-purple-300 border-purple-500/30'
+  },
+  {
+    id: 'RADAR-VALLE-02',
+    title: 'Silos & Granos del Valle del Cauca',
+    sector: 'sst',
+    sectorLabel: 'LogÃ­stica & Agroindustria (Valle)',
+    region: 'Valle y Eje Cafetero',
+    city: 'Guadalajara de Buga / Yotoco, Valle del Cauca',
+    need: 'AcompaÃ±amiento tÃ©cnico en faena para ingreso a Espacios Confinados (Res. 0491 de 2020) y trabajo en alturas en silos de 24 metros (Res. 4272 de 2021). Requiere coordinador en sitio y equipo de rescate.',
+    budget: 8800000,
+    urgency: 'PARADA DE PLANTA PROGRAMADA',
+    contactPerson: 'Ing. Carlos HernÃ¡n Caicedo - Jefe de Seguridad y Salud',
+    targetPhone: '573127894040',
+    targetEmail: 'seguridad@silosdelvalle.com',
+    serviceMatch: 'AcompaÃ±amiento en Sitio TAR GESURA',
+    badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+  },
+  {
+    id: 'RADAR-VALLE-03',
+    title: 'Molinos Centrales & Alimentos de TuluÃ¡',
+    sector: 'sst',
+    sectorLabel: 'Sector Alimentos & MolinerÃ­a',
+    region: 'Valle y Eje Cafetero',
+    city: 'TuluÃ¡ / San Pedro, Valle del Cauca',
+    need: 'AuditorÃ­a integral al SG-SST (Dec. 1072) y acompaÃ±amiento en procedimientos de Bloqueo y Etiquetado LOTO en mantenimiento de molinos de martillo.',
+    budget: 7200000,
+    urgency: 'PLIEGO ACTIVO',
+    contactPerson: 'Dra. Marcela Osorio - Coordinadora HSEQ',
+    targetPhone: '573127894040',
+    targetEmail: 'hseq@molinostulua.com',
+    serviceMatch: 'AuditorÃ­a SG-SST + Bloqueo LOTO',
+    badgeClass: 'bg-blue-500/20 text-blue-300 border-blue-500/30'
   }
 ];
 
@@ -8197,4 +8284,476 @@ function scrollToOrganicStudio() {
   if (el) {
     el.scrollIntoView({ behavior: 'smooth' });
   }
+}
+
+
+
+/* =============================================================================
+   MÁQUINA DE 1 CLIENTE AL DÍA, PRUEBA SOCIAL & ALIANZA ESTRATÉGICA GESURA
+   PORTAFOLIO ESPECIAL EN SOCIEDAD SST • GUADALAJARA DE BUGA & VALLE DEL CAUCA
+   ============================================================================= */
+
+// 1. ESTADO DE LA MÁQUINA DIARIA
+const DAILY_MACHINE_STORAGE_KEY = 'sig2_daily_machine_state_v1';
+
+let dailyMachineState = {
+  date: new Date().toISOString().split('T')[0],
+  contactedCount: 0,
+  leads: []
+};
+
+// 2. POOL DE CITAS DE PRUEBA SOCIAL EN COLOMBIA
+const SOCIAL_PROOF_EVENTS = [
+  {
+    icon: 'fa-hard-hat',
+    time: 'Hace 8 min',
+    text: 'Constructora Hábitat (Bogotá) cotizó Estudio de Suelos NSR-10 (4 sondeos SPT)',
+    service: 'Estudio de Suelos NSR-10'
+  },
+  {
+    icon: 'fa-brain',
+    time: 'Hace 14 min',
+    text: 'Empresa Agroindustrial en Buga cotizó Batería de Riesgo Psicosocial (Res. 2764) para 85 trabajadores',
+    service: 'Batería Psicosocial Res. 2764'
+  },
+  {
+    icon: 'fa-truck-fast',
+    time: 'Hace 22 min',
+    text: 'Transportes de la Sabana (Mosquera) solicitó Diagnóstico PESV Res. 40595 para 38 camiones',
+    service: 'Auditoría PESV Res. 40595'
+  },
+  {
+    icon: 'fa-person-falling',
+    time: 'Hace 31 min',
+    text: 'Planta Industrial en Yotoco (Valle) solicitó Coordinador de Alturas y Rescate GESURA',
+    service: 'Trabajo en Alturas Res. 4272'
+  },
+  {
+    icon: 'fa-mountain',
+    time: 'Hace 42 min',
+    text: 'Canteras San Antonio (Cundinamarca) cotizó Volumetría LiDAR y Topografía con Dron',
+    service: 'Topografía LiDAR Minera'
+  },
+  {
+    icon: 'fa-dungeon',
+    time: 'Hace 53 min',
+    text: 'Molino de Granos en Tuluá solicitó Vigía y Monitoreo de Gases en Espacios Confinados',
+    service: 'Espacios Confinados Res. 0491'
+  }
+];
+
+let socialProofIndex = 0;
+let socialProofTimer = null;
+
+/**
+ * Inicialización de la Máquina Diaria
+ */
+function initDailyMachine() {
+  loadDailyMachineState();
+  renderDailyMachineDate();
+  if (!dailyMachineState.leads || dailyMachineState.leads.length === 0) {
+    generateFreshDailyLeads(false);
+  } else {
+    renderDailyLeads();
+  }
+}
+
+function loadDailyMachineState() {
+  try {
+    const raw = localStorage.getItem(DAILY_MACHINE_STORAGE_KEY);
+    const today = new Date().toISOString().split('T')[0];
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.date === today) {
+        dailyMachineState = parsed;
+        return;
+      }
+    }
+    dailyMachineState = {
+      date: today,
+      contactedCount: 0,
+      leads: []
+    };
+    saveDailyMachineState();
+  } catch (e) {
+    console.warn('[DAILY MACHINE] Error al cargar estado diario:', e);
+  }
+}
+
+function saveDailyMachineState() {
+  try {
+    localStorage.setItem(DAILY_MACHINE_STORAGE_KEY, JSON.stringify(dailyMachineState));
+  } catch (e) {
+    console.warn('[DAILY MACHINE] Error al guardar:', e);
+  }
+}
+
+function renderDailyMachineDate() {
+  const dateElem = document.getElementById('daily-machine-date');
+  if (dateElem) {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('es-CO', options);
+    dateElem.textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+  }
+}
+
+function generateFreshDailyLeads(showToastMsg = true) {
+  const shuffled = [...AUTONOMOUS_RADAR_OPPORTUNITIES].sort(() => Math.random() - 0.5);
+  dailyMachineState.leads = shuffled.slice(0, 5).map((item, idx) => ({
+    ...item,
+    dailyId: `DAILY-${idx + 1}`,
+    contacted: false
+  }));
+  saveDailyMachineState();
+  renderDailyLeads();
+  if (showToastMsg) {
+    showToast('5 nuevos prospectos prioritarios cargados para hoy.', 'info');
+  }
+}
+
+function renderDailyLeads() {
+  const container = document.getElementById('daily-leads-container');
+  const countElem = document.getElementById('daily-contact-count');
+
+  if (countElem) {
+    countElem.textContent = dailyMachineState.contactedCount;
+  }
+
+  if (!container) return;
+
+  container.innerHTML = dailyMachineState.leads.map(lead => `
+    <div class="bg-slate-900/90 border ${lead.contacted ? 'border-emerald-500/50 bg-emerald-950/20' : 'border-slate-700'} rounded-2xl p-4 flex flex-col justify-between space-y-3 relative shadow-md">
+      <div>
+        <div class="flex items-center justify-between gap-1 mb-2">
+          <span class="px-2 py-0.5 rounded-lg text-[9px] font-black uppercase tracking-wider ${lead.badgeClass}">
+            ${lead.sectorLabel.split('&')[0]}
+          </span>
+          ${lead.contacted ? 
+            `<span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-black text-[9px]"><i class="fa-solid fa-check"></i> Listo</span>` : 
+            `<span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold text-[9px]">Pendiente</span>`
+          }
+        </div>
+
+        <h5 class="text-xs font-black text-white leading-tight">${lead.title}</h5>
+        <span class="text-[10px] text-slate-400 block mt-0.5">${lead.city}</span>
+
+        <p class="text-[11px] text-slate-300 mt-2 bg-slate-950/60 p-2 rounded-xl border border-slate-800 line-clamp-3 leading-relaxed">
+          ${lead.need}
+        </p>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800/80 space-y-1.5">
+        <div class="flex items-center justify-between text-[10px]">
+          <span class="text-slate-400 font-bold">Presupuesto:</span>
+          <span class="font-mono text-emerald-400 font-bold">$${(lead.budget / 1000000).toFixed(1)}M</span>
+        </div>
+
+        <button onclick="dispatchDailyLeadWhatsApp('${lead.id}')" class="w-full py-2 px-2 ${lead.contacted ? 'bg-slate-800 text-emerald-400 border border-emerald-500/30' : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-md'} rounded-xl text-[11px] font-black flex items-center justify-center gap-1.5 transition-all cursor-pointer">
+          <i class="fa-brands fa-whatsapp text-xs"></i>
+          <span>${lead.contacted ? 'Volver a Enviar' : 'Enviar WhatsApp'}</span>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function dispatchDailyLeadWhatsApp(leadId) {
+  const lead = dailyMachineState.leads.find(l => l.id === leadId);
+  if (!lead) return;
+
+  const phone = lead.targetPhone || '573127894040';
+  const msg = `Hola ${lead.contactPerson} (${lead.title}), cordial saludo.
+
+Le escribe el equipo técnico de SIG2 Ingeniería (https://sig2ingenieria.github.io/ingenieria-sig/).
+
+Identificamos su requerimiento técnico prioritario en ${lead.city}: "${lead.need}".
+
+Disponemos de cuadrilla activa y acreditación técnica inmediata en Colombia:
+✅ Perforaciones mecánicas con ensayo SPT normativo NSR-10 Título H.
+✅ Informes geotécnicos y auditorías con firma de especialista para radicación inmediata.
+✅ Entrega en tiempos récord sin sobrecostos.
+
+¿Podríamos cotizarle formalmente este servicio hoy mismo?
+
+Línea Directa: +57 312 789 4040 | ingenierotecnicocyc@gmail.com`;
+
+  if (!lead.contacted) {
+    lead.contacted = true;
+    dailyMachineState.contactedCount = Math.min(5, (dailyMachineState.contactedCount || 0) + 1);
+    saveDailyMachineState();
+    renderDailyLeads();
+
+    if (!CONSULTORA_AI_STATE.crmOpportunities) CONSULTORA_AI_STATE.crmOpportunities = [];
+    const exists = CONSULTORA_AI_STATE.crmOpportunities.some(o => o.title === lead.title);
+    if (!exists) {
+      CONSULTORA_AI_STATE.crmOpportunities.unshift({
+        id: `OPP-DAILY-${Date.now().toString().slice(-4)}`,
+        title: lead.title,
+        company: lead.title,
+        unit: lead.sector === 'transporte' ? 'sst_hseq' : (lead.sector === 'mineria' ? 'geotecnia' : lead.sector),
+        stage: '2. Calificación',
+        value: lead.budget,
+        contact: lead.contactPerson,
+        phone: '+57 312 789 4040',
+        email: lead.targetEmail,
+        nextAction: 'Llamada de seguimiento a mensaje de WhatsApp',
+        date: new Date().toISOString().split('T')[0]
+      });
+      saveConsultoraState();
+      renderCrmKanbanBoard();
+      renderConsultoraMetrics();
+    }
+  }
+
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast(`¡Excelente! Mensaje enviado a ${lead.title}. Prospecto registrado en el CRM.`, 'success');
+}
+
+/**
+ * Cotizador Exprés en 3 Clics del Hero
+ */
+function dispatchHeroQuickQuote() {
+  const service = document.getElementById('hero-quick-service')?.value || 'Estudio de Suelos NSR-10';
+  const city = document.getElementById('hero-quick-city')?.value || 'Bogotá D.C. / Cundinamarca';
+
+  const msg = `Hola SIG2 Ingeniería (+57 312 789 4040), deseo cotizar con urgencia el servicio de:
+
+📋 Servicio: ${service}
+📍 Ubicación: ${city}
+
+¿Tienen cuadrilla y disponibilidad para iniciar esta semana? Agradezco me envíen la propuesta técnica preliminar.`;
+
+  if (!CONSULTORA_AI_STATE.crmOpportunities) CONSULTORA_AI_STATE.crmOpportunities = [];
+  CONSULTORA_AI_STATE.crmOpportunities.unshift({
+    id: `OPP-HERO-${Date.now().toString().slice(-4)}`,
+    title: `Cotización Exprés: ${service}`,
+    company: `Prospecto en ${city}`,
+    unit: service.includes('Suelos') || service.includes('Taludes') ? 'geotecnia' : (service.includes('PESV') || service.includes('SST') ? 'sst_hseq' : 'digital'),
+    stage: '1. Identificación',
+    value: 15000000,
+    contact: 'Visitante Hero Web',
+    phone: '+57 312 789 4040',
+    email: 'contacto@web.com',
+    nextAction: 'Llamar para concretar alcance del servicio',
+    date: new Date().toISOString().split('T')[0]
+  });
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+
+  window.open(`https://wa.me/573127894040?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Redirigiendo a WhatsApp. Un ingeniero especialista le responderá de inmediato.', 'success');
+}
+
+/**
+ * Sistema de Prueba Social en Vivo (Social Proof Toast)
+ */
+function initSocialProofLive() {
+  showNextSocialProof();
+  socialProofTimer = setInterval(showNextSocialProof, 24000);
+}
+
+function showNextSocialProof() {
+  const toast = document.getElementById('social-proof-toast');
+  if (!toast) return;
+
+  const event = SOCIAL_PROOF_EVENTS[socialProofIndex];
+  socialProofIndex = (socialProofIndex + 1) % SOCIAL_PROOF_EVENTS.length;
+
+  const textElem = document.getElementById('social-proof-text');
+  const timeElem = document.getElementById('social-proof-time');
+  const iconElem = document.getElementById('social-proof-icon');
+
+  if (textElem) textElem.textContent = event.text;
+  if (timeElem) timeElem.textContent = event.time;
+  if (iconElem) iconElem.innerHTML = `<i class="fa-solid ${event.icon}"></i>`;
+
+  toast.classList.add('social-proof-visible');
+
+  setTimeout(() => {
+    toast.classList.remove('social-proof-visible');
+  }, 6500);
+}
+
+function dismissSocialProof() {
+  const toast = document.getElementById('social-proof-toast');
+  if (toast) {
+    toast.classList.remove('social-proof-visible');
+    if (socialProofTimer) clearInterval(socialProofTimer);
+  }
+}
+
+/**
+ * Captura por Exit-Intent / Inactividad
+ */
+function initExitIntentCapture() {
+  let shown = false;
+
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && !shown) {
+      shown = true;
+      openExitIntentModal();
+    }
+  });
+
+  setTimeout(() => {
+    if (!shown) {
+      shown = true;
+      openExitIntentModal();
+    }
+  }, 35000);
+}
+
+function openExitIntentModal() {
+  if (sessionStorage.getItem('sig2_exit_intent_shown')) return;
+  sessionStorage.setItem('sig2_exit_intent_shown', 'true');
+
+  const modal = document.getElementById('exit-intent-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+  }
+}
+
+function closeExitIntentModal() {
+  const modal = document.getElementById('exit-intent-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+/* =============================================================================
+   FUNCIONES DE LA ALIANZA ESTRATÉGICA SIG² & GESURA (VALLE DEL CAUCA)
+   ============================================================================= */
+
+/**
+ * Calculador de Batería de Riesgo Psicosocial (Res. 2764 de 2022)
+ */
+function calculatePsychosocialQuote() {
+  const workers = parseInt(document.getElementById('psico-workers-count')?.value || '40');
+  const countElem = document.getElementById('psico-res-cuestionarios');
+
+  if (countElem) {
+    countElem.textContent = workers;
+  }
+}
+
+/**
+ * Enviar Cotización de Batería Psicosocial a WhatsApp
+ */
+function dispatchPsychosocialQuoteWhatsApp() {
+  const workers = document.getElementById('psico-workers-count')?.value || '40';
+  const modality = document.getElementById('psico-modality')?.value || 'Híbrida';
+  const sector = document.getElementById('psico-sector')?.value || 'Agroindustrial / Alimentos';
+
+  const msg = `Hola SIG² & GESURA (+57 312 789 4040), deseo solicitar cotización para la aplicación de la Batería de Riesgo Psicosocial (Resolución 2764 de 2022):
+
+📊 Datos de la Empresa:
+• Número de Trabajadores: ${workers} colaboradores
+• Modalidad: ${modality}
+• Sector Económico: ${sector}
+• Cobertura: Guadalajara de Buga / Valle del Cauca / Colombia
+
+Requerimos propuesta formal con firma de Psicólogo Especialista en SST con Licencia vigente y Plan de Intervención.`;
+
+  // Registrar en CRM
+  if (!CONSULTORA_AI_STATE.crmOpportunities) CONSULTORA_AI_STATE.crmOpportunities = [];
+  CONSULTORA_AI_STATE.crmOpportunities.unshift({
+    id: `OPP-PSICO-${Date.now().toString().slice(-4)}`,
+    title: `Batería Psicosocial (${workers} trab - ${modality})`,
+    company: `Empresa ${sector} en Buga/Valle`,
+    unit: 'sst_hseq',
+    stage: '2. Calificación',
+    value: Math.max(3500000, workers * 65000),
+    contact: 'Coordinador(a) SST / Talento Humano',
+    phone: '+57 312 789 4040',
+    email: 'contacto@gesura-sig.com',
+    nextAction: 'Enviar propuesta técnica de Batería Res. 2764',
+    date: new Date().toISOString().split('T')[0]
+  });
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+
+  window.open(`https://wa.me/573127894040?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Solicitud de Batería Psicosocial enviada a WhatsApp y registrada en el CRM.', 'success');
+}
+
+/**
+ * Solicitar Cuadrilla GESURA en Tareas de Alto Riesgo (TAR) en Sitio
+ */
+function dispatchHighRiskAssistanceWhatsApp() {
+  const task = document.getElementById('tar-type')?.value || 'Trabajo Seguro en Alturas';
+  const municipality = document.getElementById('tar-municipality')?.value || 'Guadalajara de Buga';
+  const duration = document.getElementById('tar-duration')?.value || 'Jornada Puntual';
+
+  const msg = `Hola GESURA & SIG² (+57 312 789 4040), solicito acompañamiento técnico presencial en Tareas de Alto Riesgo (TAR) para el Valle del Cauca:
+
+⚠️ Requerimiento en Sitio:
+• Tarea Crítica: ${task}
+• Ubicación: ${municipality} (Valle del Cauca)
+• Duración: ${duration}
+
+Agradezco confirmar disponibilidad de coordinador / supervisor de campo certificado y cotización de acompañamiento en faena.`;
+
+  // Registrar en CRM
+  if (!CONSULTORA_AI_STATE.crmOpportunities) CONSULTORA_AI_STATE.crmOpportunities = [];
+  CONSULTORA_AI_STATE.crmOpportunities.unshift({
+    id: `OPP-TAR-${Date.now().toString().slice(-4)}`,
+    title: `Acompañamiento TAR: ${task.split('(')[0].trim()}`,
+    company: `Faena en ${municipality}`,
+    unit: 'sst_hseq',
+    stage: '1. Identificación',
+    value: 4800000,
+    contact: 'Jefe de Planta / Residente de Obra',
+    phone: '+57 312 789 4040',
+    email: 'operaciones@gesura-sig.com',
+    nextAction: 'Coordinar visita de inspección con GESURA en Buga',
+    date: new Date().toISOString().split('T')[0]
+  });
+  saveConsultoraState();
+  renderCrmKanbanBoard();
+  renderConsultoraMetrics();
+
+  window.open(`https://wa.me/573127894040?text=${encodeURIComponent(msg)}`, '_blank');
+  showToast('Solicitud enviada a GESURA en Guadalajara de Buga. Lead registrado en el CRM.', 'success');
+}
+
+/**
+ * Modal del Portafolio en Sociedad SIG² & GESURA
+ */
+function openGesuraPortfolioModal() {
+  const modal = document.getElementById('gesura-portfolio-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+  }
+}
+
+function closeGesuraPortfolioModal() {
+  const modal = document.getElementById('gesura-portfolio-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function switchGesuraPortfolioTab(tabId) {
+  const tabs = ['resumen', 'tar', 'psico', 'legal'];
+
+  tabs.forEach(t => {
+    const content = document.getElementById(`gp-content-${t}`);
+    const btn = document.getElementById(`gp-tab-${t}`);
+
+    if (content) {
+      if (t === tabId) content.classList.remove('hidden');
+      else content.classList.add('hidden');
+    }
+
+    if (btn) {
+      if (t === tabId) {
+        btn.className = 'px-4 py-2 rounded-xl bg-sig-navy text-white font-black shadow-xs shrink-0 transition-all';
+      } else {
+        btn.className = 'px-4 py-2 rounded-xl text-slate-600 hover:text-black shrink-0 transition-all';
+      }
+    }
+  });
 }

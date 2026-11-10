@@ -869,3 +869,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
   justify-content: space-between;
 }
 
+/* =========================================================================
+   MÁQUINA DE 1 CLIENTE AL DÍA: PRUEBA SOCIAL Y RETENCIÓN
+   ========================================================================= */
+#social-proof-toast {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#social-proof-toast.social-proof-visible {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+

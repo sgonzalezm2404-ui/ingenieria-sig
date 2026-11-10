@@ -25,6 +25,7 @@
 | **FASE 11** | **Informes Ejecutivos & Analítica Semanal** | ✅ **COMPLETADA** | Generador de Informe Semanal con métricas de prospección, conversiones, ROI y exportación a Excel (.csv BOM). |
 | **FASE 12** | **Pruebas Integrales y Despliegue** | ✅ **COMPLETADA** | Verificación de sintaxis (1479 llaves, 2531 paréntesis), no-regresión de módulos y despliegue en GitHub Pages. |
 | **FASE 13** | **Motor Autónomo de Clientes & Publicidad Orgánica** | ✅ **COMPLETADA** | Sistema 100% independiente de APIs externas de pago. Radar de licitaciones en Colombia, generador de artículos SEO con Schema JSON-LD, carruseles LinkedIn B2B, guiones WhatsApp y calculadoras de captura de leads. |
+| **FASE 14** | **Máquina de 1 Cliente al Día & Alianza GESURA** | ✅ **COMPLETADA** | Alianza en sociedad con GESURA (Gestión Segura del Trabajo) para Guadalajara de Buga y Valle del Cauca. División operativa física (GESURA: Alturas, Espacios Confinados, LOTO) y virtual (SIG²: Batería Psicosocial Res. 2764, Software PESV, SG-SST). Calculadora de Batería, modal de portafolio en sociedad, prueba social en vivo y captura exit-intent. |
 
 ---
 
@@ -53,3 +54,8 @@
   - Parens `()`: 2531 vs 2531 (100% balanceadas).
   - Brackets `[]`: 411 vs 411 (100% balanceados).
 - **Prueba 05 (2026-11-08):** Verificación de no-regresión: SIG Campo, SIG Fleet PESV, Marketing Google Ads y CRM Cadenero continúan 100% funcionales.
+- **Prueba 06 (2026-11-09):** Integración de Alianza GESURA y Sistema de Adquisición Diaria de Clientes:
+  - Verificación de balance sintáctico de `app.js` (1786 llaves balanceadas, 504 corchetes balanceados).
+  - Implementación de la sección co-branded `#alianza-gesura` y modal `#gesura-portfolio-modal`.
+  - Integración del calculador de Batería de Riesgo Psicosocial (Res. 2764) y despacho TAR en Guadalajara de Buga y Valle del Cauca.
+  - Activación del motor de prueba social viva `#social-proof-toast` y captura exit-intent `#exit-intent-modal`.

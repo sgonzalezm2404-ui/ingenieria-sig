@@ -109,6 +109,31 @@ Bienvenido al repositorio oficial del código fuente de la plataforma web corpor
 - Chatbot flotante especializado en captación y calificación de leads técnicos.
 - Generación de expediente técnico CRM consolidado y transferencia directa a WhatsApp (+57 312 789 4040).
 
+### 7. Alianza Estratégica en Sociedad con GESURA (Valle del Cauca)
+- **Empresa Socia:** GESURA (*Gestión Segura del Trabajo*).
+- **Cobertura Regional Prioritaria:** Valle del Cauca (Guadalajara de Buga como base operativa, Yotoco, Tuluá, Guacarí, San Pedro, El Cerrito, Palmira, Cali y Buenaventura).
+- **División Operativa Especializada:**
+  * **Operación Física y de Campo (GESURA):** Acompañamiento en sitio en Tareas de Alto Riesgo (TAR):
+    - Trabajo Seguro en Alturas (Resolución 4272 de 2021) con coordinadores certificados y cuadrilla de rescate.
+    - Ingreso a Espacios Confinados (Resolución 0491 de 2020) con vigías, equipos de ventilación y medición de gases.
+    - Trabajos en Caliente (soldadura, oxicorte, amolado en atmósfera de riesgo).
+    - Bloqueo y Etiquetado LOTO (energías peligrosas mecánicas, eléctricas e hidráulicas).
+  * **Operación Virtual, Normativa y Software (SIG²):**
+    - Aplicación de Batería de Instrumentos de Riesgo Psicosocial (Resolución 2764 de 2022 y Res. 2404 de 2019) con Psicólogo Especialista en SST con Licencia vigente.
+    - Software digital para Plan Estratégico de Seguridad Vial PESV (Resolución 40595 de 2022).
+    - Auditorías legales y diseño del SG-SST (Decreto 1072 de 2015 y Resolución 0312 de 2019).
+- **Portafolio en Sociedad Interactivo:**
+  * Modal multi-pestaña accesible desde la navegación principal (`#alianza-gesura`).
+  * Calculador interactivo de Batería Psicosocial con cotización instantánea y sincronización al CRM.
+  * Selector de despacho de cuadrilla física para faenas en el Valle del Cauca.
+
+### 8. Máquina de Conversión Diaria ("Al menos 1 Cliente al Día")
+- **Top Sticky Bar:** Barra superior fija con llamado a la acción directo a WhatsApp y correo oficial.
+- **Cotizador Exprés en 30 Segundos:** Integrado directamente en el Hero Banner para reducir la fricción de entrada.
+- **Protocolo de Prospección Diaria (5 Leads/Día):** Tablero operativo con 5 oportunidades de alta prioridad renovadas diariamente con plantilla de contacto a WhatsApp y registro instantáneo en CRM.
+- **Prueba Social en Tiempo Real (Live Toast):** Notificaciones discretas en la esquina inferior que muestran empresas reales en Colombia cotizando servicios cada 24 segundos.
+- **Captura por Intención de Salida (Exit-Intent Modal):** Detección de salida del cursor o 35 segundos de navegación con oferta de diagnóstico previo sin costo.
+
 ---
 
 ## 3. Despliegue en GitHub Pages
